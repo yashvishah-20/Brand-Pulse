@@ -1,0 +1,62 @@
+[
+  {
+    "Level1": "Growth",
+    "Level2": "Opportunity",
+    "Value": 0.2788
+  },
+  {
+    "Level1": "Growth",
+    "Level2": "Advancement",
+    "Value": 0.06559999999999999
+  },
+  {
+    "Level1": "Growth",
+    "Level2": "Promotion",
+    "Value": 0.049199999999999994
+  },
+  {
+    "Level1": "Learning",
+    "Level2": "Experience",
+    "Value": 0.1056
+  },
+  {
+    "Level1": "Learning",
+    "Level2": "Skills",
+    "Value": 0.1056
+  },
+  {
+    "Level1": "Learning",
+    "Level2": "Mentorship",
+    "Value": 0.0352
+  },
+  {
+    "Level1": "Development",
+    "Level2": "Projects",
+    "Value": 0.10400000000000001
+  },
+  {
+    "Level1": "Development",
+    "Level2": "Collaboration",
+    "Value": 0.072
+  },
+  {
+    "Level1": "Development",
+    "Level2": "Recognition",
+    "Value": 0.032
+  },
+  {
+    "Level1": "Training",
+    "Level2": "Supportive",
+    "Value": 0.09520000000000002
+  },
+  {
+    "Level1": "Training",
+    "Level2": "Performance",
+    "Value": 0.04760000000000001
+  },
+  {
+    "Level1": "Training",
+    "Level2": "Education",
+    "Value": 0.0068000000000000005
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "chart_title": "Sentiment Analysis Distribution",
+  "chart_type": "bar",
+  "data": {
+    "labels": [
+      "Negative",
+      "Positive"
+    ],
+    "datasets": [
+      {
+        "label": "Sentiment Count",
+        "data": [
+          245,
+          219
+        ],
+        "backgroundColor": [
+          "rgba(255, 99, 132, 0.6)",
+          "rgba(75, 192, 192, 0.6)"
+        ],
+        "borderColor": [
+          "rgba(255, 99, 132, 1)",
+          "rgba(75, 192, 192, 1)"
+        ],
+        "borderWidth": 1
+      }
+    ]
+  },
+  "total_reviews": 464,
+  "sentiment_breakdown": {
+    "Negative": {
+      "count": 245,
+      "percentage": 52.8
+    },
+    "Positive": {
+      "count": 219,
+      "percentage": 47.2
+    }
+  }
+}

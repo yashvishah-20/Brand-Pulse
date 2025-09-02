@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+  .active-platform {
+    box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+    border-radius: 12px;
+    outline: none;
+    z-index: 1;
+    transition: box-shadow 0.2s;
+  }
+    .text-lg.font-bold.text-success-600.mt-1,
+    .text-lg.font-bold.text-warning-600.mt-1,
+    .text-lg.font-bold.text-error-600.mt-1 {
+        font-size: 25px !important;
+    }
+</style>
+</head>
+<body class="bg-background font-inter">
+<!-- Main Content Area -->
+                
+                <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Header Section with Logo and Date Filter -->
+            <div class="flex items-center justify-between mb-6">
+                <!-- Left side - Logo -->
+                <div class="flex items-center">
+                    <a href="dashboard_overview.html" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; cursor: pointer;">
+                            <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                        </div>
+                    </a>
+                </div>
+                <!-- Right side - Date Filter and Export Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Date Range Filter -->
+                    <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                            <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-01-01">
+                        </div>
+                        <div class="text-text-secondary">—</div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">TO:</label>
+                            <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-07-31">
+                        </div>
+                        <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Apply
+                        </button>
+                    </div>
+                    <!-- Export Report Button -->
+                    <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 20h14v-2H5v2zm7-18v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Export Report
+                    </a>
+                </div>
+            </div>
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Google -->
+                <a href="dashboard_google.html" class="platform-btn" title="Google" aria-label="Google">
+                    <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                    <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                </a>
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                    <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                </a>
+               <!-- StockTwits -->
+                <a href="dashboard_stocktwits.html" class="platform-btn" title="StockTwits" aria-label="StockTwits">
+                    <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <!-- Summary Metrics Cards -->
+            <div id="dashboardSummaryCards" class="flex flex-row gap-2 mb-0">
+                <!-- Total Volume Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-lg font-bold text-text-primary mt-1" id="total-volume">38810</p>
+                            <p class="text-xs text-success-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-3 h-3 text-success-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">+15% from last year</span>
+                                </span>
+                                
+                            </p>
+                        </div>
+                        <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Positive Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Positive Sentiment</p>
+                            <p class="text-lg font-bold text-success-600 mt-1" id="avg-positive-sentiment">45.2%</p>
+                            
+                        </div>
+                        <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Neutral Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Neutral Sentiment</p>
+                            <p class="text-lg font-bold text-warning-600 mt-1" id="avg-neutral-sentiment">38.7%</p>
+                            
+                        </div>
+                        <div class="w-8 h-8 bg-warning-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Negative Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Negative Sentiment</p>
+                            <p class="text-lg font-bold text-error-600 mt-1" id="avg-negative-sentiment">16.1%</p>
+                            
+                        </div>
+                        <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Momentum Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <p class="text-xs font-medium text-text-secondary">Sentiment Momentum</p>
+                        <p class="text-lg font-bold text-error-600 mt-1" id="sentiment-momentum">-7.25%</p>
+                        <p class="text-xs text-error-600 mt-1">
+                        <span class="inline-flex items-center">
+                            <svg class="w-3 h-3 text-error-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 14l5-5 5 5z"/>
+                            </svg>
+                            <span class="font-bold">-7.25%</span>
+                        </span>
+                        <span class="block">vs previous 2 months</span>
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                        <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 14l5-5 5 5z"/>
+                        </svg>
+                    </div>
+                    </div>
+                </div>
+                <!-- Total Engagements Card
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Engagements</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="engagement-rate">175,739</p>
+                            <p class="text-sm text-text-secondary mt-1">All reaction types (measures direct professional engagement)</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Sentiment Trends Card 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Sentiment Trends</p>
+                            <div class="mt-2 space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Positive:</span>
+                                    <span class="text-sm font-semibold text-success-600">↗ +5.2%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Neutral:</span>
+                                    <span class="text-sm font-semibold text-warning-500">↘ -2.1%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Negative:</span>
+                                    <span class="text-sm font-semibold text-error-500">↘ -3.1%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+            <!-- LinkedIn Overview Title 
+            <h2 class="text-2xl font-bold mb-4">LinkedIn Overview</h2>-->
+            <!-- Tab Bar -->
+            <div class="flex gap-4 mb-8">
+                <!-- <button id="showEngagement" class="flex-1 px-6 py-3 text-lg font-semibold text-white bg-primary rounded-md shadow">Engagement</button> -->
+                <!-- <button id="showTrends" class="flex-1 px-6 py-3 text-lg font-semibold text-primary border-2 border-primary rounded-md shadow">Trends</button> -->
+            </div>
+            <div id="performanceView">
+                <!-- LinkedIn Yearly Sentiment Analysis (added at top) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-text-primary">Sentiment Analysis</h2>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="linkedinBarChart" width="800" height="384"></canvas>
+                    </div>
+                    <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p id="linkedinPositive" class="text-2xl font-bold text-success-600">...</p>
+                            <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="linkedinNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                            <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="linkedinNegative" class="text-2xl font-bold text-error-500">...</p>
+                            <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add vertical space between the two sections -->
+                <div style="height: 40px;"></div>
+
+                <!-- LinkedIn Sentiment Trends Over Time (interactive, with slider, Engagement tab only) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-semibold text-text-primary">Sentiment Trends Over Time</h2>
+                            <p class="text-sm text-text-secondary mt-1" id="linkedinChartSubtitle">LinkedIn - Last 12 Months</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Time Range Slider -->
+                    <div class="flex items-center mb-4">
+                        <span class="mr-2 text-gray-500 font-medium">Range:</span>
+                        <span id="linkedinSliderLabel6m" class="text-gray-500" style="min-width: 2.5em;">6m</span>
+                        <input
+                            type="range"
+                            id="linkedinTrendRangeSlider"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            style="accent-color: #ff7300; width: 180px; margin: 0 10px; background: transparent;"
+                        />
+                        <span id="linkedinSliderLabel2y" class="text-gray-500" style="min-width: 2.5em;">2y</span>
+                        <span id="linkedinSliderRangeBadge" class="ml-3 px-3 py-1 rounded-xl" style="background: #ffe5d0; color: #c2410c; font-weight: 600; font-size: 1.2em;">1y</span>
+                    </div>
+                    <div class="relative h-96 mb-8">
+                        <canvas id="linkedinTrendsChart" class="w-full h-full"></canvas>
+                    </div>
+                </div>
+                
+                <!-- LinkedIn Activity Radar (by Month) 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">LinkedIn Activity Radar (by Month)</h3>
+                        <div>
+                            <select id="linkedinRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="relative h-96 flex items-center justify-center">
+                        <canvas id="linkedinActivityRadarChart" width="400" height="384"></canvas>
+                    </div>
+                </div>-->
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                    <!-- Engagement Types Chart 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Engagement Types</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Likes</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Appreciations</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Empathy</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Interests</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative w-80 h-80 mx-auto">
+                            <canvas id="linkedinEngagementChart" width="320" height="320"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <p id="totalEngagements" class="text-2xl font-bold text-text-primary">Loading...</p>
+                                <p class="text-sm text-text-secondary">Total Engagements</p>
+                            </div>
+                            <div>
+                                <p id="engagementRate" class="text-2xl font-bold text-text-primary">Loading...</p>
+                                <p class="text-sm text-text-secondary">Engagement Rate</p>
+                            </div>
+                        </div>-->
+                        <!-- Detailed Engagement Breakdown 
+                        <div class="mt-6 pt-6 border-t border-border-light">
+                            <h4 class="text-sm font-medium text-text-secondary mb-4">Detailed Breakdown</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                        <span class="text-sm text-text-primary">Likes</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p id="likesCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                        <p id="likesPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                        <span class="text-sm text-text-primary">Appreciations</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p id="appreciationsCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                        <p id="appreciationsPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                        <span class="text-sm text-text-primary">Empathy</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p id="empathyCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                        <p id="empathyPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                        <span class="text-sm text-text-primary">Interests</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p id="interestsCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                        <p id="interestsPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- Engagement Histogram 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Engagement Distribution</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Likes</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Appreciations</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Empathy</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Interests</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-80">
+                            <canvas id="engagementHistogramChart" width="400" height="320"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <p id="highestEngagement" class="text-lg font-bold text-text-primary">Loading...</p>
+                                <p class="text-sm text-text-secondary">Highest Category</p>
+                            </div>
+                            <div>
+                                <p id="totalEngagementTypes" class="text-lg font-bold text-text-primary">4</p>
+                                <p class="text-sm text-text-secondary">Engagement Types</p>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- LinkedIn Activity Radar 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">LinkedIn Activity Radar</h3>
+                            <div>
+                                <select id="linkedinRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="all">All Years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="relative h-96 flex items-center justify-center">
+                            <canvas id="linkedinRadarChart" width="400" height="384"></canvas>
+                        </div>
+                    </div>-->
+                    <!-- LinkedIn Activity Patterns 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Patterns</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-sm font-medium text-text-secondary mb-3">Peak Hours (EST)</h4>
+                                <div id="linkedinPeakHours" class="grid grid-cols-4 gap-2 w-full">-->
+                                    <!-- Peak hours will be loaded here by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="trendsView" class="hidden">
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // LinkedIn Yearly Sentiment Analysis Bar Chart
+    function initializeLinkedInBarChart() {
+        const ctx = document.getElementById('linkedinBarChart');
+        if (ctx) {
+            // Dummy data for LinkedIn yearly sentiment analysis
+            const years = ['2022', '2023', '2024'];
+            const positiveYearly = [72.3, 75.8, 78.1];
+            const neutralYearly = [18.5, 16.2, 14.8];
+            const negativeYearly = [9.2, 8.0, 7.1];
+            
+            new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [
+                        {
+                            label: 'Positive',
+                            data: positiveYearly,
+                            backgroundColor: '#27AE60',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Neutral',
+                            data: neutralYearly,
+                            backgroundColor: '#F39C12',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Negative',
+                            data: negativeYearly,
+                            backgroundColor: '#E74C3C',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: { size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 12 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: '#F3F4F6' },
+                            ticks: {
+                                font: { size: 12 },
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Update the summary statistics
+            const avgPositive = positiveYearly.reduce((a, b) => a + b, 0) / positiveYearly.length;
+            const avgNeutral = neutralYearly.reduce((a, b) => a + b, 0) / neutralYearly.length;
+            const avgNegative = negativeYearly.reduce((a, b) => a + b, 0) / negativeYearly.length;
+            
+            document.getElementById('linkedinPositive').textContent = `${avgPositive.toFixed(1)}%`;
+            document.getElementById('linkedinNeutral').textContent = `${avgNeutral.toFixed(1)}%`;
+            document.getElementById('linkedinNegative').textContent = `${avgNegative.toFixed(1)}%`;
+        }
+    }
+
+    // LinkedIn Activity Radar variables
+    let linkedinActivityRadarChart = null;
+    let linkedinActivityRadarRawData = null;
+    
+    // LinkedIn Activity Radar Chart
+    async function loadLinkedInActivityRadarChart() {
+        try {
+            // Create dummy data for LinkedIn Activity Radar
+            const dummyData = {
+                labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                values: [1250, 1450, 1650, 1550, 1750, 1650, 1850, 1950, 1750, 1850, 1950, 2150, 2050, 2250, 2350, 2200, 2450, 2300, 2550, 2650, 2450, 2550, 2650, 2750]
+            };
+            
+            linkedinActivityRadarRawData = dummyData;
+            const yearSelect = document.getElementById('linkedinRadarYearSelect');
+            if (yearSelect) {
+                // Extract years from labels (format: 'Month YYYY')
+                const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+                yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                yearSelect.onchange = function() { renderLinkedInActivityRadarChart(this.value); };
+            }
+            renderLinkedInActivityRadarChart('all');
+        } catch (e) {
+            const ctx = document.getElementById('linkedinActivityRadarChart');
+            if (ctx) {
+                ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load LinkedIn Activity Radar chart data.</div>';
+            }
+        }
+    }
+    
+    function renderLinkedInActivityRadarChart(selectedYear) {
+        const ctx = document.getElementById('linkedinActivityRadarChart');
+        if (!ctx || !linkedinActivityRadarRawData) return;
+        if (linkedinActivityRadarChart) linkedinActivityRadarChart.destroy();
+        
+        let labels = linkedinActivityRadarRawData.labels;
+        let values = linkedinActivityRadarRawData.values;
+        if (selectedYear && selectedYear !== 'all') {
+            labels = linkedinActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+            values = labels.map(l => {
+                const idx = linkedinActivityRadarRawData.labels.indexOf(l);
+                return linkedinActivityRadarRawData.values[idx];
+            });
+        }
+        
+        linkedinActivityRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'LinkedIn Activity by Month',
+                    data: values,
+                    fill: true,
+                    backgroundColor: 'rgba(0, 119, 181, 0.2)',
+                    borderColor: '#0077B5',
+                    pointBackgroundColor: '#0077B5',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#0077B5',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#0077B5',
+                            font: { weight: 'bold' }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#0077B5', font: { weight: 'bold' } },
+                        ticks: { color: '#374151' }
+                    }
+                },
+                animation: {
+                    duration: 1200,
+                    easing: 'easeInOutQuart'
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest'
+                }
+            }
+        });
+    }
+
+    // Initialize the LinkedIn bar chart when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeLinkedInBarChart();
+        loadLinkedInActivityRadarChart();
+    });
+    
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+    // --- LinkedIn Engagement Chart Logic (from audience_insights.html) ---
+    let linkedInData = null;
+    let engagementChart = null;
+    let histogramChart = null;
+    let linkedinRadarChart = null;
+
+    async function loadLinkedInData() {
+        try {
+            showLoadingState();
+            const response = await fetch('../public/linkedin_engagement_data.json');
+            if (!response.ok) throw new Error('Failed to load linkedin_engagement_data.json');
+            linkedInData = await response.json();
+            hideLoadingState();
+            updateLinkedInStats();
+            initializeLinkedInChart();
+            initializeHistogramChart();
+        } catch (error) {
+            hideLoadingState();
+            linkedInData = {
+                total_posts: 695,
+                total_engagements: 175739,
+                engagement_rate: 7.3,
+                engagement_breakdown: {
+                    likes: 166382,
+                    appreciations: 5556,
+                    empathy: 2418,
+                    interests: 1383
+                },
+                engagement_percentages: {
+                    likes: { count: 166382, percentage: 94.7 },
+                    appreciations: { count: 5556, percentage: 3.2 },
+                    empathy: { count: 2418, percentage: 1.4 },
+                    interests: { count: 1383, percentage: 0.8 }
+                },
+                chart_data: {
+                    labels: ['Likes', 'Appreciations', 'Empathy', 'Interests'],
+                    data: [166382, 5556, 2418, 1383]
+                }
+            };
+            updateLinkedInStats();
+            initializeLinkedInChart();
+            initializeHistogramChart();
+            showErrorMessage('Unable to load live data. Showing sample data instead.');
+        }
+    }
+    function showLoadingState() {
+        const loadingElements = document.querySelectorAll('#totalPosts, #avgEngagement, #totalEngagementsQuick, #topReaction, #totalEngagements, #engagementRate, #likesCount, #appreciationsCount, #empathyCount, #interestsCount, #highestEngagement');
+        loadingElements.forEach(el => { if (el) el.textContent = 'Loading...'; });
+    }
+    function hideLoadingState() { /* handled by updateLinkedInStats */ }
+    function showErrorMessage(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 bg-warning-50 border border-warning-200 text-warning-800 px-4 py-3 rounded-lg shadow-lg z-50';
+        errorDiv.innerHTML = `<div class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span class="text-sm">${message}</span><button class="ml-4 text-warning-600 hover:text-warning-800" onclick="this.parentElement.parentElement.remove()"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>`;
+        document.body.appendChild(errorDiv);
+        setTimeout(() => { if (errorDiv.parentNode) errorDiv.parentNode.removeChild(errorDiv); }, 5000);
+    }
+    function updateLinkedInStats() {
+        if (!linkedInData) return;
+        const totalEngagements = document.getElementById('totalEngagements');
+        const engagementRate = document.getElementById('engagementRate');
+        if (totalEngagements) totalEngagements.textContent = linkedInData.total_engagements.toLocaleString();
+        if (engagementRate) engagementRate.textContent = linkedInData.engagement_rate + '%';
+        // Update detailed breakdown
+        if (linkedInData.engagement_percentages) {
+            const likesCount = document.getElementById('likesCount');
+            const likesPercentage = document.getElementById('likesPercentage');
+            const appreciationsCount = document.getElementById('appreciationsCount');
+            const appreciationsPercentage = document.getElementById('appreciationsPercentage');
+            const empathyCount = document.getElementById('empathyCount');
+            const empathyPercentage = document.getElementById('empathyPercentage');
+            const interestsCount = document.getElementById('interestsCount');
+            const interestsPercentage = document.getElementById('interestsPercentage');
+            if (likesCount && linkedInData.engagement_percentages.likes) {
+                likesCount.textContent = linkedInData.engagement_percentages.likes.count.toLocaleString();
+                likesPercentage.textContent = linkedInData.engagement_percentages.likes.percentage + '%';
+            }
+            if (appreciationsCount && linkedInData.engagement_percentages.appreciations) {
+                appreciationsCount.textContent = linkedInData.engagement_percentages.appreciations.count.toLocaleString();
+                appreciationsPercentage.textContent = linkedInData.engagement_percentages.appreciations.percentage + '%';
+            }
+            if (empathyCount && linkedInData.engagement_percentages.empathy) {
+                empathyCount.textContent = linkedInData.engagement_percentages.empathy.count.toLocaleString();
+                empathyPercentage.textContent = linkedInData.engagement_percentages.empathy.percentage + '%';
+            }
+            if (interestsCount && linkedInData.engagement_percentages.interests) {
+                interestsCount.textContent = linkedInData.engagement_percentages.interests.count.toLocaleString();
+                interestsPercentage.textContent = linkedInData.engagement_percentages.interests.percentage + '%';
+            }
+        }
+        // Update histogram stats
+        const highestEngagement = document.getElementById('highestEngagement');
+        if (highestEngagement && linkedInData.engagement_breakdown) {
+            const engagementTypes = linkedInData.engagement_breakdown;
+            let maxType = 'Likes';
+            let maxValue = 0;
+            for (const [type, value] of Object.entries(engagementTypes)) {
+                if (value > maxValue) {
+                    maxValue = value;
+                    maxType = type.charAt(0).toUpperCase() + type.slice(1);
+                }
+            }
+            highestEngagement.textContent = maxType;
+        }
+    }
+    function initializeLinkedInChart() {
+        const ctx = document.getElementById('linkedinEngagementChart');
+        if (!ctx || !linkedInData) return;
+        if (engagementChart) engagementChart.destroy();
+        const colors = ['#FF6B35', '#3498DB', '#27AE60', '#F39C12'];
+        engagementChart = new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: linkedInData.chart_data.labels,
+                datasets: [{
+                    data: linkedInData.chart_data.data,
+                    backgroundColor: colors,
+                    borderWidth: 3,
+                    borderColor: '#FFFFFF',
+                    hoverBorderWidth: 4,
+                    hoverBorderColor: '#FFFFFF',
+                    hoverBackgroundColor: colors.map(color => color + 'DD')
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${label}: ${value.toLocaleString()} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true,
+                    duration: 1000,
+                    easing: 'easeInOutQuart'
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    }
+    function initializeHistogramChart() {
+        const ctx = document.getElementById('engagementHistogramChart');
+        if (!ctx || !linkedInData) return;
+        if (histogramChart) histogramChart.destroy();
+        const colors = ['#FF6B35', '#3498DB', '#27AE60', '#F39C12'];
+        histogramChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: linkedInData.chart_data.labels,
+                datasets: [{
+                    label: 'Engagement Count',
+                    data: linkedInData.chart_data.data,
+                    backgroundColor: colors,
+                    borderColor: colors.map(color => color + 'CC'),
+                    borderWidth: 2,
+                    borderRadius: 6,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed.y;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${context.label}: ${value.toLocaleString()} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 12, weight: 'normal' }, color: '#6B7280' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F3F4F6', drawBorder: false },
+                        ticks: {
+                            font: { size: 12 },
+                            color: '#6B7280',
+                            callback: function(value) { return value.toLocaleString(); }
+                        }
+                    }
+                },
+                animation: { duration: 1000, easing: 'easeInOutQuart' },
+                interaction: { intersect: false, mode: 'index' }
+            }
+        });
+    }
+    // LinkedIn Activity Radar
+    let linkedinRadarRawData = null;
+    async function loadLinkedInRadarChart() {
+        try {
+            const response = await fetch('../public/linkedin_activity_patterns.json');
+            if (!response.ok) throw new Error('Failed to load linkedin_activity_patterns.json');
+            const data = await response.json();
+            linkedinRadarRawData = data;
+            const yearSelect = document.getElementById('linkedinRadarYearSelect');
+            if (yearSelect) {
+                const years = Array.from(new Set(data.activity_radar.map(item => item.month.split(' ')[1])));
+                yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                yearSelect.onchange = function() { renderLinkedinRadarChart(this.value); };
+            }
+            renderLinkedinRadarChart('all');
+        } catch (e) {
+            const ctx = document.getElementById('linkedinRadarChart');
+            if (ctx) ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load LinkedIn radar chart data.</div>';
+        }
+    }
+    function renderLinkedinRadarChart(selectedYear) {
+        const ctx = document.getElementById('linkedinRadarChart');
+        if (!ctx || !linkedinRadarRawData) return;
+        if (linkedinRadarChart) linkedinRadarChart.destroy();
+        let labels = linkedinRadarRawData.activity_radar.map(item => item.month);
+        let values = linkedinRadarRawData.activity_radar.map(item => item.count);
+        if (selectedYear && selectedYear !== 'all') {
+            labels = linkedinRadarRawData.activity_radar.filter(item => item.month.endsWith(' ' + selectedYear)).map(item => item.month);
+            values = linkedinRadarRawData.activity_radar.filter(item => item.month.endsWith(' ' + selectedYear)).map(item => item.count);
+        }
+        linkedinRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Posts by Month',
+                    data: values,
+                    fill: true,
+                    backgroundColor: 'rgba(10, 102, 194, 0.2)',
+                    borderColor: '#0A66C2',
+                    pointBackgroundColor: '#0A66C2',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#0A66C2',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { color: '#0A66C2', font: { weight: 'bold' } }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#0A66C2', font: { weight: 'bold' } },
+                        ticks: { color: '#374151' }
+                    }
+                },
+                animation: { duration: 1200, easing: 'easeInOutQuart' },
+                interaction: { intersect: false, mode: 'nearest' }
+            }
+        });
+    }
+    // LinkedIn Activity Patterns (Peak Hours)
+    async function loadLinkedInPeakHours() {
+        try {
+            const response = await fetch('../public/linkedin_activity_patterns.json');
+            if (!response.ok) throw new Error('Failed to load linkedin_activity_patterns.json');
+            const data = await response.json();
+            const container = document.getElementById('linkedinPeakHours');
+            if (!container) return;
+            container.innerHTML = '';
+            let maxCount = 0;
+            data.peak_hours.forEach(slot => { if (slot.count > maxCount) maxCount = slot.count; });
+            data.peak_hours.forEach(slot => {
+                let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+                let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+                let level = slot.count === maxCount ? 'High' : (slot.count > 0 ? 'Medium' : 'Low');
+                container.innerHTML += `<div class="text-center p-2 ${bg} rounded"><p class="text-sm font-medium ${text}">${slot.slot}</p><p class="text-xs text-text-secondary">${level} (${slot.count})</p></div>`;
+            });
+        } catch (e) {
+            const container = document.getElementById('linkedinPeakHours');
+            if (container) container.innerHTML = '<div class="col-span-4 text-center text-warning-700">Unable to load LinkedIn peak hours data.</div>';
+        }
+    }
+    (function() {
+        let linkedinTrendsChart = null;
+        let linkedinTrendsData = null;
+
+        function updateLinkedinTrendsChartForRange(rangeIndex) {
+            if (!linkedinTrendsData) {
+                console.error('linkedinTrendsData is not loaded');
+                return;
+            }
+            let months, badge, subtitle;
+            if (rangeIndex == 0) { months = 6; badge = "6m"; subtitle = "LinkedIn - Last 6 Months"; }
+            else if (rangeIndex == 1) { months = 12; badge = "1y"; subtitle = "LinkedIn - Last 12 Months"; }
+            else { months = 24; badge = "2y"; subtitle = "LinkedIn - Last 24 Months"; }
+            const total = linkedinTrendsData.labels.length;
+            const start = Math.max(0, total - months);
+            const labels = linkedinTrendsData.labels.slice(start);
+            const positive = linkedinTrendsData.positive.slice(start);
+            const neutral = linkedinTrendsData.neutral.slice(start);
+            const negative = linkedinTrendsData.negative.slice(start);
+            if (linkedinTrendsChart) linkedinTrendsChart.destroy();
+            const ctx = document.getElementById('linkedinTrendsChart');
+            if (!ctx) {
+                console.error('linkedinTrendsChart canvas not found');
+                return;
+            }
+            linkedinTrendsChart = new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: 'Positive', data: positive, borderColor: '#27AE60', backgroundColor: 'rgba(39, 174, 96, 0.1)', borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#27AE60', pointBorderColor: '#FFFFFF', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 },
+                        { label: 'Neutral', data: neutral, borderColor: '#F39C12', backgroundColor: 'rgba(243, 156, 18, 0.1)', borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#F39C12', pointBorderColor: '#FFFFFF', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 },
+                        { label: 'Negative', data: negative, borderColor: '#E74C3C', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#E74C3C', pointBorderColor: '#FFFFFF', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: true, color: '#F3F4F6' }, ticks: { color: '#6B7280', font: { size: 12 } } },
+                        y: { beginAtZero: true, max: 100, grid: { display: true, color: '#F3F4F6' }, ticks: { color: '#6B7280', font: { size: 12 }, callback: function(value) { return value + '%'; } } }
+                    }
+                }
+            });
+            document.getElementById('linkedinSliderRangeBadge').textContent = badge;
+            document.getElementById('linkedinChartSubtitle').textContent = subtitle;
+        }
+
+        function initializeLinkedinTrendsChart() {
+            const ctx = document.getElementById('linkedinTrendsChart');
+            if (!ctx) {
+                console.error('linkedinTrendsChart canvas not found');
+                return;
+            }
+            fetch('../public/linkedin_trends.json')
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('Failed to fetch linkedin_trends.json:', response.status);
+                        return null;
+                    }
+                    return response.json();
+                })
+                .then(trendsData => {
+                    if (!trendsData) {
+                        console.error('No trendsData loaded');
+                        return;
+                    }
+                    linkedinTrendsData = {
+                        labels: trendsData.labels,
+                        positive: trendsData.positive,
+                        neutral: trendsData.neutral,
+                        negative: trendsData.negative
+                    };
+                    const slider = document.getElementById('linkedinTrendRangeSlider');
+                    const rangeIndex = slider ? Number(slider.value) : 1;
+                    updateLinkedinTrendsChartForRange(rangeIndex);
+                })
+                .catch(err => {
+                    console.error('Error fetching or parsing linkedin_trends.json:', err);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attach slider event for LinkedIn Sentiment Trends Over Time
+            const slider = document.getElementById('linkedinTrendRangeSlider');
+            if (slider) {
+                slider.addEventListener('input', function() {
+                    updateLinkedinTrendsChartForRange(Number(this.value));
+                });
+            }
+            // Initialize trends chart
+            initializeLinkedinTrendsChart();
+            // Ensure chart is re-initialized when Engagement tab is shown
+            const showEngagement = document.getElementById('showEngagement');
+            if (showEngagement) {
+                showEngagement.addEventListener('click', function() {
+                    setTimeout(() => {
+                        initializeLinkedinTrendsChart();
+                    }, 100);
+                });
+            }
+        });
+    })();
+    // On page load, load LinkedIn data and charts
+    window.addEventListener('DOMContentLoaded', function() {
+        loadLinkedInData();
+        loadLinkedInRadarChart();
+        loadLinkedInPeakHours();
+        const platformBtns = document.querySelectorAll('.platform-btn');
+        const currentPage = window.location.pathname.split('/').pop();
+        platformBtns.forEach(btn => {
+          const href = btn.getAttribute('href');
+          if (href && href === currentPage) {
+            btn.classList.add('active-platform');
+          }
+        });
+    });
+    </script>
+    <!-- Professional Floating Back Button -->
+<button id="floatingBackBtn" class="floating-back-btn" onclick="goBack()" title="Go Back">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/>
+    </svg>
+    <span class="btn-text">Back</span>
+</button>
+
+<style>
+    .floating-back-btn {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 8px 32px rgba(255, 138, 0, 0.3);
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        min-width: 120px;
+        user-select: none;
+        opacity: 0.3;
+    }
+    .floating-back-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(255, 138, 0, 0.4);
+        background: linear-gradient(135deg, #ff7300 0%, #d12755 100%);
+        opacity: 1;
+    }
+    .floating-back-btn:active,
+    .floating-back-btn:focus,
+    .floating-back-btn:focus-visible,
+    .floating-back-btn:focus:not(:hover) {
+        opacity: 0.3;
+        outline: none;
+    }
+    .floating-back-btn svg {
+        transition: transform 0.2s ease;
+    }
+    .floating-back-btn:hover svg {
+        transform: translateX(-2px);
+    }
+    .btn-text {
+        font-weight: 600;
+        letter-spacing: 0.025em;
+    }
+    @media (max-width: 768px) {
+        .floating-back-btn {
+            bottom: 16px;
+            left: 16px;
+            padding: 10px 14px;
+            font-size: 13px;
+            min-width: 100px;
+        }
+    }
+    @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .floating-back-btn { animation: slideInUp 0.6s ease-out; }
+</style>
+
+<script>
+    function goBack() {
+        const btn = document.getElementById('floatingBackBtn');
+        btn.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            window.location.href = 'dashboard_overview.html';
+        }, 150);
+    }
+    window.addEventListener('scroll', function() {
+        const backBtn = document.getElementById('floatingBackBtn');
+        if (backBtn && document.activeElement === backBtn) {
+            backBtn.blur();
+        }
+    });
+</script>
+</body>
+</html> 

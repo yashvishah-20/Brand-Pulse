@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #FF6B35; /* orange-500 - Lam Research orange */
+  --color-primary-50: #FFF4F0; /* orange-50 */
+  --color-primary-100: #FFE4D6; /* orange-100 */
+  --color-primary-200: #FFCAB0; /* orange-200 */
+  --color-primary-300: #FFB08A; /* orange-300 */
+  --color-primary-400: #FF8B5F; /* orange-400 */
+  --color-primary-500: #FF6B35; /* orange-500 */
+  --color-primary-600: #E55A2B; /* orange-600 */
+  --color-primary-700: #CC4A21; /* orange-700 */
+  --color-primary-800: #B33A17; /* orange-800 */
+  --color-primary-900: #992A0D; /* orange-900 */
+
+  /* Secondary Colors */
+  --color-secondary: #2C3E50; /* slate-800 - Deep blue-gray */
+  --color-secondary-50: #F8F9FA; /* slate-50 */
+  --color-secondary-100: #F1F3F4; /* slate-100 */
+  --color-secondary-200: #E8EAED; /* slate-200 */
+  --color-secondary-300: #DADCE0; /* slate-300 */
+  --color-secondary-400: #BDC1C6; /* slate-400 */
+  --color-secondary-500: #9AA0A6; /* slate-500 */
+  --color-secondary-600: #80868B; /* slate-600 */
+  --color-secondary-700: #5F6368; /* slate-700 */
+  --color-secondary-800: #2C3E50; /* slate-800 */
+  --color-secondary-900: #1A252F; /* slate-900 */
+
+  /* Accent Colors */
+  --color-accent: #3498DB; /* blue-500 - Clear blue */
+  --color-accent-50: #EBF8FF; /* blue-50 */
+  --color-accent-100: #BEE3F8; /* blue-100 */
+  --color-accent-200: #90CDF4; /* blue-200 */
+  --color-accent-300: #63B3ED; /* blue-300 */
+  --color-accent-400: #4299E1; /* blue-400 */
+  --color-accent-500: #3498DB; /* blue-500 */
+  --color-accent-600: #2B77CB; /* blue-600 */
+  --color-accent-700: #2C5AA0; /* blue-700 */
+  --color-accent-800: #2A4365; /* blue-800 */
+  --color-accent-900: #1A365D; /* blue-900 */
+
+  /* Background Colors */
+  --color-background: #FAFBFC; /* gray-50 - Warm white */
+  --color-surface: #FFFFFF; /* white - Pure white */
+
+  /* Text Colors */
+  --color-text-primary: #2C3E50; /* slate-800 - High contrast dark */
+  --color-text-secondary: #7F8C8D; /* gray-500 - Medium gray */
+
+  /* Semantic Colors */
+  --color-success: #27AE60; /* green-600 - Positive sentiment */
+  --color-success-50: #F0FDF4; /* green-50 */
+  --color-success-100: #DCFCE7; /* green-100 */
+  --color-success-200: #BBF7D0; /* green-200 */
+  --color-success-300: #86EFAC; /* green-300 */
+  --color-success-400: #4ADE80; /* green-400 */
+  --color-success-500: #22C55E; /* green-500 */
+  --color-success-600: #27AE60; /* green-600 */
+  --color-success-700: #15803D; /* green-700 */
+  --color-success-800: #166534; /* green-800 */
+  --color-success-900: #14532D; /* green-900 */
+
+  --color-warning: #F39C12; /* amber-500 - Neutral sentiment */
+  --color-warning-50: #FFFBEB; /* amber-50 */
+  --color-warning-100: #FEF3C7; /* amber-100 */
+  --color-warning-200: #FDE68A; /* amber-200 */
+  --color-warning-300: #FCD34D; /* amber-300 */
+  --color-warning-400: #FBBF24; /* amber-400 */
+  --color-warning-500: #F39C12; /* amber-500 */
+  --color-warning-600: #D97706; /* amber-600 */
+  --color-warning-700: #B45309; /* amber-700 */
+  --color-warning-800: #92400E; /* amber-800 */
+  --color-warning-900: #78350F; /* amber-900 */
+
+  --color-error: #E74C3C; /* red-500 - Negative sentiment */
+  --color-error-50: #FEF2F2; /* red-50 */
+  --color-error-100: #FEE2E2; /* red-100 */
+  --color-error-200: #FECACA; /* red-200 */
+  --color-error-300: #FCA5A5; /* red-300 */
+  --color-error-400: #F87171; /* red-400 */
+  --color-error-500: #E74C3C; /* red-500 */
+  --color-error-600: #DC2626; /* red-600 */
+  --color-error-700: #B91C1C; /* red-700 */
+  --color-error-800: #991B1B; /* red-800 */
+  --color-error-900: #7F1D1D; /* red-900 */
+
+  /* Border Colors */
+  --color-border: #E1E8ED; /* gray-200 */
+  --color-border-light: #F3F4F6; /* gray-100 */
+
+  /* Shadow Colors */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Animation Timing */
+  --timing-fast: 150ms;
+  --timing-normal: 200ms;
+  --timing-slow: 800ms;
+  --easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --easing-out: ease-out;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
+}
+
+@layer components {
+  .transition-smooth {
+    transition-timing-function: var(--easing-smooth);
+    transition-duration: var(--timing-normal);
+  }
+
+  .transition-fast {
+    transition-timing-function: var(--easing-out);
+    transition-duration: var(--timing-fast);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .shadow-modal {
+    box-shadow: var(--shadow-md);
+  }
+}

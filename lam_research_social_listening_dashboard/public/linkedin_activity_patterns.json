@@ -1,0 +1,82 @@
+{
+  "activity_radar": [
+    {
+      "month": "May 2024",
+      "count": 4
+    },
+    {
+      "month": "Jun 2024",
+      "count": 46
+    },
+    {
+      "month": "Jul 2024",
+      "count": 60
+    },
+    {
+      "month": "Aug 2024",
+      "count": 102
+    },
+    {
+      "month": "Sep 2024",
+      "count": 114
+    },
+    {
+      "month": "Oct 2024",
+      "count": 56
+    },
+    {
+      "month": "Nov 2024",
+      "count": 58
+    },
+    {
+      "month": "Dec 2024",
+      "count": 55
+    },
+    {
+      "month": "Jan 2025",
+      "count": 60
+    },
+    {
+      "month": "Feb 2025",
+      "count": 68
+    },
+    {
+      "month": "Mar 2025",
+      "count": 36
+    },
+    {
+      "month": "Apr 2025",
+      "count": 22
+    },
+    {
+      "month": "May 2025",
+      "count": 14
+    }
+  ],
+  "peak_hours": [
+    {
+      "slot": "00:00-03:59",
+      "count": 0
+    },
+    {
+      "slot": "04:00-07:59",
+      "count": 5
+    },
+    {
+      "slot": "08:00-11:59",
+      "count": 17
+    },
+    {
+      "slot": "12:00-15:59",
+      "count": 55
+    },
+    {
+      "slot": "16:00-19:59",
+      "count": 490
+    },
+    {
+      "slot": "20:00-23:59",
+      "count": 128
+    }
+  ]
+}

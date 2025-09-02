@@ -1,0 +1,208 @@
+{
+  "sentiment": "negative",
+  "total_reviews": 245,
+  "total_words": 11375,
+  "unique_words": 2438,
+  "words": [
+    {
+      "text": "not",
+      "size": 227
+    },
+    {
+      "text": "account",
+      "size": 189
+    },
+    {
+      "text": "banner",
+      "size": 131
+    },
+    {
+      "text": "from",
+      "size": 101
+    },
+    {
+      "text": "there",
+      "size": 100
+    },
+    {
+      "text": "all",
+      "size": 92
+    },
+    {
+      "text": "time",
+      "size": 88
+    },
+    {
+      "text": "out",
+      "size": 85
+    },
+    {
+      "text": "money",
+      "size": 85
+    },
+    {
+      "text": "when",
+      "size": 76
+    },
+    {
+      "text": "business",
+      "size": 72
+    },
+    {
+      "text": "check",
+      "size": 71
+    },
+    {
+      "text": "years",
+      "size": 66
+    },
+    {
+      "text": "because",
+      "size": 66
+    },
+    {
+      "text": "even",
+      "size": 65
+    },
+    {
+      "text": "don",
+      "size": 62
+    },
+    {
+      "text": "then",
+      "size": 60
+    },
+    {
+      "text": "after",
+      "size": 59
+    },
+    {
+      "text": "what",
+      "size": 58
+    },
+    {
+      "text": "card",
+      "size": 57
+    },
+    {
+      "text": "said",
+      "size": 57
+    },
+    {
+      "text": "only",
+      "size": 56
+    },
+    {
+      "text": "never",
+      "size": 55
+    },
+    {
+      "text": "over",
+      "size": 50
+    },
+    {
+      "text": "now",
+      "size": 48
+    },
+    {
+      "text": "accounts",
+      "size": 46
+    },
+    {
+      "text": "about",
+      "size": 46
+    },
+    {
+      "text": "call",
+      "size": 44
+    },
+    {
+      "text": "deposit",
+      "size": 43
+    },
+    {
+      "text": "any",
+      "size": 42
+    },
+    {
+      "text": "back",
+      "size": 42
+    },
+    {
+      "text": "again",
+      "size": 41
+    },
+    {
+      "text": "told",
+      "size": 40
+    },
+    {
+      "text": "who",
+      "size": 40
+    },
+    {
+      "text": "rude",
+      "size": 40
+    },
+    {
+      "text": "other",
+      "size": 40
+    },
+    {
+      "text": "ever",
+      "size": 38
+    },
+    {
+      "text": "people",
+      "size": 38
+    },
+    {
+      "text": "called",
+      "size": 37
+    },
+    {
+      "text": "here",
+      "size": 37
+    },
+    {
+      "text": "make",
+      "size": 37
+    },
+    {
+      "text": "know",
+      "size": 36
+    },
+    {
+      "text": "help",
+      "size": 36
+    },
+    {
+      "text": "pay",
+      "size": 34
+    },
+    {
+      "text": "how",
+      "size": 34
+    },
+    {
+      "text": "went",
+      "size": 34
+    },
+    {
+      "text": "work",
+      "size": 34
+    },
+    {
+      "text": "new",
+      "size": 33
+    },
+    {
+      "text": "into",
+      "size": 33
+    },
+    {
+      "text": "manager",
+      "size": 33
+    }
+  ]
+}

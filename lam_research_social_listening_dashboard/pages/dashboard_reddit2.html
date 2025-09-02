@@ -1,0 +1,1664 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reddit Overview - Prowess Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+  .active-platform {
+    box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+    border-radius: 12px;
+    outline: none;
+    z-index: 1;
+    transition: box-shadow 0.2s;
+  }
+</style>
+</head>
+<body class="bg-background font-inter">
+    <!-- Ultra-narrow hover trigger zone for sidebar (reduced from 50px) -->
+    <div id="sidebarTrigger" style="position: fixed; left: 0; top: 0; width: 10px; height: 100vh; z-index: 50; background: transparent; cursor: default;"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="w-1/4 bg-surface shadow-card border-r border-border-light fixed h-full overflow-y-auto z-40 transition-all duration-300 ease-in-out" style="transform: translateX(-100%);">
+        <!-- Logo Section -->
+        <div class="p-6 border-b border-border-light">
+            <a href="dashboard_overview.html" style="text-decoration: none;">
+              <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 12px; cursor: pointer;">
+                <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+              </div>
+            </a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="p-4">
+            <!-- Your Company Section -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Your Company</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="dashboard_overview.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                            <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                            </svg>
+                            Sentiment
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard_facebook2.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                            <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            Engagement
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Competitors Company Section -->
+            <div>
+                <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Competitors Company</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="competitor_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                            <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 11H7v9h2v-9zm4 0h-2v9h2v-9zm4 0h-2v9h2v-9zm2.5-5H18V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2H4.5c-.83 0-1.5.67-1.5 1.5S3.67 9 4.5 9H6v10c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9h1.5c.83 0 1.5-.67 1.5-1.5S20.33 6 19.5 6zM10 4h4v2h-4V4z"/>
+                            </svg>
+                            Competitor Analysis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+        <!-- Header Section with Logo and Date Filter -->
+        <div class="flex items-center justify-between mb-6">
+            <!-- Left side - Logo -->
+            <div class="flex items-center">
+                <a href="dashboard_overview.html" style="text-decoration: none;">
+                    <div style="display: flex; align-items: center; cursor: pointer;">
+                        <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Right side - Date Filter -->
+            <div class="flex items-center space-x-4">
+                <!-- Date Range Filter -->
+                <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                        <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2024-01-01">
+                    </div>
+                    <div class="text-text-secondary">—</div>
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-text-secondary">TO:</label>
+                        <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2024-12-31">
+                    </div>
+                    <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        Apply
+                    </button>
+                </div>
+                <!-- Export Report Button -->
+                <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                    <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 20h14v-2H5v2zm7-18v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    Export Report
+                </a>
+            </div>
+        </div>
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook2.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x2.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram2.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit2.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin2.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <div id="performanceView">
+                <!-- COMPREHENSIVE REDDIT ANALYTICS - Enhanced Deep Charts Section -->
+                
+                <!-- Reddit header removed per request -->
+
+                <!-- Platform Performance Metrics -->
+                <div class="flex flex-row gap-2 mb-8" style="flex-wrap: nowrap;">
+                    <!-- Community Engagement -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Community Engagement</h4>
+                                <p id="engagementValue" class="text-lg font-bold text-text-primary mb-2">92.4%</p>
+                                <div class="flex items-center">
+                                    <span id="engagementChange" style="background:none;color:#16a34a;" class="inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +8.4% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upvote Rate -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Upvote Rate</h4>
+                                <p id="upvoteValue" class="text-lg font-bold text-text-primary mb-2">78.6%</p>
+                                <div class="flex items-center">
+                                    <span id="upvoteChange" style="background:none;color:#16a34a;" class="inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +4.2% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M7 14l3-3 3 3m-6 4h12a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Posts -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Total Posts</h4>
+                                <p id="postsValue" class="text-lg font-bold text-text-primary mb-2">1,247</p>
+                                <div class="flex items-center">
+                                    <span id="postsChange" style="background:none;color:#16a34a;" class="ml-2 inline-flex items-center text-xs font-medium flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +12.3% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-secondary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comments (new) -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Comments</h4>
+                                <p id="commentsValue" class="text-lg font-bold text-text-primary mb-2">18.4K</p>
+                                <div class="flex items-center">
+                                    <span id="commentsChange" style="background:none;color:#16a34a;" class="ml-2 inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2 5v9a2 2 0 0 0 2 2h3l3 3 3-3h3a2 2 0 0 0 2-2V5H2z"/>
+                                        </svg>
+                                        +6.1% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-accent-50 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M21 6h-2v9H7v2l-4 3V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subscribers (new) -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Subscribers</h4>
+                                <p id="subscribersValue" class="text-lg font-bold text-text-primary mb-2">24.6K</p>
+                                <div class="flex items-center">
+                                    <span id="subscribersChange" style="background:none;color:#16a34a;" class="ml-2 inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 2a6 6 0 100 12A6 6 0 0010 2z" />
+                                        </svg>
+                                        +3.8% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-primary-50 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CORE REDDIT ANALYTICS - Primary Charts Section -->
+                
+                <!-- CONTENT PERFORMANCE ANALYTICS & AUDIENCE ENGAGEMENT PATTERNS -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Content Performance Analytics -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Content Performance Analytics</h3>
+                                <p class="text-sm text-text-secondary mt-1">Upvote trends vs posting frequency</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-success-600 font-medium">↗ +24.3%</span>
+                                <span class="text-xs text-text-secondary">vs last period</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="redditContentPerformanceChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-orange-50 rounded-lg p-3 insight-card">
+                                <p class="text-lg font-bold text-orange-800">1,247</p>
+                                <p class="text-xs text-text-secondary">Total Posts</p>
+                            </div>
+                            <div class="bg-red-50 rounded-lg p-3 insight-card">
+                                <p class="text-lg font-bold text-red-800">6,847</p>
+                                <p class="text-xs text-text-secondary">Total Upvotes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audience Engagement Patterns -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Audience Engagement Patterns</h3>
+                                <p class="text-sm text-text-secondary mt-1">Optimal posting times analysis</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-orange-500 rounded-full pulse-animation"></div>
+                                <span class="text-sm text-text-secondary">Peak Activity</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="redditEngagementPatternsChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-text-secondary">Best posting times: <span class="font-medium text-orange-600">7PM-9PM EST</span> and <span class="font-medium text-orange-600">11AM-1PM EST</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reddit Activity Radar (by Month) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Reddit Activity Radar (by Month)</h3>
+                        <div>
+                            <select id="redditRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="relative h-96 flex items-center justify-center">
+                        <canvas id="redditActivityRadarChart" width="400" height="384"></canvas>
+                    </div>
+                </div>
+
+                <!-- COMPREHENSIVE REDDIT ANALYTICS - Enhanced Deep Charts Section -->
+                
+                <!-- 2. REDDIT CONTENT PERFORMANCE ANALYTICS -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 mt-8">
+                    <!-- Community Engagement Analysis -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Community Engagement Analytics</h3>
+                                <p class="text-sm text-text-secondary mt-1">Upvotes, comments, and community interaction patterns</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-success-600 font-medium">↗ +24.3%</span>
+                                <span class="text-xs text-text-secondary">vs last period</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="redditEngagementAnalyticsChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-orange-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-orange-700">847</p>
+                                <p class="text-xs text-text-secondary">Avg. Upvotes</p>
+                            </div>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-blue-700">12.4%</p>
+                                <p class="text-xs text-text-secondary">Engagement Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subreddit Activity Patterns -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Subreddit Activity Patterns</h3>
+                                <p class="text-sm text-text-secondary mt-1">Peak activity times and community interaction patterns</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-primary font-medium">Peak: 8-10 PM</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="redditActivityPatternsChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-indigo-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-indigo-700">9:15 PM</p>
+                                <p class="text-xs text-text-secondary">Peak Time</p>
+                            </div>
+                            <div class="bg-orange-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-orange-700">89.7%</p>
+                                <p class="text-xs text-text-secondary">Community Reach</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. REDDIT ENGAGEMENT DISTRIBUTION -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 mt-8">
+                    <!-- Reddit Thread Performance -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Reddit Thread Performance</h3>
+                                <p class="text-sm text-text-secondary mt-1">Thread engagement patterns and discussion quality</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-orange-600 font-medium">Avg: 847</span>
+                            </div>
+                        </div>
+                        <div class="relative h-80">
+                            <canvas id="redditThreadPerformanceChart" width="400" height="320"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-orange-700">23 threads</p>
+                                <p class="text-xs text-text-secondary">High Engagement</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-blue-700">76%</p>
+                                <p class="text-xs text-text-secondary">Quality Score</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reddit Comment Analytics -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Reddit Comment Analytics</h3>
+                                <p class="text-sm text-text-secondary mt-1">Comment depth and discussion engagement metrics</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-blue-600 font-medium">Depth: 4.2 avg</span>
+                            </div>
+                        </div>
+                        <div class="relative h-80">
+                            <canvas id="redditCommentAnalyticsChart" width="400" height="320"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-blue-700">4.2</p>
+                                <p class="text-xs text-text-secondary">Avg. Comment Depth</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-green-700">83.6%</p>
+                                <p class="text-xs text-text-secondary">Discussion Quality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. STRATEGIC INSIGHTS SECTION -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-text-primary">Strategic Insights: Reddit Performance</h3>
+                            <p class="text-sm text-text-secondary mt-1">Key insights and actionable recommendations for Reddit strategy</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg px-4 py-2">
+                            <p class="text-sm font-medium text-orange-700">Performance Rating</p>
+                            <p class="text-lg font-bold text-orange-700">Very Good</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Key Performance Highlights -->
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-text-primary">Performance Highlights</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3 p-3 bg-success-50 rounded-lg">
+                                    <div class="w-2 h-2 bg-success-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Strong Community Engagement</p>
+                                        <p class="text-xs text-text-secondary">58.7% positive sentiment indicates healthy community interaction</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Quality Discussions</p>
+                                        <p class="text-xs text-text-secondary">Average comment depth of 4.2 shows meaningful conversations</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3 p-3 bg-orange-50 rounded-lg">
+                                    <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Peak Engagement Window</p>
+                                        <p class="text-xs text-text-secondary">Optimal posting time identified: 8-10 PM EST</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Strategic Recommendations -->
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-text-primary">Strategic Recommendations</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3 p-3 bg-primary-50 rounded-lg">
+                                    <div class="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Increase Technical Content</p>
+                                        <p class="text-xs text-text-secondary">Community shows strong interest in technical discussions</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3 p-3 bg-indigo-50 rounded-lg">
+                                    <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Engage During Peak Hours</p>
+                                        <p class="text-xs text-text-secondary">Schedule posts for 8-10 PM for maximum visibility</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3 p-3 bg-purple-50 rounded-lg">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Foster Community Building</p>
+                                        <p class="text-xs text-text-secondary">Leverage positive sentiment for community growth</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="trendsView" class="hidden">
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                // Reddit Engagement Charts Logic (from Audience Insights)
+                let redditMonthlyActivityRadarChart = null;
+                let redditMonthlyActivityRadarRawData = null;
+                let redditContentPerformanceChart = null;
+                let redditEngagementPatternsChart = null;
+                let redditActivityRadarChart = null;
+                let redditActivityRadarRawData = null;
+                function initializeRedditBarChart() {
+                    const ctx = document.getElementById('redditBarChart');
+                    if (!ctx) return;
+                    fetch('../public/reddit_trends.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            // Aggregate data by year
+                            const yearMap = {};
+                            data.labels.forEach((label, idx) => {
+                                const year = label.split(' ')[1];
+                                if (!yearMap[year]) {
+                                    yearMap[year] = { positive: [], neutral: [], negative: [] };
+                                }
+                                yearMap[year].positive.push(data.positive[idx]);
+                                yearMap[year].neutral.push(data.neutral[idx]);
+                                yearMap[year].negative.push(data.negative[idx]);
+                            });
+                            const years = Object.keys(yearMap);
+                            const positiveYearly = years.map(y => {
+                                const arr = yearMap[y].positive;
+                                return arr.reduce((a, b) => a + b, 0) / arr.length;
+                            });
+                            const neutralYearly = years.map(y => {
+                                const arr = yearMap[y].neutral;
+                                return arr.reduce((a, b) => a + b, 0) / arr.length;
+                            });
+                            const negativeYearly = years.map(y => {
+                                const arr = yearMap[y].negative;
+                                return arr.reduce((a, b) => a + b, 0) / arr.length;
+                            });
+                            new Chart(ctx.getContext('2d'), {
+                                type: 'bar',
+                                data: {
+                                    labels: years,
+                                    datasets: [
+                                        {
+                                            label: 'Positive',
+                                            data: positiveYearly,
+                                            backgroundColor: '#27AE60',
+                                            borderRadius: 4
+                                        },
+                                        {
+                                            label: 'Neutral',
+                                            data: neutralYearly,
+                                            backgroundColor: '#F39C12',
+                                            borderRadius: 4
+                                        },
+                                        {
+                                            label: 'Negative',
+                                            data: negativeYearly,
+                                            backgroundColor: '#E74C3C',
+                                            borderRadius: 4
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: {
+                                            position: 'top',
+                                            labels: {
+                                                usePointStyle: true,
+                                                padding: 20
+                                            }
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            grid: { display: false },
+                                            ticks: { font: { size: 12 } }
+                                        },
+                                        y: {
+                                            beginAtZero: true,
+                                            grid: { color: '#F3F4F6' },
+                                            ticks: { font: { size: 12 },
+                                                callback: function(value) { return value + '%'; }
+                                            },
+                                            max: 100
+                                        }
+                                    }
+                                }
+                            });
+                            // Set the latest year's sentiment values in the summary below the chart
+                            const lastIdx = years.length - 1;
+                            const pos = positiveYearly[lastIdx];
+                            const neu = neutralYearly[lastIdx];
+                            const neg = negativeYearly[lastIdx];
+                            const posEl = document.getElementById('redditPositive');
+                            const neuEl = document.getElementById('redditNeutral');
+                            const negEl = document.getElementById('redditNegative');
+                            if (posEl) posEl.textContent = pos ? pos.toFixed(1) + '%' : 'N/A';
+                            if (neuEl) neuEl.textContent = neu ? neu.toFixed(1) + '%' : 'N/A';
+                            if (negEl) negEl.textContent = neg ? neg.toFixed(1) + '%' : 'N/A';
+                        })
+                        .catch(error => {
+                            console.error('Error loading Reddit trends data:', error);
+                        });
+                }
+                
+                // Reddit Content Performance Chart
+                function initializeRedditContentPerformanceChart() {
+                    const ctx = document.getElementById('redditContentPerformanceChart');
+                    if (!ctx) return;
+                    
+                    if (redditContentPerformanceChart) redditContentPerformanceChart.destroy();
+                    
+                    const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+                    const upvoteData = [847, 952, 734, 1123];
+                    const postsData = [15, 18, 12, 22];
+                    
+                    redditContentPerformanceChart = new Chart(ctx.getContext('2d'), {
+                        type: 'line',
+                        data: {
+                            labels: weeks,
+                            datasets: [
+                                {
+                                    label: 'Avg Upvotes',
+                                    data: upvoteData,
+                                    borderColor: '#FF6B35',
+                                    backgroundColor: 'rgba(255, 107, 53, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.4,
+                                    yAxisID: 'y'
+                                },
+                                {
+                                    label: 'Posts Published',
+                                    data: postsData,
+                                    borderColor: '#FFB534',
+                                    backgroundColor: 'rgba(255, 181, 52, 0.1)',
+                                    borderWidth: 3,
+                                    fill: false,
+                                    tension: 0.4,
+                                    yAxisID: 'y1'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            interaction: {
+                                mode: 'index',
+                                intersect: false
+                            },
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: { usePointStyle: true }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: { display: true, color: '#F3F4F6' }
+                                },
+                                y: {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'left',
+                                    title: { display: true, text: 'Upvotes' },
+                                    grid: { color: '#F3F4F6' }
+                                },
+                                y1: {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'right',
+                                    title: { display: true, text: 'Posts Count' },
+                                    grid: { drawOnChartArea: false }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Reddit Engagement Patterns Chart
+                function initializeRedditEngagementPatternsChart() {
+                    const ctx = document.getElementById('redditEngagementPatternsChart');
+                    if (!ctx) return;
+                    
+                    if (redditEngagementPatternsChart) redditEngagementPatternsChart.destroy();
+                    
+                    const hours = ['7AM', '9AM', '11AM', '1PM', '3PM', '5PM', '7PM', '9PM'];
+                    const engagementRates = [15, 45, 88, 92, 65, 35, 95, 78];
+                    
+                    redditEngagementPatternsChart = new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: hours,
+                            datasets: [{
+                                label: 'Engagement Rate (%)',
+                                data: engagementRates,
+                                backgroundColor: [
+                                    '#FF6B35',
+                                    '#FFB534',
+                                    '#27AE60',
+                                    '#27AE60', 
+                                    '#FFB534',
+                                    '#FF6B35',
+                                    '#27AE60',
+                                    '#27AE60'
+                                ],
+                                borderColor: [
+                                    '#E55A2B',
+                                    '#E6A42B',
+                                    '#229954',
+                                    '#229954',
+                                    '#E6A42B',
+                                    '#E55A2B',
+                                    '#229954',
+                                    '#229954'
+                                ],
+                                borderWidth: 2,
+                                borderRadius: 6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                    backgroundColor: '#1F2937',
+                                    titleColor: '#FFFFFF',
+                                    bodyColor: '#FFFFFF',
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `Engagement: ${context.parsed.y}%`;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { font: { weight: 'bold' } }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    title: { display: true, text: 'Engagement Rate (%)' },
+                                    grid: { color: '#F3F4F6' }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Reddit Activity Radar Chart (by Month)
+                async function loadRedditActivityRadarChart() {
+                    try {
+                        // Create dummy data for Reddit Activity Radar
+                        const dummyData = {
+                            labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                            values: [1650, 1890, 2150, 1950, 2200, 2050, 2350, 2580, 2250, 2450, 2650, 2850, 2750, 2950, 3150, 2950, 3250, 3050, 3450, 3650, 3350, 3550, 3750, 3950]
+                        };
+                        
+                        redditActivityRadarRawData = dummyData;
+                        const yearSelect = document.getElementById('redditRadarYearSelect');
+                        if (yearSelect) {
+                            // Extract years from labels (format: 'Month YYYY')
+                            const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+                            yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                            yearSelect.onchange = function() { renderRedditActivityRadarChart(this.value); };
+                        }
+                        renderRedditActivityRadarChart('all');
+                    } catch (e) {
+                        const ctx = document.getElementById('redditActivityRadarChart');
+                        if (ctx) {
+                            ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Reddit Activity Radar chart data.</div>';
+                        }
+                    }
+                }
+                
+                function renderRedditActivityRadarChart(selectedYear) {
+                    const ctx = document.getElementById('redditActivityRadarChart');
+                    if (!ctx || !redditActivityRadarRawData) return;
+                    if (redditActivityRadarChart) redditActivityRadarChart.destroy();
+                    
+                    let labels = redditActivityRadarRawData.labels;
+                    let values = redditActivityRadarRawData.values;
+                    if (selectedYear && selectedYear !== 'all') {
+                        labels = redditActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+                        values = labels.map(l => {
+                            const idx = redditActivityRadarRawData.labels.indexOf(l);
+                            return redditActivityRadarRawData.values[idx];
+                        });
+                    }
+                    
+                    redditActivityRadarChart = new Chart(ctx.getContext('2d'), {
+                        type: 'radar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Reddit Activity by Month',
+                                data: values,
+                                fill: true,
+                                backgroundColor: 'rgba(255, 107, 53, 0.2)',
+                                borderColor: '#FF6B35',
+                                pointBackgroundColor: '#FF6B35',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#FF6B35',
+                                borderWidth: 3,
+                                pointRadius: 6,
+                                pointHoverRadius: 9
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                    position: 'top',
+                                    labels: {
+                                        color: '#FF6B35',
+                                        font: { weight: 'bold' }
+                                    }
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    backgroundColor: '#1F2937',
+                                    titleColor: '#FFFFFF',
+                                    bodyColor: '#FFFFFF',
+                                    borderColor: '#374151',
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                r: {
+                                    angleLines: { color: '#E5E7EB' },
+                                    grid: { color: '#E5E7EB' },
+                                    pointLabels: { color: '#FF6B35', font: { weight: 'bold' } },
+                                    ticks: { color: '#374151' }
+                                }
+                            },
+                            animation: {
+                                duration: 1200,
+                                easing: 'easeInOutQuart'
+                            },
+                            interaction: {
+                                intersect: false,
+                                mode: 'nearest'
+                            }
+                        }
+                    });
+                }
+
+                // Engagement tab initialization
+                if (document.getElementById('performanceView')) {
+                    initializeRedditBarChart();
+                    initializeRedditContentPerformanceChart();
+                    initializeRedditEngagementPatternsChart();
+                    loadRedditActivityRadarChart();
+                }
+                </script>
+            </div>
+            <div id="trendsView" class="hidden">
+
+
+                
+                <script>
+                // Reddit Monthly Activity Radar Chart
+                async function loadRedditMonthlyActivityRadarChart() {
+                    try {
+                        // Create dummy data for Reddit Monthly Activity Radar
+                        const dummyData = {
+                            labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                            values: [1650, 1890, 2150, 1950, 2200, 2050, 2350, 2580, 2250, 2450, 2650, 2850, 2750, 2950, 3150, 2950, 3250, 3050, 3450, 3650, 3350, 3550, 3750, 3950]
+                        };
+                        
+                        redditMonthlyActivityRadarRawData = dummyData;
+                        const yearSelect = document.getElementById('redditMonthlyRadarYearSelect');
+                        if (yearSelect) {
+                            // Extract years from labels (format: 'Month YYYY')
+                            const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+                            yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                            yearSelect.onchange = function() { renderRedditMonthlyActivityRadarChart(this.value); };
+                        }
+                        renderRedditMonthlyActivityRadarChart('all');
+                    } catch (e) {
+                        const ctx = document.getElementById('redditMonthlyActivityRadarChart');
+                        if (ctx) {
+                            ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Reddit Monthly Activity Radar chart data.</div>';
+                        }
+                    }
+                }
+                
+                function renderRedditMonthlyActivityRadarChart(selectedYear) {
+                    const ctx = document.getElementById('redditMonthlyActivityRadarChart');
+                    if (!ctx || !redditMonthlyActivityRadarRawData) return;
+                    if (redditMonthlyActivityRadarChart) redditMonthlyActivityRadarChart.destroy();
+                    
+                    let labels = redditMonthlyActivityRadarRawData.labels;
+                    let values = redditMonthlyActivityRadarRawData.values;
+                    if (selectedYear && selectedYear !== 'all') {
+                        labels = redditMonthlyActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+                        values = labels.map(l => {
+                            const idx = redditMonthlyActivityRadarRawData.labels.indexOf(l);
+                            return redditMonthlyActivityRadarRawData.values[idx];
+                        });
+                    }
+                    
+                    redditMonthlyActivityRadarChart = new Chart(ctx.getContext('2d'), {
+                        type: 'radar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Reddit Activity by Month',
+                                data: values,
+                                fill: true,
+                                backgroundColor: 'rgba(255, 69, 0, 0.2)',
+                                borderColor: '#FF4500',
+                                pointBackgroundColor: '#FF4500',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#FF4500',
+                                borderWidth: 3,
+                                pointRadius: 6,
+                                pointHoverRadius: 9
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                    position: 'top',
+                                    labels: {
+                                        color: '#FF4500',
+                                        font: { weight: 'bold' }
+                                    }
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    backgroundColor: '#1F2937',
+                                    titleColor: '#FFFFFF',
+                                    bodyColor: '#FFFFFF',
+                                    borderColor: '#374151',
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                r: {
+                                    angleLines: { color: '#E5E7EB' },
+                                    grid: { color: '#E5E7EB' },
+                                    pointLabels: { color: '#FF4500', font: { weight: 'bold' } },
+                                    ticks: { color: '#374151' }
+                                }
+                            },
+                            animation: {
+                                duration: 1200,
+                                easing: 'easeInOutQuart'
+                            },
+                            interaction: {
+                                intersect: false,
+                                mode: 'nearest'
+                            }
+                        }
+                    });
+                }
+                </script>
+            </div>
+        </main>
+    </div>
+    <script>
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const platformBtns = document.querySelectorAll('.platform-btn');
+        const currentPage = window.location.pathname.split('/').pop();
+        platformBtns.forEach(btn => {
+            const href = btn.getAttribute('href');
+            if (href && href === currentPage) {
+                btn.classList.add('active-platform');
+            }
+        });
+        
+        // Load Reddit Monthly Activity Radar chart
+        loadRedditMonthlyActivityRadarChart();
+    });
+    </script>
+    <!-- Reddit Trends Chart with 6m/1y/2y slider -->
+    <script>
+    let redditTrendsChart = null;
+    const redditTrendsDataAll = {
+      '6m': {
+        labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        positive: [41, 42, 43, 44, 45, 46],
+        neutral: [39, 38, 37, 36, 35, 34],
+        negative: [20, 20, 20, 20, 20, 20]
+      },
+      '1y': {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        positive: [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
+        neutral: [40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29],
+        negative: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+      },
+      '2y': {
+        labels: [
+          'Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23',
+          'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23',
+          'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24',
+          'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'
+        ],
+        positive: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
+        neutral: [45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29],
+        negative: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+      }
+    };
+
+    function initializeRedditTrendsChart(range = '1y') {
+      const ctx = document.getElementById('redditTrendsChart');
+      if (!ctx) return;
+      const data = redditTrendsDataAll[range];
+      if (redditTrendsChart) redditTrendsChart.destroy();
+      redditTrendsChart = new Chart(ctx.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: data.labels,
+          datasets: [
+            { label: 'Positive', data: data.positive, borderColor: '#27AE60', backgroundColor: 'rgba(39, 174, 96, 0.1)', borderWidth: 3, fill: true, tension: 0.4 },
+            { label: 'Neutral', data: data.neutral, borderColor: '#F39C12', backgroundColor: 'rgba(243, 156, 18, 0.1)', borderWidth: 3, fill: true, tension: 0.4 },
+            { label: 'Negative', data: data.negative, borderColor: '#E74C3C', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 3, fill: true, tension: 0.4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 } } },
+            y: { beginAtZero: true, max: 100, grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } } }
+          }
+        }
+      });
+    }
+
+    const redditRangeToSubtitle = {
+      '6m': 'Reddit - Last 6 Months',
+      '1y': 'Reddit - Last 12 Months',
+      '2y': 'Reddit - Last 24 Months'
+    };
+    function updateRedditTrendsSubtitle(rangeKey) {
+      const subtitle = document.getElementById('redditTrendsSubtitle');
+      if (subtitle) {
+        subtitle.textContent = redditRangeToSubtitle[rangeKey];
+      }
+    }
+
+    const redditSliderValueToRange = { 0: '6m', 1: '1y', 2: '2y' };
+    const redditSliderValueToLabel = { 0: '6m', 1: '1y', 2: '2y' };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const redditTrendRangeSlider = document.getElementById('redditTrendRangeSlider');
+      const redditSliderRangeBadge = document.getElementById('redditSliderRangeBadge');
+      if (redditTrendRangeSlider && redditSliderRangeBadge) {
+        redditTrendRangeSlider.addEventListener('input', function() {
+          const label = redditSliderValueToLabel[this.value];
+          redditSliderRangeBadge.textContent = label;
+          const rangeKey = redditSliderValueToRange[this.value];
+          initializeRedditTrendsChart(rangeKey);
+          updateRedditTrendsSubtitle(rangeKey);
+          document.getElementById('redditSliderLabel6m').style.color = this.value == 0 ? '#ff7300' : '#6B7280';
+          document.getElementById('redditSliderLabel2y').style.color = this.value == 2 ? '#ff7300' : '#6B7280';
+        });
+        redditSliderRangeBadge.textContent = redditSliderValueToLabel[redditTrendRangeSlider.value];
+        document.getElementById('redditSliderLabel6m').style.color = redditTrendRangeSlider.value == 0 ? '#ff7300' : '#6B7280';
+        document.getElementById('redditSliderLabel2y').style.color = redditTrendRangeSlider.value == 2 ? '#ff7300' : '#6B7280';
+        const initialRangeKey = redditSliderValueToRange[redditTrendRangeSlider.value];
+        initializeRedditTrendsChart(initialRangeKey);
+        updateRedditTrendsSubtitle(initialRangeKey);
+      } else {
+        initializeRedditTrendsChart('1y');
+        updateRedditTrendsSubtitle('1y');
+      }
+    });
+
+    // COMPREHENSIVE REDDIT ANALYTICS CHARTS - Enhanced Deep Charts Section
+
+    let redditSentimentPieChart, redditEngagementAnalyticsChart, redditActivityPatternsChart;
+    let redditThreadPerformanceChart, redditCommentAnalyticsChart;
+
+    // 1. Reddit Enhanced Sentiment Pie Chart
+    function initializeRedditSentimentPieChart() {
+        const ctx = document.getElementById('redditSentimentPieChart');
+        if (!ctx) return;
+        
+        if (redditSentimentPieChart) redditSentimentPieChart.destroy();
+        
+        redditSentimentPieChart = new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Positive', 'Neutral', 'Negative'],
+                datasets: [{
+                    data: [58.7, 32.1, 9.2],
+                    backgroundColor: [
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                        'rgba(239, 68, 68, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(251, 146, 60, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 3,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 25,
+                            font: { size: 13 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed.toFixed(1) + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 2. Reddit Community Engagement Analytics Chart
+    function initializeRedditEngagementAnalyticsChart() {
+        const ctx = document.getElementById('redditEngagementAnalyticsChart');
+        if (!ctx) return;
+        
+        if (redditEngagementAnalyticsChart) redditEngagementAnalyticsChart.destroy();
+        
+        const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+        const upvotes = [723, 845, 892, 964];
+        const comments = [134, 189, 156, 207];
+        
+        redditEngagementAnalyticsChart = new Chart(ctx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: weeks,
+                datasets: [
+                    {
+                        label: 'Upvotes',
+                        data: upvotes,
+                        borderColor: 'rgba(251, 146, 60, 1)',
+                        backgroundColor: 'rgba(251, 146, 60, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Comments',
+                        data: comments,
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(251, 146, 60, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 3. Reddit Activity Patterns Chart
+    function initializeRedditActivityPatternsChart() {
+        const ctx = document.getElementById('redditActivityPatternsChart');
+        if (!ctx) return;
+        
+        if (redditActivityPatternsChart) redditActivityPatternsChart.destroy();
+        
+        const hours = ['6AM', '9AM', '12PM', '3PM', '6PM', '9PM', '12AM', '3AM'];
+        const activity = [15, 25, 45, 60, 75, 95, 70, 20];
+        
+        redditActivityPatternsChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: hours,
+                datasets: [{
+                    label: 'Activity Level',
+                    data: activity,
+                    backgroundColor: [
+                        'rgba(129, 140, 248, 0.8)',
+                        'rgba(129, 140, 248, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(239, 68, 68, 0.9)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(129, 140, 248, 0.8)'
+                    ],
+                    borderColor: 'rgba(251, 146, 60, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Activity Level'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 4. Reddit Thread Performance Chart
+    function initializeRedditThreadPerformanceChart() {
+        const ctx = document.getElementById('redditThreadPerformanceChart');
+        if (!ctx) return;
+        
+        if (redditThreadPerformanceChart) redditThreadPerformanceChart.destroy();
+        
+        const ranges = ['0-100', '100-500', '500-1K', '1K-2K', '2K-5K', '5K+'];
+        const threadCounts = [8, 15, 23, 18, 12, 6];
+        
+        redditThreadPerformanceChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ranges,
+                datasets: [{
+                    label: 'Number of Threads',
+                    data: threadCounts,
+                    backgroundColor: [
+                        'rgba(251, 146, 60, 0.8)',
+                        'rgba(251, 146, 60, 0.7)',
+                        'rgba(251, 146, 60, 0.9)',
+                        'rgba(239, 68, 68, 0.8)',
+                        'rgba(239, 68, 68, 0.9)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderColor: 'rgba(251, 146, 60, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Upvote Range'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Threads'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 5. Reddit Comment Analytics Chart
+    function initializeRedditCommentAnalyticsChart() {
+        const ctx = document.getElementById('redditCommentAnalyticsChart');
+        if (!ctx) return;
+        
+        if (redditCommentAnalyticsChart) redditCommentAnalyticsChart.destroy();
+        
+        redditCommentAnalyticsChart = new Chart(ctx.getContext('2d'), {
+            type: 'polarArea',
+            data: {
+                labels: ['Deep Discussions', 'Quick Responses', 'Technical Q&A', 'General Comments', 'Feedback'],
+                datasets: [{
+                    data: [35, 28, 22, 18, 15],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(16, 185, 129, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(244, 63, 94, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(251, 146, 60, 1)',
+                        'rgba(139, 92, 246, 1)',
+                        'rgba(244, 63, 94, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15,
+                            font: { size: 11 }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        ticks: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Initialize all Reddit comprehensive charts
+    function initializeAllRedditCharts() {
+        initializeRedditSentimentPieChart();
+        initializeRedditEngagementAnalyticsChart();
+        initializeRedditActivityPatternsChart();
+        initializeRedditThreadPerformanceChart();
+        initializeRedditCommentAnalyticsChart();
+    }
+
+    // Call initialization when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initializeAllRedditCharts, 100);
+    });
+
+    </script>
+
+    <script>
+        // Sidebar functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarTrigger = document.getElementById('sidebarTrigger');
+        const mainContent = document.getElementById('mainContent');
+        let sidebarTimer;
+
+        function showSidebar() {
+            clearTimeout(sidebarTimer);
+            sidebar.style.transform = 'translateX(0)';
+            mainContent.style.marginLeft = '25%';
+            mainContent.style.width = '75%';
+        }
+
+        function hideSidebar() {
+            sidebarTimer = setTimeout(() => {
+                sidebar.style.transform = 'translateX(-100%)';
+                mainContent.style.marginLeft = '0';
+                mainContent.style.width = '100%';
+            }, 300);
+        }
+
+        sidebarTrigger.addEventListener('mouseenter', showSidebar);
+        sidebar.addEventListener('mouseenter', showSidebar);
+
+        // Edge proximity detection (pointer within 12px opens sidebar)
+        let edgeArmed = true;
+        document.addEventListener('mousemove', (e) => {
+            if (e.clientX <= 12) {
+                if (edgeArmed && sidebar.style.transform !== 'translateX(0)') {
+                    showSidebar();
+                    edgeArmed = false;
+                    setTimeout(()=> edgeArmed = true, 600);
+                }
+            }
+        });
+        sidebar.addEventListener('mouseleave', hideSidebar);
+
+        // Date filter functionality
+        document.getElementById('applyDateFilter').addEventListener('click', function() {
+            const fromDate = document.getElementById('dateFrom').value;
+            const toDate = document.getElementById('dateTo').value;
+            
+            if (!fromDate || !toDate) {
+                alert('Please select both FROM and TO dates');
+                return;
+            }
+            
+            if (new Date(fromDate) > new Date(toDate)) {
+                alert('FROM date cannot be later than TO date');
+                return;
+            }
+            
+            // Store in localStorage for persistence across all platforms
+            localStorage.setItem('dateFilter_from', fromDate);
+            localStorage.setItem('dateFilter_to', toDate);
+            
+            // Update dashboard data based on selected dates
+            updateDashboardData(fromDate, toDate);
+            
+            // Trigger storage event for real-time sync
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'dateFilter_from',
+                newValue: fromDate
+            }));
+            
+            console.log('Date filter applied:', { from: fromDate, to: toDate });
+            
+            // Show success feedback
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                Applied!
+            `;
+            btn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '#3b82f6';
+            }, 1500);
+        });
+
+        // Load saved dates function
+        function loadSavedDates() {
+            const savedFromDate = localStorage.getItem('dateFilter_from');
+            const savedToDate = localStorage.getItem('dateFilter_to');
+            
+            if (savedFromDate) document.getElementById('dateFrom').value = savedFromDate;
+            if (savedToDate) document.getElementById('dateTo').value = savedToDate;
+        }
+
+        // Dashboard data for different date scenarios
+        const dashboardData = {
+            currentDate: {
+                engagement: "92.4%",
+                engagementChange: "+8.4% vs last month",
+                upvote: "78.6%",
+                upvoteChange: "+4.2% vs last month",
+                posts: "1,247",
+                postsChange: "+12.3% vs last month",
+                growth: "+15.7%",
+                growthChange: "+2.8% vs last month"
+            },
+            historicalData: {
+                engagement: "87.2%",
+                engagementChange: "+5.1% vs last month",
+                upvote: "74.3%",
+                upvoteChange: "+2.7% vs last month",
+                posts: "1,108",
+                postsChange: "+8.9% vs last month",
+                growth: "+12.4%",
+                growthChange: "+1.6% vs last month"
+            }
+        };
+
+        // Update badge with dynamic success/error styling based on sign
+        function updateChangeBadge(elementId, changeText) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const isNegative = /^\s*-/.test((changeText || '').trim());
+            const bgClass = isNegative ? 'bg-error-100' : 'bg-success-100';
+            const textClass = isNegative ? 'text-error-700' : 'text-success-700';
+            const rotate = isNegative ? 'transform rotate-180' : '';
+            const preserveMargin = el.classList.contains('ml-2');
+            let className = `inline-flex items-center px-2 py-1 ${bgClass} ${textClass} text-xs font-medium rounded-full`;
+            if (preserveMargin) className += ' ml-2';
+            el.className = className;
+            el.innerHTML = `
+                <svg class="w-3 h-3 mr-1 ${rotate}" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                ${changeText}
+            `;
+        }
+
+        // Function to get current date in YYYY-MM-DD format
+        function getCurrentDateString() {
+            const today = new Date();
+            return today.toISOString().split('T')[0];
+        }
+
+        // Function to update dashboard data based on selected dates
+        function updateDashboardData(fromDate, toDate) {
+            const currentDateStr = getCurrentDateString();
+            const isCurrentDate = (toDate === currentDateStr);
+            
+            // Select appropriate data set
+            const data = isCurrentDate ? dashboardData.currentDate : dashboardData.historicalData;
+            
+            // Update the dashboard metrics with smooth transition
+            updateMetricWithAnimation('engagementValue', data.engagement);
+            updateMetricWithAnimation('upvoteValue', data.upvote);
+            updateMetricWithAnimation('postsValue', data.posts);
+            updateMetricWithAnimation('growthValue', data.growth);
+            
+            // Update change indicators with dynamic color
+            updateChangeBadge('engagementChange', data.engagementChange);
+            updateChangeBadge('upvoteChange', data.upvoteChange);
+            updateChangeBadge('postsChange', data.postsChange);
+            updateChangeBadge('growthChange', data.growthChange);
+            
+            // Show visual feedback for data update
+            const metricsContainer = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-4');
+            if (metricsContainer) {
+                metricsContainer.style.opacity = '0.7';
+                setTimeout(() => {
+                    metricsContainer.style.opacity = '1';
+                }, 300);
+            }
+            
+            console.log(`Dashboard updated for date range: ${fromDate} to ${toDate} (Current date: ${isCurrentDate})`);
+        }
+
+        // Function to animate metric value changes
+        function updateMetricWithAnimation(elementId, newValue) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.style.transform = 'scale(1.1)';
+                element.style.transition = 'transform 0.3s ease';
+                
+                setTimeout(() => {
+                    element.textContent = newValue;
+                    element.style.transform = 'scale(1)';
+                }, 150);
+            }
+        }
+
+        // Listen for storage changes from other tabs/windows
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'dateFilter_from' || e.key === 'dateFilter_to') {
+                loadSavedDates();
+            }
+        });
+
+        // Load saved dates on page load and initialize dashboard
+        window.addEventListener('load', function() {
+            loadSavedDates();
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const startOfYear = `${currentYear}-01-01`;
+            const endOfYear = `${currentYear}-12-31`;
+            
+            const savedToDate = localStorage.getItem('dateFilter_to');
+            if (savedToDate) {
+                updateDashboardData(localStorage.getItem('dateFilter_from') || startOfYear, savedToDate);
+            } else {
+                updateDashboardData(startOfYear, endOfYear);
+            }
+        });
+    </script>
+</body>
+</html> 
+
+
+

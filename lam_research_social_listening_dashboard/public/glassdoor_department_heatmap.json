@@ -1,0 +1,82 @@
+[
+  {
+    "Department": "Customer Service and Support",
+    "Compensation and Benefits": 4.03,
+    "Culture and Values": 3.81,
+    "Diversity and Inclusion": 3.97,
+    "Senior Management": 3.27,
+    "Work/Life Balance": 3.43
+  },
+  {
+    "Department": "Data and Analytics",
+    "Compensation and Benefits": 4.11,
+    "Culture and Values": 4.33,
+    "Diversity and Inclusion": 4.44,
+    "Senior Management": 4.33,
+    "Work/Life Balance": 4.22
+  },
+  {
+    "Department": "Engineering and IT",
+    "Compensation and Benefits": 3.85,
+    "Culture and Values": 3.85,
+    "Diversity and Inclusion": 3.92,
+    "Senior Management": 3.57,
+    "Work/Life Balance": 3.74
+  },
+  {
+    "Department": "Finance and Procurement",
+    "Compensation and Benefits": 4.67,
+    "Culture and Values": 4.42,
+    "Diversity and Inclusion": 4.42,
+    "Senior Management": 4.36,
+    "Work/Life Balance": 4.09
+  },
+  {
+    "Department": "Human Resources (HR)",
+    "Compensation and Benefits": 4.73,
+    "Culture and Values": 4.73,
+    "Diversity and Inclusion": 4.45,
+    "Senior Management": 4.18,
+    "Work/Life Balance": 4.55
+  },
+  {
+    "Department": "Operations and Manufacturing",
+    "Compensation and Benefits": 4.09,
+    "Culture and Values": 3.84,
+    "Diversity and Inclusion": 3.93,
+    "Senior Management": 3.37,
+    "Work/Life Balance": 3.3
+  },
+  {
+    "Department": "Other/General",
+    "Compensation and Benefits": 3.93,
+    "Culture and Values": 4.0,
+    "Diversity and Inclusion": 3.8,
+    "Senior Management": 3.45,
+    "Work/Life Balance": 3.64
+  },
+  {
+    "Department": "Program and Project Management",
+    "Compensation and Benefits": 4.34,
+    "Culture and Values": 4.34,
+    "Diversity and Inclusion": 4.27,
+    "Senior Management": 3.86,
+    "Work/Life Balance": 3.93
+  },
+  {
+    "Department": "Quality and Testing",
+    "Compensation and Benefits": 3.79,
+    "Culture and Values": 3.79,
+    "Diversity and Inclusion": 3.93,
+    "Senior Management": 3.18,
+    "Work/Life Balance": 3.57
+  },
+  {
+    "Department": "Supply Chain",
+    "Compensation and Benefits": 4.6,
+    "Culture and Values": 3.8,
+    "Diversity and Inclusion": 3.6,
+    "Senior Management": 2.8,
+    "Work/Life Balance": 3.6
+  }
+]

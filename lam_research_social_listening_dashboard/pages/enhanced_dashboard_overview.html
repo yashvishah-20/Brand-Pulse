@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Dashboard Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Logo at the top -->
+    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+        <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+    </div>
+    
+    <div class="flex min-h-screen">
+        <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Enhanced Dashboard Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-4xl font-bold text-text-primary">Lam Research Social Listening Dashboard</h1>
+                    <p class="text-lg text-text-secondary mt-2">Enhanced with comprehensive platform analysis and competitive insights</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="comprehensive_platform_analysis.html" class="bg-primary text-white px-6 py-3 rounded-lg shadow-lg hover:bg-primary-dark transition-colors">
+                        📊 Comprehensive Analysis
+                    </a>
+                    <select id="timeRangeSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="6m">Last 6 Months</option>
+                        <option value="1y" selected>Last 12 Months</option>
+                        <option value="2y">Last 2 Years</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Quick Platform Analytics Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Platforms</p>
+                            <p class="text-3xl font-bold text-text-primary mt-1">8</p>
+                            <p class="text-sm text-success-600 mt-1">All platforms active</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Best Performer</p>
+                            <p class="text-2xl font-bold text-success-600 mt-1">Instagram</p>
+                            <p class="text-sm text-text-secondary mt-1">6.1% engagement rate</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Overall Health Score</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1">78/100</p>
+                            <p class="text-sm text-success-600 mt-1">↗ +5 pts vs last month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Growth Trend</p>
+                            <p class="text-2xl font-bold text-success-600 mt-1">+18%</p>
+                            <p class="text-sm text-text-secondary mt-1">Monthly growth rate</p>
+                        </div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Platform Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Facebook -->
+                <a href="dashboard_facebook2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/facebook.png" alt="Facebook" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-blue-600">82/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Facebook</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">4.8%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-success-600">+15.2%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Posts:</span>
+                            <span class="font-medium text-text-primary">125/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="dashboard_instagram2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/instagram.png" alt="Instagram" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-purple-600">89/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Instagram</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">6.1%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-success-600">+28.4%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Posts:</span>
+                            <span class="font-medium text-text-primary">210/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- X (Twitter) -->
+                <a href="dashboard_x2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/x.png" alt="X" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-gray-600">74/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">X (Twitter)</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">3.2%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-yellow-600">+3.1%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Posts:</span>
+                            <span class="font-medium text-text-primary">450/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/linkedin.png" alt="LinkedIn" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-blue-600">76/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">LinkedIn</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">2.9%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-success-600">+12.8%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Posts:</span>
+                            <span class="font-medium text-text-primary">85/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- Reddit -->
+                <a href="dashboard_reddit2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/reddit.png" alt="Reddit" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-orange-600">68/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Reddit</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">5.4%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-success-600">+18.6%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Posts:</span>
+                            <span class="font-medium text-text-primary">320/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- StockTwits -->
+                <a href="dashboard_stocktwits2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/stocktwits.png" alt="StockTwits" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-green-600">71/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">StockTwits</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">4.1%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-success-600">+14.2%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Posts:</span>
+                            <span class="font-medium text-text-primary">95/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/marketbeat.png" alt="MarketBeat" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-blue-600">65/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">MarketBeat</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Engagement:</span>
+                            <span class="font-medium text-text-primary">2.3%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Growth:</span>
+                            <span class="font-medium text-success-600">+8.7%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Articles:</span>
+                            <span class="font-medium text-text-primary">45/month</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor2.html" class="group bg-surface rounded-lg shadow-card p-6 border border-border-light hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <img src="../public/glassdoor.png" alt="Glassdoor" style="width:48px; height:48px;">
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-green-600">73/100</div>
+                            <div class="text-xs text-text-secondary">Health Score</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Glassdoor</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Rating:</span>
+                            <span class="font-medium text-text-primary">4.2/5</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Reviews:</span>
+                            <span class="font-medium text-success-600">+25 new</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Sentiment:</span>
+                            <span class="font-medium text-text-primary">78% positive</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <span class="text-xs text-primary group-hover:text-primary-dark">View detailed analysis →</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Key Insights & Quick Actions -->
+            <div class="bg-gradient-to-r from-primary-50 to-blue-50 rounded-lg shadow-card p-6 border border-primary-200 mb-8">
+                <h3 class="text-xl font-semibold text-primary-800 mb-6">🎯 Key Insights & Quick Actions</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="space-y-4">
+                        <h4 class="font-medium text-primary-800">Top Performers</h4>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Instagram Leading</p>
+                                <p class="text-sm text-primary-600">Highest engagement rate at 6.1% with strong video content performance</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Reddit Growth</p>
+                                <p class="text-sm text-primary-600">Strong community engagement with 18.6% growth rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-medium text-primary-800">Areas for Improvement</h4>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Twitter/X Optimization</p>
+                                <p class="text-sm text-primary-600">Focus on content timing and engagement strategies</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">MarketBeat Content</p>
+                                <p class="text-sm text-primary-600">Enhance article engagement and sharing strategies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-medium text-primary-800">Recommendations</h4>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Video Content Focus</p>
+                                <p class="text-sm text-primary-600">Increase video content across all platforms by 40%</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Cross-Platform Strategy</p>
+                                <p class="text-sm text-primary-600">Adapt successful Instagram formats to other platforms</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-6 border-t border-primary-200">
+                    <div class="flex items-center space-x-4">
+                        <a href="comprehensive_platform_analysis.html" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors">
+                            View Full Analysis
+                        </a>
+                        <a href="competitor_analysis.html" class="bg-white text-primary border border-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                            Competitor Analysis
+                        </a>
+                        <a href="audience_insights.html" class="bg-white text-primary border border-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                            Audience Insights
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .group:hover {
+            border-color: #ff7300;
+        }
+        
+        .group:hover .text-primary {
+            color: #ff7300;
+        }
+        
+        .group:hover .text-primary-dark {
+            color: #e65100;
+        }
+    </style>
+</body>
+</html>

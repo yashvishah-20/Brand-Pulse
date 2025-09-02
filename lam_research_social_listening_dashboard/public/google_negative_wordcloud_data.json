@@ -1,0 +1,33 @@
+{
+  "sentiment": "negative",
+  "total_reviews": 245,
+  "total_words": 4231,
+  "unique_words": 1047,
+  "words": [
+    {"text": "poor", "size": 52},
+    {"text": "terrible", "size": 47},
+    {"text": "disappointing", "size": 41},
+    {"text": "slow", "size": 38},
+    {"text": "frustrating", "size": 35},
+    {"text": "awful", "size": 32},
+    {"text": "worst", "size": 29},
+    {"text": "rude", "size": 27},
+    {"text": "unhelpful", "size": 25},
+    {"text": "problems", "size": 23},
+    {"text": "issues", "size": 21},
+    {"text": "horrible", "size": 19},
+    {"text": "unprofessional", "size": 18},
+    {"text": "waiting", "size": 17},
+    {"text": "delayed", "size": 16},
+    {"text": "mistake", "size": 15},
+    {"text": "error", "size": 14},
+    {"text": "dissatisfied", "size": 13},
+    {"text": "complaint", "size": 12},
+    {"text": "difficult", "size": 11},
+    {"text": "annoying", "size": 10},
+    {"text": "unacceptable", "size": 9},
+    {"text": "useless", "size": 8},
+    {"text": "waste", "size": 7},
+    {"text": "negative", "size": 6}
+  ]
+}

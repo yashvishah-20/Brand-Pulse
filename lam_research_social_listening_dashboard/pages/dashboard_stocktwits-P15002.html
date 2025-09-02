@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StockTwits Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="bg-background font-inter">
+    <!-- Logo at the top, acts as a back button -->
+    <a href="dashboard_overview.html" style="text-decoration: none;">
+      <div style="display: flex; align-items: center; margin-bottom: 12px; cursor: pointer;">
+        <div style="width: 48px; height: 48px; background: #ff7300; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold;">Y</div>
+        <span style="margin-left: 12px; color: #ff7300; font-size: 2rem; font-weight: bold;">Your logo</span>
+      </div>
+    </a>
+    <!-- Right side - Date Filter and Export Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Date Range Filter -->
+                    <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                            <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-01-01">
+                        </div>
+                        <div class="text-text-secondary">—</div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">TO:</label>
+                            <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-07-31">
+                        </div>
+                        <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Apply
+                        </button>
+                    </div>
+                    <!-- Export Report Button -->
+                    <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 12v7H5v-7M12 2l-7 7h4v6h6V9h4l-7-7z"/>
+                        </svg>
+                        Export Report
+                    </a>
+                </div>
+            </div>
+    <div class="flex min-h-screen">
+        <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <button class="platform-btn" onclick="window.location.href='#'" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </button>
+                <!-- X -->
+                <a href="dashboard_x.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Google -->
+                <a href="dashboard_google.html" class="platform-btn" title="Google" aria-label="Google">
+                    <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <button class="platform-btn" onclick="window.location.href='#'" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </button>
+                <!-- Reddit -->
+                <a href="dashboard_reddit.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                    <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                </a>
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                    <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                </a>
+                <!-- StockTwits -->
+                <a href="dashboard_stocktwits.html" class="platform-btn active-platform" title="StockTwits" aria-label="StockTwits">
+                    <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <!-- Summary Cards -->
+            <div id="dashboardSummaryCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Total Volume Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="total-volume">13,362</p>
+                            <p class="text-sm text-error-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-4 h-4 text-error-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">70%</span>
+                                </span>
+                                <span class="block">decreased by 70% from last year</span>
+                            </p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Engagement Rate Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Engagement Rate</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="engagement-rate">17.46</p>
+                            <p class="text-sm text-text-secondary mt-1">Avg. engagements per post</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Brand Health Score Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Brand Health Score</p>
+                            <p class="text-2xl font-bold text-primary mt-1" id="brand-health-score">31/100</p>
+                            <p class="text-sm text-text-secondary mt-1">Composite of sentiment, volume, and engagement</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- StockTwits Overview Title -->
+            <h2 class="text-2xl font-bold mb-4">StockTwits Overview</h2>
+            <!-- Tab Bar -->
+            <div class="flex gap-4 mb-8">
+                <button id="showEngagement" class="flex-1 px-6 py-3 text-lg font-semibold text-white bg-primary rounded-md shadow">Engagement</button>
+                <button id="showTrends" class="flex-1 px-6 py-3 text-lg font-semibold text-primary border-2 border-primary rounded-md shadow">Trends</button>
+            </div>
+            <div id="performanceView">
+                <!-- StockTwits Engagement Chart (Dummy, MarketBeat Theme) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Yearly Sentiment Analysis</h3>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="stocktwitsEngagementChart" width="800" height="384"></canvas>
+                    </div>
+                    <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p id="stocktwitsPositive" class="text-2xl font-bold text-success-600">...</p>
+                            <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="stocktwitsNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                            <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="stocktwitsNegative" class="text-2xl font-bold text-error-500">...</p>
+                            <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                // Dummy data for StockTwits engagement (percentages)
+                const years = ['2021', '2022', '2023'];
+                const positiveYearly = [62.5, 58.2, 65.1];
+                const neutralYearly = [22.3, 25.7, 20.4];
+                const negativeYearly = [15.2, 16.1, 14.5];
+                const ctx = document.getElementById('stocktwitsEngagementChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: years,
+                        datasets: [
+                            {
+                                label: 'Positive',
+                                data: positiveYearly,
+                                backgroundColor: '#27AE60',
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'Neutral',
+                                data: neutralYearly,
+                                backgroundColor: '#F39C12',
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'Negative',
+                                data: negativeYearly,
+                                backgroundColor: '#E74C3C',
+                                borderRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    usePointStyle: true,
+                                    padding: 20
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { font: { size: 12 } }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: '#F3F4F6' },
+                                ticks: {
+                                    font: { size: 12 },
+                                    callback: function(value) { return value + '%'; }
+                                },
+                                max: 100
+                            }
+                        }
+                    }
+                });
+                // Set summary values below the chart
+                document.getElementById('stocktwitsPositive').textContent = positiveYearly[positiveYearly.length-1].toFixed(1) + '%';
+                document.getElementById('stocktwitsNeutral').textContent = neutralYearly[neutralYearly.length-1].toFixed(1) + '%';
+                document.getElementById('stocktwitsNegative').textContent = negativeYearly[negativeYearly.length-1].toFixed(1) + '%';
+                </script>
+            </div>
+            <div id="trendsView" class="hidden">
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-semibold text-text-primary">StockTwits Sentiment Trends Over Time</h2>
+                            <p class="text-sm text-text-secondary mt-1">StockTwits - Last 12 Months</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96 mb-8">
+                        <canvas id="stocktwitsTrendsChart" class="w-full h-full"></canvas>
+                    </div>
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                        <h2 class="text-2xl font-bold text-text-primary mb-4">Key Insights & Patterns</h2>
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary mb-2">Trending Patterns</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start space-x-2">
+                                    <span class="inline-block w-3 h-3 rounded-full bg-green-500 mt-1"></span>
+                                    <div>
+                                        <span class="font-medium">StockTwits shows high retail investor sentiment swings</span><br/>
+                                        <span class="text-text-secondary">Significant mood changes during earnings and news cycles.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-text-primary mb-2">Strategic Recommendations</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start space-x-2">
+                                    <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                                    <div>
+                                        <span class="font-medium">Monitor StockTwits for retail investor mood swings</span><br/>
+                                        <span class="text-text-secondary">Watch for viral sentiment changes and act quickly on major shifts.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                fetch('../public/stocktwits_trends.json')
+                  .then(response => response.json())
+                  .then(data => {
+                    const ctx = document.getElementById('stocktwitsTrendsChart').getContext('2d');
+                    new Chart(ctx, {
+                      type: 'line',
+                      data: {
+                        labels: data.labels,
+                        datasets: [
+                          {
+                            label: 'Positive',
+                            data: data.positive,
+                            borderColor: '#27AE60',
+                            backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#27AE60',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                          },
+                          {
+                            label: 'Neutral',
+                            data: data.neutral,
+                            borderColor: '#F39C12',
+                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#F39C12',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                          },
+                          {
+                            label: 'Negative',
+                            data: data.negative,
+                            borderColor: '#E74C3C',
+                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#E74C3C',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: { display: false }
+                        },
+                        scales: {
+                          x: {
+                            grid: { display: true, color: '#F3F4F6' },
+                            ticks: { color: '#7F8C8D', font: { size: 12 } }
+                          },
+                          y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { display: true, color: '#F3F4F6' },
+                            ticks: {
+                              color: '#7F8C8D',
+                              font: { size: 12 },
+                              callback: function(value) { return value + '%'; }
+                            }
+                          }
+                        }
+                      }
+                    });
+                  });
+                </script>
+            </div>
+        </main>
+    </div>
+    <script>
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+    </script>
+</body>
+</html> 

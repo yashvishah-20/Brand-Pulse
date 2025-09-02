@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flamresear9044back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background font-inter">
+    <style>
+      .hidden { display: none !important; }
+    </style>
+    <!-- Hover Trigger Zone for Sidebar -->
+    <div id="sidebarTrigger" class="fixed left-0 top-0 w-4 h-full z-50 opacity-0 pointer-events-auto"></div>
+    
+    <!-- Main Container -->
+    <div class="flex min-h-screen">
+        <!-- Left Sidebar -->
+        <aside id="sidebar" class="w-1/4 bg-surface shadow-card border-r border-border-light fixed h-full overflow-y-auto z-40 transition-all duration-300 ease-in-out">
+            <!-- Logo Section -->
+            <div class="p-6 border-b border-border-light">
+                <a href="dashboard_overview.html" style="text-decoration: none;">
+                  <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 12px; cursor: pointer;">
+                    <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                  </div>
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="p-4">
+                <!-- Your Company Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Your Company</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="dashboard_overview.html" class="flex items-center px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                                </svg>
+                                Sentiment
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard_facebook2.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                Engagement
+                            </a>
+                        </li>
+                       <!-- <li>
+                            <a href="performance_analytics.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                                Performance Analytics
+                            </a>
+                        </li>-->
+                       <!--
+                        <li>
+                            <a href="trends_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12z"/>
+                                </svg>
+                                Trends Analysis
+                            </a>
+                        </li>
+                       -->
+                       <!-- <li>
+                            <a href="audience_insights.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2 1l-3 4v7h2v7h3v-7h1v7h3zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 10v7h2v7h2v-7h2v7h2v-7h2V10c0-1.33-.67-2-1.5-2z"/>
+                                </svg>
+                                Audience Insights
+                            </a>
+                        </li>-->
+                    </ul>
+                </div>
+
+                <!-- Competitors Company Section -->
+                <div>
+                    <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Competitors Company</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="competitor_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 11H7v9h2v-9zm4 0h-2v9h2v-9zm4 0h-2v9h2v-9zm2.5-5H18V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2H4.5c-.83 0-1.5.67-1.5 1.5S3.67 9 4.5 9H6v10c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9h1.5c.83 0 1.5-.67 1.5-1.5S20.33 6 19.5 6zM10 4h4v2h-4V4z"/>
+                                </svg>
+                                Competitor Analysis
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+                
+                <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Header Section with Logo and Date Filter -->
+            <div class="flex items-center justify-between mb-6">
+                <!-- Left side - Logo -->
+                <div class="flex items-center">
+                    <a href="dashboard_overview.html" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; cursor: pointer;">
+                            <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                        </div>
+                    </a>
+                </div>
+                <!-- Right side - Date Filter and Export Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Date Range Filter -->
+                    <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                            <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-01-01">
+                        </div>
+                        <div class="text-text-secondary">—</div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">TO:</label>
+                            <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-07-31">
+                        </div>
+                        <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Apply
+                        </button>
+                    </div>
+                    <!-- Export Report Button -->
+                    <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 20h14v-2H5v2zm7-18v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Export Report
+                    </a>
+                </div>
+            </div>
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Google -->
+                <a href="dashboard_google.html" class="platform-btn" title="Google" aria-label="Google">
+                    <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                    <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                </a>
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                    <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                </a>
+                <!-- StockTwits -->
+                <a href="dashboard_stocktwits.html" class="platform-btn" title="StockTwits" aria-label="StockTwits">
+                    <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <!-- Summary Metrics Cards -->
+            <div id="dashboardSummaryCards" class="flex flex-row gap-2 mb-8">
+                <!-- Total Volume Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-lg font-bold text-text-primary mt-1">38810</p>
+                            <p class="text-xs text-success-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-3 h-3 text-success-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">-9.1% from last month</span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Positive Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Positive Sentiment</p>
+                            <p class="text-lg font-bold text-success-600 mt-1" id="avg-positive-sentiment">42.3%</p>
+                            <p class="text-xs text-text-secondary mt-1">All platforms</p>
+                        </div>
+                        <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Neutral Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Neutral Sentiment</p>
+                            <p class="text-lg font-bold text-warning-600 mt-1" id="avg-neutral-sentiment">32.9%</p>
+                            <p class="text-xs text-text-secondary mt-1">All platforms</p>
+                        </div>
+                        <div class="w-8 h-8 bg-warning-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Negative Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Negative Sentiment</p>
+                            <p class="text-lg font-bold text-error-600 mt-1" id="avg-negative-sentiment">24.8%</p>
+                            <p class="text-xs text-text-secondary mt-1">All platforms</p>
+                        </div>
+                        <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Momentum Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <p class="text-xs font-medium text-text-secondary">Sentiment Momentum</p>
+                        <p class="text-lg font-bold text-error-600 mt-1" id="sentiment-momentum">-7.25%</p>
+                        <p class="text-xs text-error-600 mt-1">
+                        
+                        <span class="block">vs previous 2 months</span>
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                        <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 14l5-5 5 5z"/>
+                        </svg>
+                    </div>
+                    </div>
+                </div>
+  
+            </div>
+            <div id="marketbeatSection">
+            
+             
+
+            <!-- Performance View (default) -->
+            <div id="performanceView">
+                <!-- Sentiment Analysis Charts -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-text-primary">Sentiment Analysis</h2>
+                        <div class="flex items-center space-x-4">
+                            <!-- Analysis Type Toggle -->
+                            <!-- Platform and Monthly buttons removed -->
+                            
+                            <!-- Year Filter for Monthly Analysis (hidden by default) -->
+                            
+                            
+                            <!-- Legend -->
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Positive</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Neutral</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Negative</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Volume</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platform Analysis Chart (default) -->
+                    <div id="platformAnalysisChart" class="hidden bg-background rounded-lg p-6 border border-border-light">
+                        <div class="relative" style="height: 500px; width: 100%;">
+                            <canvas id="allPlatformsChart" style="width: 100%; height: 100%;"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Analysis Chart (hidden by default) -->
+                    <div id="monthlyAnalysisChart" class="bg-background rounded-lg p-6 border border-border-light">
+                        <div class="relative" style="height: 500px; width: 100%;">
+                            <canvas id="monthlyChart" style="width: 100%; height: 100%;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sentiment Percentages Table -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+    <h2 class="text-lg font-semibold text-text-primary mb-4">Sentiment Percentages by Platform</h2>
+    <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left border border-border-light rounded-lg" width="100%">
+            <thead class="bg-primary-50">
+                <tr>
+                    <th class="px-4 py-2 font-medium text-text-secondary">Platform</th>
+                    <th class="px-4 py-2 font-medium text-success-700">Positive (%)</th>
+                    <th class="px-4 py-2 font-medium text-warning-700">Neutral (%)</th>
+                    <th class="px-4 py-2 font-medium text-error-700">Negative (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">MarketBeat</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.814);">81.4</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.12);">12.0</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.051);">5.1</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">Reddit</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.207);">20.7</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.384);">38.4</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.521);">52.1</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">StockTwits</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.8);">80.0</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.159);">15.9</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.029);">2.9</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">Twitter</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.222);">22.2</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.501);">50.1</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.342);">34.2</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">Instagram</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.772);;">77.2</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.152);">15.2</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.056);">5.6</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">Facebook</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.162);">16.2</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.125);">12.5</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.671);">67.1</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">LinkedIn</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.571);">57.1</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.355);">35.5</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.081);">8.1</td>
+                </tr>
+                <tr class="border-b border-border-light">
+                    <td class="px-4 py-2">Google</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.347);">34.7</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.206);">20.6</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.458);">45.8</td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2">Glassdoor</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(39,174,96,0.231);">23.1</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(243,156,18,0.482);">48.2</td>
+                    <td class="px-4 py-2 heatmap-cell" style="background-color:rgba(231,76,60,0.389);">38.9</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+                <!-- Summary & Insights Section -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-6">
+                    <!--<h2 class="text-xl font-semibold text-text-primary mb-6">Summary & Insights</h2>    -->
+                    
+                    <!-- Platform Insights (default) -->
+                    <div id="platformInsights" class="hidden space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Best Performing Platform -->
+                            <div class="bg-success-50 border border-success-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-success-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-success-800">Best Performing Platform</h3>
+                                        <p class="text-2xl font-bold text-success-700" id="bestPlatform">Instagram</p>
+                                        <p class="text-sm text-success-600" id="bestPlatformMetric">78.4% positive sentiment</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Most Active Platform -->
+                            <div class="bg-info-50 border border-info-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-info-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M3 17l6-6 4 4 8-8"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-info-800">Most Active Platform</h3>
+                                        <p class="text-2xl font-bold text-info-700" id="mostActivePlatform">Twitter</p>
+                                        <p class="text-sm text-info-600" id="mostActivePlatformMetric">6,140 total mentions</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Attention Needed -->
+                            <div class="bg-warning-50 border border-warning-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-warning-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-warning-800">Attention Needed</h3>
+                                        <p class="text-2xl font-bold text-warning-700" id="attentionPlatform">Facebook</p>
+                                        <p class="text-sm text-warning-600" id="attentionPlatformMetric">71.0% negative sentiment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Insights -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold text-text-primary mb-3">Key Insights</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-success-500 rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Instagram shows exceptional performance with 78.4% positive sentiment, making it the most favorable platform for brand perception.</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-info-500 rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Twitter leads in engagement volume with 6,140 mentions, indicating high brand visibility and conversation activity.</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-warning-500 rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Facebook requires immediate attention with 71.0% negative sentiment, suggesting potential reputation management needs.</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Overall sentiment distribution shows 54.7% positive, 28.3% neutral, and 17.0% negative across all platforms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Insights (hidden by default) -->
+                    <div id="monthlyInsights" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Best Month 
+                            <div class="bg-success-50 border border-success-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-success-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7 14l5-5 5 5z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-success-800">Best Month</h3>
+                                        <p class="text-2xl font-bold text-success-700" id="bestMonth">May 2025</p>
+                                        <p class="text-sm text-success-600" id="bestMonthMetric">76.8% positive sentiment</p>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                            <!-- Trend Direction
+                            <div class="bg-info-50 border border-info-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-info-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M3 17l6-6 4 4 8-8"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-info-800">Trend Direction</h3>
+                                        <p class="text-2xl font-bold text-info-700" id="trendDirection">Positive</p>
+                                        <p class="text-sm text-info-600" id="trendDirectionMetric">+12.3% growth</p>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- Peak Volume 
+                            <div class="bg-warning-50 border border-warning-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-warning-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-warning-800">Peak Volume</h3>
+                                        <p class="text-2xl font-bold text-warning-700" id="peakVolumeMonth">May 2025</p>
+                                        <p class="text-sm text-warning-600" id="peakVolumeMetric">7,240 mentions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <!-- Monthly Key Insights -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold text-text-primary mb-3">Monthly Insights</h3>
+                            <div class="space-y-3" id="monthlyInsightsList">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-success-500 rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">May 2025 achieved the highest positive sentiment at 76.8%, indicating strong brand performance during this period.</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-info-500 rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Overall sentiment trend shows positive growth of 12.3% throughout the year with consistent improvement.</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-warning-500 rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Peak engagement occurred in May with 7,240 mentions, suggesting seasonal or campaign-driven activity.</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                    <p class="text-text-secondary">Volatility analysis shows significant fluctuations in sentiment, requiring consistent monitoring and response strategies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Update Indicator -->
+            <!-- Remove the real-time update indicator -->
+            <!-- <div class="mt-6 flex items-center justify-center">
+                <div class="flex items-center space-x-2 text-sm text-text-secondary">
+                    <div class="w-2 h-2 bg-success-600 rounded-full animate-pulse"></div>
+                    <span id="lastUpdatedTime">Last updated: 2 minutes ago</span>
+                    <button class="text-primary hover:text-primary-600 font-medium transition-fast">Refresh</button>
+                </div>
+            </div> -->
+             </div>
+              <!-- Begin Reddit Section (hidden by default) -->
+
+        </main>
+    </div>
+
+    <!-- Sidebar Hover Functionality Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            const sidebarTrigger = document.getElementById('sidebarTrigger');
+            let isHoveringTrigger = false;
+            let isHoveringSidebar = false;
+
+            // Function to hide sidebar
+            function hideSidebar() {
+                sidebar.style.transform = 'translateX(-100%)';
+                mainContent.style.marginLeft = '0';
+                mainContent.style.width = '100%';
+            }
+
+            // Function to show sidebar
+            function showSidebar() {
+                sidebar.style.transform = 'translateX(0)';
+                mainContent.style.marginLeft = '25%';
+                mainContent.style.width = '75%';
+            }
+
+            // Hide sidebar when hovering over main content
+            mainContent.addEventListener('mouseenter', function(e) {
+                // Only hide if not hovering over sidebar or trigger
+                if (!isHoveringSidebar && !isHoveringTrigger) {
+                    hideSidebar();
+                }
+            });
+
+            // Show sidebar when hovering over trigger zone
+            sidebarTrigger.addEventListener('mouseenter', function() {
+                isHoveringTrigger = true;
+                showSidebar();
+            });
+
+            sidebarTrigger.addEventListener('mouseleave', function() {
+                isHoveringTrigger = false;
+            });
+
+            // Keep sidebar visible when hovering over it
+            sidebar.addEventListener('mouseenter', function() {
+                isHoveringSidebar = true;
+                showSidebar();
+            });
+
+            sidebar.addEventListener('mouseleave', function() {
+                isHoveringSidebar = false;
+                // Hide sidebar if not hovering over trigger
+                if (!isHoveringTrigger) {
+                    setTimeout(() => {
+                        if (!isHoveringTrigger && !isHoveringSidebar) {
+                            hideSidebar();
+                        }
+                    }, 300); // Small delay to prevent flickering
+                }
+            });
+
+            // Show sidebar when hovering near left edge
+            document.addEventListener('mousemove', function(e) {
+                if (e.clientX <= 20 && !isHoveringSidebar) {
+                    isHoveringTrigger = true;
+                    showSidebar();
+                } else if (e.clientX > 300 && !isHoveringSidebar) {
+                    isHoveringTrigger = false;
+                }
+            });
+        });
+    </script>
+
+    <!-- Chart.js Configuration Script -->
+    <script>
+        // Add CSS for slider styling
+        const sliderStyle = document.createElement('style');
+        sliderStyle.textContent = `
+            .slider {
+                -webkit-appearance: none;
+                appearance: none;
+                height: 6px;
+                background: #e5e7eb;
+                border-radius: 3px;
+                outline: none;
+                transition: background 0.3s;
+            }
+            
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 18px;
+                height: 18px;
+                background: #ff7300;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+            
+            .slider::-moz-range-thumb {
+                width: 18px;
+                height: 18px;
+                background: #ff7300;
+                border-radius: 50%;
+                cursor: pointer;
+                border: none;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+        `;
+        document.head.appendChild(sliderStyle);
+
+        // Chart configuration for 100% stacked bar charts with volume line
+        const stackedBarOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 10,
+                        usePointStyle: true,
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.dataset.label || '';
+                            if (context.dataset.type === 'line') {
+                                return `${label}: ${context.parsed.y.toLocaleString()} total mentions`;
+                            }
+                            const value = context.parsed.y;
+                            return `${label}: ${value.toFixed(1)}%`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        display: false
+                    }
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Sentiment Percentage (%)'
+                    },
+                    position: 'left',
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Volume'
+                    },
+                    grid: {
+                        drawOnChartArea: false
+                    }
+                }
+            }
+        };
+
+        // Chart configuration for combined 100% stacked bar chart
+        const combinedStackedBarOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 15,
+                        usePointStyle: true,
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.dataset.label || '';
+                            if (context.dataset.type === 'line') {
+                                return `${label}: ${context.parsed.y.toLocaleString()} total mentions`;
+                            }
+                            const value = context.parsed.y;
+                            return `${label}: ${value.toFixed(1)}%`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Sentiment Percentage (%)',
+                        font: {
+                            size: 14
+                        }
+                    },
+                    position: 'left',
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        },
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Volume',
+                        font: {
+                            size: 14
+                        }
+                    },
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            }
+        };
+
+        // Function to create combined stacked bar chart for all platforms
+        function createCombinedStackedChart() {
+            const ctx = document.getElementById('allPlatformsChart')?.getContext('2d');
+            if (!ctx) return;
+
+            // Platform names and data
+            const platforms = ['MarketBeat', 'Reddit', 'StockTwits', 'Twitter', 'Instagram', 'Facebook', 'LinkedIn', 'Google', 'Glassdoor'];
+            const platformKeys = ['marketbeat', 'reddit', 'stocktwits', 'twitter', 'instagram', 'facebook', 'linkedin', 'google', 'glassdoor'];
+            
+            // Calculate percentages and volumes for each platform
+            const positivePercentages = [];
+            const neutralPercentages = [];
+            const negativePercentages = [];
+            const volumeData = [];
+
+            platformKeys.forEach(key => {
+                const data = platformData[key];
+                const totalPositive = data.positive[0];
+                const totalNeutral = data.neutral[0];
+                const totalNegative = data.negative[0];
+                const totalVolume = totalPositive + totalNeutral + totalNegative;
+
+                positivePercentages.push(totalVolume > 0 ? (totalPositive / totalVolume) * 100 : 0);
+                neutralPercentages.push(totalVolume > 0 ? (totalNeutral / totalVolume) * 100 : 0);
+                negativePercentages.push(totalVolume > 0 ? (totalNegative / totalVolume) * 100 : 0);
+                volumeData.push(totalVolume);
+            });
+
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: platforms,
+                    datasets: [
+                        {
+                            label: 'Positive',
+                            data: positivePercentages,
+                            backgroundColor: '#27AE60',
+                            borderColor: '#27AE60',
+                            stack: 'sentiment',
+                            borderWidth: 1,
+                            order: 1,
+                            zIndex: 1,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        },
+                        {
+                            label: 'Neutral',
+                            data: neutralPercentages,
+                            backgroundColor: '#F39C12',
+                            borderColor: '#F39C12',
+                            stack: 'sentiment',
+                            borderWidth: 1,
+                            order: 1,
+                            zIndex: 1,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        },
+                        {
+                            label: 'Negative',
+                            data: negativePercentages,
+                            backgroundColor: '#E74C3C',
+                            borderColor: '#E74C3C',
+                            stack: 'sentiment',
+                            borderWidth: 1,
+                            order: 1,
+                            zIndex: 1,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        }
+                    ]
+                },
+                options: combinedStackedBarOptions
+            });
+        }
+
+        // Dummy data for all platforms with high volatility and realistic differences
+        const platformData = {
+            marketbeat: {
+                positive: [2850],
+                neutral: [420],
+                negative: [180]
+            },
+            reddit: {
+                positive: [890],
+                neutral: [1650],
+                negative: [2240]
+            },
+            stocktwits: {
+                positive: [3420],
+                neutral: [680],
+                negative: [125]
+            },
+            twitter: {
+                positive: [1280],
+                neutral: [2890],
+                negative: [1970]
+            },
+            instagram: {
+                positive: [4680],
+                neutral: [920],
+                negative: [340]
+            },
+            facebook: {
+                positive: [750],
+                neutral: [580],
+                negative: [3100]
+            },
+            linkedin: {
+                positive: [2960],
+                neutral: [1840],
+                negative: [420]
+            },
+            google: {
+                positive: [1650],
+                neutral: [980],
+                negative: [2180]
+            },
+            glassdoor: {
+                positive: [1120],
+                neutral: [2340],
+                negative: [1890]
+            }
+        };
+
+        // Initialize the combined chart and update summary data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the combined chart
+            const allPlatformsChart = createCombinedStackedChart();
+
+            // Update summary data for each platform
+            const platformKeys = ['marketbeat', 'reddit', 'stocktwits', 'twitter', 'instagram', 'facebook', 'linkedin', 'google', 'glassdoor'];
+            platformKeys.forEach(key => {
+                const data = platformData[key];
+                const totalPositive = data.positive[0];
+                const totalNeutral = data.neutral[0];
+                const totalNegative = data.negative[0];
+                const totalMentions = totalPositive + totalNeutral + totalNegative;
+                // Update summary cards
+                if (document.getElementById(`${key}-positive`)) document.getElementById(`${key}-positive`).textContent = totalPositive.toLocaleString();
+                if (document.getElementById(`${key}-neutral`)) document.getElementById(`${key}-neutral`).textContent = totalNeutral.toLocaleString();
+                if (document.getElementById(`${key}-negative`)) document.getElementById(`${key}-negative`).textContent = totalNegative.toLocaleString();
+                if (document.getElementById(`${key}-total`)) document.getElementById(`${key}-total`).textContent = `Total: ${totalMentions.toLocaleString()}`;
+            });
+
+            // Dynamically update Total Volume card, percentage, and annotation
+            var totalVolumeElem = document.getElementById('total-volume');
+            // Use more robust selectors for percentage and annotation
+            var totalVolumePercentElem = null;
+            var totalVolumeAnnotationElem = null;
+            if (totalVolumeElem) {
+                // Find the parent card
+                var card = totalVolumeElem.closest('.flex-1');
+                if (card) {
+                    totalVolumePercentElem = card.querySelector('.text-success-600 .font-bold');
+                    totalVolumeAnnotationElem = card.querySelector('.text-success-600 .block');
+                }
+            }
+
+            // Calculate total volume from platformData
+            let totalVolume = 0;
+            platformKeys.forEach(key => {
+                const data = platformData[key];
+                totalVolume += data.positive[0] + data.neutral[0] + data.negative[0];
+            });
+
+            // Example: Calculate percentage change from last year (dummy previous value)
+            // Replace 497,815 with your actual previous year value if available
+            let previousYearVolume = 497815;
+            let percentChange = ((totalVolume - previousYearVolume) / previousYearVolume) * 100;
+            let percentChangeText = `${percentChange >= 0 ? '+' : ''}${percentChange.toFixed(1)}%`;
+            let annotationText = `${percentChange >= 0 ? 'increased' : 'decreased'} by ${Math.abs(percentChange.toFixed(1))}% from last year`;
+
+            // Set color and arrow for increased/decreased
+            if (totalVolumeElem) {
+                totalVolumeElem.textContent = totalVolume.toLocaleString();
+            }
+            if (totalVolumePercentElem) {
+                totalVolumePercentElem.textContent = percentChangeText;
+                if (percentChange >= 0) {
+                    totalVolumePercentElem.classList.remove('text-error-600');
+                    totalVolumePercentElem.classList.add('text-success-600');
+                } else {
+                    totalVolumePercentElem.classList.remove('text-success-600');
+                    totalVolumePercentElem.classList.add('text-error-600');
+                }
+            }
+            if (totalVolumeAnnotationElem) {
+                totalVolumeAnnotationElem.textContent = annotationText;
+                if (percentChange >= 0) {
+                    totalVolumeAnnotationElem.classList.remove('text-error-600');
+                    totalVolumeAnnotationElem.classList.add('text-success-600');
+                } else {
+                    totalVolumeAnnotationElem.classList.remove('text-success-600');
+                    totalVolumeAnnotationElem.classList.add('text-error-600');
+                }
+            }
+            // Update arrow icon color and direction
+            if (card) {
+                var arrowSvg = card.querySelector('.text-success-600 svg, .text-error-600 svg');
+                if (arrowSvg) {
+                    if (percentChange >= 0) {
+                        arrowSvg.classList.remove('text-error-600');
+                        arrowSvg.classList.add('text-success-600');
+                        arrowSvg.innerHTML = '<path d="M7 10l5 5 5-5z"/>';
+                    } else {
+                        arrowSvg.classList.remove('text-success-600');
+                        arrowSvg.classList.add('text-error-600');
+                        arrowSvg.innerHTML = '<path d="M7 14l5-5 5 5z"/>';
+                    }
+                }
+            }
+
+            // Load Platform Comparison Chart on page load (since Performance is default view)
+            setTimeout(() => {
+                if (!platformChartLoaded) {
+                    loadPlatformComparisonChart();
+                    platformChartLoaded = true;
+                }
+            }, 500);
+        });
+
+        // Function to create monthly analysis chart
+        let monthlyChartInstance;
+        function createMonthlyChart() {
+            const ctx = document.getElementById('monthlyChart')?.getContext('2d');
+            if (!ctx) return;
+
+            // Destroy existing chart if it exists
+            if (monthlyChartInstance) {
+                monthlyChartInstance.destroy();
+            }
+
+            // Get current year from slider
+            const currentYear = parseInt(document.getElementById('yearSlider')?.value || 2025);
+            
+            // Monthly sentiment data for different years with high volatility
+            const monthlyData = {
+                2025: {
+                    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // Only until July
+                    positive: [62.4, 58.9, 71.2, 49.3, 76.8, 43.1, 68.5],
+                    neutral: [24.1, 29.7, 18.4, 35.2, 15.8, 38.9, 21.7],
+                    negative: [13.5, 11.4, 10.4, 15.5, 7.4, 18.0, 9.8],
+                    volume: [5890, 4320, 6780, 3950, 7240, 4180, 6450]
+                },
+                2024: {
+                    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    positive: [45.2, 62.1, 38.7, 69.8, 44.3, 71.2, 39.1, 66.8, 42.7, 74.5, 47.2, 69.9],
+                    neutral: [33.8, 24.5, 41.2, 19.8, 38.4, 18.3, 42.1, 21.7, 37.9, 16.8, 35.6, 19.4],
+                    negative: [21.0, 13.4, 20.1, 10.4, 17.3, 10.5, 18.8, 11.5, 19.4, 8.7, 17.2, 10.7],
+                    volume: [3450, 5120, 2890, 5680, 3720, 6240, 2950, 5890, 3480, 6450, 4120, 5980]
+                },
+                2023: {
+                    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    positive: [38.2, 52.8, 31.5, 61.2, 36.8, 58.9, 33.1, 55.3, 39.7, 63.1, 42.6, 59.2],
+                    neutral: [38.5, 28.2, 43.8, 24.4, 41.1, 26.7, 44.2, 29.8, 39.5, 23.9, 37.4, 26.1],
+                    negative: [23.3, 19.0, 24.7, 14.4, 22.1, 14.4, 22.7, 14.9, 20.8, 13.0, 20.0, 14.7],
+                    volume: [2890, 4250, 2320, 4680, 2950, 4890, 2480, 4520, 3180, 5120, 3650, 4820]
+                }
+            };
+
+            const data = monthlyData[currentYear];
+
+            monthlyChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.months,
+                    datasets: [
+                        {
+                            label: 'Positive',
+                            data: data.positive,
+                            backgroundColor: '#27AE60',
+                            borderColor: '#27AE60',
+                            stack: 'sentiment',
+                            borderWidth: 1,
+                            order: 1,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        },
+                        {
+                            label: 'Neutral',
+                            data: data.neutral,
+                            backgroundColor: '#F39C12',
+                            borderColor: '#F39C12',
+                            stack: 'sentiment',
+                            borderWidth: 1,
+                            order: 1,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        },
+                        {
+                            label: 'Negative',
+                            data: data.negative,
+                            backgroundColor: '#E74C3C',
+                            borderColor: '#E74C3C',
+                            stack: 'sentiment',
+                            borderWidth: 1,
+                            order: 1,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    if (context.dataset.type === 'line') {
+                                        return `${label}: ${context.parsed.y.toLocaleString()} total mentions`;
+                                    }
+                                    const value = context.parsed.y;
+                                    return `${label}: ${value.toFixed(1)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Sentiment Percentage (%)',
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            position: 'left',
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Total Volume',
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            return monthlyChartInstance;
+        }
+
+        // Function to update Summary & Insights for Platform Analysis
+        function updatePlatformInsights() {
+            const platformKeys = ['marketbeat', 'reddit', 'stocktwits', 'twitter', 'instagram', 'facebook', 'linkedin', 'google', 'glassdoor'];
+            const platformNames = ['MarketBeat', 'Reddit', 'StockTwits', 'Twitter', 'Instagram', 'Facebook', 'LinkedIn', 'Google', 'Glassdoor'];
+            
+            let bestPlatform = { name: '', percentage: 0 };
+            let mostActive = { name: '', volume: 0 };
+            let attentionNeeded = { name: '', percentage: 100 };
+            
+            // Calculate metrics for each platform
+            platformKeys.forEach((key, index) => {
+                const data = platformData[key];
+                const totalPositive = data.positive[0];
+                const totalNeutral = data.neutral[0];
+                const totalNegative = data.negative[0];
+                const totalVolume = totalPositive + totalNeutral + totalNegative;
+                const positivePercentage = totalVolume > 0 ? (totalPositive / totalVolume) * 100 : 0;
+                const negativePercentage = totalVolume > 0 ? (totalNegative / totalVolume) * 100 : 0;
+                
+                // Find best performing platform
+                if (positivePercentage > bestPlatform.percentage) {
+                    bestPlatform = { name: platformNames[index], percentage: positivePercentage };
+                }
+                
+                // Find most active platform
+                if (totalVolume > mostActive.volume) {
+                    mostActive = { name: platformNames[index], volume: totalVolume };
+                }
+                
+                // Find platform that needs attention (highest negative sentiment)
+                if (negativePercentage > 0 && negativePercentage < attentionNeeded.percentage) {
+                    attentionNeeded = { name: platformNames[index], percentage: negativePercentage };
+                }
+            });
+            
+            // Update the UI
+            document.getElementById('bestPlatform').textContent = bestPlatform.name;
+            document.getElementById('bestPlatformMetric').textContent = `${bestPlatform.percentage.toFixed(1)}% positive sentiment`;
+            document.getElementById('mostActivePlatform').textContent = mostActive.name;
+            document.getElementById('mostActivePlatformMetric').textContent = `${mostActive.volume.toLocaleString()} total mentions`;
+            document.getElementById('attentionPlatform').textContent = attentionNeeded.name;
+            document.getElementById('attentionPlatformMetric').textContent = `${attentionNeeded.percentage.toFixed(1)}% negative sentiment`;
+        }
+
+        // Function to update Summary & Insights for Monthly Analysis
+        function updateMonthlyInsights() {
+            const currentYear = parseInt(document.getElementById('yearSlider')?.value || 2025);
+            
+            // Monthly sentiment data for different years
+            const monthlyData = {
+                2025: {
+                    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    positive: [62.4, 58.9, 71.2, 49.3, 76.8, 43.1, 68.5],
+                    neutral: [24.1, 29.7, 18.4, 35.2, 15.8, 38.9, 21.7],
+                    negative: [13.5, 11.4, 10.4, 15.5, 7.4, 18.0, 9.8],
+                    volume: [5890, 4320, 6780, 3950, 7240, 4180, 6450]
+                },
+                2024: {
+                    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    positive: [45.2, 62.1, 38.7, 69.8, 44.3, 71.2, 39.1, 66.8, 42.7, 74.5, 47.2, 69.9],
+                    neutral: [33.8, 24.5, 41.2, 19.8, 38.4, 18.3, 42.1, 21.7, 37.9, 16.8, 35.6, 19.4],
+                    negative: [21.0, 13.4, 20.1, 10.4, 17.3, 10.5, 18.8, 11.5, 19.4, 8.7, 17.2, 10.7],
+                    volume: [3450, 5120, 2890, 5680, 3720, 6240, 2950, 5890, 3480, 6450, 4120, 5980]
+                },
+                2023: {
+                    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    positive: [38.2, 52.8, 31.5, 61.2, 36.8, 58.9, 33.1, 55.3, 39.7, 63.1, 42.6, 59.2],
+                    neutral: [38.5, 28.2, 43.8, 24.4, 41.1, 26.7, 44.2, 29.8, 39.5, 23.9, 37.4, 26.1],
+                    negative: [23.3, 19.0, 24.7, 14.4, 22.1, 14.4, 22.7, 14.9, 20.8, 13.0, 20.0, 14.7],
+                    volume: [2890, 4250, 2320, 4680, 2950, 4890, 2480, 4520, 3180, 5120, 3650, 4820]
+                }
+            };
+            
+            const data = monthlyData[currentYear];
+            
+            // Find best month
+            let bestMonth = { index: 0, percentage: 0 };
+            let peakVolume = { index: 0, volume: 0 };
+            
+            data.positive.forEach((value, index) => {
+                if (value > bestMonth.percentage) {
+                    bestMonth = { index: index, percentage: value };
+                }
+            });
+            
+            data.volume.forEach((value, index) => {
+                if (value > peakVolume.volume) {
+                    peakVolume = { index: index, volume: value };
+                }
+            });
+            
+            // Calculate dynamic trend direction based on real chart data
+            // Use the average positive sentiment for current year vs previous year
+            let avgCurrent = 0;
+            if (data && data.positive && data.positive.length > 0) {
+                avgCurrent = data.positive.reduce((a, b) => a + b, 0) / data.positive.length;
+            }
+            let prevYear = currentYear - 1;
+            let avgPrev = 0;
+            if (monthlyData[prevYear] && monthlyData[prevYear].positive && monthlyData[prevYear].positive.length > 0) {
+                avgPrev = monthlyData[prevYear].positive.reduce((a, b) => a + b, 0) / monthlyData[prevYear].positive.length;
+            }
+            let percentChange = avgPrev !== 0 ? ((avgCurrent - avgPrev) / avgPrev) * 100 : 0;
+            let trendDirection = percentChange >= 0 ? 'Positive' : 'Negative';
+            let trendGrowth = `${percentChange >= 0 ? '+' : ''}${percentChange.toFixed(1)}% growth`;
+
+            // Update the UI
+            document.getElementById('bestMonth').textContent = `${data.months[bestMonth.index]} ${currentYear}`;
+            document.getElementById('bestMonthMetric').textContent = `${bestMonth.percentage.toFixed(1)}% positive sentiment`;
+            document.getElementById('trendDirection').textContent = trendDirection;
+            document.getElementById('trendDirectionMetric').textContent = trendGrowth;
+            document.getElementById('peakVolumeMonth').textContent = `${data.months[peakVolume.index]} ${currentYear}`;
+            document.getElementById('peakVolumeMetric').textContent = `${peakVolume.volume.toLocaleString()} mentions`;
+            
+            // Update insights based on year
+            const insightsList = document.getElementById('monthlyInsightsList');
+            const yearSpecificInsights = {
+                2025: [
+                    `May 2025 achieved the highest positive sentiment at ${bestMonth.percentage.toFixed(1)}%, indicating strong brand performance during this period.`,
+                    `Overall sentiment trend shows ${trendGrowth > 0 ? 'positive' : 'negative'} growth of ${Math.abs(trendGrowth).toFixed(1)}% throughout the year with ${trendGrowth > 0 ? 'consistent improvement' : 'declining performance'}.`,
+                    `Peak engagement occurred in ${data.months[peakVolume.index]} with ${peakVolume.volume.toLocaleString()} mentions, suggesting seasonal or campaign-driven activity.`,
+                    `Current year data shows high volatility with significant fluctuations in sentiment, requiring consistent monitoring and response strategies.`
+                ],
+                2024: [
+                    `${data.months[bestMonth.index]} 2024 achieved the highest positive sentiment at ${bestMonth.percentage.toFixed(1)}%, representing peak brand performance for the year.`,
+                    `Annual sentiment trend shows ${trendGrowth > 0 ? 'positive' : 'negative'} growth of ${Math.abs(trendGrowth).toFixed(1)}% with notable improvement in the second half of the year.`,
+                    `Peak engagement occurred in ${data.months[peakVolume.index]} with ${peakVolume.volume.toLocaleString()} mentions, indicating strong seasonal performance.`,
+                    `2024 data reveals moderate volatility with strategic opportunities for sustained growth and brand improvement.`
+                ],
+                2023: [
+                    `${data.months[bestMonth.index]} 2023 achieved the highest positive sentiment at ${bestMonth.percentage.toFixed(1)}%, marking the best performance of the year.`,
+                    `Annual sentiment trend shows ${trendGrowth > 0 ? 'positive' : 'negative'} growth of ${Math.abs(trendGrowth).toFixed(1)}% with gradual improvement throughout the year.`,
+                    `Peak engagement occurred in ${data.months[peakVolume.index]} with ${peakVolume.volume.toLocaleString()} mentions, representing strong community engagement.`,
+                    `2023 baseline data shows steady growth patterns with foundational improvements in brand sentiment and engagement.`
+                ]
+            };
+            
+            insightsList.innerHTML = '';
+            yearSpecificInsights[currentYear].forEach((insight, index) => {
+                const colors = ['success-500', 'info-500', 'warning-500', 'primary'];
+                const insightHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-${colors[index]} rounded-full mt-2"></div>
+                        <p class="text-text-secondary">${insight}</p>
+                    </div>
+                `;
+                insightsList.insertAdjacentHTML('beforeend', insightHTML);
+            });
+        }
+
+        // Toggle functionality for Platform vs Monthly Analysis
+        document.addEventListener('DOMContentLoaded', function() {
+            const monthlyChart = document.getElementById('monthlyAnalysisChart');
+            const monthlyYearFilter = document.getElementById('monthlyYearFilter');
+            const yearSlider = document.getElementById('yearSlider');
+            const currentYearLabel = document.getElementById('currentYearLabel');
+            const monthlyInsights = document.getElementById('monthlyInsights');
+
+            // Show monthly chart and insights by default
+            monthlyChart.classList.remove('hidden');
+            monthlyYearFilter.classList.remove('hidden');
+            monthlyInsights.classList.remove('hidden');
+            // Chart and insights now updated by updateMonthlyByDateRange only
+
+            // Year slider functionality
+            yearSlider?.addEventListener('input', function() {
+                const selectedYear = parseInt(this.value);
+                currentYearLabel.textContent = selectedYear;
+                // Chart and insights now updated by updateMonthlyByDateRange only
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+<script>
+// --- DUMMY DATA CHART & INSIGHTS UPDATE BASED ON TIME RANGE SELECTOR ---
+function getDummyMonthlyData(from, to) {
+    // Returns random data for the selected range
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
+    let startMonth = fromDate.getMonth();
+    let endMonth = toDate.getMonth();
+    let selectedMonths = [];
+    for (let m = startMonth; m <= endMonth; m++) {
+        selectedMonths.push(months[m]);
+    }
+    // Generate random dummy data
+    return {
+        months: selectedMonths,
+        positive: selectedMonths.map(() => Math.floor(Math.random() * 40 + 40)),
+        neutral: selectedMonths.map(() => Math.floor(Math.random() * 30 + 20)),
+        negative: selectedMonths.map(() => Math.floor(Math.random() * 20 + 10)),
+        volume: selectedMonths.map(() => Math.floor(Math.random() * 3000 + 4000))
+    };
+}
+
+function updateMonthlyByDateRange() {
+    const from = document.getElementById('dateFrom').value;
+    const to = document.getElementById('dateTo').value;
+        const dummyData = getDummyMonthlyData(from, to);
+        // Calculate 100% stacked values for each month
+        const stackedPositive = [];
+        const stackedNeutral = [];
+        const stackedNegative = [];
+        dummyData.months.forEach((_, i) => {
+            const total = dummyData.positive[i] + dummyData.neutral[i] + dummyData.negative[i];
+            stackedPositive.push(total ? (dummyData.positive[i] / total * 100) : 0);
+            stackedNeutral.push(total ? (dummyData.neutral[i] / total * 100) : 0);
+            stackedNegative.push(total ? (dummyData.negative[i] / total * 100) : 0);
+        });
+        // Chart update
+        const ctx = document.getElementById('monthlyChart')?.getContext('2d');
+        if (!ctx) return;
+            if (window.monthlyChartInstance) window.monthlyChartInstance.destroy();
+            window.monthlyChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dummyData.months,
+                    datasets: [
+                        {
+                            label: 'Positive',
+                            data: stackedPositive,
+                            backgroundColor: '#27AE60',
+                            borderRadius: 4,
+                            stack: 'sentiment',
+                            order: 2
+                        },
+                        {
+                            label: 'Neutral',
+                            data: stackedNeutral,
+                            backgroundColor: '#F39C12',
+                            borderRadius: 4,
+                            stack: 'sentiment',
+                            order: 2
+                        },
+                        {
+                            label: 'Negative',
+                            data: stackedNegative,
+                            backgroundColor: '#E74C3C',
+                            borderRadius: 4,
+                            stack: 'sentiment',
+                            order: 2
+                        },
+                        // Volume line (matches competitor_analysis theme)
+                        {
+                            label: 'Volume',
+                            data: dummyData.volume,
+                            type: 'line',
+                            yAxisID: 'y1',
+                            borderColor: '#3B82F6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.35,
+                            pointBackgroundColor: '#3B82F6',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 6,
+                            order: 1,
+                            borderCapStyle: 'round',
+                            borderJoinStyle: 'round'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 20 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.dataset.type === 'line') {
+                                        return 'Volume: ' + context.raw.toLocaleString() + ' mentions';
+                                    }
+                                    const value = context.parsed.y;
+                                    return context.dataset.label + ': ' + value.toFixed(1) + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+                        y: { beginAtZero: true, max: 100, grid: { display: true }, ticks: { font: { size: 12 }, callback: v => v + '%' }, stacked: true },
+                        y1: {
+                            display: true,
+                            position: 'right',
+                            beginAtZero: true,
+                            title: { display: true, text: 'Total Volume', font: { size: 14 } },
+                            grid: { drawOnChartArea: false },
+                            ticks: { font: { size: 11 }, callback: function(value) { return value.toLocaleString(); } }
+                        }
+                    }
+                }
+            });
+        // Update detailed insights and metrics
+        // Find best month (highest positive), peak volume, and trend
+        let bestMonthIdx = 0;
+        let bestMonthVal = dummyData.positive[0];
+        let peakVolumeIdx = 0;
+        let peakVolumeVal = dummyData.volume[0];
+        for (let i = 1; i < dummyData.months.length; i++) {
+            if (dummyData.positive[i] > bestMonthVal) {
+                bestMonthVal = dummyData.positive[i];
+                bestMonthIdx = i;
+            }
+            if (dummyData.volume[i] > peakVolumeVal) {
+                peakVolumeVal = dummyData.volume[i];
+                peakVolumeIdx = i;
+            }
+        }
+        // Dummy trend: compare first and last positive value
+        let trendChange = dummyData.positive[dummyData.positive.length-1] - dummyData.positive[0];
+        let trendDirection = trendChange >= 0 ? 'Positive' : 'Negative';
+        let trendGrowth = `${trendChange >= 0 ? '+' : ''}${trendChange.toFixed(1)}% growth`;
+
+        // Update metrics
+            // Only update values, not layout
+            const bestMonthElem = document.getElementById('bestMonth');
+            if (bestMonthElem) bestMonthElem.textContent = `${dummyData.months[bestMonthIdx]}`;
+            const bestMonthMetricElem = document.getElementById('bestMonthMetric');
+            if (bestMonthMetricElem) bestMonthMetricElem.textContent = `${bestMonthVal.toFixed(1)}% positive sentiment`;
+            const trendDirectionElem = document.getElementById('trendDirection');
+            if (trendDirectionElem) trendDirectionElem.textContent = trendDirection;
+            const trendDirectionMetricElem = document.getElementById('trendDirectionMetric');
+            if (trendDirectionMetricElem) trendDirectionMetricElem.textContent = trendGrowth;
+            const peakVolumeMonthElem = document.getElementById('peakVolumeMonth');
+            if (peakVolumeMonthElem) peakVolumeMonthElem.textContent = `${dummyData.months[peakVolumeIdx]}`;
+            const peakVolumeMetricElem = document.getElementById('peakVolumeMetric');
+            if (peakVolumeMetricElem) peakVolumeMetricElem.textContent = `${dummyData.volume[peakVolumeIdx].toLocaleString()} mentions`;
+
+            // Update only the text of monthlyInsightsList items, not layout
+            const insightsList = document.getElementById('monthlyInsightsList');
+            if (insightsList) {
+                const insightItems = insightsList.querySelectorAll('p.text-text-secondary');
+                const insights = [
+                    `${dummyData.months[bestMonthIdx]} achieved the highest positive sentiment at ${bestMonthVal.toFixed(1)}%.`,
+                    `Trend shows ${trendDirection.toLowerCase()} growth of ${trendGrowth}.`,
+                    `Peak engagement occurred in ${dummyData.months[peakVolumeIdx]} with ${dummyData.volume[peakVolumeIdx].toLocaleString()} mentions.`,
+                    `Sentiment distribution: ${dummyData.positive.map(v=>v.toFixed(1)).join('% / ')}% positive, ${dummyData.neutral.map(v=>v.toFixed(1)).join('% / ')}% neutral, ${dummyData.negative.map(v=>v.toFixed(1)).join('% / ')}% negative.`
+                ];
+                insightItems.forEach((item, idx) => {
+                    if (insights[idx]) item.textContent = insights[idx];
+                });
+            }
+}
+
+document.getElementById('applyDateFilter').addEventListener('click', updateMonthlyByDateRange);
+document.addEventListener('DOMContentLoaded', updateMonthlyByDateRange);
+// Fetch and update total volume dynamically
+fetch('../public/total_volume.json')
+  .then(response => response.json())
+  .then(data => {
+    const total = Object.values(data).reduce((sum, val) => sum + val, 0);
+    document.getElementById('total-volume').textContent = total.toLocaleString();
+  })
+  .catch(err => {
+    document.getElementById('total-volume').textContent = 'N/A';
+    console.error('Failed to load total volume:', err);
+  });
+// Fetch and update positive sentiment dynamically as a percentage
+Promise.all([
+  fetch('../public/positive_sentiment.json').then(r => r.json()),
+  fetch('../public/total_volume.json').then(r => r.json()),
+  fetch('../public/marketbeat_sentiment.json').then(r => r.json()),
+  fetch('../public/reddit_sentiment.json').then(r => r.json()),
+  fetch('../public/stocktwits_sentiment.json').then(r => r.json()),
+  fetch('../public/twitter_sentiment.json').then(r => r.json())
+])
+  .then(([positiveData, totalData, marketbeat, reddit, stocktwits, twitter]) => {
+    const totalPositive = Object.values(positiveData).reduce((sum, val) => sum + val, 0);
+    const totalVolume = Object.values(totalData).reduce((sum, val) => sum + val, 0);
+    const percentPositive = totalVolume > 0 ? (totalPositive / totalVolume) * 100 : 0;
+    document.getElementById('positive-sentiment').textContent = percentPositive.toFixed(1) + '%';
+
+    // Calculate (Positive + Neutral) for all platforms
+    const totalNeutral = marketbeat.Neutral + reddit.Neutral + stocktwits.Neutral + twitter.Neutral;
+    const percentOverall = totalVolume > 0 ? ((totalPositive + totalNeutral) / totalVolume) * 100 : 0;
+    document.getElementById('overall-sentiment').textContent = percentOverall.toFixed(1) + '%';
+  })
+  .catch(err => {
+    document.getElementById('positive-sentiment').textContent = 'N/A';
+    document.getElementById('overall-sentiment').textContent = 'N/A';
+    console.error('Failed to load sentiment data:', err);
+  });
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        const marketbeatIcon = document.getElementById('marketbeatIcon');
+        const redditIcon = document.getElementById('redditIcon');
+        const marketbeatSection = document.getElementById('marketbeatSection');
+        const redditSection = document.getElementById('redditSection');
+        const pageTitle = document.getElementById('page-title');
+        const pageDesc = document.getElementById('page-desc');
+        const breadcrumbTitle = document.getElementById('breadcrumb-title');
+        const dashboardSummaryCards = document.getElementById('dashboardSummaryCards');
+const marketbeatYearlySection = document.getElementById('marketbeatYearlySection');
+        const marketbeatButtonsRow = document.getElementById('marketbeatButtonsRow');
+        const marketbeatSummaryCards = document.getElementById('marketbeatSummaryCards');
+    
+        if (marketbeatIcon && pageTitle && pageDesc && breadcrumbTitle) {
+            marketbeatIcon.addEventListener('click', function() {
+                pageTitle.textContent = 'MarketBeat Overview';
+                pageDesc.textContent = 'Detailed MarketBeat sentiment and engagement analytics';
+                breadcrumbTitle.textContent = 'MarketBeat Overview';
+                if (dashboardSummaryCards) dashboardSummaryCards.classList.add('mb-0');
+                if (marketbeatYearlySection) marketbeatYearlySection.classList.add('marketbeat-overlap');
+                if (marketbeatSection) marketbeatSection.classList.remove('hidden');
+                if (redditSection) redditSection.classList.add('hidden');
+                marketbeatIcon.classList.add('border-primary');
+                redditIcon.classList.remove('border-primary');
+            });
+        }
+        if (redditIcon && pageTitle && pageDesc && breadcrumbTitle) {
+            redditIcon.addEventListener('click', function() {
+                pageTitle.textContent = 'Reddit Overview';
+                pageDesc.textContent = 'Detailed Reddit sentiment and engagement analytics';
+                breadcrumbTitle.textContent = 'Reddit Overview';
+                if (dashboardSummaryCards) dashboardSummaryCards.classList.add('mb-0');
+                if (marketbeatYearlySection) marketbeatYearlySection.classList.add('marketbeat-overlap');
+                if (marketbeatSection) marketbeatSection.classList.add('hidden');
+                if (redditSection) redditSection.classList.remove('hidden');
+                marketbeatIcon.classList.remove('border-primary');
+                redditIcon.classList.add('border-primary');
+            });
+        }
+    });
+</script>
+<style>
+#marketbeatYearlySection.marketbeat-overlap {
+  margin-top: -180px !important;
+  margin-bottom: -180px !important;
+}
+</style>
+</body>
+</html>

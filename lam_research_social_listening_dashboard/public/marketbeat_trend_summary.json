@@ -1,0 +1,12 @@
+{
+  "trend_direction": "Declining",
+  "peak_volume": {
+    "value": 3500,
+    "month": "Feb 2024"
+  },
+  "avg_sentiment": 22.9,
+  "volatility_index": {
+    "level": "Low",
+    "variance": 12.3
+  }
+} 

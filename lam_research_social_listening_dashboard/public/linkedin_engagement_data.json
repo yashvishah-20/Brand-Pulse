@@ -1,0 +1,59 @@
+{
+  "last_updated": "2025-07-07T18:52:06.657086",
+  "total_posts": 695,
+  "total_engagements": 175739,
+  "engagement_rate": 7.3,
+  "engagement_breakdown": {
+    "likes": 166382,
+    "appreciations": 5556,
+    "empathy": 2418,
+    "interests": 1383
+  },
+  "engagement_percentages": {
+    "likes": {
+      "count": 166382,
+      "percentage": 94.7
+    },
+    "appreciations": {
+      "count": 5556,
+      "percentage": 3.2
+    },
+    "empathy": {
+      "count": 2418,
+      "percentage": 1.4
+    },
+    "interests": {
+      "count": 1383,
+      "percentage": 0.8
+    }
+  },
+  "raw_totals": {
+    "likes": 166382,
+    "appreciations": 421,
+    "empathy": 2418,
+    "interests": 1338,
+    "praise": 5135,
+    "funny": 45,
+    "total_reactions": 175739
+  },
+  "chart_data": {
+    "labels": [
+      "Likes",
+      "Appreciations",
+      "Empathy",
+      "Interests"
+    ],
+    "data": [
+      166382,
+      5556,
+      2418,
+      1383
+    ],
+    "backgroundColor": [
+      "#FF6B35",
+      "#3498DB",
+      "#27AE60",
+      "#F39C12"
+    ]
+  }
+}

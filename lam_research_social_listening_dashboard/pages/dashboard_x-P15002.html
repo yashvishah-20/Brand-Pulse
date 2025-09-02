@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Back Button -->
+    <button onclick="window.location.href='dashboard_overview.html'" 
+        style="margin-bottom: 12px; padding: 4px 10px; font-size: 0.9rem; background: #ff7300; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        ← Back
+    </button>
+    <div class="flex min-h-screen">
+        <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-medium text-text-primary mr-2">Platform:</span>
+                    <a href="dashboard_marketbeat.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                      <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                    </a>
+                    <a href="dashboard_reddit.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                      <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                    </a>
+                    <a href="dashboard_stocktwits.html" class="platform-btn" title="StockTwits" aria-label="StockTwits">
+                      <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                    </a>
+                    <a href="dashboard_x.html" class="platform-btn" title="X" aria-label="X">
+                      <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                    </a>
+                    <a href="dashboard_linkedin.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                      <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                    </a>
+                    <a href="dashboard_google.html" class="platform-btn" title="Google" aria-label="Google">
+                      <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                    </a>
+                    <a href="dashboard_glassdoor.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                      <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                    </a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-text-primary">Date Range:</span>
+                    <select id="dateRangeSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-fast">
+                        <option value="3months">Last 3 Months</option>
+                        <option value="6months">Last 6 Months</option>
+                        <option value="12months" selected>Last 12 Months</option>
+                        <option value="2years">Last 2 Years</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Summary Cards -->
+            <div id="dashboardSummaryCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Total Volume Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="total-volume">13,362</p>
+                            <p class="text-sm text-error-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-4 h-4 text-error-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">70%</span>
+                                </span>
+                                <span class="block">decreased by 70% from last year</span>
+                            </p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Engagement Rate Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Engagement Rate</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="engagement-rate">17.46</p>
+                            <p class="text-sm text-text-secondary mt-1">Avg. engagements per post</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Brand Health Score Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Brand Health Score</p>
+                            <p class="text-2xl font-bold text-primary mt-1" id="brand-health-score">31/100</p>
+                            <p class="text-sm text-text-secondary mt-1">Composite of sentiment, volume, and engagement</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- X Overview Title -->
+            <h2 class="text-2xl font-bold mb-4">X Overview</h2>
+            <!-- Tab Bar -->
+            <div class="flex gap-4 mb-8">
+                <button id="showEngagement" class="flex-1 px-6 py-3 text-lg font-semibold text-white bg-primary rounded-md shadow">Engagement</button>
+                <button id="showTrends" class="flex-1 px-6 py-3 text-lg font-semibold text-primary border-2 border-primary rounded-md shadow">Trends</button>
+            </div>
+            <div id="performanceView">
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <h3 class="text-lg font-semibold mb-2">Engagement Content</h3>
+                    <p>Placeholder for X engagement analytics...</p>
+                </div>
+            </div>
+            <div id="trendsView" class="hidden">
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <h3 class="text-lg font-semibold mb-2">Trends Content</h3>
+                    <p>Placeholder for X trends analytics...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+    </script>
+</body>
+</html> 

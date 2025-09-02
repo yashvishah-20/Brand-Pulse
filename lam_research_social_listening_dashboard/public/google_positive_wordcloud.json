@@ -1,0 +1,208 @@
+{
+  "sentiment": "positive",
+  "total_reviews": 219,
+  "total_words": 4622,
+  "unique_words": 1445,
+  "words": [
+    {
+      "text": "banner",
+      "size": 103
+    },
+    {
+      "text": "always",
+      "size": 84
+    },
+    {
+      "text": "great",
+      "size": 54
+    },
+    {
+      "text": "helpful",
+      "size": 52
+    },
+    {
+      "text": "friendly",
+      "size": 47
+    },
+    {
+      "text": "all",
+      "size": 47
+    },
+    {
+      "text": "business",
+      "size": 41
+    },
+    {
+      "text": "out",
+      "size": 39
+    },
+    {
+      "text": "best",
+      "size": 37
+    },
+    {
+      "text": "account",
+      "size": 36
+    },
+    {
+      "text": "help",
+      "size": 32
+    },
+    {
+      "text": "experience",
+      "size": 30
+    },
+    {
+      "text": "any",
+      "size": 29
+    },
+    {
+      "text": "here",
+      "size": 29
+    },
+    {
+      "text": "manager",
+      "size": 27
+    },
+    {
+      "text": "time",
+      "size": 27
+    },
+    {
+      "text": "thank",
+      "size": 26
+    },
+    {
+      "text": "from",
+      "size": 26
+    },
+    {
+      "text": "years",
+      "size": 26
+    },
+    {
+      "text": "love",
+      "size": 26
+    },
+    {
+      "text": "professional",
+      "size": 25
+    },
+    {
+      "text": "recommend",
+      "size": 24
+    },
+    {
+      "text": "not",
+      "size": 23
+    },
+    {
+      "text": "about",
+      "size": 23
+    },
+    {
+      "text": "amazing",
+      "size": 23
+    },
+    {
+      "text": "card",
+      "size": 21
+    },
+    {
+      "text": "accounts",
+      "size": 21
+    },
+    {
+      "text": "team",
+      "size": 21
+    },
+    {
+      "text": "over",
+      "size": 20
+    },
+    {
+      "text": "made",
+      "size": 20
+    },
+    {
+      "text": "people",
+      "size": 20
+    },
+    {
+      "text": "when",
+      "size": 20
+    },
+    {
+      "text": "needs",
+      "size": 19
+    },
+    {
+      "text": "questions",
+      "size": 19
+    },
+    {
+      "text": "what",
+      "size": 19
+    },
+    {
+      "text": "went",
+      "size": 19
+    },
+    {
+      "text": "loan",
+      "size": 19
+    },
+    {
+      "text": "banks",
+      "size": 19
+    },
+    {
+      "text": "never",
+      "size": 19
+    },
+    {
+      "text": "there",
+      "size": 18
+    },
+    {
+      "text": "needed",
+      "size": 18
+    },
+    {
+      "text": "way",
+      "size": 18
+    },
+    {
+      "text": "really",
+      "size": 18
+    },
+    {
+      "text": "helped",
+      "size": 17
+    },
+    {
+      "text": "don",
+      "size": 17
+    },
+    {
+      "text": "make",
+      "size": 17
+    },
+    {
+      "text": "how",
+      "size": 16
+    },
+    {
+      "text": "easy",
+      "size": 16
+    },
+    {
+      "text": "feel",
+      "size": 16
+    },
+    {
+      "text": "care",
+      "size": 16
+    }
+  ]
+}

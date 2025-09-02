@@ -1,0 +1,852 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+    <style>
+  .active-platform {
+    box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+    border-radius: 12px;
+    outline: none;
+    z-index: 1;
+    transition: box-shadow 0.2s;
+  }
+</style>
+</head>
+<body class="bg-background font-inter">
+    <!-- Logo at the top, acts as a back button -->
+    <a href="dashboard_overview2.html" style="text-decoration: none;">
+      <div style="display: flex; align-items: center; margin-bottom: 12px; cursor: pointer;">
+        <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+      </div>
+    </a>
+    <div class="flex min-h-screen">
+        <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook2.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x2.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Google -->
+                <a href="dashboard_google2.html" class="platform-btn" title="Google" aria-label="Google">
+                    <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram2.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit2.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat2.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                    <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                </a>
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor2.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                    <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                </a>
+                <!-- StockTwits -->
+                <a href="dashboard_stocktwits2.html" class="platform-btn" title="StockTwits" aria-label="StockTwits">
+                    <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin2.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <!-- Summary Cards -->
+            <div id="dashboardSummaryCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Total Volume Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="total-volume">9,317</p>
+                            <p class="text-sm text-success-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-4 h-4 text-success-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">8%</span>
+                                </span>
+                                <span class="block">increased by 8% from last year</span>
+                            </p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Engagement Rate Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Engagements</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="engagement-rate">464</p>
+                            <p class="text-sm text-text-secondary mt-1">Reviews only (measures direct user feedback)</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sentiment Trends Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Sentiment Trends</p>
+                            <div class="mt-2 space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Positive:</span>
+                                    <span class="text-sm font-semibold text-success-600">â†— +5.2%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Neutral:</span>
+                                    <span class="text-sm font-semibold text-warning-500">â†˜ -2.1%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Negative:</span>
+                                    <span class="text-sm font-semibold text-error-500">â†˜ -3.1%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Google Overview Title -->
+            <h2 class="text-2xl font-bold mb-4">Google Overview</h2>
+            <!-- Tab Bar -->
+            <div class="flex gap-4 mb-8">
+                <!-- <button id="showEngagement" class="flex-1 px-6 py-3 text-lg font-semibold text-white bg-primary rounded-md shadow">Engagement</button> -->
+                <!-- <button id="showTrends" class="flex-1 px-6 py-3 text-lg font-semibold text-primary border-2 border-primary rounded-md shadow">Trends</button> -->
+            </div>
+            <div id="performanceView">
+                <!-- Google Yearly Sentiment Analysis (moved to top) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Yearly Sentiment Analysis</h3>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="googleBarChart" width="800" height="384"></canvas>
+                    </div>
+                    <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p id="googlePositive" class="text-2xl font-bold text-success-600">...</p>
+                            <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="googleNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                            <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="googleNegative" class="text-2xl font-bold text-error-500">...</p>
+                            <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Google Sentiment Trends Over Time (moved from Trends tab) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-semibold text-text-primary">Google Sentiment Trends Over Time</h2>
+                            <p id="googleTrendsSubtitle" class="text-sm text-text-secondary mt-1">Google - Last 12 Months</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Time Range Slider -->
+                    <div class="flex items-center mb-4">
+                        <span class="mr-2 text-gray-500 font-medium">Range:</span>
+                        <span id="googleSliderLabel6m" class="text-gray-500" style="min-width: 2.5em;">6m</span>
+                        <input
+                            type="range"
+                            id="googleTrendRangeSlider"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            style="accent-color: #ff7300; width: 180px; margin: 0 10px; background: transparent;"
+                        />
+                        <span id="googleSliderLabel2y" class="text-gray-500" style="min-width: 2.5em;">2y</span>
+                        <span id="googleSliderRangeBadge" class="ml-3 px-3 py-1 rounded-xl" style="background: #ffe5d0; color: #c2410c; font-weight: 600; font-size: 1.2em;">1y</span>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="googleTrendsChart" class="w-full h-full"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Google Activity Radar (by Month) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Google Activity Radar (by Month)</h3>
+                        <div>
+                            <select id="googleMonthlyRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="relative h-96 flex items-center justify-center">
+                        <canvas id="googleMonthlyActivityRadarChart" width="400" height="384"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Google Engagement Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                    <!-- Google Activity Radar -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Google Activity Radar</h3>
+                        <div class="relative h-96 flex items-center justify-center">
+                            <canvas id="googleRadarChart" width="400" height="384"></canvas>
+                        </div>
+                    </div>
+                    <!-- User Activity Patterns -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Patterns</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-sm font-medium text-text-secondary mb-3">Peak Hours (EST)</h4>
+                                <div id="googlePeakHours" class="grid grid-cols-4 gap-2 w-full">
+                                    <!-- Peak hours will be loaded here by JS -->
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-text-secondary mb-3">Google Activity</h4>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-text-primary">Total Searches</span>
+                                        <span id="googleTotalSearches" class="text-sm font-medium text-text-primary">Loading...</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-text-primary">Total Mentions</span>
+                                        <span id="googleTotalMentions" class="text-sm font-medium text-text-primary">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Word Cloud Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                    <!-- Positive Word Cloud -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Positive Sentiment Word Cloud</h3>
+                        <div class="relative h-80 bg-white rounded-lg border border-border-light">
+                            <canvas id="positiveWordCloud" width="500" height="320" class="w-full h-full"></canvas>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-text-secondary">Most frequent words in positive reviews</p>
+                            <p id="positiveWordCount" class="text-xs text-text-secondary mt-1">Loading...</p>
+                        </div>
+                    </div>
+                    <!-- Negative Word Cloud -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Negative Sentiment Word Cloud</h3>
+                        <div class="relative h-80 bg-white rounded-lg border border-border-light">
+                            <canvas id="negativeWordCloud" width="500" height="320" class="w-full h-full"></canvas>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-text-secondary">Most frequent words in negative reviews</p>
+                            <p id="negativeWordCount" class="text-xs text-text-secondary mt-1">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="trendsView" class="hidden">
+                <!-- (REMOVED: Google Sentiment Trends Over Time chart moved to Engagement tab) -->
+            </div>
+        </main>
+    </div>
+    <script>
+    // Tab switching functionality
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+
+    // Google Charts with Dummy Data
+    let googleRadarChart = null;
+    let googleBarChart = null;
+    let googleMonthlyActivityRadarChart = null;
+    let googleMonthlyActivityRadarRawData = null;
+
+    // Dummy data for Google activity radar
+    const googleRadarData = {
+        labels: ['Morning (6-9AM)', 'Workday (9AM-12PM)', 'Lunch (12-2PM)', 'Afternoon (2-5PM)', 'Evening (5-8PM)', 'Night (8-11PM)', 'Late Night (11PM-2AM)', 'Early Hours (2-6AM)'],
+        data: [75, 120, 85, 95, 110, 65, 30, 15]
+    };
+
+    // Dummy data for peak hours
+    const googlePeakHoursData = [
+        { slot: '6-9AM', count: 75, level: 'Medium' },
+        { slot: '9AM-12PM', count: 120, level: 'High' },
+        { slot: '12-2PM', count: 85, level: 'Medium' },
+        { slot: '2-5PM', count: 95, level: 'Medium' },
+        { slot: '5-8PM', count: 110, level: 'High' },
+        { slot: '8-11PM', count: 65, level: 'Low' },
+        { slot: '11PM-2AM', count: 30, level: 'Low' },
+        { slot: '2-6AM', count: 15, level: 'Low' }
+    ];
+
+    // Dummy data for yearly sentiment
+    const googleYearlyData = {
+        years: ['2021', '2022', '2023', '2024'],
+        positive: [45.2, 52.1, 48.7, 51.3],
+        neutral: [35.8, 32.4, 36.2, 33.9],
+        negative: [19.0, 15.5, 15.1, 14.8]
+    };
+
+    function loadGoogleRadarChart() {
+        const ctx = document.getElementById('googleRadarChart');
+        if (!ctx) return;
+        
+        // Destroy previous chart if exists
+        if (googleRadarChart) googleRadarChart.destroy();
+        
+        googleRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: googleRadarData.labels,
+                datasets: [{
+                    label: 'Search Activity by Time',
+                    data: googleRadarData.data,
+                    fill: true,
+                    backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                    borderColor: '#4A90E2',
+                    pointBackgroundColor: '#FF6B35',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#FF6B35',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#374151',
+                            font: { size: 16, weight: 'bold' }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function loadGooglePeakHours() {
+        const container = document.getElementById('googlePeakHours');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        // Find max count for highlighting
+        let maxCount = Math.max(...googlePeakHoursData.map(slot => slot.count));
+        
+        googlePeakHoursData.forEach(slot => {
+            let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+            let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+            let level = slot.count === maxCount ? 'High' : (slot.count > 50 ? 'Medium' : 'Low');
+            
+            container.innerHTML += `
+                <div class="text-center p-2 ${bg} rounded">
+                    <p class="text-sm font-medium ${text}">${slot.slot}</p>
+                    <p class="text-xs text-text-secondary">${level} (${slot.count})</p>
+                </div>
+            `;
+        });
+    }
+
+    function loadGoogleActivityStats() {
+        document.getElementById('googleTotalSearches').textContent = '24,750';
+        document.getElementById('googleTotalMentions').textContent = '15,420';
+    }
+
+    function initializeGoogleBarChart() {
+        const ctx = document.getElementById('googleBarChart');
+        if (!ctx) return;
+
+        new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: googleYearlyData.years,
+                datasets: [
+                    {
+                        label: 'Positive',
+                        data: googleYearlyData.positive,
+                        backgroundColor: '#27AE60',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Neutral',
+                        data: googleYearlyData.neutral,
+                        backgroundColor: '#F39C12',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Negative',
+                        data: googleYearlyData.negative,
+                        backgroundColor: '#E74C3C',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 12 } }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F3F4F6' },
+                        ticks: { 
+                            font: { size: 12 },
+                            callback: function(value) { return value + '%'; }
+                        },
+                        max: 60
+                    }
+                }
+            }
+        });
+
+        // Set the latest year's sentiment values
+        const lastIdx = googleYearlyData.years.length - 1;
+        const pos = googleYearlyData.positive[lastIdx];
+        const neu = googleYearlyData.neutral[lastIdx];
+        const neg = googleYearlyData.negative[lastIdx];
+        
+        document.getElementById('googlePositive').textContent = pos.toFixed(1) + '%';
+        document.getElementById('googleNeutral').textContent = neu.toFixed(1) + '%';
+        document.getElementById('googleNegative').textContent = neg.toFixed(1) + '%';
+    }
+
+    // Google Monthly Activity Radar Chart
+    async function loadGoogleMonthlyActivityRadarChart() {
+        try {
+            // Create dummy data for Google Monthly Activity Radar
+            const dummyData = {
+                labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                values: [2150, 2350, 2550, 2450, 2650, 2550, 2750, 2950, 2650, 2850, 2950, 3150, 3050, 3250, 3450, 3250, 3550, 3450, 3750, 3950, 3650, 3850, 3950, 4150]
+            };
+            
+            googleMonthlyActivityRadarRawData = dummyData;
+            const yearSelect = document.getElementById('googleMonthlyRadarYearSelect');
+            if (yearSelect) {
+                // Extract years from labels (format: 'Month YYYY')
+                const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+                yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                yearSelect.onchange = function() { renderGoogleMonthlyActivityRadarChart(this.value); };
+            }
+            renderGoogleMonthlyActivityRadarChart('all');
+        } catch (e) {
+            const ctx = document.getElementById('googleMonthlyActivityRadarChart');
+            if (ctx) {
+                ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Google Monthly Activity Radar chart data.</div>';
+            }
+        }
+    }
+    
+    function renderGoogleMonthlyActivityRadarChart(selectedYear) {
+        const ctx = document.getElementById('googleMonthlyActivityRadarChart');
+        if (!ctx || !googleMonthlyActivityRadarRawData) return;
+        if (googleMonthlyActivityRadarChart) googleMonthlyActivityRadarChart.destroy();
+        
+        let labels = googleMonthlyActivityRadarRawData.labels;
+        let values = googleMonthlyActivityRadarRawData.values;
+        if (selectedYear && selectedYear !== 'all') {
+            labels = googleMonthlyActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+            values = labels.map(l => {
+                const idx = googleMonthlyActivityRadarRawData.labels.indexOf(l);
+                return googleMonthlyActivityRadarRawData.values[idx];
+            });
+        }
+        
+        googleMonthlyActivityRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Google Activity by Month',
+                    data: values,
+                    fill: true,
+                    backgroundColor: 'rgba(66, 133, 244, 0.2)',
+                    borderColor: '#4285F4',
+                    pointBackgroundColor: '#4285F4',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#4285F4',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#4285F4',
+                            font: { weight: 'bold' }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#4285F4', font: { weight: 'bold' } },
+                        ticks: { color: '#374151' }
+                    }
+                },
+                animation: {
+                    duration: 1200,
+                    easing: 'easeInOutQuart'
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest'
+                }
+            }
+        });
+    }
+
+    // Initialize charts when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('performanceView')) {
+            loadGoogleRadarChart();
+            loadGooglePeakHours();
+            loadGoogleActivityStats();
+            initializeGoogleBarChart();
+            loadGoogleWordClouds();
+            loadGoogleMonthlyActivityRadarChart();
+        }
+        // Initialize trends chart
+        initializeGoogleTrendsChart();
+        const platformBtns = document.querySelectorAll('.platform-btn');
+        const currentPage = window.location.pathname.split('/').pop();
+        platformBtns.forEach(btn => {
+          const href = btn.getAttribute('href');
+          if (href && href === currentPage) {
+            btn.classList.add('active-platform');
+          }
+        });
+    });
+
+    // Word Cloud Functions
+    async function loadGoogleWordClouds() {
+        await loadPositiveWordCloud();
+        await loadNegativeWordCloud();
+    }
+
+    async function loadPositiveWordCloud() {
+        try {
+            const response = await fetch('../public/google_positive_wordcloud.json');
+            if (!response.ok) throw new Error('Failed to load positive wordcloud data');
+            const data = await response.json();
+            
+            const canvas = document.getElementById('positiveWordCloud');
+            if (!canvas) return;
+
+            // Prepare word cloud data
+            const wordList = data.words.map(word => [word.text, word.size]);
+            
+            // Clear canvas
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Create word cloud
+            WordCloud(canvas, {
+                list: wordList,
+                gridSize: Math.round(25 * canvas.width / 1024),
+                weightFactor: function (size) {
+                    return Math.pow(size, 1.0) * canvas.width / 512;
+                },
+                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                fontWeight: '600',
+                color: function () {
+                    // Green color variations for positive sentiment
+                    const colors = ['#27AE60', '#2ECC71', '#16A085', '#48C9B0', '#52C41A'];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                },
+                rotateRatio: 0.2,
+                backgroundColor: '#ffffff',
+                minSize: 8,
+                drawOutOfBound: false,
+                shrinkToFit: true
+            });
+
+            // Update stats
+            document.getElementById('positiveWordCount').textContent = 
+                `${data.total_reviews} reviews â€¢ ${data.total_words} words â€¢ Top ${data.words.length} displayed`;
+
+        } catch (error) {
+            console.error('Error loading positive word cloud:', error);
+            const canvas = document.getElementById('positiveWordCloud');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#6B7280';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Error loading word cloud', canvas.width/2, canvas.height/2);
+            }
+        }
+    }
+
+    async function loadNegativeWordCloud() {
+        try {
+            const response = await fetch('../public/google_negative_wordcloud_data.json');
+            if (!response.ok) throw new Error('Failed to load negative wordcloud data');
+            const data = await response.json();
+            
+            const canvas = document.getElementById('negativeWordCloud');
+            if (!canvas) return;
+
+            // Prepare word cloud data
+            const wordList = data.words.map(word => [word.text, word.size]);
+            
+            // Clear canvas
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Create word cloud
+            WordCloud(canvas, {
+                list: wordList,
+                gridSize: Math.round(25* canvas.width / 1024),
+                weightFactor: function (size) {
+                    return Math.pow(size, 1.0) * canvas.width / 512;
+                },
+                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                fontWeight: '600',
+                color: function () {
+                    // Red color variations for negative sentiment
+                    const colors = ['#E74C3C', '#DC3545', '#C0392B', '#E55353', '#FF4757'];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                },
+                rotateRatio: 0.2,
+                backgroundColor: '#ffffff',
+                minSize: 8,
+                drawOutOfBound: false,
+                shrinkToFit: true
+            });
+
+            // Update stats
+            document.getElementById('negativeWordCount').textContent = 
+                `${data.total_reviews} reviews â€¢ ${data.total_words} words â€¢ Top ${data.words.length} displayed`;
+
+        } catch (error) {
+            console.error('Error loading negative word cloud:', error);
+            const canvas = document.getElementById('negativeWordCloud');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#6B7280';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Error loading word cloud', canvas.width/2, canvas.height/2);
+            }
+        }
+    }
+
+    // Google Trends Line Chart with dummy data
+    let googleTrendsChart = null;
+    const googleTrendsDataAll = {
+      '6m': {
+        labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        positive: [51, 52, 53, 54, 55, 56],
+        neutral: [33, 34, 35, 36, 37, 38],
+        negative: [16, 14, 12, 10, 8, 6]
+      },
+      '1y': {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        positive: [48.5, 51.2, 49.8, 52.1, 50.4, 53.2, 51.8, 49.6, 52.5, 50.9, 53.1, 51.3],
+        neutral: [35.2, 33.8, 36.1, 32.4, 34.7, 31.9, 33.5, 35.8, 32.1, 34.3, 31.7, 33.9],
+        negative: [16.3, 15.0, 14.1, 15.5, 14.9, 14.9, 14.7, 14.6, 15.4, 14.8, 15.2, 14.8]
+      },
+      '2y': {
+        labels: [
+          'Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23',
+          'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23',
+          'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24',
+          'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'
+        ],
+        positive: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48.5, 51.2, 49.8, 52.1, 50.4, 53.2, 51.8, 49.6, 52.5, 50.9, 53.1, 51.3],
+        neutral: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 35.2, 33.8, 36.1, 32.4, 34.7, 31.9, 33.5, 35.8, 32.1, 34.3, 31.7, 33.9],
+        negative: [20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 1, 0, 16.3, 15.0, 14.1, 15.5, 14.9, 14.9, 14.7, 14.6, 15.4, 14.8, 15.2, 14.8]
+      }
+    };
+
+    function initializeGoogleTrendsChart(range = '1y') {
+      const ctx = document.getElementById('googleTrendsChart');
+      if (!ctx) return;
+      const data = googleTrendsDataAll[range];
+      if (googleTrendsChart) googleTrendsChart.destroy();
+      googleTrendsChart = new Chart(ctx.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: data.labels,
+          datasets: [
+            { label: 'Positive', data: data.positive, borderColor: '#27AE60', backgroundColor: 'rgba(39, 174, 96, 0.1)', borderWidth: 3, fill: true, tension: 0.4 },
+            { label: 'Neutral', data: data.neutral, borderColor: '#F39C12', backgroundColor: 'rgba(243, 156, 18, 0.1)', borderWidth: 3, fill: true, tension: 0.4 },
+            { label: 'Negative', data: data.negative, borderColor: '#E74C3C', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 3, fill: true, tension: 0.4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 } } },
+            y: { beginAtZero: true, max: 100, grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } } }
+          }
+        }
+      });
+    }
+
+    const googleRangeToSubtitle = {
+      '6m': 'Google - Last 6 Months',
+      '1y': 'Google - Last 12 Months',
+      '2y': 'Google - Last 24 Months'
+    };
+    function updateGoogleTrendsSubtitle(rangeKey) {
+      const subtitle = document.getElementById('googleTrendsSubtitle');
+      if (subtitle) {
+        subtitle.textContent = googleRangeToSubtitle[rangeKey];
+      }
+    }
+
+    const googleSliderValueToRange = { 0: '6m', 1: '1y', 2: '2y' };
+    const googleSliderValueToLabel = { 0: '6m', 1: '1y', 2: '2y' };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const googleTrendRangeSlider = document.getElementById('googleTrendRangeSlider');
+      const googleSliderRangeBadge = document.getElementById('googleSliderRangeBadge');
+      if (googleTrendRangeSlider && googleSliderRangeBadge) {
+        googleTrendRangeSlider.addEventListener('input', function() {
+          const label = googleSliderValueToLabel[this.value];
+          googleSliderRangeBadge.textContent = label;
+          const rangeKey = googleSliderValueToRange[this.value];
+          initializeGoogleTrendsChart(rangeKey);
+          updateGoogleTrendsSubtitle(rangeKey);
+          document.getElementById('googleSliderLabel6m').style.color = this.value == 0 ? '#ff7300' : '#6B7280';
+          document.getElementById('googleSliderLabel2y').style.color = this.value == 2 ? '#ff7300' : '#6B7280';
+        });
+        googleSliderRangeBadge.textContent = googleSliderValueToLabel[googleTrendRangeSlider.value];
+        document.getElementById('googleSliderLabel6m').style.color = googleTrendRangeSlider.value == 0 ? '#ff7300' : '#6B7280';
+        document.getElementById('googleSliderLabel2y').style.color = googleTrendRangeSlider.value == 2 ? '#ff7300' : '#6B7280';
+        const initialRangeKey = googleSliderValueToRange[googleTrendRangeSlider.value];
+        initializeGoogleTrendsChart(initialRangeKey);
+        updateGoogleTrendsSubtitle(initialRangeKey);
+      } else {
+        initializeGoogleTrendsChart('1y');
+        updateGoogleTrendsSubtitle('1y');
+      }
+    });
+    </script>
+</body>
+</html> 
+

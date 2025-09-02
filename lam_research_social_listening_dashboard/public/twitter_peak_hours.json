@@ -1,0 +1,36 @@
+{
+  "peak_hours": [
+    {
+      "slot": "12-3 AM",
+      "count": 46
+    },
+    {
+      "slot": "3-6 AM",
+      "count": 59
+    },
+    {
+      "slot": "6-9 AM",
+      "count": 56
+    },
+    {
+      "slot": "9 AM-12 PM",
+      "count": 74
+    },
+    {
+      "slot": "12-3 PM",
+      "count": 109
+    },
+    {
+      "slot": "3-6 PM",
+      "count": 119
+    },
+    {
+      "slot": "6-9 PM",
+      "count": 106
+    },
+    {
+      "slot": "9 PM-12 AM",
+      "count": 64
+    }
+  ]
+}

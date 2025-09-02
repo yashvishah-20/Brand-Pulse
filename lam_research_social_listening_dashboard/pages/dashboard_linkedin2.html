@@ -1,0 +1,2197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Overview - Prowess Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+  .active-platform {
+    box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+    border-radius: 12px;
+    outline: none;
+    z-index: 1;
+    transition: box-shadow 0.2s;
+  }
+</style>
+</head>
+<body class="bg-background font-inter">
+    <!-- Hover Trigger Zone for Sidebar -->
+    <div id="sidebarTrigger" class="fixed left-0 top-0 w-4 h-full z-50 opacity-0 pointer-events-auto"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="w-1/4 bg-surface shadow-card border-r border-border-light fixed h-full overflow-y-auto z-40 transition-all duration-300 ease-in-out" style="transform: translateX(-100%);">
+        <!-- Logo Section -->
+        <div class="p-6 border-b border-border-light">
+            <a href="dashboard_overview.html" style="text-decoration: none;">
+              <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 12px; cursor: pointer;">
+                <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+              </div>
+            </a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="p-4">
+            <!-- Your Company Section -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Your Company</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="dashboard_overview.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                            <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                            </svg>
+                            Sentiment
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard_facebook2.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                            <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            Engagement
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Competitors Company Section -->
+            <div>
+                <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Competitors Company</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="competitor_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                            <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 11H7v9h2v-9zm4 0h-2v9h2v-9zm4 0h-2v9h2v-9zm2.5-5H18V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2H4.5c-.83 0-1.5.67-1.5 1.5S3.67 9 4.5 9H6v10c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9h1.5c.83 0 1.5-.67 1.5-1.5S20.33 6 19.5 6zM10 4h4v2h-4V4z"/>
+                            </svg>
+                            Competitor Analysis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="mainContent" class="flex-1 p-6 transition-all duration-300 ease-in-out">
+        <!-- Header Section with Logo and Date Filter -->
+        <div class="flex items-center justify-between mb-6">
+            <!-- Left side - Logo -->
+            <div class="flex items-center">
+                <a href="dashboard_overview.html" style="text-decoration: none;">
+                    <div style="display: flex; align-items: center; cursor: pointer;">
+                        <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Right side - Date Filter -->
+            <div class="flex items-center space-x-4">
+                <!-- Date Range Filter -->
+                <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                        <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2024-01-01">
+                    </div>
+                    <div class="text-text-secondary">—</div>
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-text-secondary">TO:</label>
+                        <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2024-12-31">
+                    </div>
+                    <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        Apply
+                    </button>
+                </div>
+                <!-- Export Report Button -->
+                <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                    <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 20h14v-2H5v2zm7-18v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    Export Report
+                </a>
+            </div>
+        </div>
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook2.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x2.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram2.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit2.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin2.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <div id="performanceView">
+                <!-- COMPREHENSIVE LINKEDIN ANALYTICS - Enhanced Deep Charts Section -->
+                
+                <!-- LinkedIn header removed per request -->
+
+                <!-- Platform Performance Metrics -->
+                <div class="flex flex-row gap-2 mb-8" style="flex-wrap: nowrap;">
+                    <!-- Professional Engagement -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Professional Engagement</h4>
+                                <p id="engagementValue" class="text-lg font-bold text-text-primary mb-2">96.2%</p>
+                                <div class="flex items-center">
+                                    <span id="engagementChange" style="background:none;color:#16a34a;" class="inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +7.2% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Quality -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Content Quality</h4>
+                                <p id="qualityValue" class="text-lg font-bold text-text-primary mb-2">88.7%</p>
+                                <div class="flex items-center">
+                                    <span id="qualityChange" style="background:none;color:#16a34a;" class="inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +5.8% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Followers -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Total Followers</h4>
+                                <p id="followersValue" class="text-lg font-bold text-text-primary mb-2">900K</p>
+                                <div class="flex items-center">
+                                    <span id="followersChange" style="background:none;color:#16a34a;" class="ml-2 inline-flex items-center text-xs font-medium flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +32.4% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-secondary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Posts -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Total Posts</h4>
+                                <p id="postsValue" class="text-lg font-bold text-text-primary mb-2">847</p>
+                                <div class="flex items-center">
+                                    <span id="postsChange" style="background:none;color:#16a34a;" class="ml-2 inline-flex items-center text-xs font-medium flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        +18.7% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Views (new) -->
+                    <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" style="flex: 1 1 20%; min-width: 0;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-medium text-text-secondary mb-1">Profile Views</h4>
+                                <p id="profileViewsValue" class="text-lg font-bold text-text-primary mb-2">12.4K</p>
+                                <div class="flex items-center">
+                                    <span id="profileViewsChange" style="background:none;color:#16a34a;" class="ml-2 inline-flex items-center text-xs font-medium">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 2a6 6 0 100 12A6 6 0 0010 2z" />
+                                        </svg>
+                                        +4.6% vs last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-primary-50 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CORE LINKEDIN ANALYTICS - Primary Charts Section -->
+                
+                <!-- CONTENT PERFORMANCE ANALYTICS & AUDIENCE ENGAGEMENT PATTERNS -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Content Performance Analytics -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Content Performance Analytics</h3>
+                                <p class="text-sm text-text-secondary mt-1">Engagement trends vs posting frequency</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-success-600 font-medium">↗ +18.7%</span>
+                                <span class="text-xs text-text-secondary">vs last period</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="linkedinContentPerformanceChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-accent-50 rounded-lg p-3 insight-card">
+                                <p class="text-lg font-bold text-accent-800">847</p>
+                                <p class="text-xs text-text-secondary">Total Posts</p>
+                            </div>
+                            <div class="bg-success-50 rounded-lg p-3 insight-card">
+                                <p class="text-lg font-bold text-success-800">4,152</p>
+                                <p class="text-xs text-text-secondary">Total Engagements</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audience Engagement Patterns -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Audience Engagement Patterns</h3>
+                                <p class="text-sm text-text-secondary mt-1">Optimal posting times analysis</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-primary rounded-full pulse-animation"></div>
+                                <span class="text-sm text-text-secondary">Peak Activity</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="linkedinEngagementPatternsChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-text-secondary">Best posting times: <span class="font-medium text-primary">8AM-10AM EST</span> and <span class="font-medium text-primary">12PM-2PM EST</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LinkedIn Activity Radar (by Month) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">LinkedIn Activity Radar (by Month)</h3>
+                        <div>
+                            <select id="linkedinRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="relative h-96 flex items-center justify-center">
+                        <canvas id="linkedinActivityRadarChart" width="400" height="384"></canvas>
+                    </div>
+                </div>
+
+                <!-- COMPREHENSIVE LINKEDIN ANALYTICS - Enhanced Deep Charts Section -->
+                
+                <!-- 2. LINKEDIN PROFESSIONAL PERFORMANCE ANALYTICS -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 mt-8">
+                    <!-- Professional Engagement Analytics -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Professional Engagement Analytics</h3>
+                                <p class="text-sm text-text-secondary mt-1">B2B interactions, connections, and professional networking</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-success-600 font-medium">↗ +18.7%</span>
+                                <span class="text-xs text-text-secondary">vs last period</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="linkedinEngagementAnalyticsChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-blue-700">1,247</p>
+                                <p class="text-xs text-text-secondary">Avg. Connections</p>
+                            </div>
+                            <div class="bg-indigo-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-indigo-700">21.6%</p>
+                                <p class="text-xs text-text-secondary">Engagement Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn Content Performance -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">LinkedIn Content Performance</h3>
+                                <p class="text-sm text-text-secondary mt-1">Post reach, shares, and professional content impact</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-cyan-600 font-medium">Peak: 2-4 PM</span>
+                            </div>
+                        </div>
+                        <div class="relative h-64">
+                            <canvas id="linkedinPostPerformanceChart" width="400" height="256"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-cyan-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-cyan-700">2:30 PM</p>
+                                <p class="text-xs text-text-secondary">Peak Time</p>
+                            </div>
+                            <div class="bg-purple-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-purple-700">94.3%</p>
+                                <p class="text-xs text-text-secondary">Professional Reach</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. LINKEDIN PROFESSIONAL DISTRIBUTION -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 mt-8">
+                    <!-- LinkedIn Post Performance -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light chart-container">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">LinkedIn Post Performance</h3>
+                                <p class="text-sm text-text-secondary mt-1">Professional content engagement and B2B reach patterns</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-blue-600 font-medium">Avg: 1,247</span>
+                            </div>
+                        </div>
+                        <div class="relative h-80">
+                            <canvas id="linkedinPostPerformanceChart2" width="400" height="320"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-blue-700">34 posts</p>
+                                <p class="text-xs text-text-secondary">High Engagement</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-cyan-700">89%</p>
+                                <p class="text-xs text-text-secondary">Professional Score</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engagement Types Distribution -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary">Engagement Types</h3>
+                                <p class="text-sm text-text-secondary mt-1">Distribution of LinkedIn professional interactions</p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg">👍</span>
+                                    <span class="text-sm text-blue-700 font-medium">Likes</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg">💬</span>
+                                    <span class="text-sm text-green-700 font-medium">Comments</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg">🔄</span>
+                                    <span class="text-sm text-purple-700 font-medium">Shares</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg">👁️</span>
+                                    <span class="text-sm text-orange-700 font-medium">Views</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-6">
+                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200 text-center">
+                                <div class="flex items-center justify-center mb-3">
+                                    <span class="text-6xl">👍</span>
+                                </div>
+                                <p class="text-2xl font-bold text-blue-800 mb-1">3.2K</p>
+                                <p class="text-sm text-blue-600 font-medium">Likes</p>
+                                <p class="text-xs text-blue-500 mt-1">68.4% of total engagement</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-200 text-center">
+                                <div class="flex items-center justify-center mb-3">
+                                    <span class="text-6xl">💬</span>
+                                </div>
+                                <p class="text-2xl font-bold text-green-800 mb-1">847</p>
+                                <p class="text-sm text-green-600 font-medium">Comments</p>
+                                <p class="text-xs text-green-500 mt-1">18.1% of total engagement</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg p-6 border border-purple-200 text-center">
+                                <div class="flex items-center justify-center mb-3">
+                                    <span class="text-6xl">🔄</span>
+                                </div>
+                                <p class="text-2xl font-bold text-purple-800 mb-1">421</p>
+                                <p class="text-sm text-purple-600 font-medium">Shares</p>
+                                <p class="text-xs text-purple-500 mt-1">9.0% of total engagement</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-6 border border-orange-200 text-center">
+                                <div class="flex items-center justify-center mb-3">
+                                    <span class="text-6xl">👁️</span>
+                                </div>
+                                <p class="text-2xl font-bold text-orange-800 mb-1">12.4K</p>
+                                <p class="text-sm text-orange-600 font-medium">Views</p>
+                                <p class="text-xs text-orange-500 mt-1">4.5% interaction rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. LINKEDIN STRATEGIC INSIGHTS -->
+                <div class="mb-8 mt-8">
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-text-primary">LinkedIn Insights</h3>
+                                <p class="text-sm text-text-secondary mt-1">Key findings and actionable recommendations for B2B engagement optimization</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-blue-600 rounded-full pulse-animation"></div>
+                                <span class="text-sm text-blue-600 font-medium">AI-Powered Insights</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Strategic Insights Grid -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <!-- Key Finding 1 -->
+                            <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-5 border border-blue-200">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-blue-900 mb-2">Peak Engagement</h4>
+                                        <p class="text-xs text-blue-700 mb-3">Best times: 9-11 AM, 2-4 PM EST</p>
+                                        <div class="bg-blue-200 rounded px-2 py-1">
+                                            <span class="text-xs font-medium text-blue-800">Post during business hours</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Key Finding 2 -->
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg p-5 border border-green-200">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-green-900 mb-2">Content Quality</h4>
+                                        <p class="text-xs text-green-700 mb-3">88.7% quality score - tech content performs best</p>
+                                        <div class="bg-green-200 rounded px-2 py-1">
+                                            <span class="text-xs font-medium text-green-800">Focus on technical content</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Key Finding 3 -->
+                            <div class="bg-gradient-to-br from-purple-50 to-indigo-100 rounded-lg p-5 border border-purple-200">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M16 7.71L8.29 16.42c-.63.63-1.71.18-1.71-.71V8.29c0-.89 1.08-1.34 1.71-.71L16 7.71z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-purple-900 mb-2">Audience Growth</h4>
+                                        <p class="text-xs text-purple-700 mb-3">+32.4% growth - C-level professionals</p>
+                                        <div class="bg-purple-200 rounded px-2 py-1">
+                                            <span class="text-xs font-medium text-purple-800">Target executives</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Strategic Action Items -->
+                        <div class="mt-6 pt-6 border-t border-border-light">
+                            <h4 class="text-sm font-semibold text-text-primary mb-4">Quick Actions</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-xs font-bold text-white">1</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Optimize Schedule</p>
+                                        <p class="text-xs text-text-secondary">Post 9-11 AM, 2-4 PM EST</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-xs font-bold text-white">2</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Tech Content</p>
+                                        <p class="text-xs text-text-secondary">Increase technical posts</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-xs font-bold text-white">3</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Executive Focus</p>
+                                        <p class="text-xs text-text-secondary">Target C-level audience</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-xs font-bold text-white">4</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-text-primary">Monitor Trends</p>
+                                        <p class="text-xs text-text-secondary">Track sentiment quality</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="trendsView" class="hidden">
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- COMPREHENSIVE LINKEDIN ANALYTICS CHARTS - Enhanced Deep Charts Section -->
+    <script>
+    // LinkedIn Comprehensive Charts Variables
+    let linkedinSentimentPieChart, linkedinEngagementAnalyticsChart, linkedinContentPerformanceChart, linkedinEngagementPatternsChart;
+    let linkedinPostPerformanceChart, linkedinPostPerformanceChart2, linkedinNetworkAnalyticsChart, linkedinThoughtLeadershipChart, linkedinDemographicsChart;
+    let linkedinEngagementTypesBarChart;
+
+    // 1. LinkedIn Executive Summary Sentiment Pie Chart
+    function initializeLinkedInSentimentPieChart() {
+        const ctx = document.getElementById('linkedinSentimentPieChart');
+        if (!ctx) return;
+        
+        if (linkedinSentimentPieChart) linkedinSentimentPieChart.destroy();
+        
+        linkedinSentimentPieChart = new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Positive', 'Neutral', 'Negative'],
+                datasets: [{
+                    data: [71.8, 22.4, 5.8],
+                    backgroundColor: [
+                        '#22C55E',
+                        '#F59E0B', 
+                        '#EF4444'
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#fff',
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 14, weight: 'bold' }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 2. LinkedIn Professional Engagement Analytics Chart
+    function initializeLinkedInEngagementAnalyticsChart() {
+        const ctx = document.getElementById('linkedinEngagementAnalyticsChart');
+        if (!ctx) return;
+        
+        if (linkedinEngagementAnalyticsChart) linkedinEngagementAnalyticsChart.destroy();
+        
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+        const connections = [850, 920, 1050, 1150, 1200, 1247];
+        const engagement = [15.2, 17.8, 19.4, 20.1, 21.2, 21.6];
+        
+        linkedinEngagementAnalyticsChart = new Chart(ctx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Connections Growth',
+                    data: connections,
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Engagement Rate %',
+                    data: engagement,
+                    borderColor: '#6366F1',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    tension: 0.4,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    },
+                }
+            }
+        });
+    }
+
+    // 3. LinkedIn Content Performance Chart
+    function initializeLinkedInContentPerformanceChart() {
+        const ctx = document.getElementById('linkedinContentPerformanceChart');
+        if (!ctx) return;
+        
+        if (linkedinContentPerformanceChart) linkedinContentPerformanceChart.destroy();
+        
+        const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+        const engagementData = [4.9, 5.3, 4.8, 5.7];
+        const postsData = [8, 9, 6, 11];
+        
+        linkedinContentPerformanceChart = new Chart(ctx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: weeks,
+                datasets: [
+                    {
+                        label: 'Avg Engagement',
+                        data: engagementData,
+                        borderColor: '#0077B5',
+                        backgroundColor: 'rgba(0, 119, 181, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Posts Published',
+                        data: postsData,
+                        borderColor: '#E67E22',
+                        backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { usePointStyle: true }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: true, color: '#F3F4F6' }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: 'Engagement Rate' },
+                        grid: { color: '#F3F4F6' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'Posts Count' },
+                        grid: { drawOnChartArea: false }
+                    }
+                }
+            }
+        });
+    }
+
+    // 4. LinkedIn Post Performance Chart
+    function initializeLinkedInPostPerformanceChart() {
+        const ctx = document.getElementById('linkedinPostPerformanceChart');
+        if (!ctx) return;
+        
+        if (linkedinPostPerformanceChart) linkedinPostPerformanceChart.destroy();
+        
+        const ranges = ['0-500', '500-1K', '1K-2K', '2K-5K', '5K-10K', '10K+'];
+        const postCounts = [12, 18, 28, 24, 15, 8];
+        
+        linkedinPostPerformanceChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ranges,
+                datasets: [{
+                    label: 'Posts Count',
+                    data: postCounts,
+                    backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Posts'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Engagement Range'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Initialize LinkedIn Engagement Patterns Chart
+    function initializeLinkedInEngagementPatternsChart() {
+        const ctx = document.getElementById('linkedinEngagementPatternsChart');
+        if (!ctx) return;
+        
+        if (linkedinEngagementPatternsChart) linkedinEngagementPatternsChart.destroy();
+        
+        const hours = ['6AM', '8AM', '10AM', '12PM', '2PM', '4PM', '6PM', '8PM'];
+        const engagementRates = [12, 92, 78, 95, 88, 45, 28, 15];
+        
+        linkedinEngagementPatternsChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: hours,
+                datasets: [{
+                    label: 'Engagement Rate (%)',
+                    data: engagementRates,
+                    backgroundColor: [
+                        '#0077B5',
+                        '#27AE60',
+                        '#27AE60', 
+                        '#27AE60',
+                        '#27AE60',
+                        '#F39C12',
+                        '#E67E22',
+                        '#E74C3C'
+                    ],
+                    borderColor: [
+                        '#005885',
+                        '#229954',
+                        '#229954',
+                        '#229954', 
+                        '#229954',
+                        '#E67E22',
+                        '#D68910',
+                        '#C0392B'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        callbacks: {
+                            label: function(context) {
+                                return `Engagement: ${context.parsed.y}%`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { weight: 'bold' } }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#F3F4F6' },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Initialize LinkedIn Post Performance Chart 2
+    function initializeLinkedInPostPerformanceChart2() {
+        const ctx = document.getElementById('linkedinPostPerformanceChart2');
+        if (!ctx) return;
+        
+        if (linkedinPostPerformanceChart2) linkedinPostPerformanceChart2.destroy();
+        
+        const categories = ['Thought Leadership', 'Industry News', 'Company Updates', 'Product Features', 'Case Studies'];
+        const engagementData = [85, 72, 58, 67, 79];
+        
+        linkedinPostPerformanceChart2 = new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: categories,
+                datasets: [{
+                    data: engagementData,
+                    backgroundColor: [
+                        '#0077B5',
+                        '#27AE60',
+                        '#F39C12',
+                        '#E74C3C',
+                        '#9B59B6'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.parsed}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 5. LinkedIn Engagement Types Bar Chart
+    function initializeLinkedInEngagementTypesBarChart() {
+        const ctx = document.getElementById('linkedinEngagementTypesBarChart');
+        if (!ctx) return;
+        
+        if (linkedinEngagementTypesBarChart) linkedinEngagementTypesBarChart.destroy();
+        
+        const engagementTypes = ['Likes', 'Appreciations', 'Empathy', 'Interests'];
+        const engagementCounts = [2847, 1523, 892, 456];
+        
+        linkedinEngagementTypesBarChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: engagementTypes,
+                datasets: [{
+                    label: 'Engagement Count',
+                    data: engagementCounts,
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',   // Primary blue for Likes
+                        'rgba(251, 146, 60, 0.8)',   // Accent orange for Appreciations  
+                        'rgba(34, 197, 94, 0.8)',    // Success green for Empathy
+                        'rgba(251, 191, 36, 0.8)'    // Warning yellow for Interests
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(251, 146, 60, 1)',
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(251, 191, 36, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Count'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Engagement Types'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Update summary metrics
+        const totalEngagements = engagementCounts.reduce((sum, count) => sum + count, 0);
+        const engagementRate = ((totalEngagements / 105000) * 100).toFixed(1); // Assuming 105k impressions
+        
+        document.getElementById('totalEngagements').textContent = totalEngagements.toLocaleString();
+        document.getElementById('engagementRate').textContent = engagementRate + '%';
+    }
+
+    // 6. LinkedIn Network Analytics Chart
+    function initializeLinkedInNetworkAnalyticsChart() {
+        const ctx = document.getElementById('linkedinNetworkAnalyticsChart');
+        if (!ctx) return;
+        
+        if (linkedinNetworkAnalyticsChart) linkedinNetworkAnalyticsChart.destroy();
+        
+        const categories = ['C-Level', 'VP/Director', 'Manager', 'Specialist', 'Student/Entry'];
+        const connections = [487, 652, 891, 534, 283];
+        
+        linkedinNetworkAnalyticsChart = new Chart(ctx.getContext('2d'), {
+            type: 'polarArea',
+            data: {
+                labels: categories,
+                datasets: [{
+                    data: connections,
+                    backgroundColor: [
+                        'rgba(147, 51, 234, 0.8)',
+                        'rgba(99, 102, 241, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(6, 182, 212, 0.8)',
+                        'rgba(14, 165, 233, 0.8)'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 6. LinkedIn Thought Leadership Chart
+    function initializeLinkedInThoughtLeadershipChart() {
+        const ctx = document.getElementById('linkedinThoughtLeadershipChart');
+        if (!ctx) return;
+        
+        if (linkedinThoughtLeadershipChart) linkedinThoughtLeadershipChart.destroy();
+        
+        const topics = ['Tech Innovation', 'Industry Trends', 'Leadership', 'Market Analysis', 'Strategy'];
+        const authority = [91, 87, 93, 85, 89];
+        
+        linkedinThoughtLeadershipChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: topics,
+                datasets: [{
+                    label: 'Authority Score',
+                    data: authority,
+                    fill: true,
+                    backgroundColor: 'rgba(251, 146, 60, 0.2)',
+                    borderColor: '#F97316',
+                    pointBackgroundColor: '#F97316',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#F97316',
+                    borderWidth: 3,
+                    pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#F97316', font: { weight: 'bold', size: 11 } },
+                        ticks: { color: '#374151', display: false },
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+    }
+
+    // 7. LinkedIn Demographics Chart
+    function initializeLinkedInDemographicsChart() {
+        const ctx = document.getElementById('linkedinDemographicsChart');
+        if (!ctx) return;
+        
+        if (linkedinDemographicsChart) linkedinDemographicsChart.destroy();
+        
+        const industries = ['Technology', 'Manufacturing', 'Finance', 'Healthcare', 'Education', 'Others'];
+        const percentages = [42, 28, 12, 8, 6, 4];
+        
+        linkedinDemographicsChart = new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: industries,
+                datasets: [{
+                    data: percentages,
+                    backgroundColor: [
+                        '#10B981',
+                        '#059669',
+                        '#047857',
+                        '#065F46',
+                        '#064E3B',
+                        '#022C22'
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#fff',
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Initialize all LinkedIn comprehensive charts
+    function initializeAllLinkedInCharts() {
+        initializeLinkedInSentimentPieChart();
+        initializeLinkedInEngagementAnalyticsChart();
+        initializeLinkedInContentPerformanceChart();
+        initializeLinkedInEngagementPatternsChart();
+        initializeLinkedInPostPerformanceChart();
+        initializeLinkedInPostPerformanceChart2();
+        initializeLinkedInEngagementTypesBarChart();
+        initializeLinkedInNetworkAnalyticsChart();
+        initializeLinkedInThoughtLeadershipChart();
+        initializeLinkedInDemographicsChart();
+    }
+
+    // Call initialization when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initializeAllLinkedInCharts, 100);
+    });
+    </script>
+    
+    <script>
+    // LinkedIn Yearly Sentiment Analysis Bar Chart
+    function initializeLinkedInBarChart() {
+        const ctx = document.getElementById('linkedinBarChart');
+        if (ctx) {
+            // Dummy data for LinkedIn yearly sentiment analysis
+            const years = ['2022', '2023', '2024'];
+            const positiveYearly = [72.3, 75.8, 78.1];
+            const neutralYearly = [18.5, 16.2, 14.8];
+            const negativeYearly = [9.2, 8.0, 7.1];
+            
+            new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [
+                        {
+                            label: 'Positive',
+                            data: positiveYearly,
+                            backgroundColor: '#27AE60',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Neutral',
+                            data: neutralYearly,
+                            backgroundColor: '#F39C12',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Negative',
+                            data: negativeYearly,
+                            backgroundColor: '#E74C3C',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: { size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 12 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: '#F3F4F6' },
+                            ticks: {
+                                font: { size: 12 },
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Update the summary statistics
+            const avgPositive = positiveYearly.reduce((a, b) => a + b, 0) / positiveYearly.length;
+            const avgNeutral = neutralYearly.reduce((a, b) => a + b, 0) / neutralYearly.length;
+            const avgNegative = negativeYearly.reduce((a, b) => a + b, 0) / negativeYearly.length;
+            
+            document.getElementById('linkedinPositive').textContent = `${avgPositive.toFixed(1)}%`;
+            document.getElementById('linkedinNeutral').textContent = `${avgNeutral.toFixed(1)}%`;
+            document.getElementById('linkedinNegative').textContent = `${avgNegative.toFixed(1)}%`;
+        }
+    }
+
+    // LinkedIn Activity Radar variables
+    let linkedinActivityRadarChart = null;
+    let linkedinActivityRadarRawData = null;
+    
+    // LinkedIn Activity Radar Chart
+    async function loadLinkedInActivityRadarChart() {
+        try {
+            // Create dummy data for LinkedIn Activity Radar
+            const dummyData = {
+                labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                values: [1250, 1450, 1650, 1550, 1750, 1650, 1850, 1950, 1750, 1850, 1950, 2150, 2050, 2250, 2350, 2200, 2450, 2300, 2550, 2650, 2450, 2550, 2650, 2750]
+            };
+            
+            linkedinActivityRadarRawData = dummyData;
+            const yearSelect = document.getElementById('linkedinRadarYearSelect');
+            if (yearSelect) {
+                // Extract years from labels (format: 'Month YYYY')
+                const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+                yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                yearSelect.onchange = function() { renderLinkedInActivityRadarChart(this.value); };
+            }
+            renderLinkedInActivityRadarChart('all');
+        } catch (e) {
+            const ctx = document.getElementById('linkedinActivityRadarChart');
+            if (ctx) {
+                ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load LinkedIn Activity Radar chart data.</div>';
+            }
+        }
+    }
+    
+    function renderLinkedInActivityRadarChart(selectedYear) {
+        const ctx = document.getElementById('linkedinActivityRadarChart');
+        if (!ctx || !linkedinActivityRadarRawData) return;
+        if (linkedinActivityRadarChart) linkedinActivityRadarChart.destroy();
+        
+        let labels = linkedinActivityRadarRawData.labels;
+        let values = linkedinActivityRadarRawData.values;
+        if (selectedYear && selectedYear !== 'all') {
+            labels = linkedinActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+            values = labels.map(l => {
+                const idx = linkedinActivityRadarRawData.labels.indexOf(l);
+                return linkedinActivityRadarRawData.values[idx];
+            });
+        }
+        
+        linkedinActivityRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'LinkedIn Activity by Month',
+                    data: values,
+                    fill: true,
+                    backgroundColor: 'rgba(0, 119, 181, 0.2)',
+                    borderColor: '#0077B5',
+                    pointBackgroundColor: '#0077B5',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#0077B5',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#0077B5',
+                            font: { weight: 'bold' }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#0077B5', font: { weight: 'bold' } },
+                        ticks: { color: '#374151' }
+                    }
+                },
+                animation: {
+                    duration: 1200,
+                    easing: 'easeInOutQuart'
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest'
+                }
+            }
+        });
+    }
+
+    // Initialize the LinkedIn bar chart when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeLinkedInBarChart();
+        loadLinkedInActivityRadarChart();
+    });
+    
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+    // --- LinkedIn Engagement Chart Logic (from audience_insights.html) ---
+    let linkedInData = null;
+    let engagementChart = null;
+    let histogramChart = null;
+    let linkedinRadarChart = null;
+
+    async function loadLinkedInData() {
+        try {
+            showLoadingState();
+            const response = await fetch('../public/linkedin_engagement_data.json');
+            if (!response.ok) throw new Error('Failed to load linkedin_engagement_data.json');
+            linkedInData = await response.json();
+            hideLoadingState();
+            updateLinkedInStats();
+            initializeLinkedInChart();
+            initializeHistogramChart();
+        } catch (error) {
+            hideLoadingState();
+            linkedInData = {
+                total_posts: 695,
+                total_engagements: 175739,
+                engagement_rate: 7.3,
+                engagement_breakdown: {
+                    likes: 166382,
+                    appreciations: 5556,
+                    empathy: 2418,
+                    interests: 1383
+                },
+                engagement_percentages: {
+                    likes: { count: 166382, percentage: 94.7 },
+                    appreciations: { count: 5556, percentage: 3.2 },
+                    empathy: { count: 2418, percentage: 1.4 },
+                    interests: { count: 1383, percentage: 0.8 }
+                },
+                chart_data: {
+                    labels: ['Likes', 'Appreciations', 'Empathy', 'Interests'],
+                    data: [166382, 5556, 2418, 1383]
+                }
+            };
+            updateLinkedInStats();
+            initializeLinkedInChart();
+            initializeHistogramChart();
+            showErrorMessage('Unable to load live data. Showing sample data instead.');
+        }
+    }
+    function showLoadingState() {
+        const loadingElements = document.querySelectorAll('#totalPosts, #avgEngagement, #totalEngagementsQuick, #topReaction, #totalEngagements, #engagementRate, #likesCount, #appreciationsCount, #empathyCount, #interestsCount, #highestEngagement');
+        loadingElements.forEach(el => { if (el) el.textContent = 'Loading...'; });
+    }
+    function hideLoadingState() { /* handled by updateLinkedInStats */ }
+    function showErrorMessage(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 bg-warning-50 border border-warning-200 text-warning-800 px-4 py-3 rounded-lg shadow-lg z-50';
+        errorDiv.innerHTML = `<div class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span class="text-sm">${message}</span><button class="ml-4 text-warning-600 hover:text-warning-800" onclick="this.parentElement.parentElement.remove()"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>`;
+        document.body.appendChild(errorDiv);
+        setTimeout(() => { if (errorDiv.parentNode) errorDiv.parentNode.removeChild(errorDiv); }, 5000);
+    }
+    function updateLinkedInStats() {
+        if (!linkedInData) return;
+        const totalEngagements = document.getElementById('totalEngagements');
+        const engagementRate = document.getElementById('engagementRate');
+        if (totalEngagements) totalEngagements.textContent = linkedInData.total_engagements.toLocaleString();
+        if (engagementRate) engagementRate.textContent = linkedInData.engagement_rate + '%';
+        // Update detailed breakdown
+        if (linkedInData.engagement_percentages) {
+            const likesCount = document.getElementById('likesCount');
+            const likesPercentage = document.getElementById('likesPercentage');
+            const appreciationsCount = document.getElementById('appreciationsCount');
+            const appreciationsPercentage = document.getElementById('appreciationsPercentage');
+            const empathyCount = document.getElementById('empathyCount');
+            const empathyPercentage = document.getElementById('empathyPercentage');
+            const interestsCount = document.getElementById('interestsCount');
+            const interestsPercentage = document.getElementById('interestsPercentage');
+            if (likesCount && linkedInData.engagement_percentages.likes) {
+                likesCount.textContent = linkedInData.engagement_percentages.likes.count.toLocaleString();
+                likesPercentage.textContent = linkedInData.engagement_percentages.likes.percentage + '%';
+            }
+            if (appreciationsCount && linkedInData.engagement_percentages.appreciations) {
+                appreciationsCount.textContent = linkedInData.engagement_percentages.appreciations.count.toLocaleString();
+                appreciationsPercentage.textContent = linkedInData.engagement_percentages.appreciations.percentage + '%';
+            }
+            if (empathyCount && linkedInData.engagement_percentages.empathy) {
+                empathyCount.textContent = linkedInData.engagement_percentages.empathy.count.toLocaleString();
+                empathyPercentage.textContent = linkedInData.engagement_percentages.empathy.percentage + '%';
+            }
+            if (interestsCount && linkedInData.engagement_percentages.interests) {
+                interestsCount.textContent = linkedInData.engagement_percentages.interests.count.toLocaleString();
+                interestsPercentage.textContent = linkedInData.engagement_percentages.interests.percentage + '%';
+            }
+        }
+        // Update histogram stats
+        const highestEngagement = document.getElementById('highestEngagement');
+        if (highestEngagement && linkedInData.engagement_breakdown) {
+            const engagementTypes = linkedInData.engagement_breakdown;
+            let maxType = 'Likes';
+            let maxValue = 0;
+            for (const [type, value] of Object.entries(engagementTypes)) {
+                if (value > maxValue) {
+                    maxValue = value;
+                    maxType = type.charAt(0).toUpperCase() + type.slice(1);
+                }
+            }
+            highestEngagement.textContent = maxType;
+        }
+    }
+    function initializeLinkedInChart() {
+        const ctx = document.getElementById('linkedinEngagementChart');
+        if (!ctx || !linkedInData) return;
+        if (engagementChart) engagementChart.destroy();
+        const colors = ['#FF6B35', '#3498DB', '#27AE60', '#F39C12'];
+        engagementChart = new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: linkedInData.chart_data.labels,
+                datasets: [{
+                    data: linkedInData.chart_data.data,
+                    backgroundColor: colors,
+                    borderWidth: 3,
+                    borderColor: '#FFFFFF',
+                    hoverBorderWidth: 4,
+                    hoverBorderColor: '#FFFFFF',
+                    hoverBackgroundColor: colors.map(color => color + 'DD')
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${label}: ${value.toLocaleString()} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true,
+                    duration: 1000,
+                    easing: 'easeInOutQuart'
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    }
+    function initializeHistogramChart() {
+        const ctx = document.getElementById('engagementHistogramChart');
+        if (!ctx || !linkedInData) return;
+        if (histogramChart) histogramChart.destroy();
+        const colors = ['#FF6B35', '#3498DB', '#27AE60', '#F39C12'];
+        histogramChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: linkedInData.chart_data.labels,
+                datasets: [{
+                    label: 'Engagement Count',
+                    data: linkedInData.chart_data.data,
+                    backgroundColor: colors,
+                    borderColor: colors.map(color => color + 'CC'),
+                    borderWidth: 2,
+                    borderRadius: 6,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed.y;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${context.label}: ${value.toLocaleString()} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 12, weight: 'normal' }, color: '#6B7280' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F3F4F6', drawBorder: false },
+                        ticks: {
+                            font: { size: 12 },
+                            color: '#6B7280',
+                            callback: function(value) { return value.toLocaleString(); }
+                        }
+                    }
+                },
+                animation: { duration: 1000, easing: 'easeInOutQuart' },
+                interaction: { intersect: false, mode: 'index' }
+            }
+        });
+    }
+    // LinkedIn Activity Radar
+    let linkedinRadarRawData = null;
+    async function loadLinkedInRadarChart() {
+        try {
+            const response = await fetch('../public/linkedin_activity_patterns.json');
+            if (!response.ok) throw new Error('Failed to load linkedin_activity_patterns.json');
+            const data = await response.json();
+            linkedinRadarRawData = data;
+            const yearSelect = document.getElementById('linkedinRadarYearSelect');
+            if (yearSelect) {
+                const years = Array.from(new Set(data.activity_radar.map(item => item.month.split(' ')[1])));
+                yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                yearSelect.onchange = function() { renderLinkedinRadarChart(this.value); };
+            }
+            renderLinkedinRadarChart('all');
+        } catch (e) {
+            const ctx = document.getElementById('linkedinRadarChart');
+            if (ctx) ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load LinkedIn radar chart data.</div>';
+        }
+    }
+    function renderLinkedinRadarChart(selectedYear) {
+        const ctx = document.getElementById('linkedinRadarChart');
+        if (!ctx || !linkedinRadarRawData) return;
+        if (linkedinRadarChart) linkedinRadarChart.destroy();
+        let labels = linkedinRadarRawData.activity_radar.map(item => item.month);
+        let values = linkedinRadarRawData.activity_radar.map(item => item.count);
+        if (selectedYear && selectedYear !== 'all') {
+            labels = linkedinRadarRawData.activity_radar.filter(item => item.month.endsWith(' ' + selectedYear)).map(item => item.month);
+            values = linkedinRadarRawData.activity_radar.filter(item => item.month.endsWith(' ' + selectedYear)).map(item => item.count);
+        }
+        linkedinRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Posts by Month',
+                    data: values,
+                    fill: true,
+                    backgroundColor: 'rgba(10, 102, 194, 0.2)',
+                    borderColor: '#0A66C2',
+                    pointBackgroundColor: '#0A66C2',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#0A66C2',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { color: '#0A66C2', font: { weight: 'bold' } }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#0A66C2', font: { weight: 'bold' } },
+                        ticks: { color: '#374151' }
+                    }
+                },
+                animation: { duration: 1200, easing: 'easeInOutQuart' },
+                interaction: { intersect: false, mode: 'nearest' }
+            }
+        });
+    }
+    // LinkedIn Activity Patterns (Peak Hours)
+    async function loadLinkedInPeakHours() {
+        try {
+            const response = await fetch('../public/linkedin_activity_patterns.json');
+            if (!response.ok) throw new Error('Failed to load linkedin_activity_patterns.json');
+            const data = await response.json();
+            const container = document.getElementById('linkedinPeakHours');
+            if (!container) return;
+            container.innerHTML = '';
+            let maxCount = 0;
+            data.peak_hours.forEach(slot => { if (slot.count > maxCount) maxCount = slot.count; });
+            data.peak_hours.forEach(slot => {
+                let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+                let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+                let level = slot.count === maxCount ? 'High' : (slot.count > 0 ? 'Medium' : 'Low');
+                container.innerHTML += `<div class="text-center p-2 ${bg} rounded"><p class="text-sm font-medium ${text}">${slot.slot}</p><p class="text-xs text-text-secondary">${level} (${slot.count})</p></div>`;
+            });
+        } catch (e) {
+            const container = document.getElementById('linkedinPeakHours');
+            if (container) container.innerHTML = '<div class="col-span-4 text-center text-warning-700">Unable to load LinkedIn peak hours data.</div>';
+        }
+    }
+    (function() {
+        let linkedinTrendsChart = null;
+        let linkedinTrendsData = null;
+
+        function updateLinkedinTrendsChartForRange(rangeIndex) {
+            if (!linkedinTrendsData) {
+                console.error('linkedinTrendsData is not loaded');
+                return;
+            }
+            let months, badge, subtitle;
+            if (rangeIndex == 0) { months = 6; badge = "6m"; subtitle = "LinkedIn - Last 6 Months"; }
+            else if (rangeIndex == 1) { months = 12; badge = "1y"; subtitle = "LinkedIn - Last 12 Months"; }
+            else { months = 24; badge = "2y"; subtitle = "LinkedIn - Last 24 Months"; }
+            const total = linkedinTrendsData.labels.length;
+            const start = Math.max(0, total - months);
+            const labels = linkedinTrendsData.labels.slice(start);
+            const positive = linkedinTrendsData.positive.slice(start);
+            const neutral = linkedinTrendsData.neutral.slice(start);
+            const negative = linkedinTrendsData.negative.slice(start);
+            if (linkedinTrendsChart) linkedinTrendsChart.destroy();
+            const ctx = document.getElementById('linkedinTrendsChart');
+            if (!ctx) {
+                console.error('linkedinTrendsChart canvas not found');
+                return;
+            }
+            linkedinTrendsChart = new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: 'Positive', data: positive, borderColor: '#27AE60', backgroundColor: 'rgba(39, 174, 96, 0.1)', borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#27AE60', pointBorderColor: '#FFFFFF', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 },
+                        { label: 'Neutral', data: neutral, borderColor: '#F39C12', backgroundColor: 'rgba(243, 156, 18, 0.1)', borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#F39C12', pointBorderColor: '#FFFFFF', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 },
+                        { label: 'Negative', data: negative, borderColor: '#E74C3C', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#E74C3C', pointBorderColor: '#FFFFFF', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: true, color: '#F3F4F6' }, ticks: { color: '#6B7280', font: { size: 12 } } },
+                        y: { beginAtZero: true, max: 100, grid: { display: true, color: '#F3F4F6' }, ticks: { color: '#6B7280', font: { size: 12 }, callback: function(value) { return value + '%'; } } }
+                    }
+                }
+            });
+            document.getElementById('linkedinSliderRangeBadge').textContent = badge;
+            document.getElementById('linkedinChartSubtitle').textContent = subtitle;
+        }
+
+        function initializeLinkedinTrendsChart() {
+            const ctx = document.getElementById('linkedinTrendsChart');
+            if (!ctx) {
+                console.error('linkedinTrendsChart canvas not found');
+                return;
+            }
+            fetch('../public/linkedin_trends.json')
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('Failed to fetch linkedin_trends.json:', response.status);
+                        return null;
+                    }
+                    return response.json();
+                })
+                .then(trendsData => {
+                    if (!trendsData) {
+                        console.error('No trendsData loaded');
+                        return;
+                    }
+                    linkedinTrendsData = {
+                        labels: trendsData.labels,
+                        positive: trendsData.positive,
+                        neutral: trendsData.neutral,
+                        negative: trendsData.negative
+                    };
+                    const slider = document.getElementById('linkedinTrendRangeSlider');
+                    const rangeIndex = slider ? Number(slider.value) : 1;
+                    updateLinkedinTrendsChartForRange(rangeIndex);
+                })
+                .catch(err => {
+                    console.error('Error fetching or parsing linkedin_trends.json:', err);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attach slider event for LinkedIn Sentiment Trends Over Time
+            const slider = document.getElementById('linkedinTrendRangeSlider');
+            if (slider) {
+                slider.addEventListener('input', function() {
+                    updateLinkedinTrendsChartForRange(Number(this.value));
+                });
+            }
+            // Initialize trends chart
+            initializeLinkedinTrendsChart();
+            // Ensure chart is re-initialized when Engagement tab is shown
+            const showEngagement = document.getElementById('showEngagement');
+            if (showEngagement) {
+                showEngagement.addEventListener('click', function() {
+                    setTimeout(() => {
+                        initializeLinkedinTrendsChart();
+                    }, 100);
+                });
+            }
+        });
+    })();
+    // On page load, load LinkedIn data and charts
+    window.addEventListener('DOMContentLoaded', function() {
+        loadLinkedInData();
+        loadLinkedInRadarChart();
+        loadLinkedInPeakHours();
+        const platformBtns = document.querySelectorAll('.platform-btn');
+        const currentPage = window.location.pathname.split('/').pop();
+        platformBtns.forEach(btn => {
+          const href = btn.getAttribute('href');
+          if (href && href === currentPage) {
+            btn.classList.add('active-platform');
+          }
+        });
+    });
+    </script>
+
+
+
+
+    <style>
+        .floating-back-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(255, 138, 0, 0.3);
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            min-width: 120px;
+            user-select: none;
+            opacity: 0.3 !important;
+        }
+
+        .floating-back-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 138, 0, 0.4);
+            background: linear-gradient(135deg, #ff7300 0%, #d12755 100%);
+            opacity: 1 !important;
+        }
+
+        .floating-back-btn:active {
+            transform: translateY(0) scale(0.98);
+            transition: all 0.1s ease;
+            opacity: 0.3 !important;
+        }
+
+        .floating-back-btn:focus {
+            opacity: 0.3 !important;
+            outline: none;
+        }
+
+        .floating-back-btn:focus-visible {
+            opacity: 0.3 !important;
+            outline: none;
+        }
+
+        .floating-back-btn:focus:not(:hover) {
+            opacity: 0.3 !important;
+        }
+
+        .floating-back-btn svg {
+            transition: transform 0.2s ease;
+        }
+
+        .floating-back-btn:hover svg {
+            transform: translateX(-2px);
+        }
+
+        .btn-text {
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .floating-back-btn {
+                bottom: 16px;
+                left: 16px;
+                padding: 10px 14px;
+                font-size: 13px;
+                min-width: 100px;
+            }
+        }
+    </style>
+
+    <script>
+        function goBack() {
+            // Add a smooth transition effect
+            const btn = document.getElementById('floatingBackBtn');
+            btn.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                // Direct navigation to dashboard overview
+                window.location.href = 'dashboard_overview.html';
+            }, 150);
+        }
+
+        // Add smooth scroll effect when button is visible
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('floatingBackBtn');
+            if (window.scrollY > 100) {
+                btn.style.opacity = '1';
+            } else {
+                btn.style.opacity = '0.9';
+            }
+        });
+    </script>
+
+    <script>
+        // Handle back button blur on scroll
+        window.addEventListener('scroll', function() {
+            const backBtn = document.querySelector('.floating-back-btn');
+            if (backBtn) {
+                backBtn.blur();
+                backBtn.style.opacity = '0.3';
+            }
+        });
+
+        // Sidebar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarTrigger = document.getElementById('sidebarTrigger');
+            const mainContent = document.getElementById('mainContent');
+            let sidebarTimeout;
+            
+            function showSidebar() {
+                sidebar.style.transform = 'translateX(0)';
+                mainContent.style.marginLeft = '25%';
+                clearTimeout(sidebarTimeout);
+            }
+            
+            function hideSidebar() {
+                sidebarTimeout = setTimeout(() => {
+                    sidebar.style.transform = 'translateX(-100%)';
+                    mainContent.style.marginLeft = '0';
+                }, 300);
+            }
+            
+            // Show sidebar on hover trigger
+            sidebarTrigger.addEventListener('mouseenter', showSidebar);
+            
+            // Keep sidebar open when hovering over it
+            sidebar.addEventListener('mouseenter', () => {
+                clearTimeout(sidebarTimeout);
+            });
+            
+            // Hide sidebar when leaving it
+            sidebar.addEventListener('mouseleave', hideSidebar);
+
+            // Date filter functionality
+            const applyDateFilterBtn = document.getElementById('applyDateFilter');
+            if (applyDateFilterBtn) {
+                applyDateFilterBtn.addEventListener('click', function() {
+                    const fromDate = document.getElementById('dateFrom').value;
+                    const toDate = document.getElementById('dateTo').value;
+                    
+                    if (fromDate && toDate) {
+                        if (new Date(fromDate) > new Date(toDate)) {
+                            alert('FROM date cannot be later than TO date');
+                            return;
+                        }
+                        
+                        // Store in localStorage for persistence across all platforms
+                        localStorage.setItem('dateFilter_from', fromDate);
+                        localStorage.setItem('dateFilter_to', toDate);
+                        
+                        // Update dashboard data based on selected dates
+                        updateDashboardData(fromDate, toDate);
+                        
+                        // Trigger storage event for real-time sync
+                        window.dispatchEvent(new StorageEvent('storage', {
+                            key: 'dateFilter_from',
+                            newValue: fromDate
+                        }));
+                        
+                        console.log('Date filter applied:', { from: fromDate, to: toDate });
+                        
+                        // Show success feedback
+                        const originalText = this.innerHTML;
+                        this.innerHTML = `
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Applied!
+                        `;
+                        this.classList.remove('bg-primary', 'hover:bg-primary-600');
+                        this.classList.add('bg-green-500', 'hover:bg-green-600');
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.classList.remove('bg-green-500', 'hover:bg-green-600');
+                            this.classList.add('bg-primary', 'hover:bg-primary-600');
+                        }, 1500);
+                    } else {
+                        alert('Please select both FROM and TO dates');
+                    }
+                });
+            }
+
+            // Load saved dates on page load
+            function loadSavedDates() {
+                const savedFromDate = localStorage.getItem('dateFilter_from');
+                const savedToDate = localStorage.getItem('dateFilter_to');
+                
+                if (savedFromDate) {
+                    const dateFromInput = document.getElementById('dateFrom');
+                    if (dateFromInput) dateFromInput.value = savedFromDate;
+                }
+                if (savedToDate) {
+                    const dateToInput = document.getElementById('dateTo');
+                    if (dateToInput) dateToInput.value = savedToDate;
+                }
+            }
+
+            // Dashboard data for different date scenarios
+            const dashboardData = {
+                currentDate: {
+                    engagement: "96.2%",
+                    engagementChange: "+7.2% vs last month",
+                    quality: "88.7%",
+                    qualityChange: "+5.8% vs last month",
+                    followers: "900K",
+                    followersChange: "+32.4% vs last month",
+                    posts: "847",
+                    postsChange: "+18.7% vs last month"
+                },
+                historicalData: {
+                    engagement: "89.4%",
+                    engagementChange: "+4.1% vs last month",
+                    quality: "82.3%",
+                    qualityChange: "+3.2% vs last month",
+                    followers: "782K",
+                    followersChange: "+24.1% vs last month",
+                    posts: "721",
+                    postsChange: "+12.4% vs last month"
+                }
+            };
+
+            // Update badge with dynamic success/error styling based on sign
+            function updateChangeBadge(elementId, changeText) {
+                const el = document.getElementById(elementId);
+                if (!el) return;
+                const isNegative = /^\s*-/.test((changeText || '').trim());
+                const bgClass = isNegative ? 'bg-error-100' : 'bg-success-100';
+                const textClass = isNegative ? 'text-error-700' : 'text-success-700';
+                const rotate = isNegative ? 'transform rotate-180' : '';
+                const preserveMargin = el.classList.contains('ml-2');
+                let className = `inline-flex items-center px-2 py-1 ${bgClass} ${textClass} text-xs font-medium rounded-full`;
+                if (preserveMargin) className += ' ml-2';
+                el.className = className;
+                el.innerHTML = `
+                    <svg class="w-3 h-3 mr-1 ${rotate}" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    ${changeText}
+                `;
+            }
+
+            // Function to get current date in YYYY-MM-DD format
+            function getCurrentDateString() {
+                const today = new Date();
+                return today.toISOString().split('T')[0];
+            }
+
+            // Function to update dashboard data based on selected dates
+            function updateDashboardData(fromDate, toDate) {
+                const currentDateStr = getCurrentDateString();
+                const isCurrentDate = (toDate === currentDateStr);
+                
+                // Select appropriate data set
+                const data = isCurrentDate ? dashboardData.currentDate : dashboardData.historicalData;
+                
+                // Update the dashboard metrics with smooth transition
+                updateMetricWithAnimation('engagementValue', data.engagement);
+                updateMetricWithAnimation('qualityValue', data.quality);
+                updateMetricWithAnimation('followersValue', data.followers);
+                updateMetricWithAnimation('postsValue', data.posts);
+                
+                // Update change indicators with dynamic color
+                updateChangeBadge('engagementChange', data.engagementChange);
+                updateChangeBadge('qualityChange', data.qualityChange);
+                updateChangeBadge('followersChange', data.followersChange);
+                updateChangeBadge('postsChange', data.postsChange);
+                
+                // Show visual feedback for data update
+                const metricsContainer = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-4');
+                if (metricsContainer) {
+                    metricsContainer.style.opacity = '0.7';
+                    setTimeout(() => {
+                        metricsContainer.style.opacity = '1';
+                    }, 300);
+                }
+                
+                console.log(`Dashboard updated for date range: ${fromDate} to ${toDate} (Current date: ${isCurrentDate})`);
+            }
+
+            // Function to animate metric value changes
+            function updateMetricWithAnimation(elementId, newValue) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.style.transform = 'scale(1.1)';
+                    element.style.transition = 'transform 0.3s ease';
+                    
+                    setTimeout(() => {
+                        element.textContent = newValue;
+                        element.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            }
+            
+            // Listen for storage changes from other tabs/windows
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'dateFilter_from' || e.key === 'dateFilter_to') {
+                    loadSavedDates();
+                }
+            });
+            
+            // Load dates on initial page load and initialize dashboard
+            window.addEventListener('load', function() {
+                loadSavedDates();
+                const currentDate = new Date();
+                const currentYear = currentDate.getFullYear();
+                const startOfYear = `${currentYear}-01-01`;
+                const endOfYear = `${currentYear}-12-31`;
+                
+                const savedToDate = localStorage.getItem('dateFilter_to');
+                if (savedToDate) {
+                    updateDashboardData(localStorage.getItem('dateFilter_from') || startOfYear, savedToDate);
+                } else {
+                    updateDashboardData(startOfYear, endOfYear);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
+
+
+

@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Main Content Area -->
+                
+                <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Header Section with Logo and Date Filter -->
+            <div class="flex items-center justify-between mb-6">
+                <!-- Left side - Logo -->
+                <div class="flex items-center">
+                    <a href="dashboard_overview.html" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; cursor: pointer;">
+                            <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                        </div>
+                    </a>
+                </div>
+                <!-- Right side - Date Filter and Export Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Date Range Filter -->
+                    <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                            <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-01-01">
+                        </div>
+                        <div class="text-text-secondary">—</div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">TO:</label>
+                            <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-07-31">
+                        </div>
+                        <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Apply
+                        </button>
+                    </div>
+                    <!-- Export Report Button -->
+                    <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 20h14v-2H5v2zm7-18v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Export Report
+                    </a>
+                </div>
+            </div>
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Google -->
+                <a href="dashboard_google.html" class="platform-btn" title="Google" aria-label="Google">
+                    <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                    <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                </a>
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                    <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                </a>
+                <!-- StockTwits -->
+                <a href="dashboard_stocktwits.html" class="platform-btn" title="StockTwits" aria-label="StockTwits">
+                    <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <!-- Summary Metrics Cards -->
+            <div id="dashboardSummaryCards" class="flex flex-row gap-2 mb-8">
+                <!-- Total Volume Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-lg font-bold text-text-primary mt-1" id="total-volume">5230</p>
+                            <p class="text-xs text-success-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-3 h-3 text-success-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">+12% from last year</span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Positive Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Positive Sentiment</p>
+                            <p class="text-lg font-bold text-success-600 mt-1" id="avg-positive-sentiment">45.2%</p>
+                            <p class="text-xs text-text-secondary mt-1">All platforms</p>
+                        </div>
+                        <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Neutral Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Neutral Sentiment</p>
+                            <p class="text-lg font-bold text-warning-600 mt-1" id="avg-neutral-sentiment">38.7%</p>
+                            <p class="text-xs text-text-secondary mt-1">All platforms</p>
+                        </div>
+                        <div class="w-8 h-8 bg-warning-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Negative Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Negative Sentiment</p>
+                            <p class="text-lg font-bold text-error-600 mt-1" id="avg-negative-sentiment">16.1%</p>
+                            <p class="text-xs text-text-secondary mt-1">All platforms</p>
+                        </div>
+                        <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Momentum Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <p class="text-xs font-medium text-text-secondary">Sentiment Momentum</p>
+                        <p class="text-lg font-bold text-error-600 mt-1" id="sentiment-momentum">-7.25%</p>
+                        <p class="text-xs text-error-600 mt-1">
+                        <span class="block">vs previous 2 months</span>
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                        <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 14l5-5 5 5z"/>
+                        </svg>
+                    </div>
+                    </div>
+                </div>
+  
+            </div>
+            
+            <div id="performanceView" style="display: block;">
+                <!-- Facebook Yearly Sentiment Analysis -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-text-primary">Sentiment Analysis</h2>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="facebookBarChart" width="800" height="384"></canvas>
+                    </div>
+                    
+                </div>
+                
+                <!-- Sentiment Trends Over Time (moved from Trends tab) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-semibold text-text-primary">Sentiment Trends Over Time</h2>
+                            <p id="facebookTrendsSubtitle" class="text-sm text-text-secondary mt-1">Facebook - Last 12 Months</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Time Range Selector Removed: Range slider and badge are now omitted, as date filter is above -->
+                    <div class="relative h-96 mb-8">
+                        <canvas id="facebookTrendsChart" class="w-full h-full"></canvas>
+                    </div>
+  
+                <!-- Key Insights (Red Box) -->
+                <div class="mt-6">
+                    
+                    <div class="space-y-3 bg-error-50 border border-error-300 rounded-lg p-4">
+                                                    <h3 class="text-lg font-semibold text-error-700 mb-3">Key Insights</h3>
+                        <div class="flex items-start space-x-3">
+
+                            <div class="w-2 h-2 bg-success-500 rounded-full mt-2"></div>
+                            <p class="text-text-secondary">Positive sentiment on Facebook has increased by 2% over the last quarter, indicating improved audience perception.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-warning-500 rounded-full mt-2"></div>
+                            <p class="text-text-secondary">Neutral sentiment remains steady, suggesting consistent brand communication and audience engagement.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-error-500 rounded-full mt-2"></div>
+                            <p class="text-text-secondary">Negative sentiment, while lower than last year, still requires monitoring for potential reputation risks.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Facebook Activity Radar (by Month) 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Facebook Activity Radar (by Month)</h3>
+                        <div>
+                            <select id="facebookRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="relative h-96 flex items-center justify-center">
+                        <canvas id="facebookActivityRadarChart" width="400" height="384"></canvas>
+                    </div>
+                </div>-->
+                
+                <!-- Facebook Engagement Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Post Performance 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Top Posts</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-primary-50 rounded-lg">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-text-primary">Product Launch Announcement</p>
+                                    <p class="text-xs text-text-secondary mt-1">2 days ago</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-lg font-bold text-primary">1.2K</p>
+                                    <p class="text-xs text-text-secondary">Engagements</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-text-primary">Company Culture Video</p>
+                                    <p class="text-xs text-text-secondary mt-1">5 days ago</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-lg font-bold text-primary">890</p>
+                                    <p class="text-xs text-text-secondary">Engagements</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-accent-50 rounded-lg">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-text-primary">Industry News Share</p>
+                                    <p class="text-xs text-text-secondary mt-1">1 week ago</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-lg font-bold text-primary">654</p>
+                                    <p class="text-xs text-text-secondary">Engagements</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Facebook Engagement Distribution 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Engagement Distribution</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Likes</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Comments</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Shares</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-80">
+                            <canvas id="facebookEngagementChart" width="400" height="320"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                            <div class="bg-primary-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-primary-800">3.2K</p>
+                                <p class="text-xs text-text-secondary">Likes</p>
+                            </div>
+                            <div class="bg-success-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-success-800">458</p>
+                                <p class="text-xs text-text-secondary">Comments</p>
+                            </div>
+                            <div class="bg-warning-50 rounded-lg p-3">
+                                <p class="text-lg font-bold text-warning-800">234</p>
+                                <p class="text-xs text-text-secondary">Shares</p>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Facebook Audience Demographics 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Audience Demographics</h3>
+                        <div class="relative h-96">
+                            <canvas id="facebookDemographicsChart" width="400" height="384"></canvas>
+                        </div>
+                    </div>-->
+
+                    <!-- Facebook Activity Timeline 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Timeline</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-text-secondary">Peak Activity</span>
+                                <span class="text-sm font-medium text-text-primary">2:00 PM - 4:00 PM</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-text-secondary">Best Day</span>
+                                <span class="text-sm font-medium text-text-primary">Wednesday</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-text-secondary">Avg. Response Time</span>
+                                <span class="text-sm font-medium text-text-primary">2.5 hours</span>
+                            </div>
+                            <div class="w-full bg-secondary-100 rounded-full h-2 mt-4">
+                                <div class="bg-primary h-2 rounded-full" style="width: 68%"></div>
+                            </div>
+                            <p class="text-xs text-text-secondary text-center">Overall Engagement Score: 68%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div id="trendsView" class="hidden">
+                <!-- Facebook Trends Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Trend Direction</p>
+                                <p class="text-2xl font-bold text-success-600 mt-1">↗ Growing</p>
+                            </div>
+                            <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M7 14l5-5 5 5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Peak Engagement</p>
+                                <p class="text-2xl font-bold text-text-primary mt-1">1.2K</p>
+                                <p class="text-sm text-text-secondary mt-1">March 15, 2024</p>
+                            </div>
+                            <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Avg Sentiment</p>
+                                <p class="text-2xl font-bold text-text-primary mt-1">45.2%</p>
+                                <p class="text-sm text-text-secondary mt-1">Positive overall</p>
+                            </div>
+                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Growth Rate</p>
+                                <p class="text-2xl font-bold text-success-600 mt-1">+15%</p>
+                                <p class="text-sm text-text-secondary mt-1">vs last quarter</p>
+                            </div>
+                            <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Facebook Trends Chart -->
+                <!-- (REMOVED: Sentiment Trends Over Time chart moved to Engagement tab) -->
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // --- Facebook Time Range Data & Update Logic ---
+        function getFacebookDummyData(from, to) {
+            // Returns dummy data for the selected range (month granularity)
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const fromDate = new Date(from);
+            const toDate = new Date(to);
+            let startMonth = fromDate.getMonth();
+            let endMonth = toDate.getMonth();
+            let startYear = fromDate.getFullYear();
+            let endYear = toDate.getFullYear();
+            let labels = [];
+            let year = startYear;
+            for (let y = startYear; y <= endYear; y++) {
+                let mStart = (y === startYear) ? startMonth : 0;
+                let mEnd = (y === endYear) ? endMonth : 11;
+                for (let m = mStart; m <= mEnd; m++) {
+                    labels.push(months[m] + ' ' + y);
+                }
+            }
+            // Generate dummy sentiment and engagement data
+            return {
+                labels,
+                positive: labels.map(() => Math.floor(Math.random() * 10 + 40)),
+                neutral: labels.map(() => Math.floor(Math.random() * 10 + 35)),
+                negative: labels.map(() => Math.floor(Math.random() * 5 + 15)),
+                engagement: labels.map(() => Math.floor(Math.random() * 1000 + 3000)),
+                demographics: [15, 28, 35, 15, 7],
+                activity: labels.map(() => Math.floor(Math.random() * 1000 + 2000))
+            };
+        }
+
+        function updateFacebookChartsAndInsights() {
+            const from = document.getElementById('fbDateFrom').value;
+            const to = document.getElementById('fbDateTo').value;
+            const data = getFacebookDummyData(from, to);
+
+            // Update Bar Chart
+            const barCtx = document.getElementById('facebookBarChart');
+            if (barCtx) {
+                if (window.facebookBarChart) window.facebookBarChart.destroy();
+                window.facebookBarChart = new Chart(barCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [
+                            { label: 'Positive', data: data.positive, backgroundColor: '#27AE60', borderRadius: 4 },
+                            { label: 'Neutral', data: data.neutral, backgroundColor: '#F39C12', borderRadius: 4 },
+                            { label: 'Negative', data: data.negative, backgroundColor: '#E74C3C', borderRadius: 4 }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'top', labels: { usePointStyle: true, padding: 20 } } },
+                        scales: {
+                            x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: '#F3F4F6' },
+                                ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } },
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Update Engagement Chart
+            const engCtx = document.getElementById('facebookEngagementChart');
+            if (engCtx) {
+                if (window.facebookEngagementChart) window.facebookEngagementChart.destroy();
+                window.facebookEngagementChart = new Chart(engCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Likes', 'Comments', 'Shares'],
+                        datasets: [{
+                            label: 'Engagement Count',
+                            data: [data.engagement[0], data.engagement[1], data.engagement[2]],
+                            backgroundColor: ['#3498DB', '#27AE60', '#F39C12'],
+                            borderColor: ['#3498DBCC', '#27AE60CC', '#F39C12CC'],
+                            borderWidth: 2,
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: '#F3F4F6' },
+                                ticks: { font: { size: 12 }, callback: function(value) { return value.toLocaleString(); } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Update Demographics Chart
+            const demoCtx = document.getElementById('facebookDemographicsChart');
+            if (demoCtx) {
+                if (window.facebookDemographicsChart) window.facebookDemographicsChart.destroy();
+                window.facebookDemographicsChart = new Chart(demoCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['18-24', '25-34', '35-44', '45-54', '55+'],
+                        datasets: [{
+                            data: data.demographics,
+                            backgroundColor: ['#3498DB', '#27AE60', '#F39C12', '#E74C3C', '#9B59B6'],
+                            borderWidth: 2,
+                            borderColor: '#FFFFFF'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15 } } }
+                    }
+                });
+            }
+
+            // Update Trends Chart
+            const trendsCtx = document.getElementById('facebookTrendsChart');
+            if (trendsCtx) {
+                if (window.facebookTrendsChart) window.facebookTrendsChart.destroy();
+                window.facebookTrendsChart = new Chart(trendsCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [
+                            {
+                                label: 'Positive',
+                                data: data.positive,
+                                borderColor: '#27AE60',
+                                backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Neutral',
+                                data: data.neutral,
+                                borderColor: '#F39C12',
+                                backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Negative',
+                                data: data.negative,
+                                borderColor: '#E74C3C',
+                                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 } } },
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: { display: true, color: '#F3F4F6' },
+                                ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Update Activity Radar Chart
+            const radarCtx = document.getElementById('facebookActivityRadarChart');
+            if (radarCtx) {
+                if (window.facebookActivityRadarChart) window.facebookActivityRadarChart.destroy();
+                window.facebookActivityRadarChart = new Chart(radarCtx.getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Facebook Activity by Month',
+                            data: data.activity,
+                            fill: true,
+                            backgroundColor: 'rgba(66, 103, 178, 0.2)',
+                            borderColor: '#4267B2',
+                            pointBackgroundColor: '#4267B2',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#4267B2',
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 9
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: { color: '#4267B2', font: { weight: 'bold' } }
+                            },
+                            tooltip: {
+                                enabled: true,
+                                backgroundColor: '#1F2937',
+                                titleColor: '#FFFFFF',
+                                bodyColor: '#FFFFFF',
+                                borderColor: '#374151',
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: '#E5E7EB' },
+                                grid: { color: '#E5E7EB' },
+                                pointLabels: { color: '#4267B2', font: { weight: 'bold' } },
+                                ticks: { color: '#374151' }
+                            }
+                        },
+                        animation: { duration: 1200, easing: 'easeInOutQuart' },
+                        interaction: { intersect: false, mode: 'nearest' }
+                    }
+                });
+            }
+
+            // Update Key Insights
+            updateFacebookTrendsInsights(data.labels, data.positive, data.neutral, data.negative);
+
+            // Update Sentiment Percentages below bar chart
+            if (data.positive.length) {
+                document.getElementById('facebookPositive').textContent = data.positive[data.positive.length-1].toFixed(1) + '%';
+                document.getElementById('facebookNeutral').textContent = data.neutral[data.neutral.length-1].toFixed(1) + '%';
+                document.getElementById('facebookNegative').textContent = data.negative[data.negative.length-1].toFixed(1) + '%';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('fbApplyDateFilter').addEventListener('click', updateFacebookChartsAndInsights);
+            updateFacebookChartsAndInsights();
+        });
+        // Tab switching logic removed: Engagement is now always visible by default
+        
+        // Facebook Charts
+        let facebookBarChart = null;
+        let facebookActivityRadarChart = null;
+        let facebookActivityRadarRawData = null;
+        let facebookEngagementChart = null;
+        let facebookDemographicsChart = null;
+        let facebookTrendsChart = null;
+        
+        // Initialize Facebook Bar Chart
+        function initializeFacebookBarChart() {
+            const ctx = document.getElementById('facebookBarChart');
+            if (!ctx) return;
+            
+            const years = ['2022', '2023', '2024'];
+            const positiveData = [42.8, 44.1, 45.2];
+            const neutralData = [41.2, 39.8, 38.7];
+            const negativeData = [16.0, 16.1, 16.1];
+            
+            if (facebookBarChart) facebookBarChart.destroy();
+            facebookBarChart = new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [
+                        { label: 'Positive', data: positiveData, backgroundColor: '#27AE60', borderRadius: 4 },
+                        { label: 'Neutral', data: neutralData, backgroundColor: '#F39C12', borderRadius: 4 },
+                        { label: 'Negative', data: negativeData, backgroundColor: '#E74C3C', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, padding: 20 } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#F3F4F6' },
+                            ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } },
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize Facebook Engagement Chart
+        function initializeFacebookEngagementChart() {
+            const ctx = document.getElementById('facebookEngagementChart');
+            if (!ctx) return;
+            
+            const labels = ['Likes', 'Comments', 'Shares'];
+            const data = [3200, 458, 234];
+            const colors = ['#3498DB', '#27AE60', '#F39C12'];
+            
+            if (facebookEngagementChart) facebookEngagementChart.destroy();
+            facebookEngagementChart = new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Engagement Count',
+                        data: data,
+                        backgroundColor: colors,
+                        borderColor: colors.map(color => color + 'CC'),
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#F3F4F6' },
+                            ticks: { font: { size: 12 }, callback: function(value) { return value.toLocaleString(); } }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize Facebook Demographics Chart
+        function initializeFacebookDemographicsChart() {
+            const ctx = document.getElementById('facebookDemographicsChart');
+            if (!ctx) return;
+            
+            const labels = ['18-24', '25-34', '35-44', '45-54', '55+'];
+            const data = [15, 28, 35, 15, 7];
+            const colors = ['#3498DB', '#27AE60', '#F39C12', '#E74C3C', '#9B59B6'];
+            
+            if (facebookDemographicsChart) facebookDemographicsChart.destroy();
+            facebookDemographicsChart = new Chart(ctx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 2,
+                        borderColor: '#FFFFFF'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15 } }
+                    }
+                }
+            });
+        }
+        
+        // Data for different ranges
+        const facebookTrendsData = {
+          '6m': {
+            labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            positive: [45, 44, 46, 47, 45, 45],
+            neutral: [39, 40, 38, 37, 39, 39],
+            negative: [16, 16, 16, 16, 16, 16]
+          },
+          '1y': {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            positive: [42, 43, 45, 44, 46, 47, 45, 44, 46, 47, 45, 45],
+            neutral: [42, 41, 39, 40, 38, 37, 39, 40, 38, 37, 39, 39],
+            negative: [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16]
+          },
+          '2y': {
+            labels: [
+              'Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23',
+              'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23',
+              'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24',
+              'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'
+            ],
+            positive: [41, 42, 43, 44, 45, 44, 46, 47, 45, 44, 46, 47, 45, 45, 46, 47, 45, 44, 46, 47, 45, 45, 46, 47],
+            neutral: [43, 42, 41, 40, 39, 40, 38, 37, 39, 40, 38, 37, 39, 39, 38, 37, 39, 40, 38, 37, 39, 39, 38, 37],
+            negative: [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16]
+          }
+        };
+
+        function initializeFacebookTrendsChart(range = '1y') {
+          const ctx = document.getElementById('facebookTrendsChart');
+          if (!ctx) return;
+
+          const data = facebookTrendsData[range];
+
+          if (facebookTrendsChart) facebookTrendsChart.destroy();
+          facebookTrendsChart = new Chart(ctx.getContext('2d'), {
+            type: 'line',
+            data: {
+              labels: data.labels,
+              datasets: [
+                {
+                  label: 'Positive',
+                  data: data.positive,
+                  borderColor: '#27AE60',
+                  backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                  borderWidth: 3,
+                  fill: true,
+                  tension: 0.4
+                },
+                {
+                  label: 'Neutral',
+                  data: data.neutral,
+                  borderColor: '#F39C12',
+                  backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                  borderWidth: 3,
+                  fill: true,
+                  tension: 0.4
+                },
+                {
+                  label: 'Negative',
+                  data: data.negative,
+                  borderColor: '#E74C3C',
+                  backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                  borderWidth: 3,
+                  fill: true,
+                  tension: 0.4
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 } } },
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  grid: { display: true, color: '#F3F4F6' },
+                  ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } }
+                }
+              }
+            }
+          });
+        }
+
+        // Listen for slider changes (6m, 1y, 2y) with badge and endpoint highlight
+        const sliderValueToRange = {
+          0: '6m',
+          1: '1y',
+          2: '2y'
+        };
+        const sliderValueToLabel = {
+          0: '6m',
+          1: '1y',
+          2: '2y'
+        };
+        // Map range to subtitle
+        const rangeToSubtitle = {
+          '6m': 'Facebook - Last 6 Months',
+          '1y': 'Facebook - Last 12 Months',
+          '2y': 'Facebook - Last 24 Months'
+        };
+
+        function updateTrendsSubtitle(rangeKey) {
+          const subtitle = document.getElementById('facebookTrendsSubtitle');
+          if (subtitle) {
+            subtitle.textContent = rangeToSubtitle[rangeKey];
+          }
+        }
+
+        function updateFacebookTrendsInsights(labels, positive, neutral, negative) {
+            const insightsDiv = document.getElementById('facebookTrendsInsights');
+            if (!insightsDiv) return;
+            if (!labels.length) { insightsDiv.textContent = 'No data available for this range.'; return; }
+            // Calculate averages
+            const avgPos = (positive.reduce((a, b) => a + b, 0) / positive.length).toFixed(1);
+            const avgNeu = (neutral.reduce((a, b) => a + b, 0) / neutral.length).toFixed(1);
+            const avgNeg = (negative.reduce((a, b) => a + b, 0) / negative.length).toFixed(1);
+            // Trend direction (compare first and last value)
+            let trend = '';
+            if (positive[positive.length-1] > positive[0] + 2) trend = '↗ Positive sentiment is increasing.';
+            else if (positive[positive.length-1] < positive[0] - 2) trend = '↘ Positive sentiment is decreasing.';
+            else trend = '→ Positive sentiment is stable.';
+            // Summary
+            let summary = '';
+            if (avgPos > avgNeu && avgPos > avgNeg) summary = `Positive sentiment dominates at ${avgPos}%.`;
+            else if (avgNeg > avgPos && avgNeg > avgNeu) summary = `Negative sentiment is highest at ${avgNeg}%.`;
+            else summary = `Neutral sentiment is most common at ${avgNeu}%.`;
+            insightsDiv.innerHTML = `
+                <strong>Key Insights (${labels.length} months):</strong><br/>
+                <ul class="list-disc pl-6">
+                    <li>Average Positive: <span class="font-semibold">${avgPos}%</span></li>
+                    <li>Average Neutral: <span class="font-semibold">${avgNeu}%</span></li>
+                    <li>Average Negative: <span class="font-semibold">${avgNeg}%</span></li>
+                    <li>${trend}</li>
+                    <li>${summary}</li>
+                </ul>
+            `;
+        }
+
+    // Range slider and badge logic removed as date filter is now used above
+    // If you need to initialize the chart, call initializeFacebookTrendsChart() with appropriate params from the date filter logic
+        
+        // Facebook Activity Radar Chart
+        async function loadFacebookActivityRadarChart() {
+            try {
+                // Create dummy data for Facebook Activity Radar
+                const dummyData = {
+                    labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                    values: [1850, 2100, 2350, 2200, 2450, 2300, 2650, 2800, 2550, 2750, 2900, 3100, 2950, 3200, 3350, 3150, 3450, 3300, 3700, 3850, 3650, 3800, 4000, 4150]
+                };
+                
+                facebookActivityRadarRawData = dummyData;
+                const yearSelect = document.getElementById('facebookRadarYearSelect');
+                if (yearSelect) {
+                    // Extract years from labels (format: 'Month YYYY')
+                    const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+                    yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+                    yearSelect.onchange = function() { renderFacebookActivityRadarChart(this.value); };
+                }
+                renderFacebookActivityRadarChart('all');
+            } catch (e) {
+                const ctx = document.getElementById('facebookActivityRadarChart');
+                if (ctx) {
+                    ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Facebook Activity Radar chart data.</div>';
+                }
+            }
+        }
+        
+        function renderFacebookActivityRadarChart(selectedYear) {
+            const ctx = document.getElementById('facebookActivityRadarChart');
+            if (!ctx || !facebookActivityRadarRawData) return;
+            if (facebookActivityRadarChart) facebookActivityRadarChart.destroy();
+            
+            let labels = facebookActivityRadarRawData.labels;
+            let values = facebookActivityRadarRawData.values;
+            if (selectedYear && selectedYear !== 'all') {
+                labels = facebookActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+                values = labels.map(l => {
+                    const idx = facebookActivityRadarRawData.labels.indexOf(l);
+                    return facebookActivityRadarRawData.values[idx];
+                });
+            }
+            
+            facebookActivityRadarChart = new Chart(ctx.getContext('2d'), {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Facebook Activity by Month',
+                        data: values,
+                        fill: true,
+                        backgroundColor: 'rgba(66, 103, 178, 0.2)',
+                        borderColor: '#4267B2',
+                        pointBackgroundColor: '#4267B2',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#4267B2',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointHoverRadius: 9
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: '#4267B2',
+                                font: { weight: 'bold' }
+                            }
+                        },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: '#1F2937',
+                            titleColor: '#FFFFFF',
+                            bodyColor: '#FFFFFF',
+                            borderColor: '#374151',
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E5E7EB' },
+                            grid: { color: '#E5E7EB' },
+                            pointLabels: { color: '#4267B2', font: { weight: 'bold' } },
+                            ticks: { color: '#374151' }
+                        }
+                    },
+                    animation: {
+                        duration: 1200,
+                        easing: 'easeInOutQuart'
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'nearest'
+                    }
+                }
+            });
+        }
+        
+        // Initialize all charts on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeFacebookBarChart();
+            initializeFacebookEngagementChart();
+            initializeFacebookDemographicsChart();
+            loadFacebookActivityRadarChart();
+            initializeFacebookTrendsChart('1y');
+        });
+    </script>
+    
+    <style>
+        .active-platform {
+            box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+            border-radius: 12px;
+            outline: none;
+            z-index: 1;
+            transition: box-shadow 0.2s;
+        }
+        .text-lg.font-bold.text-success-600.mt-1,
+        .text-lg.font-bold.text-warning-600.mt-1,
+        .text-lg.font-bold.text-error-600.mt-1 {
+            font-size: 25px;
+        }
+    </style>
+    
+    <script>
+        // Highlight the active platform button
+        document.addEventListener('DOMContentLoaded', function() {
+            const platformBtns = document.querySelectorAll('.platform-btn');
+            const currentPage = window.location.pathname.split('/').pop();
+            platformBtns.forEach(btn => {
+                const href = btn.getAttribute('href');
+                if (href && href === currentPage) {
+                    btn.classList.add('active-platform');
+                }
+            });
+        });
+    </script>
+<!-- Professional Floating Back Button -->
+<button id="floatingBackBtn" class="floating-back-btn" onclick="goBack()" title="Go Back">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/>
+    </svg>
+    <span class="btn-text">Back</span>
+</button>
+
+<style>
+    
+    .floating-back-btn {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 8px 32px rgba(255, 138, 0, 0.3);
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        min-width: 120px;
+        user-select: none;
+        opacity: 0.3;
+    }
+    .floating-back-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(255, 138, 0, 0.4);
+        background: linear-gradient(135deg, #ff7300 0%, #d12755 100%);
+        opacity: 1;
+    }
+    .floating-back-btn:active,
+    .floating-back-btn:focus,
+    .floating-back-btn:focus-visible,
+    .floating-back-btn:focus:not(:hover) {
+        opacity: 0.3;
+        outline: none;
+    }
+    .floating-back-btn svg {
+        transition: transform 0.2s ease;
+    }
+    .floating-back-btn:hover svg {
+        transform: translateX(-2px);
+    }
+    .btn-text {
+        font-weight: 600;
+        letter-spacing: 0.025em;
+    }
+    @media (max-width: 768px) {
+        .floating-back-btn {
+            bottom: 16px;
+            left: 16px;
+            padding: 10px 14px;
+            font-size: 13px;
+            min-width: 100px;
+        }
+    }
+    @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .floating-back-btn { animation: slideInUp 0.6s ease-out; }
+</style>
+
+<script>
+    function goBack() {
+        const btn = document.getElementById('floatingBackBtn');
+        btn.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            window.location.href = 'dashboard_overview.html';
+        }, 150);
+    }
+    window.addEventListener('scroll', function() {
+        const backBtn = document.getElementById('floatingBackBtn');
+        if (backBtn && document.activeElement === backBtn) {
+            backBtn.blur();
+        }
+    });
+</script>
+</body>
+</html>

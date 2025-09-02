@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audience Insights - A Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/sidebar-hover.js"></script>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flamresear9044back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Main Container -->
+    <div class="flex min-h-screen">
+        <!-- Left Sidebar -->
+        <aside class="w-1/4 bg-surface shadow-card border-r border-border-light fixed h-full overflow-y-auto">
+            <!-- Logo Section -->
+            <div class="p-6 border-b border-border-light">
+                <div class="flex items-center justify-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white text-lg font-bold">Y</span>
+                    </div>
+                    <span class="text-xl font-bold text-primary">Your logo</span>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="p-4">
+                <!-- Your Company Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Your Company</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="dashboard_overview.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                                </svg>
+                                Dashboard Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a href="performance_analytics.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                                Performance Analytics
+                            </a>
+                        </li>
+                        <li>
+                            <a href="trends_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12z"/>
+                                </svg>
+                                Trends Analysis
+                            </a>
+                        </li>
+                        <li>
+                            <a href="audience_insights.html" class="flex items-center px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2 1l-3 4v7h2v7h3v-7h1v7h3zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 10v7h2v7h2v-7h2v7h2v-7h2V10c0-1.33-.67-2-1.5-2z"/>
+                                </svg>
+                                Audience Insights
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Competitors Company Section -->
+                <div>
+                    <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Competitors Company</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="competitor_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 11H7v9h2v-9zm4 0h-2v9h2v-9zm4 0h-2v9h2v-9zm2.5-5H18V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2H4.5c-.83 0-1.5.67-1.5 1.5S3.67 9 4.5 9H6v10c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9h1.5c.83 0 1.5-.67 1.5-1.5S20.33 6 19.5 6zM10 4h4v2h-4V4z"/>
+                                </svg>
+                                Competitor Analysis
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 ml-1/4 p-6">
+            <!-- Breadcrumb Navigation -->
+            <nav class="flex mb-6" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm">
+                    <li>
+                        <span class="text-text-secondary">Your Company</span>
+                    </li>
+                    <li>
+                        <svg class="w-4 h-4 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                        </svg>
+                    </li>
+                    <li>
+                        <span class="text-primary font-medium">Audience Insights</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-text-primary">Audience Insights</h1>
+                    <p class="text-text-secondary mt-1">Platform-specific engagement analysis and demographic intelligence</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Filter Audience
+                    </button>
+                    <button class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-600 rounded-md transition-fast">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 12v7H5v-7M12 2l-7 7h4v6h6V9h4l-7-7z"/>
+                        </svg>
+                        Export Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Platform Selection and Filters -->
+            <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-text-primary">Platform Analysis</h2>
+                    <div class="flex items-center space-x-4">
+                        <!-- Platform Dropdown -->
+                        <div class="relative">
+                            <select id="platformSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="marketbeat">MarketBeat</option>
+                                <option value="reddit">Reddit</option>
+                                <option value="twitter">Twitter</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-secondary pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+
+                        <!-- Demographics Filter (location removed) -->
+                        <div class="relative">
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-primary-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-primary-700">Total Posts</p>
+                                <p id="totalPosts" class="text-xl font-bold text-primary-800">Loading...</p>
+                            </div>
+                            <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2 1l-3 4v7h2v7h3v-7h1v7h3z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-accent-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-accent-700">Avg. Engagement</p>
+                                <p id="avgEngagement" class="text-xl font-bold text-accent-800">Loading...</p>
+                            </div>
+                            <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-success-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-success-700">Total Engagements</p>
+                                <p id="totalEngagementsQuick" class="text-xl font-bold text-success-800">Loading...</p>
+                            </div>
+                            <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-warning-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-warning-700">Top Reaction</p>
+                                <p id="topReaction" class="text-xl font-bold text-warning-800">Loading...</p>
+                            </div>
+                            <div class="w-8 h-8 bg-warning-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Area -->
+            <div id="contentArea">
+                <!-- LinkedIn Content (Default) -->
+                <div id="linkedinContent" class="platform-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Engagement Types Chart -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold text-text-primary">Engagement Types</h3>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Likes</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Appreciations</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Empathy</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Interests</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative w-80 h-80 mx-auto">
+                                <canvas id="linkedinEngagementChart" width="320" height="320"></canvas>
+                            </div>
+                            <div class="mt-6 grid grid-cols-2 gap-4 text-center">
+                                <div>
+                                    <p id="totalEngagements" class="text-2xl font-bold text-text-primary">Loading...</p>
+                                    <p class="text-sm text-text-secondary">Total Engagements</p>
+                                </div>
+                                <div>
+                                    <p id="engagementRate" class="text-2xl font-bold text-text-primary">Loading...</p>
+                                    <p class="text-sm text-text-secondary">Engagement Rate</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Detailed Engagement Breakdown -->
+                            <div class="mt-6 pt-6 border-t border-border-light">
+                                <h4 class="text-sm font-medium text-text-secondary mb-4">Detailed Breakdown</h4>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                            <span class="text-sm text-text-primary">Likes</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <p id="likesCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                            <p id="likesPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                            <span class="text-sm text-text-primary">Appreciations</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <p id="appreciationsCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                            <p id="appreciationsPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                            <span class="text-sm text-text-primary">Empathy</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <p id="empathyCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                            <p id="empathyPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                            <span class="text-sm text-text-primary">Interests</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <p id="interestsCount" class="text-sm font-bold text-text-primary">Loading...</p>
+                                            <p id="interestsPercentage" class="text-xs text-text-secondary">Loading...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Engagement Histogram -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold text-text-primary">Engagement Distribution</h3>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Likes</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Appreciations</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Empathy</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Interests</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative h-80">
+                                <canvas id="engagementHistogramChart" width="400" height="320"></canvas>
+                            </div>
+                            <div class="mt-6 grid grid-cols-2 gap-4 text-center">
+                                <div>
+                                    <p id="highestEngagement" class="text-lg font-bold text-text-primary">Loading...</p>
+                                    <p class="text-sm text-text-secondary">Highest Category</p>
+                                </div>
+                                <div>
+                                    <p id="totalEngagementTypes" class="text-lg font-bold text-text-primary">4</p>
+                                    <p class="text-sm text-text-secondary">Engagement Types</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn Activity Radar -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold text-text-primary">LinkedIn Activity Radar</h3>
+                                <div>
+                                    <select id="linkedinRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="all">All Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="relative h-96 flex items-center justify-center">
+                                <canvas id="linkedinRadarChart" width="400" height="384"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn Activity Patterns -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Patterns</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="text-sm font-medium text-text-secondary mb-3">Peak Hours (EST)</h4>
+                                    <div id="linkedinPeakHours" class="grid grid-cols-4 gap-2 w-full">
+                                        <!-- Peak hours will be loaded here by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MarketBeat Content -->
+                <div id="marketbeatContent" class="platform-content hidden">
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Yearly Sentiment Analysis</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Positive</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Neutral</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Negative</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-96">
+                            <canvas id="marketbeatBarChart" width="800" height="384"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p id="marketbeatPositive" class="text-2xl font-bold text-success-600">...</p>
+                                <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                            </div>
+                            <div>
+                                <p id="marketbeatNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                                <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                            </div>
+                            <div>
+                                <p id="marketbeatNegative" class="text-2xl font-bold text-error-500">...</p>
+                                <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MarketBeat Activity Radar by Month -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">MarketBeat Activity Radar (by Month)</h3>
+                            <div>
+                                <select id="marketbeatRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="all">All Years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="relative h-96 flex items-center justify-center">
+                            <canvas id="marketbeatRadarChart" width="400" height="384"></canvas>
+                        </div>
+                    </div>
+                    <!-- MarketBeat Activity Patterns by Month -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">MarketBeat Activity Patterns (by Month)</h3>
+                        <div class="relative h-96 flex items-center justify-center">
+                            <canvas id="marketbeatPatternsChart" width="800" height="384"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reddit Content -->
+                <div id="redditContent" class="platform-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Subreddit Engagement -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <h3 class="text-lg font-semibold text-text-primary mb-6">Reddit Activity Radar</h3>
+                            <div class="relative h-96 flex items-center justify-center">
+                                <canvas id="redditRadarChart" width="400" height="384"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- User Activity Patterns -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Patterns</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="text-sm font-medium text-text-secondary mb-3">Peak Hours (EST)</h4>
+                                    <div id="redditPeakHours" class="grid grid-cols-4 gap-2 w-full">
+                                        <!-- Peak hours will be loaded here by JS -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-text-secondary mb-3">Reddit Activity</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-text-primary">Total Upvotes</span>
+                                            <span id="redditTotalUpvotes" class="text-sm font-medium text-text-primary">Loading...</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-text-primary">Total Comments</span>
+                                            <span id="redditTotalComments" class="text-sm font-medium text-text-primary">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Reddit Yearly Sentiment Analysis (like MarketBeat) -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Yearly Sentiment Analysis</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Positive</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Neutral</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Negative</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-96">
+                            <canvas id="redditBarChart" width="800" height="384"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p id="redditPositive" class="text-2xl font-bold text-success-600">...</p>
+                                <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                            </div>
+                            <div>
+                                <p id="redditNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                                <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                            </div>
+                            <div>
+                                <p id="redditNegative" class="text-2xl font-bold text-error-500">...</p>
+                                <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Twitter Content -->
+                <div id="twitterContent" class="platform-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Hashtag Performance -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <h3 class="text-lg font-semibold text-text-primary mb-6">Top Hashtags</h3>
+                            <div id="twitterHashtags" class="space-y-4">
+                                <!-- Hashtags will be loaded here by JS -->
+                            </div>
+                        </div>
+                        <!-- Twitter Engagement Histogram -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold text-text-primary">Engagement Distribution</h3>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Likes</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Views</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Retweets</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                        <span class="text-sm text-text-secondary">Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative h-80">
+                                <canvas id="twitterHistogramChart" width="400" height="320"></canvas>
+                            </div>
+                            <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div class="bg-primary-50 rounded-lg p-3">
+                                    <p id="twitterViewsCount" class="text-lg font-bold text-primary-800">-</p>
+                                    <p class="text-xs text-text-secondary">Views</p>
+                                </div>
+                                <div class="bg-accent-50 rounded-lg p-3">
+                                    <p id="twitterLikesCount" class="text-lg font-bold text-accent-800">-</p>
+                                    <p class="text-xs text-text-secondary">Likes</p>
+                                </div>
+                                <div class="bg-success-50 rounded-lg p-3">
+                                    <p id="twitterRetweetsCount" class="text-lg font-bold text-success-800">-</p>
+                                    <p class="text-xs text-text-secondary">Retweets</p>
+                                </div>
+                                <div class="bg-warning-50 rounded-lg p-3">
+                                    <p id="twitterRepliesCount" class="text-lg font-bold text-warning-800">-</p>
+                                    <p class="text-xs text-text-secondary">Replies</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Twitter Activity Radar -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <h3 class="text-lg font-semibold text-text-primary mb-6">Twitter Activity Radar</h3>
+                            <div class="relative h-96 flex items-center justify-center">
+                                <canvas id="twitterRadarChart" width="400" height="384"></canvas>
+                            </div>
+                        </div>
+                        <!-- Twitter Activity Patterns -->
+                        <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                            <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Patterns</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="text-sm font-medium text-text-secondary mb-3">Peak Hours (EST)</h4>
+                                    <div id="twitterPeakHours" class="grid grid-cols-4 gap-2 w-full">
+                                        <!-- Peak hours will be loaded here by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Twitter Yearly Sentiment Analysis (like MarketBeat) -->
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Yearly Sentiment Analysis</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Positive</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Neutral</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Negative</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-96">
+                            <canvas id="twitterBarChart" width="800" height="384"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p id="twitterPositive" class="text-2xl font-bold text-success-600">...</p>
+                                <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                            </div>
+                            <div>
+                                <p id="twitterNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                                <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                            </div>
+                            <div>
+                                <p id="twitterNegative" class="text-2xl font-bold text-error-500">...</p>
+                                <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Update Indicator -->
+            <div class="mt-8 flex items-center justify-center">
+                <div class="flex items-center space-x-2 text-sm text-text-secondary">
+                    <div class="w-2 h-2 bg-success-600 rounded-full animate-pulse"></div>
+                    <span data-last-updated>Last updated: 3 minutes ago</span>
+                    <button class="text-primary hover:text-primary-600 font-medium transition-fast">Refresh Data</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Chart.js Configuration Script -->
+    <script>
+        // --- Platform Data Loaders ---
+        // Load LinkedIn Data and update quick stats
+        async function loadLinkedInDataAndStats() {
+            try {
+                showLoadingState();
+                const response = await fetch('../public/linkedin_engagement_data.json');
+                if (!response.ok) throw new Error('Failed to load linkedin_engagement_data.json');
+                const data = await response.json();
+                // Update quick stats
+                updateQuickStats({
+                    totalPosts: data.total_posts,
+                    avgEngagement: data.engagement_rate + '%',
+                    totalEngagements: data.total_engagements,
+                    topReaction: getTopReaction(data.engagement_breakdown)
+                });
+            } catch (e) {
+                updateQuickStats({ totalPosts: 'N/A', avgEngagement: 'N/A', totalEngagements: 'N/A', topReaction: 'N/A' });
+            }
+        }
+
+        // Load MarketBeat Data and update quick stats
+        async function loadMarketBeatDataAndStats() {
+            try {
+                showLoadingState();
+                const response = await fetch('../public/marketbeat_platform_analysis.json');
+                if (!response.ok) throw new Error('Failed to load marketbeat_platform_analysis.json');
+                const data = await response.json();
+                updateQuickStats({
+                    totalPosts: data.total_posts || 'N/A',
+                    avgEngagement: data.avg_engagement || 'N/A',
+                    totalEngagements: data.total_engagements || 'N/A',
+                    topReaction: data.top_reaction || 'N/A'
+                });
+            } catch (e) {
+                updateQuickStats({ totalPosts: 'N/A', avgEngagement: 'N/A', totalEngagements: 'N/A', topReaction: 'N/A' });
+            }
+        }
+
+        // Load Reddit Data and update quick stats
+        async function loadRedditDataAndStats() {
+            try {
+                showLoadingState();
+                const response = await fetch('../public/reddit_platform_analysis.json');
+                if (!response.ok) throw new Error('Failed to load reddit_platform_analysis.json');
+                const data = await response.json();
+                updateQuickStats({
+                    totalPosts: data.total_posts || 'N/A',
+                    avgEngagement: data.avg_engagement || 'N/A',
+                    totalEngagements: data.total_engagements || 'N/A',
+                    topReaction: data.top_reaction || 'N/A'
+                });
+            } catch (e) {
+                updateQuickStats({ totalPosts: 'N/A', avgEngagement: 'N/A', totalEngagements: 'N/A', topReaction: 'N/A' });
+            }
+        }
+
+        // Load Twitter Data and update quick stats
+        async function loadTwitterDataAndStats() {
+            try {
+                showLoadingState();
+                const response = await fetch('../public/twitter_platform_analysis.json');
+                if (!response.ok) throw new Error('Failed to load twitter_platform_analysis.json');
+                const data = await response.json();
+                updateQuickStats({
+                    totalPosts: data.total_posts,
+                    avgEngagement: data.avg_engagement,
+                    totalEngagements: data.total_engagements,
+                    topReaction: data.top_reaction
+                });
+            } catch (e) {
+                updateQuickStats({ totalPosts: 'N/A', avgEngagement: 'N/A', totalEngagements: 'N/A', topReaction: 'N/A' });
+            }
+        }
+
+        // Helper to update quick stats
+        function updateQuickStats({ totalPosts, avgEngagement, totalEngagements, topReaction }) {
+            const totalPostsEl = document.getElementById('totalPosts');
+            const avgEngagementEl = document.getElementById('avgEngagement');
+            const totalEngagementsEl = document.getElementById('totalEngagementsQuick');
+            const topReactionEl = document.getElementById('topReaction');
+            if (totalPostsEl) totalPostsEl.textContent = totalPosts || 'N/A';
+            if (avgEngagementEl) avgEngagementEl.textContent = avgEngagement || 'N/A';
+            if (totalEngagementsEl) totalEngagementsEl.textContent = totalEngagements || 'N/A';
+            if (topReactionEl) topReactionEl.textContent = topReaction || 'N/A';
+        }
+
+        // Helper to get top reaction from engagement breakdown
+        function getTopReaction(breakdown) {
+            if (!breakdown) return 'N/A';
+            let maxType = 'Likes';
+            let maxValue = 0;
+            for (const [type, value] of Object.entries(breakdown)) {
+                if (value > maxValue) {
+                    maxValue = value;
+                    maxType = type.charAt(0).toUpperCase() + type.slice(1);
+                }
+            }
+            return maxType;
+        }
+
+        // --- END Platform Data Loaders ---
+
+        // Load Twitter Top Hashtags from JSON and update UI
+        async function loadTwitterTopHashtags() {
+            try {
+                const response = await fetch('../public/twitter_top_hashtags.json');
+                if (!response.ok) throw new Error('Failed to load twitter_top_hashtags.json');
+                const data = await response.json();
+                const container = document.getElementById('twitterHashtags');
+                if (!container) return;
+                container.innerHTML = '';
+                if (!Array.isArray(data) || data.length === 0) {
+                    container.innerHTML = '<div class="text-warning-700">No hashtag data available.</div>';
+                    return;
+                }
+                // Find max count for width scaling
+                let maxCount = 0;
+                data.forEach(item => { if (item.count > maxCount) maxCount = item.count; });
+                data.forEach(item => {
+                    const widthPercent = maxCount > 0 ? Math.round((item.count / maxCount) * 100) : 0;
+                    container.innerHTML += `
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-primary">${item.hashtag}</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-24 bg-secondary-100 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: ${widthPercent}%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">${item.count.toLocaleString ? item.count.toLocaleString() : item.count}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                const container = document.getElementById('twitterHashtags');
+                if (container) container.innerHTML = '<div class="text-warning-700">Unable to load Twitter hashtag data.</div>';
+            }
+        }
+        // Load Reddit Activity Stats (Upvotes & Comments)
+        async function loadRedditActivityStats() {
+            try {
+                const response = await fetch('../public/reddit_activity_stats.json');
+                if (!response.ok) throw new Error('Failed to load reddit_activity_stats.json');
+                const data = await response.json();
+                document.getElementById('redditTotalUpvotes').textContent = data.reddit_activity.total_upvotes.toLocaleString();
+                document.getElementById('redditTotalComments').textContent = data.reddit_activity.total_comments.toLocaleString();
+            } catch (e) {
+                document.getElementById('redditTotalUpvotes').textContent = 'N/A';
+                document.getElementById('redditTotalComments').textContent = 'N/A';
+            }
+        }
+        // Reddit Radar Chart instance
+        let redditRadarChart = null;
+        // Twitter Radar Chart instance
+        let twitterRadarChart = null;
+        // Load Twitter peak hours data and update radar chart
+        async function loadTwitterRadarChart() {
+            try {
+                const response = await fetch('../public/twitter_peak_hours.json');
+                if (!response.ok) throw new Error('Failed to load twitter_peak_hours.json');
+                const data = await response.json();
+                const labels = data.peak_hours.map(slot => slot.slot);
+                const values = data.peak_hours.map(slot => slot.count);
+                const ctx = document.getElementById('twitterRadarChart');
+                if (!ctx) return;
+                // Destroy previous chart if exists
+                if (twitterRadarChart) twitterRadarChart.destroy();
+                twitterRadarChart = new Chart(ctx.getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Mentions by Time Slot',
+                            data: values,
+                            fill: true,
+                            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                            borderColor: '#3498DB',
+                            pointBackgroundColor: '#FF6B35',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#FF6B35',
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 9
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    color: '#374151',
+                                    font: { size: 16, weight: 'bold' }
+                                }
+                            },
+                            tooltip: {
+                                enabled: true,
+                                backgroundColor: '#1F2937',
+                                titleColor: '#FFFFFF',
+                                bodyColor: '#FFFFFF',
+                                borderColor: '#374151',
+                                borderWidth: 1,
+                                cornerRadius: 8,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.formattedValue} mentions`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: '#E5E7EB' },
+                                grid: { color: '#E5E7EB' },
+                                pointLabels: {
+                                    color: '#374151',
+                                    font: { size: 14, weight: 'bold' }
+                                },
+                                ticks: {
+                                    color: '#6B7280',
+                                    font: { size: 12 },
+                                    backdropColor: 'transparent',
+                                    callback: function(value) { return value % 1 === 0 ? value : null; }
+                                },
+                                min: 0
+                            }
+                        },
+                        animation: {
+                            duration: 1200,
+                            easing: 'easeInOutQuart'
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'nearest'
+                        }
+                    }
+                });
+            } catch (e) {
+                const ctx = document.getElementById('twitterRadarChart');
+                if (ctx) {
+                    ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Twitter radar chart data.</div>';
+                }
+            }
+        }
+
+        // Load Reddit peak hours data and update radar chart
+        async function loadRedditRadarChart() {
+            try {
+                const response = await fetch('../public/reddit_peak_hours.json');
+                if (!response.ok) throw new Error('Failed to load reddit_peak_hours.json');
+                const data = await response.json();
+                const labels = data.peak_hours.map(slot => slot.slot);
+                const values = data.peak_hours.map(slot => slot.count);
+                const ctx = document.getElementById('redditRadarChart');
+                if (!ctx) return;
+                // Destroy previous chart if exists
+                if (redditRadarChart) redditRadarChart.destroy();
+                redditRadarChart = new Chart(ctx.getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Mentions by Time Slot',
+                            data: values,
+                            fill: true,
+                            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                            borderColor: '#3498DB',
+                            pointBackgroundColor: '#FF6B35',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#FF6B35',
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 9
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    color: '#374151',
+                                    font: { size: 16, weight: 'bold' }
+                                }
+                            },
+                            tooltip: {
+                                enabled: true,
+                                backgroundColor: '#1F2937',
+                                titleColor: '#FFFFFF',
+                                bodyColor: '#FFFFFF',
+                                borderColor: '#374151',
+                                borderWidth: 1,
+                                cornerRadius: 8,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.formattedValue} mentions`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: '#E5E7EB' },
+                                grid: { color: '#E5E7EB' },
+                                pointLabels: {
+                                    color: '#374151',
+                                    font: { size: 14, weight: 'bold' }
+                                },
+                                ticks: {
+                                    color: '#6B7280',
+                                    font: { size: 12 },
+                                    backdropColor: 'transparent',
+                                    callback: function(value) { return value % 1 === 0 ? value : null; }
+                                },
+                                min: 0
+                            }
+                        },
+                        animation: {
+                            duration: 1200,
+                            easing: 'easeInOutQuart'
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'nearest'
+                        }
+                    }
+                });
+            } catch (e) {
+                const ctx = document.getElementById('redditRadarChart');
+                if (ctx) {
+                    ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Reddit radar chart data.</div>';
+                }
+            }
+        }
+        // Load Reddit peak hours data and update UI
+        async function loadRedditPeakHours() {
+            try {
+                const response = await fetch('../public/reddit_peak_hours.json');
+                if (!response.ok) throw new Error('Failed to load reddit_peak_hours.json');
+                const data = await response.json();
+                const container = document.getElementById('redditPeakHours');
+                if (!container) return;
+                container.innerHTML = '';
+                // Find max count for highlighting
+                let maxCount = 0;
+                data.peak_hours.forEach(slot => { if (slot.count > maxCount) maxCount = slot.count; });
+                data.peak_hours.forEach(slot => {
+                    let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+                    let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+                    let level = slot.count === maxCount ? 'High' : (slot.count > 0 ? 'Medium' : 'Low');
+                    container.innerHTML += `
+                        <div class="text-center p-2 ${bg} rounded">
+                            <p class="text-sm font-medium ${text}">${slot.slot}</p>
+                            <p class="text-xs text-text-secondary">${level} (${slot.count})</p>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                const container = document.getElementById('redditPeakHours');
+                if (container) container.innerHTML = '<div class="col-span-4 text-center text-warning-700">Unable to load Reddit peak hours data.</div>';
+            }
+        }
+
+        // Load Twitter peak hours data and update UI (Activity Patterns)
+        async function loadTwitterPeakHours() {
+            try {
+                const response = await fetch('../public/twitter_peak_hours.json');
+                if (!response.ok) throw new Error('Failed to load twitter_peak_hours.json');
+                const data = await response.json();
+                const container = document.getElementById('twitterPeakHours');
+                if (!container) return;
+                container.innerHTML = '';
+                // Find max count for highlighting
+                let maxCount = 0;
+                data.peak_hours.forEach(slot => { if (slot.count > maxCount) maxCount = slot.count; });
+                data.peak_hours.forEach(slot => {
+                    let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+                    let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+                    let level = slot.count === maxCount ? 'High' : (slot.count > 0 ? 'Medium' : 'Low');
+                    container.innerHTML += `
+                        <div class="text-center p-2 ${bg} rounded">
+                            <p class="text-sm font-medium ${text}">${slot.slot}</p>
+                            <p class="text-xs text-text-secondary">${level} (${slot.count})</p>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                const container = document.getElementById('twitterPeakHours');
+                if (container) container.innerHTML = '<div class="col-span-4 text-center text-warning-700">Unable to load Twitter peak hours data.</div>';
+            }
+        }
+
+        // Global variables
+let linkedInData = null;
+let engagementChart = null;
+let histogramChart = null;
+let linkedinRadarChart = null;
+let marketbeatRadarChart = null;
+let marketbeatPatternsChart = null;
+// Load MarketBeat Activity Radar Chart (by Month) with Year Filter
+let marketbeatRadarRawData = null;
+async function loadMarketbeatRadarChart() {
+    try {
+        const response = await fetch('../public/marketbeat_activity_radar.json');
+        if (!response.ok) throw new Error('Failed to load marketbeat_activity_radar.json');
+        const data = await response.json();
+        marketbeatRadarRawData = data;
+        const yearSelect = document.getElementById('marketbeatRadarYearSelect');
+        if (yearSelect) {
+            // Extract years from labels (format: 'Month YYYY')
+            const years = Array.from(new Set(data.labels.map(label => label.split(' ')[1])));
+            yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+            yearSelect.onchange = function() { renderMarketbeatRadarChart(this.value); };
+        }
+        renderMarketbeatRadarChart('all');
+    } catch (e) {
+        const ctx = document.getElementById('marketbeatRadarChart');
+        if (ctx) {
+            ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load MarketBeat radar chart data.</div>';
+        }
+    }
+}
+
+function renderMarketbeatRadarChart(selectedYear) {
+    const ctx = document.getElementById('marketbeatRadarChart');
+    if (!ctx || !marketbeatRadarRawData) return;
+    if (marketbeatRadarChart) marketbeatRadarChart.destroy();
+    let labels = marketbeatRadarRawData.labels;
+    let values = marketbeatRadarRawData.values;
+    if (selectedYear && selectedYear !== 'all') {
+        labels = marketbeatRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+        values = labels.map(l => {
+            const idx = marketbeatRadarRawData.labels.indexOf(l);
+            return marketbeatRadarRawData.values[idx];
+        });
+    }
+    marketbeatRadarChart = new Chart(ctx.getContext('2d'), {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Mentions by Month',
+                data: values,
+                fill: true,
+                backgroundColor: 'rgba(39, 174, 96, 0.2)',
+                borderColor: '#27AE60',
+                pointBackgroundColor: '#27AE60',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#27AE60',
+                borderWidth: 3,
+                pointRadius: 6,
+                pointHoverRadius: 9
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: '#27AE60',
+                        font: { weight: 'bold' }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#1F2937',
+                    titleColor: '#FFFFFF',
+                    bodyColor: '#FFFFFF',
+                    borderColor: '#374151',
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: '#E5E7EB' },
+                    grid: { color: '#E5E7EB' },
+                    pointLabels: { color: '#27AE60', font: { weight: 'bold' } },
+                    ticks: { color: '#374151' }
+                }
+            },
+            animation: {
+                duration: 1200,
+                easing: 'easeInOutQuart'
+            },
+            interaction: {
+                intersect: false,
+                mode: 'nearest'
+            }
+        }
+    });
+}
+
+// Load MarketBeat Activity Patterns Chart (by Month)
+async function loadMarketbeatPatternsChart() {
+    try {
+        const response = await fetch('../public/marketbeat_activity_patterns.json');
+        if (!response.ok) throw new Error('Failed to load marketbeat_activity_patterns.json');
+        const data = await response.json();
+        const ctx = document.getElementById('marketbeatPatternsChart');
+        if (!ctx) return;
+        if (marketbeatPatternsChart) marketbeatPatternsChart.destroy();
+        const labels = data.activity_patterns.map(item => item.month);
+        const values = data.activity_patterns.map(item => item.count);
+        marketbeatPatternsChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Mentions',
+                    data: values,
+                    backgroundColor: '#2980B9',
+                    borderColor: '#2471A3',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 } },
+                    y: { beginAtZero: true }
+                },
+                animation: { duration: 1200, easing: 'easeInOutQuart' }
+            }
+        });
+    } catch (e) {
+        const ctx = document.getElementById('marketbeatPatternsChart');
+        if (ctx) ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load MarketBeat activity patterns data.</div>';
+    }
+}
+        
+        // Platform switching functionality
+        const platformSelect = document.getElementById('platformSelect');
+        const contentArea = document.getElementById('contentArea');
+        
+        function showPlatformContent(platform) {
+            // Hide all platform content
+            document.querySelectorAll('.platform-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Show selected platform content
+            const targetContent = document.getElementById(platform + 'Content');
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+            // Load quick stats and charts for selected platform
+            if (platform === 'linkedin') {
+                loadLinkedInDataAndStats();
+                initializeCharts('linkedin');
+                loadLinkedInRadarChart();
+                loadLinkedInPeakHours();
+            } else if (platform === 'marketbeat') {
+                loadMarketBeatDataAndStats();
+                initializeCharts('marketbeat');
+                loadMarketbeatRadarChart();
+                loadMarketbeatPatternsChart();
+            } else if (platform === 'reddit') {
+                loadRedditDataAndStats();
+                initializeCharts('reddit');
+                loadRedditPeakHours();
+            } else if (platform === 'twitter') {
+                loadTwitterDataAndStats();
+                initializeCharts('twitter');
+                loadTwitterPeakHours();
+            }
+        }
+
+        platformSelect.addEventListener('change', function() {
+            showPlatformContent(this.value);
+        });
+
+        // On page load, show LinkedIn by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showPlatformContent('linkedin');
+        });
+// Load LinkedIn Activity Radar Chart with Year Filter
+let linkedinRadarRawData = null;
+async function loadLinkedInRadarChart() {
+    try {
+        const response = await fetch('../public/linkedin_activity_patterns.json');
+        if (!response.ok) throw new Error('Failed to load linkedin_activity_patterns.json');
+        const data = await response.json();
+        linkedinRadarRawData = data;
+        const yearSelect = document.getElementById('linkedinRadarYearSelect');
+        if (yearSelect) {
+            // Extract years from activity_radar (format: 'Month YYYY')
+            const years = Array.from(new Set(data.activity_radar.map(item => item.month.split(' ')[1])));
+            yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+            yearSelect.onchange = function() { renderLinkedinRadarChart(this.value); };
+        }
+        renderLinkedinRadarChart('all');
+    } catch (e) {
+        const ctx = document.getElementById('linkedinRadarChart');
+        if (ctx) {
+            ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load LinkedIn radar chart data.</div>';
+        }
+    }
+}
+
+function renderLinkedinRadarChart(selectedYear) {
+    const ctx = document.getElementById('linkedinRadarChart');
+    if (!ctx || !linkedinRadarRawData) return;
+    if (linkedinRadarChart) linkedinRadarChart.destroy();
+    let labels = linkedinRadarRawData.activity_radar.map(item => item.month);
+    let values = linkedinRadarRawData.activity_radar.map(item => item.count);
+    if (selectedYear && selectedYear !== 'all') {
+        labels = linkedinRadarRawData.activity_radar.filter(item => item.month.endsWith(' ' + selectedYear)).map(item => item.month);
+        values = linkedinRadarRawData.activity_radar.filter(item => item.month.endsWith(' ' + selectedYear)).map(item => item.count);
+    }
+    linkedinRadarChart = new Chart(ctx.getContext('2d'), {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Posts by Month',
+                data: values,
+                fill: true,
+                backgroundColor: 'rgba(10, 102, 194, 0.2)',
+                borderColor: '#0A66C2',
+                pointBackgroundColor: '#0A66C2',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#0A66C2',
+                borderWidth: 3,
+                pointRadius: 6,
+                pointHoverRadius: 9
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: '#0A66C2',
+                        font: { weight: 'bold' }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#1F2937',
+                    titleColor: '#FFFFFF',
+                    bodyColor: '#FFFFFF',
+                    borderColor: '#374151',
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: '#E5E7EB' },
+                    grid: { color: '#E5E7EB' },
+                    pointLabels: { color: '#0A66C2', font: { weight: 'bold' } },
+                    ticks: { color: '#374151' }
+                }
+            },
+            animation: {
+                duration: 1200,
+                easing: 'easeInOutQuart'
+            },
+            interaction: {
+                intersect: false,
+                mode: 'nearest'
+            }
+        }
+    });
+}
+
+        // Load LinkedIn peak hours data and update UI (Activity Patterns)
+        async function loadLinkedInPeakHours() {
+            try {
+                const response = await fetch('../public/linkedin_activity_patterns.json');
+                if (!response.ok) throw new Error('Failed to load linkedin_activity_patterns.json');
+                const data = await response.json();
+                const container = document.getElementById('linkedinPeakHours');
+                if (!container) return;
+                container.innerHTML = '';
+                // Find max count for highlighting
+                let maxCount = 0;
+                data.peak_hours.forEach(slot => { if (slot.count > maxCount) maxCount = slot.count; });
+                data.peak_hours.forEach(slot => {
+                    let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+                    let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+                    let level = slot.count === maxCount ? 'High' : (slot.count > 0 ? 'Medium' : 'Low');
+                    container.innerHTML += `
+                        <div class="text-center p-2 ${bg} rounded">
+                            <p class="text-sm font-medium ${text}">${slot.slot}</p>
+                            <p class="text-xs text-text-secondary">${level} (${slot.count})</p>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                const container = document.getElementById('linkedinPeakHours');
+                if (container) container.innerHTML = '<div class="col-span-4 text-center text-warning-700">Unable to load LinkedIn peak hours data.</div>';
+            }
+        }
+
+        // Load LinkedIn engagement data
+        async function loadLinkedInData() {
+            try {
+                // Show loading state
+                showLoadingState();
+                
+                const response = await fetch('../public/linkedin_engagement_data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                linkedInData = await response.json();
+                
+                // Hide loading state and update UI
+                hideLoadingState();
+                updateLinkedInStats();
+                initializeLinkedInChart();
+                initializeHistogramChart();
+                
+                console.log('LinkedIn data loaded successfully:', linkedInData);
+                
+            } catch (error) {
+                console.error('Error loading LinkedIn data:', error);
+                hideLoadingState();
+                
+                // Fallback to sample data
+                linkedInData = {
+                    total_posts: 695,
+                    total_engagements: 175739,
+                    engagement_rate: 7.3,
+                    engagement_breakdown: {
+                        likes: 166382,
+                        appreciations: 5556,
+                        empathy: 2418,
+                        interests: 1383
+                    },
+                    engagement_percentages: {
+                        likes: { count: 166382, percentage: 94.7 },
+                        appreciations: { count: 5556, percentage: 3.2 },
+                        empathy: { count: 2418, percentage: 1.4 },
+                        interests: { count: 1383, percentage: 0.8 }
+                    },
+                    chart_data: {
+                        labels: ['Likes', 'Appreciations', 'Empathy', 'Interests'],
+                        data: [166382, 5556, 2418, 1383]
+                    }
+                };
+                
+                updateLinkedInStats();
+                initializeLinkedInChart();
+                initializeHistogramChart();
+                
+                // Show error message
+                showErrorMessage('Unable to load live data. Showing sample data instead.');
+            }
+        }
+        
+        // Show loading state
+        function showLoadingState() {
+            const loadingElements = document.querySelectorAll('#totalPosts, #avgEngagement, #totalEngagementsQuick, #topReaction, #totalEngagements, #engagementRate, #likesCount, #appreciationsCount, #empathyCount, #interestsCount, #highestEngagement');
+            loadingElements.forEach(el => {
+                if (el) el.textContent = 'Loading...';
+            });
+        }
+        
+        // Hide loading state
+        function hideLoadingState() {
+            // This will be handled by updateLinkedInStats()
+        }
+        
+        // Show error message
+        function showErrorMessage(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'fixed top-4 right-4 bg-warning-50 border border-warning-200 text-warning-800 px-4 py-3 rounded-lg shadow-lg z-50';
+            errorDiv.innerHTML = `
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span class="text-sm">${message}</span>
+                    <button class="ml-4 text-warning-600 hover:text-warning-800" onclick="this.parentElement.parentElement.remove()">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(errorDiv);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.parentNode.removeChild(errorDiv);
+                }
+            }, 5000);
+        }
+
+        // Update LinkedIn statistics
+        function updateLinkedInStats() {
+            if (!linkedInData) return;
+            
+            // Update main stats
+            const totalEngagements = document.getElementById('totalEngagements');
+            const engagementRate = document.getElementById('engagementRate');
+            
+            if (totalEngagements) {
+                totalEngagements.textContent = linkedInData.total_engagements.toLocaleString();
+            }
+            
+            if (engagementRate) {
+                engagementRate.textContent = linkedInData.engagement_rate + '%';
+            }
+            
+            // Update Quick Stats
+            const totalPosts = document.getElementById('totalPosts');
+            const avgEngagement = document.getElementById('avgEngagement');
+            const totalEngagementsQuick = document.getElementById('totalEngagementsQuick');
+            const topReaction = document.getElementById('topReaction');
+            
+            if (totalPosts) {
+                totalPosts.textContent = linkedInData.total_posts ? linkedInData.total_posts.toLocaleString() : 'N/A';
+            }
+            
+            if (avgEngagement) {
+                avgEngagement.textContent = linkedInData.engagement_rate + '%';
+            }
+            
+            if (totalEngagementsQuick) {
+                totalEngagementsQuick.textContent = linkedInData.total_engagements.toLocaleString();
+            }
+            
+            if (topReaction && linkedInData.engagement_breakdown) {
+                // Find the highest engagement type
+                const engagementTypes = linkedInData.engagement_breakdown;
+                let maxType = 'Likes';
+                let maxValue = 0;
+                
+                for (const [type, value] of Object.entries(engagementTypes)) {
+                    if (value > maxValue) {
+                        maxValue = value;
+                        maxType = type.charAt(0).toUpperCase() + type.slice(1);
+                    }
+                }
+                
+                topReaction.textContent = maxType;
+            }
+            
+            // Update detailed breakdown
+            if (linkedInData.engagement_percentages) {
+                const likesCount = document.getElementById('likesCount');
+                const likesPercentage = document.getElementById('likesPercentage');
+                const appreciationsCount = document.getElementById('appreciationsCount');
+                const appreciationsPercentage = document.getElementById('appreciationsPercentage');
+                const empathyCount = document.getElementById('empathyCount');
+                const empathyPercentage = document.getElementById('empathyPercentage');
+                const interestsCount = document.getElementById('interestsCount');
+                const interestsPercentage = document.getElementById('interestsPercentage');
+                
+                if (likesCount && linkedInData.engagement_percentages.likes) {
+                    likesCount.textContent = linkedInData.engagement_percentages.likes.count.toLocaleString();
+                    likesPercentage.textContent = linkedInData.engagement_percentages.likes.percentage + '%';
+                }
+                
+                if (appreciationsCount && linkedInData.engagement_percentages.appreciations) {
+                    appreciationsCount.textContent = linkedInData.engagement_percentages.appreciations.count.toLocaleString();
+                    appreciationsPercentage.textContent = linkedInData.engagement_percentages.appreciations.percentage + '%';
+                }
+                
+                if (empathyCount && linkedInData.engagement_percentages.empathy) {
+                    empathyCount.textContent = linkedInData.engagement_percentages.empathy.count.toLocaleString();
+                    empathyPercentage.textContent = linkedInData.engagement_percentages.empathy.percentage + '%';
+                }
+                
+                if (interestsCount && linkedInData.engagement_percentages.interests) {
+                    interestsCount.textContent = linkedInData.engagement_percentages.interests.count.toLocaleString();
+                    interestsPercentage.textContent = linkedInData.engagement_percentages.interests.percentage + '%';
+                }
+            }
+            
+            // Update histogram stats
+            const highestEngagement = document.getElementById('highestEngagement');
+            if (highestEngagement && linkedInData.engagement_breakdown) {
+                const engagementTypes = linkedInData.engagement_breakdown;
+                let maxType = 'Likes';
+                let maxValue = 0;
+                
+                for (const [type, value] of Object.entries(engagementTypes)) {
+                    if (value > maxValue) {
+                        maxValue = value;
+                        maxType = type.charAt(0).toUpperCase() + type.slice(1);
+                    }
+                }
+                
+                highestEngagement.textContent = maxType;
+            }
+        }
+
+        // Chart initialization function
+        function initializeCharts(platform) {
+            if (platform === 'linkedin') {
+                initializeLinkedInChart();
+                initializeHistogramChart();
+            } else if (platform === 'marketbeat') {
+                initializeMarketBeatChart();
+            } else if (platform === 'reddit') {
+                loadRedditActivityStats();
+                initializeRedditBarChart();
+            } else if (platform === 'twitter') {
+                loadTwitterTopHashtags();
+                loadTwitterRadarChart();
+                loadTwitterHistogramChart();
+                initializeTwitterBarChart();
+            }
+        // Twitter Bar Chart (Yearly Sentiment Analysis)
+        function initializeTwitterBarChart() {
+            const ctx = document.getElementById('twitterBarChart');
+            if (!ctx) return;
+
+            fetch('../public/twitter_trends.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Aggregate data by year
+                    const yearMap = {};
+                    data.labels.forEach((label, idx) => {
+                        const year = label.split(' ')[1];
+                        if (!yearMap[year]) {
+                            yearMap[year] = { positive: [], neutral: [], negative: [] };
+                        }
+                        yearMap[year].positive.push(data.positive[idx]);
+                        yearMap[year].neutral.push(data.neutral[idx]);
+                        yearMap[year].negative.push(data.negative[idx]);
+                    });
+                    const years = Object.keys(yearMap);
+                    const positiveYearly = years.map(y => {
+                        const arr = yearMap[y].positive;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    const neutralYearly = years.map(y => {
+                        const arr = yearMap[y].neutral;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    const negativeYearly = years.map(y => {
+                        const arr = yearMap[y].negative;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: years,
+                            datasets: [
+                                {
+                                    label: 'Positive',
+                                    data: positiveYearly,
+                                    backgroundColor: '#27AE60',
+                                    borderRadius: 4
+                                },
+                                {
+                                    label: 'Neutral',
+                                    data: neutralYearly,
+                                    backgroundColor: '#F39C12',
+                                    borderRadius: 4
+                                },
+                                {
+                                    label: 'Negative',
+                                    data: negativeYearly,
+                                    backgroundColor: '#E74C3C',
+                                    borderRadius: 4
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        usePointStyle: true,
+                                        padding: 20
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { font: { size: 12 } }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { color: '#F3F4F6' },
+                                    ticks: { font: { size: 12 },
+                                        callback: function(value) { return value + '%'; }
+                                    },
+                                    max: 100
+                                }
+                            }
+                        }
+                    });
+
+                    // Set the latest year's sentiment values in the summary below the chart
+                    const lastIdx = years.length - 1;
+                    const pos = positiveYearly[lastIdx];
+                    const neu = neutralYearly[lastIdx];
+                    const neg = negativeYearly[lastIdx];
+                    const posEl = document.getElementById('twitterPositive');
+                    const neuEl = document.getElementById('twitterNeutral');
+                    const negEl = document.getElementById('twitterNegative');
+                    if (posEl) posEl.textContent = pos ? pos.toFixed(1) + '%' : 'N/A';
+                    if (neuEl) neuEl.textContent = neu ? neu.toFixed(1) + '%' : 'N/A';
+                    if (negEl) negEl.textContent = neg ? neg.toFixed(1) + '%' : 'N/A';
+                })
+                .catch(error => {
+                    console.error('Error loading Twitter trends data:', error);
+                });
+        }
+        }
+        // Reddit Bar Chart (Yearly Sentiment Analysis)
+        function initializeRedditBarChart() {
+            const ctx = document.getElementById('redditBarChart');
+            if (!ctx) return;
+
+            fetch('../public/reddit_trends.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Aggregate data by year
+                    const yearMap = {};
+                    data.labels.forEach((label, idx) => {
+                        const year = label.split(' ')[1];
+                        if (!yearMap[year]) {
+                            yearMap[year] = { positive: [], neutral: [], negative: [] };
+                        }
+                        yearMap[year].positive.push(data.positive[idx]);
+                        yearMap[year].neutral.push(data.neutral[idx]);
+                        yearMap[year].negative.push(data.negative[idx]);
+                    });
+                    const years = Object.keys(yearMap);
+                    const positiveYearly = years.map(y => {
+                        const arr = yearMap[y].positive;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    const neutralYearly = years.map(y => {
+                        const arr = yearMap[y].neutral;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    const negativeYearly = years.map(y => {
+                        const arr = yearMap[y].negative;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: years,
+                            datasets: [
+                                {
+                                    label: 'Positive',
+                                    data: positiveYearly,
+                                    backgroundColor: '#27AE60',
+                                    borderRadius: 4
+                                },
+                                {
+                                    label: 'Neutral',
+                                    data: neutralYearly,
+                                    backgroundColor: '#F39C12',
+                                    borderRadius: 4
+                                },
+                                {
+                                    label: 'Negative',
+                                    data: negativeYearly,
+                                    backgroundColor: '#E74C3C',
+                                    borderRadius: 4
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        usePointStyle: true,
+                                        padding: 20
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { font: { size: 12 } }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { color: '#F3F4F6' },
+                                    ticks: { font: { size: 12 },
+                                        callback: function(value) { return value + '%'; }
+                                    },
+                                    max: 100
+                                }
+                            }
+                        }
+                    });
+
+                    // Set the latest year's sentiment values in the summary below the chart
+                    const lastIdx = years.length - 1;
+                    const pos = positiveYearly[lastIdx];
+                    const neu = neutralYearly[lastIdx];
+                    const neg = negativeYearly[lastIdx];
+                    const posEl = document.getElementById('redditPositive');
+                    const neuEl = document.getElementById('redditNeutral');
+                    const negEl = document.getElementById('redditNegative');
+                    if (posEl) posEl.textContent = pos ? pos.toFixed(1) + '%' : 'N/A';
+                    if (neuEl) neuEl.textContent = neu ? neu.toFixed(1) + '%' : 'N/A';
+                    if (negEl) negEl.textContent = neg ? neg.toFixed(1) + '%' : 'N/A';
+                })
+                .catch(error => {
+                    console.error('Error loading Reddit trends data:', error);
+                });
+        }
+
+        // Initial load for Reddit activity stats if Reddit is default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial load for default platform
+            const selectedPlatform = platformSelect.value;
+            if (selectedPlatform === 'linkedin') {
+                loadLinkedInDataAndStats();
+                initializeCharts('linkedin');
+            } else if (selectedPlatform === 'marketbeat') {
+                loadMarketBeatDataAndStats();
+                initializeCharts('marketbeat');
+            } else if (selectedPlatform === 'reddit') {
+                loadRedditDataAndStats();
+                initializeCharts('reddit');
+            } else if (selectedPlatform === 'twitter') {
+                loadTwitterDataAndStats();
+                initializeCharts('twitter');
+            }
+        });
+        // LinkedIn Engagement Chart
+        function initializeLinkedInChart() {
+            const ctx = document.getElementById('linkedinEngagementChart');
+            if (!ctx || !linkedInData) return;
+            
+            // Destroy existing chart if it exists
+            if (engagementChart) {
+                engagementChart.destroy();
+            }
+            
+            // Use colors that match the legend
+            const colors = ['#FF6B35', '#3498DB', '#27AE60', '#F39C12']; // Primary, Accent, Success, Warning
+            
+            engagementChart = new Chart(ctx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: linkedInData.chart_data.labels,
+                    datasets: [{
+                        data: linkedInData.chart_data.data,
+                        backgroundColor: colors,
+                        borderWidth: 3,
+                        borderColor: '#FFFFFF',
+                        hoverBorderWidth: 4,
+                        hoverBorderColor: '#FFFFFF',
+                        hoverBackgroundColor: colors.map(color => color + 'DD') // Add some transparency on hover
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            display: false // Hide default legend since we have custom legend
+                        },
+                        tooltip: {
+                            backgroundColor: '#1F2937',
+                            titleColor: '#FFFFFF',
+                            bodyColor: '#FFFFFF',
+                            borderColor: '#374151',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value.toLocaleString()} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true,
+                        duration: 1000,
+                        easing: 'easeInOutQuart'
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    }
+                }
+            });
+        }
+
+        // Engagement Histogram Chart
+        function initializeHistogramChart() {
+            const ctx = document.getElementById('engagementHistogramChart');
+            if (!ctx || !linkedInData) return;
+            
+            // Destroy existing chart if it exists
+            if (histogramChart) {
+                histogramChart.destroy();
+            }
+            
+            // Use colors that match the legend
+            const colors = ['#FF6B35', '#3498DB', '#27AE60', '#F39C12']; // Primary, Accent, Success, Warning
+            
+            histogramChart = new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: linkedInData.chart_data.labels,
+                    datasets: [{
+                        label: 'Engagement Count',
+                        data: linkedInData.chart_data.data,
+                        backgroundColor: colors,
+                        borderColor: colors.map(color => color + 'CC'),
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false // Hide legend since we have custom legend above
+                        },
+                        tooltip: {
+                            backgroundColor: '#1F2937',
+                            titleColor: '#FFFFFF',
+                            bodyColor: '#FFFFFF',
+                            borderColor: '#374151',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed.y;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${context.label}: ${value.toLocaleString()} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12,
+                                    weight: 'normal'
+                                },
+                                color: '#6B7280'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#F3F4F6',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12
+                                },
+                                color: '#6B7280',
+                                callback: function(value) {
+                                    return value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeInOutQuart'
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    }
+                }
+            });
+        }
+
+        // MarketBeat Bar Chart
+        function initializeMarketBeatChart() {
+            const ctx = document.getElementById('marketbeatBarChart');
+            if (!ctx) return;
+
+            fetch('../public/marketbeat_trends.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Aggregate data by year
+                    const yearMap = {};
+                    data.labels.forEach((label, idx) => {
+                        const year = label.split(' ')[1];
+                        if (!yearMap[year]) {
+                            yearMap[year] = { positive: [], neutral: [], negative: [] };
+                        }
+                        yearMap[year].positive.push(data.positive[idx]);
+                        yearMap[year].neutral.push(data.neutral[idx]);
+                        yearMap[year].negative.push(data.negative[idx]);
+                    });
+                    const years = Object.keys(yearMap);
+                    const positiveYearly = years.map(y => {
+                        const arr = yearMap[y].positive;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    const neutralYearly = years.map(y => {
+                        const arr = yearMap[y].neutral;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    const negativeYearly = years.map(y => {
+                        const arr = yearMap[y].negative;
+                        return arr.reduce((a, b) => a + b, 0) / arr.length;
+                    });
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: years,
+                            datasets: [
+                                {
+                                    label: 'Positive',
+                                    data: positiveYearly,
+                                    backgroundColor: '#27AE60',
+                                    borderRadius: 4
+                                },
+                                {
+                                    label: 'Neutral',
+                                    data: neutralYearly,
+                                    backgroundColor: '#F39C12',
+                                    borderRadius: 4
+                                },
+                                {
+                                    label: 'Negative',
+                                    data: negativeYearly,
+                                    backgroundColor: '#E74C3C',
+                                    borderRadius: 4
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        usePointStyle: true,
+                                        padding: 20
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { font: { size: 12 } }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { color: '#F3F4F6' },
+                                    ticks: { font: { size: 12 },
+                                        callback: function(value) { return value + '%'; }
+                                    },
+                                    max: 100
+                                }
+                            }
+                        }
+                    });
+
+                    // Set the latest year's sentiment values in the summary below the chart
+                    const lastIdx = years.length - 1;
+                    const pos = positiveYearly[lastIdx];
+                    const neu = neutralYearly[lastIdx];
+                    const neg = negativeYearly[lastIdx];
+                    const posEl = document.getElementById('marketbeatPositive');
+                    const neuEl = document.getElementById('marketbeatNeutral');
+                    const negEl = document.getElementById('marketbeatNegative');
+                    if (posEl) posEl.textContent = pos ? pos.toFixed(1) + '%' : 'N/A';
+                    if (neuEl) neuEl.textContent = neu ? neu.toFixed(1) + '%' : 'N/A';
+                    if (negEl) negEl.textContent = neg ? neg.toFixed(1) + '%' : 'N/A';
+                })
+                .catch(error => {
+                    console.error('Error loading MarketBeat trends data:', error);
+                });
+        }
+
+        // Auto-refresh data function
+        async function refreshData() {
+            await loadLinkedInData();
+            updateLastUpdatedTime();
+        }
+
+        // Update last updated time
+        function updateLastUpdatedTime() {
+            const updateElements = document.querySelectorAll('[data-last-updated]');
+            updateElements.forEach(element => {
+                const now = new Date();
+                const minutes = Math.floor(Math.random() * 3) + 1;
+                element.textContent = `Last updated: ${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLinkedInData();
+            
+            // Set up auto-refresh every 5 minutes
+            setInterval(refreshData, 300000);
+            loadRedditPeakHours();
+            loadRedditRadarChart();
+            loadTwitterRadarChart();
+            // Auto-refresh Reddit and Twitter peak hours and radar chart every 5 minutes
+            setInterval(loadRedditPeakHours, 300000);
+            setInterval(loadRedditRadarChart, 300000);
+            setInterval(loadTwitterRadarChart, 300000);
+        });
+
+        // Filter change handlers
+        document.getElementById('timePeriodSelect').addEventListener('change', function() {
+            console.log('Time period changed to:', this.value);
+            // Reload data with new time period
+            loadLinkedInData();
+        });
+
+        document.getElementById('demographicsSelect').addEventListener('change', function() {
+            console.log('Demographics filter changed to:', this.value);
+        });
+
+        // Manual refresh button
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('button') && e.target.textContent.includes('Refresh Data')) {
+                refreshData();
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+<script src="../js/twitter_histogram_chart.js"></script>
+</body>
+</html>

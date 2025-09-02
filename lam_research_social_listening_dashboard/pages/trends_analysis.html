@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trends Analysis - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/sidebar-hover.js"></script>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flamresear9044back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Main Container -->
+    <div class="flex min-h-screen">
+        <!-- Left Sidebar -->
+        <aside class="w-1/4 bg-surface shadow-card border-r border-border-light fixed h-full overflow-y-auto">
+            <!-- Logo Section -->
+            <div class="p-6 border-b border-border-light">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-text-primary">Lam Research</h1>
+                        <p class="text-sm text-text-secondary">Social Listening</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="p-4">
+                <!-- Your Company Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Your Company</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="dashboard_overview.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                                </svg>
+                                Dashboard Overview
+                            </a>
+                        </li>
+                       <!-- <li>
+                            <a href="performance_analytics.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                                Performance Analytics
+                            </a>
+                        </li>-->
+                        <li>
+                            <a href="trends_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12z"/>
+                                </svg>
+                                Trends Analysis
+                            </a>
+                        </li>
+                       <!-- <li>
+                            <a href="audience_insights.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2 1l-3 4v7h2v7h3v-7h1v7h3zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 10v7h2v7h2v-7h2v7h2v-7h2V10c0-1.33-.67-2-1.5-2z"/>
+                                </svg>
+                                Audience Insights
+                            </a>
+                        </li>-->
+                    </ul>
+                </div>
+
+                <!-- Competitors Company Section -->
+                <div>
+                    <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-3">Competitors Company</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="competitor_analysis.html" class="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-secondary-50 rounded-md transition-fast">
+                                <svg class="w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 11H7v9h2v-9zm4 0h-2v9h2v-9zm4 0h-2v9h2v-9zm2.5-5H18V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2H4.5c-.83 0-1.5.67-1.5 1.5S3.67 9 4.5 9H6v10c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9h1.5c.83 0 1.5-.67 1.5-1.5S20.33 6 19.5 6zM10 4h4v2h-4V4z"/>
+                                </svg>
+                                Competitor Analysis
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 ml-1/4 p-6">
+            <!-- Breadcrumb Navigation -->
+            <nav class="flex mb-6" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm">
+                    <li>
+                        <span class="text-text-secondary">Your Company</span>
+                    </li>
+                    <li>
+                        <svg class="w-4 h-4 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                        </svg>
+                    </li>
+                    <li>
+                        <span class="text-primary font-medium">Trends Analysis</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-text-primary">Trends Analysis</h1>
+                    <p class="text-text-secondary mt-1">Track temporal sentiment patterns and social media trends across platforms</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 12v7H5v-7M12 2l-7 7h4v6h6V9h4l-7-7z"/>
+                        </svg>
+                        Export Trends
+                    </button>
+                    <button class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-600 rounded-md transition-fast">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <!-- Platform Selection -->
+                    <div class="flex items-center space-x-4">
+                        <label class="text-sm font-medium text-text-primary">Platform:</label>
+                        <div class="relative">
+                            <select id="platformSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-fast">
+                                <option value="marketbeat">MarketBeat</option>
+                                <option value="reddit">Reddit</option>
+                                <option value="stocktwits">StockTwits</option>
+                                <option value="twitter">Twitter</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-secondary pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Date Range Selection -->
+                    <div class="flex items-center space-x-4">
+                        <label class="text-sm font-medium text-text-primary">Date Range:</label>
+                        <div class="relative">
+                            <select id="dateRangeSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-fast">
+                                <option value="3months">Last 3 Months</option>
+                                <option value="6months">Last 6 Months</option>
+                                <option value="1year" selected>Last 12 Months</option>
+                                <option value="2years">Last 2 Years</option>
+                            </select>
+                            <svg class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-secondary pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Refresh Button -->
+                    <button id="refreshBtn" class="px-4 py-2 text-sm font-medium text-primary bg-primary-50 border border-primary-200 rounded-md hover:bg-primary-100 transition-fast">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                        </svg>
+                        Refresh Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summary Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <!-- Trend Direction Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Trend Direction</p>
+                            <p class="text-2xl font-bold text-success-600 mt-1" id="trendDirection">↗ Positive</p>
+                        </div>
+                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 14l5-5 5 5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peak Volume Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Peak Volume</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="peakVolume">3,247</p>
+                            <p class="text-sm text-text-secondary mt-1" id="peakDate">Dec 2024</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Average Sentiment Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Avg Sentiment</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="avgSentiment">68.4%</p>
+                            <p class="text-sm text-text-secondary mt-1">Positive overall</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volatility Index Card -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Volatility Index</p>
+                            <p class="text-2xl font-bold text-warning-500 mt-1" id="volatilityIndex">Medium</p>
+                            <p class="text-sm text-text-secondary mt-1">±12.3% variance</p>
+                        </div>
+                        <div class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitor Legend -->
+            <div class="flex items-center space-x-8 mb-8">
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-4 h-4 rounded-full bg-purple-600"></span>
+                    <span class="text-base text-text-secondary">Lam Research</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-4 h-4 rounded-full bg-blue-500"></span>
+                    <span class="text-base text-text-secondary">Applied Materials</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-4 h-4 rounded-full bg-green-500"></span>
+                    <span class="text-base text-text-secondary">KLA Corporation</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-4 h-4 rounded-full bg-yellow-500"></span>
+                    <span class="text-base text-text-secondary">Tokyo Electron</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-4 h-4 rounded-full bg-red-500"></span>
+                    <span class="text-base text-text-secondary">ASML Holding</span>
+                </div>
+            </div>
+
+            <!-- Trend Chart Section -->
+            <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-xl font-semibold text-text-primary">Sentiment Trends Over Time</h2>
+                        <p class="text-sm text-text-secondary mt-1" id="chartSubtitle">MarketBeat - Last 12 Months</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                            <span class="text-sm text-text-secondary">Positive</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                            <span class="text-sm text-text-secondary">Neutral</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                            <span class="text-sm text-text-secondary">Negative</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart Container -->
+                <div class="relative h-96">
+                    <canvas id="trendsChart" class="w-full h-full"></canvas>
+                </div>
+
+                <!-- Chart Loading Overlay -->
+                <div id="chartLoading" class="absolute inset-0 bg-surface bg-opacity-75 flex items-center justify-center rounded-lg hidden">
+                    <div class="flex items-center space-x-3">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+                        <span class="text-sm text-text-secondary">Updating chart data...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights & Patterns Section (Static Dummy Content) -->
+            <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                <h2 class="text-2xl font-bold text-text-primary mb-4">Key Insights & Patterns</h2>
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Trending Patterns</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start space-x-2">
+                            <span class="inline-block w-3 h-3 rounded-full bg-green-500 mt-1"></span>
+                            <div>
+                                <span class="font-medium">Positive sentiment surge in Q4 2024</span><br/>
+                                <span class="text-text-secondary">+18% increase following product announcements</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="inline-block w-3 h-3 rounded-full bg-yellow-500 mt-1"></span>
+                            <div>
+                                <span class="font-medium">Seasonal engagement patterns</span><br/>
+                                <span class="text-text-secondary">Higher activity during earnings seasons</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="inline-block w-3 h-3 rounded-full bg-blue-500 mt-1"></span>
+                            <div>
+                                <span class="font-medium">Platform-specific trends</span><br/>
+                                <span class="text-text-secondary">Reddit shows highest engagement volatility</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Strategic Recommendations</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start space-x-2">
+                            <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                            <div>
+                                <span class="font-medium">Capitalize on positive momentum</span><br/>
+                                <span class="text-text-secondary">Increase content frequency during peak periods</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                            <div>
+                                <span class="font-medium">Monitor volatility indicators</span><br/>
+                                <span class="text-text-secondary">Set up alerts for significant sentiment shifts</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                            <div>
+                                <span class="font-medium">Platform-specific strategies</span><br/>
+                                <span class="text-text-secondary">Tailor content approach for each platform</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Real-time Update Indicator -->
+            <div class="mt-6 flex items-center justify-center">
+                <div class="flex items-center space-x-2 text-sm text-text-secondary">
+                    <div class="w-2 h-2 bg-success-600 rounded-full animate-pulse"></div>
+                    <span id="lastUpdatedTime">Last updated: 3 minutes ago</span>
+                    <button class="text-primary hover:text-primary-600 font-medium transition-fast">Refresh</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Chart.js Configuration Script -->
+    <script>
+        // Platform data will be loaded dynamically from JSON files
+        let platformData = {};
+        let trendsChart;
+
+        // Load data from JSON files
+        async function loadPlatformData() {
+            const platforms = ['marketbeat', 'reddit', 'stocktwits', 'twitter'];
+            
+            for (const platform of platforms) {
+                try {
+                    const response = await fetch(`../public/${platform}_trends.json`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        platformData[platform] = data;
+                        console.log(`✓ Successfully loaded ${platform} trends data:`, data);
+                        
+                        // Validate data structure
+                        if (!data.labels || !data.positive || !data.neutral || !data.negative) {
+                            console.error(`❌ Invalid data structure for ${platform}:`, data);
+                            console.error(`Required fields: labels, positive, neutral, negative`);
+                            continue; // Skip this platform
+                        } else {
+                            console.log(`✓ Data validation passed for ${platform}`);
+                            console.log(`  - Labels: ${data.labels.length} data points`);
+                            console.log(`  - Date range: ${data.labels[0]} to ${data.labels[data.labels.length - 1]}`);
+                            console.log(`  - Latest sentiment: ${data.positive[data.positive.length - 1]}% positive`);
+                        }
+                    } else {
+                        console.error(`❌ Failed to load ${platform} trends data (HTTP ${response.status})`);
+                        console.error(`Please ensure ${platform}_trends.json exists in the public folder`);
+                        // Skip this platform - no fallback data
+                    }
+                } catch (error) {
+                    console.error(`❌ Error loading ${platform} trends data:`, error);
+                    console.error(`Please check if ${platform}_trends.json exists and is valid JSON`);
+                    // Skip this platform - no fallback data
+                }
+            }
+            
+            // Initialize chart after data is loaded
+            console.log('🚀 Initializing chart with loaded data...');
+            initChart();
+            updateSummaryStats('marketbeat');
+            updateInsights('marketbeat');
+        }
+
+        // Fallback sample data
+        function getSampleData(platform) {
+            const sampleData = {
+                marketbeat: {
+                    labels: ['Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+                    positive: [65, 68, 72, 69, 74, 78, 75, 82, 79, 85, 88, 91],
+                    neutral: [25, 23, 20, 22, 18, 15, 17, 12, 14, 10, 8, 6],
+                    negative: [10, 9, 8, 9, 8, 7, 8, 6, 7, 5, 4, 3]
+                },
+                reddit: {
+                    labels: ['Jan 2023', 'Apr 2023', 'Jun 2023', 'Jul 2023', 'Oct 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025'],
+                    positive: [100.0, 100.0, 100.0, 100.0, 100.0, 33.3, 100.0, 0.0, 33.3, 50.0, 61.5, 65.4, 35.0, 52.9, 69.7, 39.1, 26.3, 51.6, 54.3, 68.2, 65.4, 77.4],
+                    neutral: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 33.3, 50.0, 38.5, 30.8, 45.0, 35.3, 18.2, 52.2, 52.6, 38.7, 40.0, 22.7, 12.3, 15.3],
+                    negative: [0.0, 0.0, 0.0, 0.0, 0.0, 66.7, 0.0, 0.0, 33.3, 0.0, 0.0, 3.8, 20.0, 11.8, 12.1, 8.7, 21.1, 9.7, 5.7, 9.1, 22.2, 7.3]
+                },
+                stocktwits: {
+                    labels: ['Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022', 'Sep 2022', 'Oct 2022', 'Nov 2022', 'Dec 2022', 'Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025'],
+                    positive: [54.9, 57.8, 51.3, 43.1, 38.8, 45.9, 46.2, 33.3, 42.2, 40.4, 46.6, 44.9, 43.7, 44.7, 45.5, 52.5, 43.8, 41.1, 54.1, 45.4, 43.0, 48.6, 46.9, 49.6, 57.6, 59.3, 56.0, 56.0, 44.4, 43.9, 48.8, 62.7, 59.7, 57.5, 43.8, 56.6, 47.1, 33.5, 47.3, 56.6, 67.1, 57.5, 55.8, 76.2],
+                    neutral: [26.4, 33.9, 32.6, 36.4, 47.3, 42.7, 31.5, 56.0, 46.7, 42.2, 28.2, 39.3, 27.9, 36.8, 31.3, 29.0, 43.8, 39.7, 32.7, 40.6, 40.6, 34.4, 35.8, 27.4, 23.4, 28.5, 22.7, 32.3, 40.0, 40.2, 37.2, 25.5, 32.7, 28.5, 40.6, 26.2, 30.3, 24.5, 29.1, 29.1, 25.5, 33.8, 25.8, 20.2],
+                    negative: [18.7, 8.3, 16.0, 20.5, 14.0, 11.5, 22.3, 10.7, 11.1, 17.5, 25.2, 15.7, 28.4, 18.4, 23.2, 18.5, 12.3, 19.1, 13.3, 14.0, 16.4, 17.0, 17.3, 23.0, 19.0, 12.2, 21.3, 11.7, 15.6, 15.9, 14.0, 11.8, 7.5, 14.0, 15.6, 17.2, 22.6, 42.0, 23.6, 14.3, 7.5, 8.8, 18.5, 3.6]
+                },
+                twitter: {
+                    labels: ['May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025'],
+                    positive: [57.1, 46.2, 50.0, 50.0, 100.0, 45.5, 55.6, 50.0, 36.4, 50.0, 42.9, 42.1, 81.0, 63.6, 63.2, 45.5, 80.6, 59.6, 66.7, 75.0, 48.0, 66.2, 84.8, 66.7, 65.4],
+                    neutral: [42.9, 50.0, 42.9, 16.7, 0.0, 45.5, 44.4, 50.0, 54.5, 44.4, 57.1, 31.6, 19.0, 27.3, 21.1, 45.5, 16.7, 31.9, 13.3, 25.0, 38.7, 26.8, 12.1, 25.0, 23.1],
+                    negative: [0.0, 3.8, 7.1, 33.3, 0.0, 9.1, 0.0, 0.0, 9.1, 5.6, 0.0, 26.3, 0.0, 9.1, 15.8, 9.1, 2.8, 8.5, 20.0, 0.0, 13.3, 7.0, 3.0, 8.3, 11.5]
+                }
+            };
+            return sampleData[platform];
+        }
+
+        // Initialize chart
+        function initChart() {
+            const ctx = document.getElementById('trendsChart').getContext('2d');
+            const currentPlatform = document.getElementById('platformSelect').value;
+            
+            // Check if data is available for the current platform
+            if (!platformData[currentPlatform]) {
+                console.warn(`No data available for platform: ${currentPlatform}`);
+                return;
+            }
+            
+            const data = platformData[currentPlatform];
+            
+            // Validate data structure
+            if (!data.labels || !data.positive || !data.neutral || !data.negative) {
+                console.error(`Invalid data structure for ${currentPlatform}:`, data);
+                return;
+            }
+            
+            console.log(`🎯 Initializing chart for ${currentPlatform} with ${data.labels.length} data points`);
+
+            trendsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        {
+                            label: 'Positive',
+                            data: data.positive,
+                            borderColor: '#27AE60',
+                            backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#27AE60',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Neutral',
+                            data: data.neutral,
+                            borderColor: '#F39C12',
+                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#F39C12',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Negative',
+                            data: data.negative,
+                            borderColor: '#E74C3C',
+                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#E74C3C',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            titleColor: '#2C3E50',
+                            bodyColor: '#2C3E50',
+                            borderColor: '#E1E8ED',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.parsed.y}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: true,
+                                color: '#F3F4F6'
+                            },
+                            ticks: {
+                                color: '#7F8C8D',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: {
+                                display: true,
+                                color: '#F3F4F6'
+                            },
+                            ticks: {
+                                color: '#7F8C8D',
+                                font: {
+                                    size: 12
+                                },
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    elements: {
+                        point: {
+                            hoverBackgroundColor: '#FFFFFF'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update chart based on platform selection
+        function updateChart() {
+            const platform = document.getElementById('platformSelect').value;
+            
+            // Check if data is loaded for this platform
+            if (!platformData[platform]) {
+                console.warn(`No data available for platform: ${platform}`);
+                return;
+            }
+            
+            const data = platformData[platform];
+            
+            // Show loading overlay
+            document.getElementById('chartLoading').classList.remove('hidden');
+            
+            // Update chart subtitle
+            const platformNames = {
+                marketbeat: 'MarketBeat',
+                reddit: 'Reddit',
+                stocktwits: 'StockTwits',
+                twitter: 'Twitter'
+            };
+            document.getElementById('chartSubtitle').textContent = `${platformNames[platform]} - Last ${data.labels.length} Data Points`;
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                if (trendsChart) {
+                    trendsChart.data.labels = data.labels;
+                    trendsChart.data.datasets[0].data = data.positive;
+                    trendsChart.data.datasets[1].data = data.neutral;
+                    trendsChart.data.datasets[2].data = data.negative;
+                    trendsChart.update('active');
+                    
+                    // Update summary statistics
+                    updateSummaryStats(platform);
+                    
+                    // Update insights based on platform
+                    updateInsights(platform);
+                }
+                
+                // Hide loading overlay
+                document.getElementById('chartLoading').classList.add('hidden');
+            }, 500);
+        }
+
+        // Update insights based on platform and actual data
+        function updateInsights(platform) {
+            const data = platformData[platform];
+            if (!data || !data.positive) return;
+            
+            // Calculate some insights
+            const avgPositive = (data.positive.reduce((a, b) => a + b, 0) / data.positive.length).toFixed(1);
+            const recentTrend = data.positive.length > 3 ? 
+                data.positive.slice(-3).reduce((a, b) => a + b, 0) / 3 : avgPositive;
+            const isImproving = recentTrend > avgPositive;
+            
+            // Platform-specific insights
+            const insights = {
+                reddit: {
+                    pattern: `Reddit shows ${isImproving ? 'improving' : 'declining'} sentiment with ${avgPositive}% average positive sentiment`,
+                    detail: `Data spans from ${data.labels[0]} to ${data.labels[data.labels.length - 1]}`,
+                    recommendation: 'Monitor Reddit discussions for early sentiment indicators'
+                },
+                marketbeat: {
+                    pattern: 'MarketBeat shows professional investor sentiment',
+                    detail: 'Higher engagement during earnings seasons',
+                    recommendation: 'Leverage financial news momentum'
+                },
+                stocktwits: {
+                    pattern: `StockTwits shows ${isImproving ? 'improving' : 'declining'} retail investor sentiment with ${avgPositive}% average positive sentiment`,
+                    detail: `Extended data from ${data.labels[0]} to ${data.labels[data.labels.length - 1]} with ${data.labels.length} data points`,
+                    recommendation: 'Monitor StockTwits for retail investor mood swings and viral sentiment changes'
+                },
+                twitter: {
+                    pattern: `Twitter shows ${isImproving ? 'improving' : 'declining'} public sentiment with ${avgPositive}% average positive sentiment`,
+                    detail: `Comprehensive data from ${data.labels[0]} to ${data.labels[data.labels.length - 1]} with ${data.labels.length} data points`,
+                    recommendation: 'Track hashtag trends, influencer mentions, and viral sentiment changes across diverse audiences'
+                }
+            };
+            
+            console.log(`📈 Generated insights for ${platform}:`, insights[platform]);
+        }
+
+        // Update summary statistics
+        function updateSummaryStats(platform) {
+            const data = platformData[platform];
+            if (!data || !data.positive || data.positive.length === 0) {
+                console.warn(`No data available for ${platform} statistics`);
+                return;
+            }
+            
+            const latestPositive = data.positive[data.positive.length - 1];
+            const avgSentiment = (data.positive.reduce((a, b) => a + b, 0) / data.positive.length).toFixed(1);
+            const maxVolume = Math.max(...data.positive.map((pos, i) => pos + data.neutral[i] + data.negative[i]));
+            const maxVolumeIndex = data.positive.map((pos, i) => pos + data.neutral[i] + data.negative[i]).indexOf(maxVolume);
+            
+            // Update trend direction (compare last 2 data points)
+            const trend = data.positive.length > 1 ? 
+                data.positive[data.positive.length - 1] > data.positive[data.positive.length - 2] : true;
+            
+            const trendElement = document.getElementById('trendDirection');
+            if (trendElement) {
+                trendElement.textContent = trend ? '↗ Positive' : '↘ Declining';
+                trendElement.className = trend ? 'text-2xl font-bold text-success-600 mt-1' : 'text-2xl font-bold text-error-500 mt-1';
+            }
+            
+            // Update peak volume and date
+            const peakVolumeElement = document.getElementById('peakVolume');
+            const peakDateElement = document.getElementById('peakDate');
+            if (peakVolumeElement && peakDateElement) {
+                peakVolumeElement.textContent = Math.floor(maxVolume * 35).toLocaleString();
+                peakDateElement.textContent = data.labels[maxVolumeIndex] || 'N/A';
+            }
+            
+            // Update average sentiment
+            const avgSentimentElement = document.getElementById('avgSentiment');
+            if (avgSentimentElement) {
+                avgSentimentElement.textContent = avgSentiment + '%';
+            }
+            
+            // Update volatility
+            const variance = calculateVariance(data.positive);
+            const volatility = variance < 15 ? 'Low' : variance < 25 ? 'Medium' : 'High';
+            const volatilityElement = document.getElementById('volatilityIndex');
+            if (volatilityElement) {
+                volatilityElement.textContent = volatility;
+                volatilityElement.className = `text-2xl font-bold mt-1 ${
+                    volatility === 'Low' ? 'text-success-600' : 
+                    volatility === 'Medium' ? 'text-warning-500' : 'text-error-500'
+                }`;
+            }
+            
+            // Log statistics for debugging
+            console.log(`📊 Updated stats for ${platform}:`, {
+                avgSentiment: avgSentiment + '%',
+                trend: trend ? 'Positive' : 'Declining',
+                volatility: volatility,
+                dataPoints: data.positive.length,
+                dateRange: `${data.labels[0]} - ${data.labels[data.labels.length - 1]}`
+            });
+        }
+
+        // Calculate variance for volatility index
+        function calculateVariance(data) {
+            const mean = data.reduce((a, b) => a + b, 0) / data.length;
+            const variance = data.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / data.length;
+            return Math.sqrt(variance);
+        }
+
+        // Event listeners
+        document.getElementById('platformSelect').addEventListener('change', updateChart);
+        document.getElementById('refreshBtn').addEventListener('click', () => {
+            // Reload data from JSON files and update chart
+            loadPlatformData();
+        });
+
+        // Initialize chart and load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load platform data first, then initialize chart
+            loadPlatformData();
+        });
+
+        // Real-time update simulation
+        setInterval(() => {
+            const updateTime = document.getElementById('lastUpdatedTime');
+            if (updateTime) {
+                const now = new Date();
+                const minutes = Math.floor(Math.random() * 5) + 1;
+                updateTime.textContent = `Last updated: ${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            }
+        }, 60000);
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

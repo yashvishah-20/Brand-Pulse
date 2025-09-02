@@ -1,0 +1,33 @@
+{
+  "sentiment": "negative",
+  "total_reviews": 203,
+  "total_words": 3891,
+  "unique_words": 921,
+  "words": [
+    {"text": "management", "size": 48},
+    {"text": "poor", "size": 44},
+    {"text": "workload", "size": 40},
+    {"text": "stress", "size": 37},
+    {"text": "overtime", "size": 34},
+    {"text": "pressure", "size": 31},
+    {"text": "burnout", "size": 28},
+    {"text": "communication", "size": 26},
+    {"text": "micromanaging", "size": 24},
+    {"text": "politics", "size": 22},
+    {"text": "unrealistic", "size": 20},
+    {"text": "expectations", "size": 19},
+    {"text": "toxic", "size": 18},
+    {"text": "understaffed", "size": 17},
+    {"text": "overworked", "size": 16},
+    {"text": "bureaucracy", "size": 15},
+    {"text": "frustrating", "size": 14},
+    {"text": "inefficient", "size": 13},
+    {"text": "lacking", "size": 12},
+    {"text": "disorganized", "size": 11},
+    {"text": "unfair", "size": 10},
+    {"text": "disappointing", "size": 9},
+    {"text": "difficult", "size": 8},
+    {"text": "problems", "size": 7},
+    {"text": "negative", "size": 6}
+  ]
+}

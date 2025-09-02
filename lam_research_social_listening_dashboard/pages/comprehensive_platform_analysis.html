@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprehensive Platform Analysis - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Logo at the top, acts as a back button -->
+    <a href="dashboard_overview2.html" style="text-decoration: none;">
+      <div style="display: flex; align-items: center; margin-bottom: 12px; cursor: pointer;">
+        <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+      </div>
+    </a>
+    <div class="flex min-h-screen">
+        <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Platform Navigation -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook2.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x2.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram2.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit2.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin2.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+
+            <!-- Comprehensive Platform Analysis Title -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-text-primary">Comprehensive Platform Analysis</h2>
+                    <p class="text-lg text-text-secondary mt-2">Cross-platform performance analysis and competitive insights</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="timeRangeSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="6m">Last 6 Months</option>
+                        <option value="1y" selected>Last 12 Months</option>
+                        <option value="2y">Last 2 Years</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Platform Performance Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Platforms</p>
+                            <p class="text-3xl font-bold text-text-primary mt-1">8</p>
+                            <p class="text-sm text-text-secondary mt-1">Active social channels</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Best Performing</p>
+                            <p class="text-2xl font-bold text-success-600 mt-1">Instagram</p>
+                            <p class="text-sm text-text-secondary mt-1">6.1% engagement rate</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Reach</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1">8.3M</p>
+                            <p class="text-sm text-success-600 mt-1">↗ +24% vs last period</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Avg Sentiment</p>
+                            <p class="text-2xl font-bold text-success-600 mt-1">+0.42</p>
+                            <p class="text-sm text-text-secondary mt-1">Positive overall</p>
+                        </div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cross-Platform Performance Comparison -->
+            <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-text-primary">Cross-Platform Performance Comparison</h3>
+                        <p class="text-sm text-text-secondary mt-1">Compare key metrics across all social media platforms</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select id="metricSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="engagement">Engagement Rate</option>
+                            <option value="reach">Monthly Reach</option>
+                            <option value="volume">Post Volume</option>
+                            <option value="sentiment">Sentiment Score</option>
+                            <option value="growth">Growth Rate</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="relative h-96">
+                    <canvas id="platformComparisonChart" width="800" height="384"></canvas>
+                </div>
+            </div>
+
+            <!-- Platform Analysis Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Platform Health Scores -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Platform Health Scores</h3>
+                        <div class="text-sm text-text-secondary">Overall Score: 78/100</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="../public/facebook.png" alt="Facebook" style="width:24px; height:24px;">
+                                <span class="text-sm font-medium text-text-primary">Facebook</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 82%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">82</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="../public/instagram.png" alt="Instagram" style="width:24px; height:24px;">
+                                <span class="text-sm font-medium text-text-primary">Instagram</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 89%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">89</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="../public/x.png" alt="X" style="width:24px; height:24px;">
+                                <span class="text-sm font-medium text-text-primary">X (Twitter)</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 74%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">74</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="../public/linkedin.png" alt="LinkedIn" style="width:24px; height:24px;">
+                                <span class="text-sm font-medium text-text-primary">LinkedIn</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 76%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">76</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="../public/reddit.png" alt="Reddit" style="width:24px; height:24px;">
+                                <span class="text-sm font-medium text-text-primary">Reddit</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-orange-500 h-2 rounded-full" style="width: 68%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">68</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audience Overlap Analysis -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">Audience Overlap Analysis</h3>
+                        <div class="text-sm text-text-secondary">Cross-platform audience</div>
+                    </div>
+                    <div class="relative h-80">
+                        <canvas id="audienceOverlapChart" width="400" height="320"></canvas>
+                    </div>
+                    <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-blue-50 rounded-lg p-3">
+                            <p class="text-lg font-bold text-blue-800">65%</p>
+                            <p class="text-xs text-text-secondary">Unique Audience</p>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-3">
+                            <p class="text-lg font-bold text-purple-800">35%</p>
+                            <p class="text-xs text-text-secondary">Cross-Platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Performance Analysis -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Top Performing Content Types -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <h3 class="text-lg font-semibold text-text-primary mb-6">Top Content Types</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Video Content</p>
+                                <p class="text-xs text-text-secondary">Highest engagement</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-red-600">7.8%</p>
+                                <p class="text-xs text-text-secondary">Avg Engagement</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Image Posts</p>
+                                <p class="text-xs text-text-secondary">Most shared</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-yellow-600">4.2%</p>
+                                <p class="text-xs text-text-secondary">Avg Engagement</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Text Posts</p>
+                                <p class="text-xs text-text-secondary">Most comments</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-blue-600">3.1%</p>
+                                <p class="text-xs text-text-secondary">Avg Engagement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Optimal Posting Times -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <h3 class="text-lg font-semibold text-text-primary mb-6">Optimal Posting Times</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Best Day:</span>
+                            <span class="text-sm font-medium text-text-primary">Wednesday</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Peak Hours:</span>
+                            <span class="text-sm font-medium text-text-primary">2:00 PM - 4:00 PM</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Weekend Performance:</span>
+                            <span class="text-sm font-medium text-text-primary">-25% lower</span>
+                        </div>
+                        <div class="mt-4">
+                            <canvas id="postingTimeChart" width="400" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Growth Trends -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <h3 class="text-lg font-semibold text-text-primary mb-6">Growth Trends</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Fastest Growing</p>
+                                <p class="text-xs text-text-secondary">Instagram</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-green-600">+28%</p>
+                                <p class="text-xs text-text-secondary">Monthly</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Most Consistent</p>
+                                <p class="text-xs text-text-secondary">LinkedIn</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-blue-600">+12%</p>
+                                <p class="text-xs text-text-secondary">Monthly</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Needs Attention</p>
+                                <p class="text-xs text-text-secondary">X (Twitter)</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-orange-600">+3%</p>
+                                <p class="text-xs text-text-secondary">Monthly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Analysis -->
+            <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-text-primary">Competitive Analysis</h3>
+                        <p class="text-sm text-text-secondary mt-1">How your performance compares to industry competitors</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select id="competitorSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="all">All Competitors</option>
+                            <option value="amat">Applied Materials</option>
+                            <option value="klac">KLA Corporation</option>
+                            <option value="asml">ASML Holding</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="relative h-96">
+                    <canvas id="competitiveAnalysisChart" width="800" height="384"></canvas>
+                </div>
+                <div class="mt-6 grid grid-cols-4 gap-4 text-center">
+                    <div class="bg-primary-50 rounded-lg p-3">
+                        <p class="text-lg font-bold text-primary-800">1st</p>
+                        <p class="text-xs text-text-secondary">Engagement Rate</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3">
+                        <p class="text-lg font-bold text-green-800">2nd</p>
+                        <p class="text-xs text-text-secondary">Content Quality</p>
+                    </div>
+                    <div class="bg-yellow-50 rounded-lg p-3">
+                        <p class="text-lg font-bold text-yellow-800">3rd</p>
+                        <p class="text-xs text-text-secondary">Response Time</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <p class="text-lg font-bold text-blue-800">1st</p>
+                        <p class="text-xs text-text-secondary">Innovation Content</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actionable Insights -->
+            <div class="bg-gradient-to-r from-primary-50 to-blue-50 rounded-lg shadow-card p-6 border border-primary-200 mb-8">
+                <h3 class="text-xl font-semibold text-primary-800 mb-6">🎯 Actionable Insights & Recommendations</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Increase Video Content on Instagram</p>
+                                <p class="text-sm text-primary-600">Video posts show 3x higher engagement. Recommend 40% video content mix.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Optimize X (Twitter) Posting Schedule</p>
+                                <p class="text-sm text-primary-600">Shift posting times to 2-4 PM for 25% better engagement.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Leverage LinkedIn for Thought Leadership</p>
+                                <p class="text-sm text-primary-600">Industry insights posts perform 40% better than product posts.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                            <div>
+                                <p class="font-medium text-primary-800">Cross-Platform Content Strategy</p>
+                                <p class="text-sm text-primary-600">Adapt successful Instagram content for Facebook with 15% engagement boost.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Platform comparison chart data
+        const platformData = {
+            engagement: {
+                labels: ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Reddit', 'YouTube', 'TikTok', 'Glassdoor'],
+                data: [4.8, 6.1, 3.2, 2.9, 5.4, 4.7, 8.7, 3.8],
+                label: 'Engagement Rate (%)',
+                colors: ['#4267B2', '#E4405F', '#000000', '#0077B5', '#FF4500', '#FF0000', '#000000', '#00A652']
+            },
+            reach: {
+                labels: ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Reddit', 'YouTube', 'TikTok', 'Glassdoor'],
+                data: [1200000, 1800000, 850000, 620000, 750000, 2100000, 1900000, 180000],
+                label: 'Monthly Reach',
+                colors: ['#4267B2', '#E4405F', '#000000', '#0077B5', '#FF4500', '#FF0000', '#000000', '#00A652']
+            },
+            volume: {
+                labels: ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Reddit', 'YouTube', 'TikTok', 'Glassdoor'],
+                data: [125, 210, 450, 85, 320, 45, 180, 25],
+                label: 'Monthly Posts',
+                colors: ['#4267B2', '#E4405F', '#000000', '#0077B5', '#FF4500', '#FF0000', '#000000', '#00A652']
+            },
+            sentiment: {
+                labels: ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Reddit', 'YouTube', 'TikTok', 'Glassdoor'],
+                data: [0.45, 0.58, 0.32, 0.41, 0.28, 0.52, 0.62, 0.38],
+                label: 'Sentiment Score',
+                colors: ['#4267B2', '#E4405F', '#000000', '#0077B5', '#FF4500', '#FF0000', '#000000', '#00A652']
+            },
+            growth: {
+                labels: ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Reddit', 'YouTube', 'TikTok', 'Glassdoor'],
+                data: [15.2, 28.4, 3.1, 12.8, 18.6, 22.3, 35.7, 8.4],
+                label: 'Monthly Growth Rate (%)',
+                colors: ['#4267B2', '#E4405F', '#000000', '#0077B5', '#FF4500', '#FF0000', '#000000', '#00A652']
+            }
+        };
+
+        let platformComparisonChart = null;
+        let audienceOverlapChart = null;
+        let postingTimeChart = null;
+        let competitiveAnalysisChart = null;
+
+        function initializePlatformComparisonChart() {
+            const ctx = document.getElementById('platformComparisonChart');
+            if (!ctx) return;
+
+            function renderChart(metric) {
+                if (platformComparisonChart) platformComparisonChart.destroy();
+                
+                const data = platformData[metric];
+                platformComparisonChart = new Chart(ctx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: data.label,
+                            data: data.data,
+                            backgroundColor: data.colors,
+                            borderRadius: 8,
+                            borderSkipped: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let value = context.parsed.y;
+                                        if (metric === 'reach') {
+                                            value = (value / 1000000).toFixed(1) + 'M';
+                                        } else if (metric === 'sentiment') {
+                                            value = (value * 100).toFixed(1) + '%';
+                                        } else if (metric === 'engagement' || metric === 'growth') {
+                                            value = value.toFixed(1) + '%';
+                                        }
+                                        return data.label + ': ' + value;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: data.label
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        if (metric === 'reach') {
+                                            return (value / 1000000).toFixed(1) + 'M';
+                                        } else if (metric === 'sentiment') {
+                                            return (value * 100).toFixed(0) + '%';
+                                        } else if (metric === 'engagement' || metric === 'growth') {
+                                            return value.toFixed(1) + '%';
+                                        }
+                                        return value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Initial render
+            renderChart('engagement');
+
+            // Handle metric selection change
+            const select = document.getElementById('metricSelect');
+            if (select) {
+                select.addEventListener('change', function() {
+                    renderChart(this.value);
+                });
+            }
+        }
+
+        function initializeAudienceOverlapChart() {
+            const ctx = document.getElementById('audienceOverlapChart');
+            if (!ctx) return;
+
+            audienceOverlapChart = new Chart(ctx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Facebook Only', 'Instagram Only', 'Twitter Only', 'LinkedIn Only', 'Cross-Platform', 'Other'],
+                    datasets: [{
+                        data: [25, 20, 15, 12, 18, 10],
+                        backgroundColor: [
+                            '#4267B2',
+                            '#E4405F',
+                            '#000000',
+                            '#0077B5',
+                            '#8B5CF6',
+                            '#6B7280'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializePostingTimeChart() {
+            const ctx = document.getElementById('postingTimeChart');
+            if (!ctx) return;
+
+            postingTimeChart = new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['9AM', '12PM', '3PM', '6PM', '9PM'],
+                    datasets: [{
+                        label: 'Engagement Rate',
+                        data: [3.2, 4.8, 6.1, 4.2, 2.8],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            display: false
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializeCompetitiveAnalysisChart() {
+            const ctx = document.getElementById('competitiveAnalysisChart');
+            if (!ctx) return;
+
+            const competitiveData = {
+                labels: ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'YouTube'],
+                datasets: [{
+                    label: 'Lam Research',
+                    data: [4.8, 6.1, 3.2, 2.9, 4.7],
+                    backgroundColor: '#FF7300',
+                    borderColor: '#FF7300',
+                    borderWidth: 2
+                }, {
+                    label: 'Applied Materials',
+                    data: [3.9, 5.2, 2.8, 3.4, 4.1],
+                    backgroundColor: '#3B82F6',
+                    borderColor: '#3B82F6',
+                    borderWidth: 2
+                }, {
+                    label: 'KLA Corporation',
+                    data: [4.2, 4.8, 3.5, 2.1, 3.8],
+                    backgroundColor: '#10B981',
+                    borderColor: '#10B981',
+                    borderWidth: 2
+                }, {
+                    label: 'ASML Holding',
+                    data: [5.1, 6.8, 2.4, 3.8, 5.2],
+                    backgroundColor: '#8B5CF6',
+                    borderColor: '#8B5CF6',
+                    borderWidth: 2
+                }]
+            };
+
+            competitiveAnalysisChart = new Chart(ctx.getContext('2d'), {
+                type: 'radar',
+                data: competitiveData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 8,
+                            ticks: {
+                                stepSize: 2
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize all charts on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializePlatformComparisonChart();
+            initializeAudienceOverlapChart();
+            initializePostingTimeChart();
+            initializeCompetitiveAnalysisChart();
+        });
+    </script>
+
+    <style>
+        .platform-btn {
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .platform-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .active-platform {
+            box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+            border-radius: 12px;
+            outline: none;
+            z-index: 1;
+            transition: box-shadow 0.2s;
+        }
+    </style>
+</body>
+</html>

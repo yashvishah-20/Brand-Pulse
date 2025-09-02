@@ -1,0 +1,33 @@
+{
+  "sentiment": "positive",
+  "total_reviews": 187,
+  "total_words": 3256,
+  "unique_words": 743,
+  "words": [
+    {"text": "great", "size": 42},
+    {"text": "excellent", "size": 39},
+    {"text": "culture", "size": 36},
+    {"text": "team", "size": 33},
+    {"text": "management", "size": 30},
+    {"text": "benefits", "size": 28},
+    {"text": "opportunity", "size": 26},
+    {"text": "learning", "size": 24},
+    {"text": "environment", "size": 22},
+    {"text": "supportive", "size": 20},
+    {"text": "career", "size": 19},
+    {"text": "growth", "size": 18},
+    {"text": "colleagues", "size": 17},
+    {"text": "innovative", "size": 16},
+    {"text": "flexible", "size": 15},
+    {"text": "technology", "size": 14},
+    {"text": "development", "size": 13},
+    {"text": "balance", "size": 12},
+    {"text": "challenging", "size": 11},
+    {"text": "rewarding", "size": 10},
+    {"text": "professional", "size": 9},
+    {"text": "collaborative", "size": 8},
+    {"text": "leadership", "size": 7},
+    {"text": "advancement", "size": 6},
+    {"text": "positive", "size": 5}
+  ]
+}

@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Overview - Lam Research Social Listening</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-background font-inter">
+    <!-- Main Content Area -->
+                
+                <main id="mainContent" class="flex-1 ml-1/4 p-6 transition-all duration-300 ease-in-out">
+            <!-- Header Section with Logo and Date Filter -->
+            <div class="flex items-center justify-between mb-6">
+                <!-- Left side - Logo -->
+                <div class="flex items-center">
+                    <a href="dashboard_overview.html" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; cursor: pointer;">
+                            <img src="../../prowess logo.png" alt="Prowess Logo" style="width: 200px; height: 100px; object-fit: contain;">
+                        </div>
+                    </a>
+                </div>
+                <!-- Right side - Date Filter and Export Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Date Range Filter -->
+                    <div class="flex items-center space-x-3 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">FROM:</label>
+                            <input type="date" id="dateFrom" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-01-01">
+                        </div>
+                        <div class="text-text-secondary">—</div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium text-text-secondary">TO:</label>
+                            <input type="date" id="dateTo" class="px-3 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white" value="2025-07-31">
+                        </div>
+                        <button id="applyDateFilter" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-600 transition-fast flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Apply
+                        </button>
+                    </div>
+                    <!-- Export Report Button -->
+                    <a href="../public/competitor_analysis_data.zip" download class="px-4 py-2 text-sm font-medium text-text-secondary bg-surface border border-border rounded-md hover:bg-secondary-50 transition-fast flex items-center">
+                        <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 20h14v-2H5v2zm7-18v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Export Report
+                    </a>
+                </div>
+            </div>
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-surface rounded-lg shadow-card p-4 border border-border-light mb-6">
+                <!-- Facebook -->
+                <a href="dashboard_facebook.html" class="platform-btn" title="Facebook" aria-label="Facebook">
+                    <img src="../public/facebook.png" alt="Facebook" style="width:40px; height:40px;">
+                </a>
+                <!-- X -->
+                <a href="dashboard_x.html" class="platform-btn" title="X" aria-label="X">
+                    <img src="../public/x.png" alt="X" style="width:40px; height:40px;">
+                </a>
+                <!-- Google -->
+                <a href="dashboard_google.html" class="platform-btn" title="Google" aria-label="Google">
+                    <img src="../public/google.png" alt="Google" style="width:40px; height:40px;">
+                </a>
+                <!-- Instagram -->
+                <a href="dashboard_instagram.html" class="platform-btn" title="Instagram" aria-label="Instagram">
+                    <img src="../public/instagram.png" alt="Instagram" style="width:40px; height:40px;">
+                </a>
+                <!-- Reddit -->
+                <a href="dashboard_reddit.html" class="platform-btn" title="Reddit" aria-label="Reddit">
+                    <img src="../public/reddit.png" alt="Reddit" style="width:40px; height:40px;">
+                </a>
+                <!-- MarketBeat -->
+                <a href="dashboard_marketbeat.html" class="platform-btn" title="MarketBeat" aria-label="MarketBeat">
+                    <img src="../public/marketbeat.png" alt="MarketBeat" style="width:40px; height:40px;">
+                </a>
+                <!-- Glassdoor -->
+                <a href="dashboard_glassdoor.html" class="platform-btn" title="Glassdoor" aria-label="Glassdoor">
+                    <img src="../public/glassdoor.png" alt="Glassdoor" style="width:40px; height:40px;">
+                </a>
+                <!-- StockTwits -->
+                <a href="dashboard_stocktwits.html" class="platform-btn" title="StockTwits" aria-label="StockTwits">
+                    <img src="../public/stocktwits.png" alt="StockTwits" style="width:40px; height:40px;">
+                </a>
+                <!-- LinkedIn -->
+                <a href="dashboard_linkedin.html" class="platform-btn" title="LinkedIn" aria-label="LinkedIn">
+                    <img src="../public/linkedin.png" alt="LinkedIn" style="width:40px; height:40px;">
+                </a>
+            </div>
+            <!-- Summary Metrics Cards -->
+            <div id="dashboardSummaryCards" class="flex flex-row gap-2 mb-0">
+                <!-- Total Volume Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Total Volume</p>
+                            <p class="text-lg font-bold text-text-primary mt-1" id="total-volume">5710</p>
+                            <p class="text-xs text-success-600 mt-1">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-3 h-3 text-success-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                    <span class="font-bold">+10% from last year</span>
+                                </span>
+                                
+                            </p>
+                        </div>
+                        <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Positive Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Positive Sentiment</p>
+                            <p class="text-lg font-bold text-success-600 mt-1" id="avg-positive-sentiment">66.2%</p>
+                           
+                        </div>
+                        <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Neutral Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Neutral Sentiment</p>
+                            <p class="text-lg font-bold text-warning-600 mt-1" id="avg-neutral-sentiment">25.1%</p>
+                            
+                        </div>
+                        <div class="w-8 h-8 bg-warning-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avg. Negative Sentiment Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-text-secondary">Avg. Negative Sentiment</p>
+                            <p class="text-lg font-bold text-error-600 mt-1" id="avg-negative-sentiment">8.6%</p>
+                            
+                        </div>
+                        <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                            <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Momentum Card -->
+                <div class="flex-1 bg-surface rounded-lg shadow-card p-3 border border-border-light">
+                    <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <p class="text-xs font-medium text-text-secondary">Sentiment Momentum</p>
+                        <p class="text-lg font-bold text-error-600 mt-1" id="sentiment-momentum">-7.25%</p>
+                        <p class="text-xs text-error-600 mt-1">
+                        <span class="inline-flex items-center">
+                            <svg class="w-3 h-3 text-error-600 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 14l5-5 5 5z"/>
+                            </svg>
+                            <span class="font-bold">-7.25%</span>
+                        </span>
+                        <span class="block">vs previous 2 months</span>
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 bg-error-100 rounded-lg flex items-center justify-center ml-2">
+                        <svg class="w-4 h-4 text-error-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 14l5-5 5 5z"/>
+                        </svg>
+                    </div>
+                    </div>
+                </div>
+  
+                <!-- Engagement Rate Card 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Total Engagements</p>
+                            <p class="text-2xl font-bold text-text-primary mt-1" id="engagement-rate">2,926</p>
+                            <p class="text-sm text-text-secondary mt-1">Likes + Retweets + Replies (measures direct user interactions)</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- Sentiment Trends Card 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Sentiment Trends</p>
+                            <div class="mt-2 space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Positive:</span>
+                                    <span class="text-sm font-semibold text-success-600">↗ +5.2%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Neutral:</span>
+                                    <span class="text-sm font-semibold text-warning-500">↘ -2.1%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Negative:</span>
+                                    <span class="text-sm font-semibold text-error-500">↘ -3.1%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+            <!-- X Overview Title 
+            <h2 class="text-2xl font-bold mb-4">X Overview</h2>-->
+            <!-- Tab Bar -->
+            <div class="flex gap-4 mb-8">
+                <!-- <button id="showEngagement" class="flex-1 px-6 py-3 text-lg font-semibold text-white bg-primary rounded-md shadow">Engagement</button> -->
+                <!-- <button id="showTrends" class="flex-1 px-6 py-3 text-lg font-semibold text-primary border-2 border-primary rounded-md shadow">Trends</button> -->
+            </div>
+            <div id="performanceView">
+                <!-- Twitter Yearly Sentiment Analysis (moved to top) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-text-primary">Sentiment Analysis</h2>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="twitterBarChart" width="800" height="384"></canvas>
+                    </div>
+                    <!--<div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p id="twitterPositive" class="text-2xl font-bold text-success-600">...</p>
+                            <p class="text-sm text-text-secondary">Positive Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="twitterNeutral" class="text-2xl font-bold text-warning-500">...</p>
+                            <p class="text-sm text-text-secondary">Neutral Sentiment</p>
+                        </div>
+                        <div>
+                            <p id="twitterNegative" class="text-2xl font-bold text-error-500">...</p>
+                            <p class="text-sm text-text-secondary">Negative Sentiment</p>
+                        </div>
+                    </div>-->
+                </div>
+                
+                <!-- Sentiment Trends Over Time (moved from Trends tab) -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-semibold text-text-primary">Sentiment Trends Over Time</h2>
+                            <p id="twitterTrendsSubtitle" class="text-sm text-text-secondary mt-1">X (Twitter) - Last 12 Months</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Positive</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Neutral</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm text-text-secondary">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Time Range Slider -->
+                    <div class="flex items-center mb-4">
+                        <span class="mr-2 text-gray-500 font-medium">Range:</span>
+                        <span id="twitterSliderLabel6m" class="text-gray-500" style="min-width: 2.5em;">6m</span>
+                        <input
+                            type="range"
+                            id="twitterTrendRangeSlider"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            style="accent-color: #ff7300; width: 180px; margin: 0 10px; background: transparent;"
+                        />
+                        <span id="twitterSliderLabel2y" class="text-gray-500" style="min-width: 2.5em;">2y</span>
+                        <span id="twitterSliderRangeBadge" class="ml-3 px-3 py-1 rounded-xl" style="background: #ffe5d0; color: #c2410c; font-weight: 600; font-size: 1.2em;">1y</span>
+                    </div>
+                    <div class="relative h-96">
+                        <canvas id="twitterTrendsChart" class="w-full h-full"></canvas>
+                    </div>
+                    <!-- Key Insights - Trends Card (moved inside the trends card below the chart) -->
+                    <div id="twitterTrendsInsights" class="bg-primary-50 border border-primary-200 rounded-lg p-4 mt-4 text-primary-800 text-base">
+                        <!-- Key insights content will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- X Activity Radar (by Month) 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-text-primary">X Activity Radar (by Month)</h3>
+                        <div>
+                            <select id="xRadarYearSelect" class="appearance-none bg-surface border border-border rounded-md px-4 py-2 pr-8 text-sm font-medium text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="relative h-96 flex items-center justify-center">
+                        <canvas id="xActivityRadarChart" width="400" height="384"></canvas>
+                    </div>
+                </div>-->
+                
+                <!-- X Engagement Content 
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">-->
+                    <!-- Hashtag Performance 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Top Hashtags</h3>
+                        <div id="twitterHashtags" class="space-y-4">-->
+                            <!-- Hashtags will be loaded here by JS 
+                        </div>
+                    </div>-->
+
+                    <!-- Twitter Engagement Histogram 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Engagement Distribution</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Likes</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-success-600 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Retweets</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Replies</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-80">
+                            <canvas id="twitterHistogramChart" width="400" height="320"></canvas>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                            <div class="bg-accent-50 rounded-lg p-3">
+                                <p id="twitterLikesCount" class="text-lg font-bold text-accent-800">-</p>
+                                <p class="text-xs text-text-secondary">Likes</p>
+                            </div>
+                            <div class="bg-success-50 rounded-lg p-3">
+                                <p id="twitterRetweetsCount" class="text-lg font-bold text-success-800">-</p>
+                                <p class="text-xs text-text-secondary">Retweets</p>
+                            </div>
+                            <div class="bg-warning-50 rounded-lg p-3">
+                                <p id="twitterRepliesCount" class="text-lg font-bold text-warning-800">-</p>
+                                <p class="text-xs text-text-secondary">Replies</p>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Twitter Activity Radar 
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Twitter Activity Radar</h3>
+                        <div class="relative h-96 flex items-center justify-center">
+                            <canvas id="twitterRadarChart" width="400" height="384"></canvas>
+                        </div>
+                    </div>-->
+
+                    <!-- Twitter Activity Patterns 
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <h3 class="text-lg font-semibold text-text-primary mb-6">Activity Patterns</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-sm font-medium text-text-secondary mb-3">Peak Hours (EST)</h4>
+                                <div id="twitterPeakHours" class="grid grid-cols-4 gap-2 w-full">
+                                     Peak hours will be loaded here by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="trendsView" class="hidden">
+                <!-- X Trends Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Trend Direction</p>
+                                <p class="text-2xl font-bold text-success-600 mt-1" id="trendDirection">↗ Positive</p>
+                            </div>
+                            <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M7 14l5-5 5 5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Peak Volume</p>
+                                <p class="text-2xl font-bold text-text-primary mt-1" id="peakVolume">-</p>
+                                
+                                <p class="text-sm text-text-secondary mt-1" id="peakDate">-</p>
+                            </div>
+                            <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Avg Sentiment</p>
+                                <p class="text-2xl font-bold text-text-primary mt-1" id="avgSentiment">-</p>
+                                <p class="text-sm text-text-secondary mt-1">Positive overall</p>
+                            </div>
+                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-text-secondary">Volatility Index</p>
+                                <p class="text-2xl font-bold text-warning-500 mt-1" id="volatilityIndex">-</p>
+                                <p class="text-sm text-text-secondary mt-1">±12.3% variance</p>
+                            </div>
+                            <div class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Key Insights & Patterns Section -->
+                <div class="bg-surface rounded-lg shadow-card p-6 border border-border-light mb-8">
+                    <h2 class="text-2xl font-bold text-text-primary mb-4">Key Insights & Patterns</h2>
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Trending Patterns</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start space-x-2">
+                                <span class="inline-block w-3 h-3 rounded-full bg-green-500 mt-1"></span>
+                                <div>
+                                    <span class="font-medium">Positive sentiment surge in Q4 2024</span><br/>
+                                    <span class="text-text-secondary">+18% increase following product announcements</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="inline-block w-3 h-3 rounded-full bg-yellow-500 mt-1"></span>
+                                <div>
+                                    <span class="font-medium">Seasonal engagement patterns</span><br/>
+                                    <span class="text-text-secondary">Higher activity during earnings seasons</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="inline-block w-3 h-3 rounded-full bg-blue-500 mt-1"></span>
+                                <div>
+                                    <span class="font-medium">Platform-specific trends</span><br/>
+                                    <span class="text-text-secondary">Reddit shows highest engagement volatility</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Strategic Recommendations</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start space-x-2">
+                                <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                                <div>
+                                    <span class="font-medium">Capitalize on positive momentum</span><br/>
+                                    <span class="text-text-secondary">Increase content frequency during peak periods</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                                <div>
+                                    <span class="font-medium">Monitor volatility indicators</span><br/>
+                                    <span class="text-text-secondary">Set up alerts for significant sentiment shifts</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="inline-block w-3 h-3 rounded-full bg-orange-500 mt-1"></span>
+                                <div>
+                                    <span class="font-medium">Platform-specific strategies</span><br/>
+                                    <span class="text-text-secondary">Tailor content approach for each platform</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Real-time Update Indicator -->
+                <div class="mt-8 flex items-center justify-center">
+                    <div class="flex items-center space-x-2 text-sm text-text-secondary">
+                        <div class="w-2 h-2 bg-success-600 rounded-full animate-pulse"></div>
+                        <span id="lastUpdatedTime">Last updated: 3 minutes ago</span>
+                        <button class="text-primary hover:text-primary-600 font-medium transition-fast" onclick="loadXTrendsData()">Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+<!-- Chart.js and Twitter Trends Chart Script at the end of body -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+console.log('Script loaded!');
+
+// --- Twitter Trends Chart with 6m/1y/2y slider ---
+let twitterTrendsChart = null;
+const twitterTrendsData = {
+  '6m': {
+    labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    positive: [40, 42, 41, 43, 44, 45],
+    neutral: [45, 44, 43, 42, 41, 40],
+    negative: [15, 14, 16, 15, 15, 15]
+  },
+  '1y': {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    positive: [41, 42, 43, 44, 45, 44, 46, 47, 45, 44, 46, 47],
+    neutral: [43, 42, 41, 40, 39, 40, 38, 37, 39, 40, 38, 37],
+    negative: [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16]
+  },
+  '2y': {
+    labels: [
+      'Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23',
+      'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23',
+      'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24',
+      'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'
+    ],
+    positive: [41, 42, 43, 44, 45, 44, 46, 47, 45, 44, 46, 47, 45, 45, 46, 47, 45, 44, 46, 47, 45, 45, 46, 47],
+    neutral: [43, 42, 41, 40, 39, 40, 38, 37, 39, 40, 38, 37, 39, 39, 38, 37, 39, 40, 38, 37, 39, 39, 38, 37],
+    negative: [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16]
+  }
+};
+
+function initializeTwitterTrendsChart(range = '1y') {
+  const ctx = document.getElementById('twitterTrendsChart');
+  if (!ctx) return;
+  const data = twitterTrendsData[range];
+  console.log('Twitter Trends Chart Data:', data);
+  if (twitterTrendsChart) twitterTrendsChart.destroy();
+  twitterTrendsChart = new Chart(ctx.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: [
+        { label: 'Positive', data: data.positive, borderColor: '#27AE60', backgroundColor: 'rgba(39, 174, 96, 0.1)', borderWidth: 3, fill: true, tension: 0.4 },
+        { label: 'Neutral', data: data.neutral, borderColor: '#F39C12', backgroundColor: 'rgba(243, 156, 18, 0.1)', borderWidth: 3, fill: true, tension: 0.4 },
+        { label: 'Negative', data: data.negative, borderColor: '#E74C3C', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 3, fill: true, tension: 0.4 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 } } },
+        y: { beginAtZero: true, max: 100, grid: { display: true, color: '#F3F4F6' }, ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } } }
+      }
+    },
+  });
+}
+
+function updateTwitterTrendsInsights(labels, positive, neutral, negative) {
+    const insightsDiv = document.getElementById('twitterTrendsInsights');
+    if (!insightsDiv) return;
+    if (!labels.length) { insightsDiv.textContent = 'No data available for this range.'; return; }
+    // Calculate averages
+    const avgPos = (positive.reduce((a, b) => a + b, 0) / positive.length).toFixed(1);
+    const avgNeu = (neutral.reduce((a, b) => a + b, 0) / neutral.length).toFixed(1);
+    const avgNeg = (negative.reduce((a, b) => a + b, 0) / negative.length).toFixed(1);
+    // Trend direction (compare first and last value)
+    let trend = '';
+    if (positive[positive.length-1] > positive[0] + 2) trend = '↗ Positive sentiment is increasing.';
+    else if (positive[positive.length-1] < positive[0] - 2) trend = '↘ Positive sentiment is decreasing.';
+    else trend = '→ Positive sentiment is stable.';
+    // Summary
+    let summary = '';
+    if (avgPos > avgNeu && avgPos > avgNeg) summary = `Positive sentiment dominates at ${avgPos}%.`;
+    else if (avgNeg > avgPos && avgNeg > avgNeu) summary = `Negative sentiment is highest at ${avgNeg}%.`;
+    else summary = `Neutral sentiment is most common at ${avgNeu}%.`;
+    insightsDiv.innerHTML = `
+        <strong>Key Insights (${labels.length} months):</strong><br/>
+        <ul class="list-disc pl-6">
+            <li>Average Positive: <span class="font-semibold">${avgPos}%</span></li>
+            <li>Average Neutral: <span class="font-semibold">${avgNeu}%</span></li>
+            <li>Average Negative: <span class="font-semibold">${avgNeg}%</span></li>
+            <li>${trend}</li>
+            <li>${summary}</li>
+        </ul>
+    `;
+}
+
+const twitterRangeToSubtitle = {
+  '6m': 'X (Twitter) - Last 6 Months',
+  '1y': 'X (Twitter) - Last 12 Months',
+  '2y': 'X (Twitter) - Last 24 Months'
+};
+function updateTwitterTrendsSubtitle(rangeKey) {
+  const subtitle = document.getElementById('twitterTrendsSubtitle');
+  if (subtitle) {
+    subtitle.textContent = twitterRangeToSubtitle[rangeKey];
+  }
+}
+
+const twitterSliderValueToRange = { 0: '6m', 1: '1y', 2: '2y' };
+const twitterSliderValueToLabel = { 0: '6m', 1: '1y', 2: '2y' };
+
+document.addEventListener('DOMContentLoaded', function() {
+  const twitterTrendRangeSlider = document.getElementById('twitterTrendRangeSlider');
+  const twitterSliderRangeBadge = document.getElementById('twitterSliderRangeBadge');
+  if (twitterTrendRangeSlider && twitterSliderRangeBadge) {
+    twitterTrendRangeSlider.addEventListener('input', function() {
+      const label = twitterSliderValueToLabel[this.value];
+      twitterSliderRangeBadge.textContent = label;
+      const rangeKey = twitterSliderValueToRange[this.value];
+      initializeTwitterTrendsChart(rangeKey);
+      updateTwitterTrendsSubtitle(rangeKey);
+      document.getElementById('twitterSliderLabel6m').style.color = this.value == 0 ? '#ff7300' : '#6B7280';
+      document.getElementById('twitterSliderLabel2y').style.color = this.value == 2 ? '#ff7300' : '#6B7280';
+    });
+    twitterSliderRangeBadge.textContent = twitterSliderValueToLabel[twitterTrendRangeSlider.value];
+    document.getElementById('twitterSliderLabel6m').style.color = twitterTrendRangeSlider.value == 0 ? '#ff7300' : '#6B7280';
+    document.getElementById('twitterSliderLabel2y').style.color = twitterTrendRangeSlider.value == 2 ? '#ff7300' : '#6B7280';
+    const initialRangeKey = twitterSliderValueToRange[twitterTrendRangeSlider.value];
+    initializeTwitterTrendsChart(initialRangeKey);
+    updateTwitterTrendsSubtitle(initialRangeKey);
+  } else {
+    initializeTwitterTrendsChart('1y');
+    updateTwitterTrendsSubtitle('1y');
+  }
+});
+
+// Call updateTwitterTrendsInsights after chart update (inside slider/input logic)
+document.addEventListener('DOMContentLoaded', function() {
+    const twitterTrendRangeSlider = document.getElementById('twitterTrendRangeSlider');
+    if (twitterTrendRangeSlider) {
+        twitterTrendRangeSlider.addEventListener('input', function() {
+            const rangeKey = this.value == 0 ? '6m' : (this.value == 1 ? '1y' : '2y');
+            updateTwitterTrendsInsights(
+                twitterTrendsData[rangeKey].labels,
+                twitterTrendsData[rangeKey].positive,
+                twitterTrendsData[rangeKey].neutral,
+                twitterTrendsData[rangeKey].negative
+            );
+        });
+        // Initial call
+        const initialRangeKey = twitterTrendRangeSlider.value == 0 ? '6m' : (twitterTrendRangeSlider.value == 1 ? '1y' : '2y');
+        updateTwitterTrendsInsights(
+            twitterTrendsData[initialRangeKey].labels,
+            twitterTrendsData[initialRangeKey].positive,
+            twitterTrendsData[initialRangeKey].neutral,
+            twitterTrendsData[initialRangeKey].negative
+        );
+    }
+});
+</script>
+    <script>
+    console.log('Script loaded!');
+    // At the very end of the script block, after all function definitions:
+    if (typeof initializeTwitterTrendsChart === 'function') {
+      initializeTwitterTrendsChart('1y');
+      if (typeof updateTwitterTrendsSubtitle === 'function') {
+        updateTwitterTrendsSubtitle('1y');
+      }
+    }
+    const showEngagement = document.getElementById('showEngagement');
+    const showTrends = document.getElementById('showTrends');
+    const performanceView = document.getElementById('performanceView');
+    const trendsView = document.getElementById('trendsView');
+    if (showEngagement && showTrends && performanceView && trendsView) {
+        showEngagement.onclick = function() {
+            performanceView.classList.remove('hidden');
+            trendsView.classList.add('hidden');
+            showEngagement.classList.add('bg-primary', 'text-white');
+            showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+            showTrends.classList.remove('bg-primary', 'text-white');
+            showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        showTrends.onclick = function() {
+            trendsView.classList.remove('hidden');
+            performanceView.classList.add('hidden');
+            showTrends.classList.add('bg-primary', 'text-white');
+            showTrends.classList.remove('text-primary', 'border-2', 'border-primary');
+            showEngagement.classList.remove('bg-primary', 'text-white');
+            showEngagement.classList.add('text-primary', 'border-2', 'border-primary');
+        };
+        // Set Performance as default
+        performanceView.classList.remove('hidden');
+        trendsView.classList.add('hidden');
+        showEngagement.classList.add('bg-primary', 'text-white');
+        showEngagement.classList.remove('text-primary', 'border-2', 'border-primary');
+        showTrends.classList.remove('bg-primary', 'text-white');
+        showTrends.classList.add('text-primary', 'border-2', 'border-primary');
+    }
+    </script>
+    <script>
+// --- X (Twitter) Engagement Chart Logic (from audience_insights.html) ---
+let twitterRadarChart = null;
+let twitterHistogramChart = null;
+let twitterBarChart = null;
+let xActivityRadarChart = null;
+let xActivityRadarRawData = null;
+
+async function loadTwitterTopHashtags() {
+    try {
+        const response = await fetch('../public/twitter_top_hashtags.json');
+        if (!response.ok) throw new Error('Failed to load twitter_top_hashtags.json');
+        const data = await response.json();
+        const container = document.getElementById('twitterHashtags');
+        if (!container) return;
+        container.innerHTML = '';
+        if (!Array.isArray(data) || data.length === 0) {
+            container.innerHTML = '<div class="text-warning-700">No hashtag data available.</div>';
+            return;
+        }
+        let maxCount = 0;
+        data.forEach(item => { if (item.count > maxCount) maxCount = item.count; });
+        data.forEach(item => {
+            const widthPercent = maxCount > 0 ? Math.round((item.count / maxCount) * 100) : 0;
+            container.innerHTML += `
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-primary">${item.hashtag}</span>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-24 bg-secondary-100 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: ${widthPercent}%"></div>
+                        </div>
+                        <span class="text-sm font-medium text-text-primary">${item.count.toLocaleString ? item.count.toLocaleString() : item.count}</span>
+                    </div>
+                </div>
+            `;
+        });
+    } catch (e) {
+        const container = document.getElementById('twitterHashtags');
+        if (container) container.innerHTML = '<div class="text-warning-700">Unable to load Twitter hashtag data.</div>';
+    }
+}
+async function loadTwitterRadarChart() {
+    try {
+        const response = await fetch('../public/twitter_peak_hours.json');
+        if (!response.ok) throw new Error('Failed to load twitter_peak_hours.json');
+        const data = await response.json();
+        const labels = data.peak_hours.map(slot => slot.slot);
+        const values = data.peak_hours.map(slot => slot.count);
+        const ctx = document.getElementById('twitterRadarChart');
+        if (!ctx) return;
+        if (twitterRadarChart) twitterRadarChart.destroy();
+        twitterRadarChart = new Chart(ctx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Mentions by Time Slot',
+                    data: values,
+                    fill: true,
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498DB',
+                    pointBackgroundColor: '#FF6B35',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#FF6B35',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { color: '#374151', font: { size: 16, weight: 'bold' } }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.formattedValue} mentions`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { color: '#374151', font: { size: 14, weight: 'bold' } },
+                        ticks: {
+                            color: '#6B7280',
+                            font: { size: 12 },
+                            backdropColor: 'transparent',
+                            callback: function(value) { return value % 1 === 0 ? value : null; }
+                        },
+                        min: 0
+                    }
+                },
+                animation: { duration: 1200, easing: 'easeInOutQuart' },
+                interaction: { intersect: false, mode: 'nearest' }
+            }
+        });
+    } catch (e) {
+        const ctx = document.getElementById('twitterRadarChart');
+        if (ctx) ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load Twitter radar chart data.</div>';
+    }
+}
+async function loadTwitterHistogramChart() {
+    try {
+        const response = await fetch('../public/twitter_histogram_data.json');
+        if (!response.ok) throw new Error('Failed to load twitter_histogram_data.json');
+        const data = await response.json();
+        const ctx = document.getElementById('twitterHistogramChart');
+        if (!ctx) return;
+        if (twitterHistogramChart) twitterHistogramChart.destroy();
+        
+        // Filter out Views data (index 1) - keep only Likes (0), Retweets (2), Replies (3)
+        const filteredLabels = data.labels.filter((label, index) => index !== 1);
+        const filteredData = data.data.filter((value, index) => index !== 1);
+        const colors = ['#FF6B35', '#27AE60', '#F39C12']; // Adjusted colors for 3 items
+        
+        twitterHistogramChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: filteredLabels,
+                datasets: [{
+                    label: 'Engagement Count',
+                    data: filteredData,
+                    backgroundColor: colors,
+                    borderColor: colors.map(color => color + 'CC'),
+                    borderWidth: 2,
+                    borderRadius: 6,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed.y;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${context.label}: ${value.toLocaleString()} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 12, weight: 'normal' }, color: '#6B7280' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F3F4F6', drawBorder: false },
+                        ticks: {
+                            font: { size: 12 },
+                            color: '#6B7280',
+                            callback: function(value) { return value.toLocaleString(); }
+                        }
+                    }
+                },
+                animation: { duration: 1000, easing: 'easeInOutQuart' },
+                interaction: { intersect: false, mode: 'index' }
+            }
+        });
+        // Update summary cards using filtered data
+        document.getElementById('twitterLikesCount').textContent = filteredData[0]?.toLocaleString() || '-';
+        document.getElementById('twitterRetweetsCount').textContent = filteredData[1]?.toLocaleString() || '-';
+        document.getElementById('twitterRepliesCount').textContent = filteredData[2]?.toLocaleString() || '-';
+    } catch (e) {
+        // fallback: clear summary cards
+        document.getElementById('twitterLikesCount').textContent = '-';
+        document.getElementById('twitterRetweetsCount').textContent = '-';
+        document.getElementById('twitterRepliesCount').textContent = '-';
+    }
+}
+function initializeTwitterBarChart() {
+    const ctx = document.getElementById('twitterBarChart');
+    if (!ctx) return;
+    fetch('../public/twitter_trends.json')
+        .then(response => response.json())
+        .then(data => {
+            const yearMap = {};
+            data.labels.forEach((label, idx) => {
+                const year = label.split(' ')[1];
+                if (!yearMap[year]) {
+                    yearMap[year] = { positive: [], neutral: [], negative: [] };
+                }
+                yearMap[year].positive.push(data.positive[idx]);
+                yearMap[year].neutral.push(data.neutral[idx]);
+                yearMap[year].negative.push(data.negative[idx]);
+            });
+            const years = Object.keys(yearMap);
+            const positiveYearly = years.map(y => yearMap[y].positive.reduce((a, b) => a + b, 0) / yearMap[y].positive.length);
+            const neutralYearly = years.map(y => yearMap[y].neutral.reduce((a, b) => a + b, 0) / yearMap[y].neutral.length);
+            const negativeYearly = years.map(y => yearMap[y].negative.reduce((a, b) => a + b, 0) / yearMap[y].negative.length);
+            if (twitterBarChart) twitterBarChart.destroy();
+            twitterBarChart = new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [
+                        { label: 'Positive', data: positiveYearly, backgroundColor: '#27AE60', borderRadius: 4 },
+                        { label: 'Neutral', data: neutralYearly, backgroundColor: '#F39C12', borderRadius: 4 },
+                        { label: 'Negative', data: negativeYearly, backgroundColor: '#E74C3C', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, padding: 20 } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#F3F4F6' },
+                            ticks: { font: { size: 12 }, callback: function(value) { return value + '%'; } },
+                            max: 100
+                        }
+                    }
+                }
+            });
+            // Set the latest year's sentiment values in the summary below the chart
+            const lastIdx = years.length - 1;
+            const pos = positiveYearly[lastIdx];
+            const neu = neutralYearly[lastIdx];
+            const neg = negativeYearly[lastIdx];
+            const posEl = document.getElementById('twitterPositive');
+            const neuEl = document.getElementById('twitterNeutral');
+            const negEl = document.getElementById('twitterNegative');
+            if (posEl) posEl.textContent = pos ? pos.toFixed(1) + '%' : 'N/A';
+            if (neuEl) neuEl.textContent = neu ? neu.toFixed(1) + '%' : 'N/A';
+            if (negEl) negEl.textContent = neg ? neg.toFixed(1) + '%' : 'N/A';
+        })
+        .catch(error => {
+            const posEl = document.getElementById('twitterPositive');
+            const neuEl = document.getElementById('twitterNeutral');
+            const negEl = document.getElementById('twitterNegative');
+            if (posEl) posEl.textContent = 'N/A';
+            if (neuEl) neuEl.textContent = 'N/A';
+            if (negEl) negEl.textContent = 'N/A';
+        });
+}
+async function loadTwitterPeakHours() {
+    try {
+        const response = await fetch('../public/twitter_peak_hours.json');
+        if (!response.ok) throw new Error('Failed to load twitter_peak_hours.json');
+        const data = await response.json();
+        const container = document.getElementById('twitterPeakHours');
+        if (!container) return;
+        container.innerHTML = '';
+        let maxCount = 0;
+        data.peak_hours.forEach(slot => { if (slot.count > maxCount) maxCount = slot.count; });
+        data.peak_hours.forEach(slot => {
+            let bg = slot.count === maxCount ? 'bg-primary-50' : 'bg-secondary-50';
+            let text = slot.count === maxCount ? 'text-primary' : 'text-text-primary';
+            let level = slot.count === maxCount ? 'High' : (slot.count > 0 ? 'Medium' : 'Low');
+            container.innerHTML += `<div class="text-center p-2 ${bg} rounded"><p class="text-sm font-medium ${text}">${slot.slot}</p><p class="text-xs text-text-secondary">${level} (${slot.count})</p></div>`;
+        });
+    } catch (e) {
+        const container = document.getElementById('twitterPeakHours');
+        if (container) container.innerHTML = '<div class="col-span-4 text-center text-warning-700">Unable to load Twitter peak hours data.</div>';
+    }
+}
+
+async function loadXActivityRadarChart() {
+    try {
+        // Create dummy data for X Activity Radar
+        const dummyData = {
+            labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024'],
+            values: [2450, 2890, 3200, 2750, 3100, 2950, 3450, 3780, 3250, 3600, 3850, 4100, 3950, 4200, 4350, 4150, 4500, 4250, 4800, 4950, 4650, 4900, 5200, 5350]
+        };
+        
+        xActivityRadarRawData = dummyData;
+        const yearSelect = document.getElementById('xRadarYearSelect');
+        if (yearSelect) {
+            // Extract years from labels (format: 'Month YYYY')
+            const years = Array.from(new Set(dummyData.labels.map(label => label.split(' ')[1])));
+            yearSelect.innerHTML = '<option value="all">All Years</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+            yearSelect.onchange = function() { renderXActivityRadarChart(this.value); };
+        }
+        renderXActivityRadarChart('all');
+    } catch (e) {
+        const ctx = document.getElementById('xActivityRadarChart');
+        if (ctx) {
+            ctx.parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load X Activity Radar chart data.</div>';
+        }
+    }
+}
+
+function renderXActivityRadarChart(selectedYear) {
+    const ctx = document.getElementById('xActivityRadarChart');
+    if (!ctx || !xActivityRadarRawData) return;
+    if (xActivityRadarChart) xActivityRadarChart.destroy();
+    
+    let labels = xActivityRadarRawData.labels;
+    let values = xActivityRadarRawData.values;
+    if (selectedYear && selectedYear !== 'all') {
+        labels = xActivityRadarRawData.labels.filter(l => l.endsWith(' ' + selectedYear));
+        values = labels.map(l => {
+            const idx = xActivityRadarRawData.labels.indexOf(l);
+            return xActivityRadarRawData.values[idx];
+        });
+    }
+    
+    xActivityRadarChart = new Chart(ctx.getContext('2d'), {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'X Activity by Month',
+                data: values,
+                fill: true,
+                backgroundColor: 'rgba(29, 161, 242, 0.2)',
+                borderColor: '#1DA1F2',
+                pointBackgroundColor: '#1DA1F2',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#1DA1F2',
+                borderWidth: 3,
+                pointRadius: 6,
+                pointHoverRadius: 9
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: '#1DA1F2',
+                        font: { weight: 'bold' }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#1F2937',
+                    titleColor: '#FFFFFF',
+                    bodyColor: '#FFFFFF',
+                    borderColor: '#374151',
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.formattedValue} mentions`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: '#E5E7EB' },
+                    grid: { color: '#E5E7EB' },
+                    pointLabels: { color: '#1DA1F2', font: { weight: 'bold' } },
+                    ticks: { color: '#374151' }
+                }
+            },
+            animation: {
+                duration: 1200,
+                easing: 'easeInOutQuart'
+            },
+            interaction: {
+                intersect: false,
+                mode: 'nearest'
+            }
+        }
+    });
+}
+// On page load or Engagement tab click, load X engagement charts
+function loadXEngagementCharts() {
+    loadTwitterTopHashtags();
+    loadTwitterRadarChart();
+    loadTwitterHistogramChart();
+    initializeTwitterBarChart();
+    loadTwitterPeakHours();
+    loadXActivityRadarChart();
+}
+window.addEventListener('DOMContentLoaded', function() {
+    // Only load if Engagement tab is visible
+    const perfView = document.getElementById('performanceView');
+    if (!perfView.classList.contains('hidden')) {
+        loadXEngagementCharts();
+    }
+});
+if (showEngagement) {
+    showEngagement.addEventListener('click', function() {
+        loadXEngagementCharts();
+    });
+}
+
+// --- X (Twitter) Trends Chart Logic (from trends_analysis.html) ---
+let xTrendsData = null;
+let trendsChart = null;
+async function loadXTrendsData() {
+    try {
+        const response = await fetch('../public/twitter_trends.json');
+        if (!response.ok) throw new Error('Failed to load twitter_trends.json');
+        xTrendsData = await response.json();
+        updateXTrendsChart();
+        updateXTrendsSummary();
+    } catch (e) {
+        document.getElementById('trendsChart').parentNode.innerHTML = '<div class="text-center text-warning-700">Unable to load X trends data.</div>';
+    }
+}
+function updateXTrendsChart() {
+    const ctx = document.getElementById('trendsChart');
+    if (!ctx || !xTrendsData) return;
+    if (trendsChart) trendsChart.destroy();
+    trendsChart = new Chart(ctx.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: xTrendsData.labels,
+            datasets: [
+                {
+                    label: 'Positive',
+                    data: xTrendsData.positive,
+                    borderColor: '#27AE60',
+                    backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#27AE60',
+                    pointBorderColor: '#FFFFFF',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Neutral',
+                    data: xTrendsData.neutral,
+                    borderColor: '#F39C12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#F39C12',
+                    pointBorderColor: '#FFFFFF',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Negative',
+                    data: xTrendsData.negative,
+                    borderColor: '#E74C3C',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#E74C3C',
+                    pointBorderColor: '#FFFFFF',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    titleColor: '#2C3E50',
+                    bodyColor: '#2C3E50',
+                    borderColor: '#E1E8ED',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    displayColors: true,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y}%`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: true,
+                        color: '#F3F4F6'
+                    },
+                    ticks: {
+                        color: '#7F8C8D',
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: {
+                        display: true,
+                        color: '#F3F4F6'
+                    },
+                    ticks: {
+                        color: '#7F8C8D',
+                        font: {
+                            size: 12
+                        },
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            elements: {
+                point: {
+                    hoverBackgroundColor: '#FFFFFF'
+                }
+            }
+        }
+    });
+}
+function updateXTrendsSummary() {
+    if (!xTrendsData) return;
+    // Trend Direction
+    const trend = xTrendsData.positive.length > 1 ? xTrendsData.positive[xTrendsData.positive.length - 1] > xTrendsData.positive[xTrendsData.positive.length - 2] : true;
+    const trendElement = document.getElementById('trendDirection');
+    if (trendElement) {
+        trendElement.textContent = trend ? '↗ Positive' : '↘ Declining';
+        trendElement.className = trend ? 'text-2xl font-bold text-success-600 mt-1' : 'text-2xl font-bold text-error-500 mt-1';
+    }
+    // Peak Volume & Date
+    const maxVolume = Math.max(...xTrendsData.positive.map((pos, i) => pos + xTrendsData.neutral[i] + xTrendsData.negative[i]));
+    const maxVolumeIndex = xTrendsData.positive.map((pos, i) => pos + xTrendsData.neutral[i] + xTrendsData.negative[i]).indexOf(maxVolume);
+    const peakVolumeElement = document.getElementById('peakVolume');
+    const peakDateElement = document.getElementById('peakDate');
+    if (peakVolumeElement && peakDateElement) {
+        peakVolumeElement.textContent = Math.floor(maxVolume * 35).toLocaleString();
+        peakDateElement.textContent = xTrendsData.labels[maxVolumeIndex] || 'N/A';
+    }
+    // Avg Sentiment
+    const avgSentiment = (xTrendsData.positive.reduce((a, b) => a + b, 0) / xTrendsData.positive.length).toFixed(1);
+    const avgSentimentElement = document.getElementById('avgSentiment');
+    if (avgSentimentElement) {
+        avgSentimentElement.textContent = avgSentiment + '%';
+    }
+    // Volatility
+    const variance = Math.sqrt(xTrendsData.positive.reduce((a, b) => a + Math.pow(b - avgSentiment, 2), 0) / xTrendsData.positive.length);
+    const volatility = variance < 15 ? 'Low' : variance < 25 ? 'Medium' : 'High';
+    const volatilityElement = document.getElementById('volatilityIndex');
+    if (volatilityElement) {
+        volatilityElement.textContent = volatility;
+        volatilityElement.className = `text-2xl font-bold mt-1 ${volatility === 'Low' ? 'text-success-600' : volatility === 'Medium' ? 'text-warning-500' : 'text-error-500'}`;
+    }
+}
+// Only load X trends data when Trends tab is shown
+if (showTrends) {
+    showTrends.addEventListener('click', function() {
+        loadXTrendsData();
+    });
+}
+// Optionally, load on page load if Trends tab is default (not the case here)
+    </script>
+    <style>
+  .active-platform {
+    box-shadow: 0 0 0 4px #ff7300, 0 4px 16px rgba(255, 115, 0, 0.25);
+    border-radius: 12px;
+    outline: none;
+    z-index: 1;
+    transition: box-shadow 0.2s;
+  }
+     .text-lg.font-bold.text-success-600.mt-1,
+     .text-lg.font-bold.text-warning-600.mt-1,
+     .text-lg.font-bold.text-error-600.mt-1 {
+         font-size: 25px !important;
+     }
+</style>
+<script>
+  // Highlight the active platform button based on the current page URL
+  document.addEventListener('DOMContentLoaded', function() {
+    const platformBtns = document.querySelectorAll('.platform-btn');
+    const currentPage = window.location.pathname.split('/').pop();
+    platformBtns.forEach(btn => {
+      const href = btn.getAttribute('href');
+      if (href && href === currentPage) {
+        btn.classList.add('active-platform');
+      }
+    });
+  });
+</script>
+<!-- Professional Floating Back Button -->
+<button id="floatingBackBtn" class="floating-back-btn" onclick="goBack()" title="Go Back">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/>
+    </svg>
+    <span class="btn-text">Back</span>
+</button>
+
+<style>
+    .floating-back-btn {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 8px 32px rgba(255, 138, 0, 0.3);
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        min-width: 120px;
+        user-select: none;
+        opacity: 0.3;
+    }
+    .floating-back-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(255, 138, 0, 0.4);
+        background: linear-gradient(135deg, #ff7300 0%, #d12755 100%);
+        opacity: 1;
+    }
+    .floating-back-btn:active,
+    .floating-back-btn:focus,
+    .floating-back-btn:focus-visible,
+    .floating-back-btn:focus:not(:hover) {
+        opacity: 0.3;
+        outline: none;
+    }
+    .floating-back-btn svg {
+        transition: transform 0.2s ease;
+    }
+    .floating-back-btn:hover svg {
+        transform: translateX(-2px);
+    }
+    .btn-text {
+        font-weight: 600;
+        letter-spacing: 0.025em;
+    }
+    @media (max-width: 768px) {
+        .floating-back-btn {
+            bottom: 16px;
+            left: 16px;
+            padding: 10px 14px;
+            font-size: 13px;
+            min-width: 100px;
+        }
+    }
+    @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .floating-back-btn { animation: slideInUp 0.6s ease-out; }
+</style>
+
+<script>
+    function goBack() {
+        const btn = document.getElementById('floatingBackBtn');
+        btn.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            window.location.href = 'dashboard_overview.html';
+        }, 150);
+    }
+    window.addEventListener('scroll', function() {
+        const backBtn = document.getElementById('floatingBackBtn');
+        if (backBtn && document.activeElement === backBtn) {
+            backBtn.blur();
+        }
+    });
+</script>
+</body>
+</html>

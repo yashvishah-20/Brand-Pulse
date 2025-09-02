@@ -1,0 +1,286 @@
+{
+  "platform_comparison": {
+    "twitter": {
+      "total_posts": 633,
+      "engagement_rate": 3.07,
+      "sentiment_distribution": {
+        "positive": 60.66350710900474,
+        "neutral": 30.80568720379147,
+        "negative": 8.530805687203792
+      },
+      "posting_frequency": {
+        "monthly_avg": 25.32,
+        "consistency_score": 10.215420526685321
+      },
+      "reach_metrics": {},
+      "growth_rate": 10.666666666666671,
+      "content_types": {},
+      "optimal_times": {}
+    },
+    "linkedin": {
+      "total_posts": 695,
+      "engagement_rate": 2.9,
+      "sentiment_distribution": {},
+      "posting_frequency": {},
+      "reach_metrics": {},
+      "growth_rate": 0,
+      "content_types": {},
+      "optimal_times": {}
+    },
+    "reddit": {
+      "total_posts": 17,
+      "engagement_rate": 5.4,
+      "sentiment_distribution": {},
+      "posting_frequency": {},
+      "reach_metrics": {},
+      "growth_rate": 0,
+      "content_types": {},
+      "optimal_times": {}
+    },
+    "stocktwits": {
+      "total_posts": 10001,
+      "engagement_rate": 3.79,
+      "sentiment_distribution": {
+        "positive": 49.685031496850314,
+        "neutral": 32.246775322467755,
+        "negative": 18.06819318068193
+      },
+      "posting_frequency": {
+        "monthly_avg": 227.29545454545453,
+        "consistency_score": 12.600401631606815
+      },
+      "reach_metrics": {},
+      "growth_rate": -43.50617798139664,
+      "content_types": {},
+      "optimal_times": {}
+    },
+    "marketbeat": {
+      "total_posts": 33,
+      "engagement_rate": 2.3,
+      "sentiment_distribution": {},
+      "posting_frequency": {},
+      "reach_metrics": {},
+      "growth_rate": 0,
+      "content_types": {},
+      "optimal_times": {}
+    },
+    "glassdoor": {
+      "total_posts": 500,
+      "engagement_rate": 3.8,
+      "sentiment_distribution": {},
+      "posting_frequency": {},
+      "reach_metrics": {},
+      "growth_rate": 0,
+      "content_types": {},
+      "optimal_times": {}
+    }
+  },
+  "health_scores": {
+    "twitter": 41.2,
+    "linkedin": 19.1,
+    "reddit": 26.9,
+    "stocktwits": 28.5,
+    "marketbeat": 17.2,
+    "glassdoor": 21.9
+  },
+  "growth_metrics": {
+    "twitter": {
+      "growth_rate": 10.666666666666671,
+      "engagement_growth": 8.533333333333337,
+      "reach_growth": 12.800000000000006,
+      "follower_growth": 9.600000000000005
+    },
+    "linkedin": {
+      "growth_rate": 0,
+      "engagement_growth": 0.0,
+      "reach_growth": 0.0,
+      "follower_growth": 0.0
+    },
+    "reddit": {
+      "growth_rate": 0,
+      "engagement_growth": 0.0,
+      "reach_growth": 0.0,
+      "follower_growth": 0.0
+    },
+    "stocktwits": {
+      "growth_rate": -43.50617798139664,
+      "engagement_growth": -34.804942385117315,
+      "reach_growth": -52.207413577675965,
+      "follower_growth": -39.15556018325697
+    },
+    "marketbeat": {
+      "growth_rate": 0,
+      "engagement_growth": 0.0,
+      "reach_growth": 0.0,
+      "follower_growth": 0.0
+    },
+    "glassdoor": {
+      "growth_rate": 0,
+      "engagement_growth": 0.0,
+      "reach_growth": 0.0,
+      "follower_growth": 0.0
+    }
+  },
+  "content_performance": {
+    "top_content_types": [
+      {
+        "type": "Video Content",
+        "engagement": 7.8,
+        "platform": "Instagram"
+      },
+      {
+        "type": "Image Posts",
+        "engagement": 4.2,
+        "platform": "Facebook"
+      },
+      {
+        "type": "Text Posts",
+        "engagement": 3.1,
+        "platform": "LinkedIn"
+      },
+      {
+        "type": "Link Shares",
+        "engagement": 2.8,
+        "platform": "Twitter"
+      }
+    ],
+    "optimal_posting_times": {
+      "best_day": "Wednesday",
+      "peak_hours": "2:00 PM - 4:00 PM",
+      "weekend_performance": -25
+    },
+    "content_mix_recommendations": {
+      "video_percentage": 40,
+      "image_percentage": 35,
+      "text_percentage": 20,
+      "link_percentage": 5
+    }
+  },
+  "audience_insights": {
+    "platform_overlap": {
+      "facebook_only": 25,
+      "instagram_only": 20,
+      "twitter_only": 15,
+      "linkedin_only": 12,
+      "cross_platform": 18,
+      "other": 10
+    },
+    "demographics": {
+      "age_groups": {
+        "18_24": 15,
+        "25_34": 35,
+        "35_44": 28,
+        "45_54": 15,
+        "55_plus": 7
+      },
+      "professional_mix": {
+        "tech_professionals": 45,
+        "engineers": 25,
+        "executives": 15,
+        "students": 10,
+        "other": 5
+      }
+    }
+  },
+  "competitive_analysis": {
+    "competitors": {
+      "applied_materials": {
+        "platforms": [
+          "Facebook",
+          "Instagram",
+          "LinkedIn",
+          "Twitter",
+          "YouTube"
+        ],
+        "engagement_rates": [
+          3.9,
+          5.2,
+          3.4,
+          2.8,
+          4.1
+        ],
+        "posting_frequency": 85,
+        "sentiment_score": 0.38
+      },
+      "kla_corporation": {
+        "platforms": [
+          "Facebook",
+          "Instagram",
+          "LinkedIn",
+          "Twitter",
+          "YouTube"
+        ],
+        "engagement_rates": [
+          4.2,
+          4.8,
+          2.1,
+          3.5,
+          3.8
+        ],
+        "posting_frequency": 76,
+        "sentiment_score": 0.42
+      },
+      "asml_holding": {
+        "platforms": [
+          "Facebook",
+          "Instagram",
+          "LinkedIn",
+          "Twitter",
+          "YouTube"
+        ],
+        "engagement_rates": [
+          5.1,
+          6.8,
+          3.8,
+          2.4,
+          5.2
+        ],
+        "posting_frequency": 95,
+        "sentiment_score": 0.51
+      }
+    },
+    "lam_research_position": {
+      "engagement_ranking": 2,
+      "content_quality_ranking": 2,
+      "response_time_ranking": 3,
+      "innovation_content_ranking": 1
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "content_strategy",
+      "title": "Leverage Twitter Success Strategy",
+      "description": "Twitter shows the highest performance score (41.2/100). Apply similar content strategies to other platforms.",
+      "impact": "high"
+    },
+    {
+      "priority": "medium",
+      "category": "platform_optimization",
+      "title": "Improve Marketbeat Performance",
+      "description": "Marketbeat needs attention with a score of 17.2/100. Focus on content quality and posting consistency.",
+      "impact": "medium"
+    },
+    {
+      "priority": "high",
+      "category": "content_type",
+      "title": "Increase Video Content Production",
+      "description": "Video content shows 3x higher engagement across platforms. Recommend 40% video content mix.",
+      "impact": "high"
+    },
+    {
+      "priority": "medium",
+      "category": "timing_optimization",
+      "title": "Optimize Posting Schedule",
+      "description": "Shift posting times to 2-4 PM for 25% better engagement across all platforms.",
+      "impact": "medium"
+    },
+    {
+      "priority": "medium",
+      "category": "cross_platform",
+      "title": "Implement Cross-Platform Content Strategy",
+      "description": "Adapt successful content formats across platforms with platform-specific optimizations.",
+      "impact": "medium"
+    }
+  ]
+}

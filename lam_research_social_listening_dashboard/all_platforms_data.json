@@ -1,0 +1,77 @@
+{
+  "last_updated": "2025-08-03T21:13:10.446064",
+  "platforms": {
+    "x_twitter": {
+      "total_volume": 464464,
+      "total_engagement": 2926,
+      "formula": {
+        "total_volume": "Engagements + Peak Hours + Hashtags",
+        "total_engagement": "Likes + Retweets + Replies"
+      }
+    },
+    "google": {
+      "total_volume": 9317,
+      "total_engagement": 464,
+      "formula": {
+        "total_volume": "Reviews + Positive Words + Negative Words",
+        "total_engagement": "Total Reviews"
+      }
+    },
+    "facebook": {
+      "total_volume": 9542,
+      "total_engagement": 3892,
+      "formula": {
+        "total_volume": "Engagements + Monthly Activity + Audience Reach",
+        "total_engagement": "Likes + Comments + Shares"
+      }
+    },
+    "instagram": {
+      "total_volume": 35740,
+      "total_engagement": 10856,
+      "formula": {
+        "total_volume": "Engagements + Hashtags + Stories + Content Reach",
+        "total_engagement": "Likes + Comments + Saves"
+      }
+    },
+    "reddit": {
+      "total_volume": 22621,
+      "total_engagement": 22161,
+      "formula": {
+        "total_volume": "Upvotes + Comments + Peak Hours",
+        "total_engagement": "Upvotes + Comments"
+      }
+    },
+    "marketbeat": {
+      "total_volume": 5768,
+      "total_engagement": 2268,
+      "formula": {
+        "total_volume": "Positive + Neutral + Negative + Peak Volume",
+        "total_engagement": "Positive + Neutral + Negative"
+      }
+    },
+    "stocktwits": {
+      "total_volume": 14401,
+      "total_engagement": 10001,
+      "formula": {
+        "total_volume": "Sentiment Mentions + Trends Mentions",
+        "total_engagement": "Positive + Neutral + Negative"
+      }
+    },
+    "glassdoor": {
+      "total_volume": 1997,
+      "total_engagement": 1700,
+      "formula": {
+        "total_volume": "Trends Mentions + Heatmap Ratings + Sunburst Values",
+        "total_engagement": "Total Reviews"
+      }
+    },
+    "linkedin": {
+      "total_volume": 177824,
+      "total_engagement": 175739,
+      "formula": {
+        "total_volume": "Posts + Engagements + Activity Radar + Peak Hours",
+        "total_engagement": "Likes + Appreciations + Empathy + Interests"
+      }
+    }
+  }
+}

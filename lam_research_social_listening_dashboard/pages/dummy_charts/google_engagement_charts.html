@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Engagement Charts</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-background font-inter">
+    <div class="flex min-h-screen items-center justify-center">
+        <div class="bg-surface rounded-lg shadow-card p-8 border border-border-light w-full max-w-4xl">
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-text-primary mb-2">Google Engagements</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Grouped Bar Chart -->
+                    <div>
+                        <h3 class="text-lg font-medium text-text-primary mb-4">Engagement by Month</h3>
+                        <div class="relative h-80">
+                            <canvas id="googleBarChart" width="400" height="320"></canvas>
+                        </div>
+                    </div>
+                    <!-- Radar Chart -->
+                    <div>
+                        <h3 class="text-lg font-medium text-text-primary mb-4">Engagement Types Radar</h3>
+                        <div class="relative h-80 flex items-center justify-center">
+                            <canvas id="googleRadarChart" width="400" height="320"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Grouped Bar Chart Data
+        const barCtx = document.getElementById('googleBarChart').getContext('2d');
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+        const positive = [38, 45, 50, 55, 60, 58, 62];
+        const neutral = [25, 28, 30, 32, 30, 28, 27];
+        const negative = [10, 12, 10, 8, 10, 9, 8];
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Positive',
+                        data: positive,
+                        backgroundColor: '#27AE60',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Neutral',
+                        data: neutral,
+                        backgroundColor: '#F39C12',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Negative',
+                        data: negative,
+                        backgroundColor: '#E74C3C',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 12 } }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F3F4F6' },
+                        ticks: { font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Radar Chart Data
+        const radarCtx = document.getElementById('googleRadarChart').getContext('2d');
+        const engagementTypes = ['Clicks', 'Shares', 'Comments', 'Likes', 'Mentions'];
+        const engagementData = [65, 59, 80, 81, 56];
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: engagementTypes,
+                datasets: [{
+                    label: 'Engagement Score',
+                    data: engagementData,
+                    fill: true,
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498DB',
+                    pointBackgroundColor: '#FF6B35',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#FF6B35',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#F3F4F6' },
+                        grid: { color: '#F3F4F6' },
+                        pointLabels: { font: { size: 14 }, color: '#374151' },
+                        ticks: { font: { size: 12 }, color: '#7F8C8D', backdropColor: 'transparent' },
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
